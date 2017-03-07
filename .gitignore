@@ -3,3 +3,4 @@ JuceLibraryCode/
 .vscode/
 **/.vscode/
 *.log
+**/*.TMP

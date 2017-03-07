@@ -24,12 +24,25 @@
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
+#include "../jucer_Headers.h"
+#include "../Project/jucer_ProjectContentComponent.h"
+SkoarLoggerComponent::SkoarLoggerComponent(ProjectContentComponent *pcc) : resizeListeningParent(pcc)
+{
+    addAndMakeVisible(toolbar = new SkoarLoggerToolBar());
+    addAndMakeVisible(component = new SkoarLoggerPane());
+    setSize(600, 400);
+}
+
 //[/MiscUserDefs]
 
 //==============================================================================
 SkoarLoggerComponent::SkoarLoggerComponent ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
+    
+    // don't use this constructor
+    jassertfalse;
+    resizeListeningParent = nullptr;
     //[/Constructor_pre]
 
     addAndMakeVisible (toolbar = new SkoarLoggerToolBar());
@@ -55,6 +68,7 @@ SkoarLoggerComponent::~SkoarLoggerComponent()
 
 
     //[Destructor]. You can add your own custom destruction code here..
+    resizeListeningParent = nullptr;
     //[/Destructor]
 }
 
@@ -75,7 +89,12 @@ void SkoarLoggerComponent::resized()
 
     toolbar->setBounds (0, 0, proportionOfWidth (1.0000f), 24);
     component->setBounds (0, 24, proportionOfWidth (1.0000f), proportionOfHeight (1.0000f));
+    
     //[UserResized] Add your own custom resize handling here..
+    
+    if (resizeListeningParent != nullptr)
+        resizeListeningParent->resizedAfterLogResized();
+
     //[/UserResized]
 }
 

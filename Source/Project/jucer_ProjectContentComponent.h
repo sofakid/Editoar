@@ -102,6 +102,7 @@ public:
     void paint (Graphics&) override;
     void paintOverChildren (Graphics&) override;
     void resized() override;
+    void resizedAfterLogResized();
     void childBoundsChanged (Component*) override;
     void lookAndFeelChanged() override;
 

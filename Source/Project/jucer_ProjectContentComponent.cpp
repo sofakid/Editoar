@@ -136,7 +136,7 @@ ProjectContentComponent::ProjectContentComponent()
     : project (nullptr),
       currentDocument (nullptr),
       treeViewTabs (TabbedButtonBar::TabsAtTop),
-      loggerComponent ()
+      loggerComponent (this)
 {
     setOpaque (true);
     setWantsKeyboardFocus (true);
@@ -147,8 +147,6 @@ ProjectContentComponent::ProjectContentComponent()
     addAndMakeVisible(resizerBarHoriz = new ResizableEdgeComponent(&loggerComponent, nullptr,
         ResizableEdgeComponent::topEdge));
     resizerBarHoriz->setAlwaysOnTop(true);
-
-
 
     treeSizeConstrainer.setMinimumWidth (200);
     treeSizeConstrainer.setMaximumWidth (500);
@@ -172,7 +170,7 @@ ProjectContentComponent::~ProjectContentComponent()
     setProject (nullptr);
     contentView = nullptr;
     removeChildComponent (&bubbleMessage);
-    removeChildComponent(&loggerComponent);
+    removeChildComponent (&loggerComponent);
     resizerBarHoriz = nullptr;
 
     jassert (getNumChildComponents() <= 1);
@@ -216,13 +214,20 @@ void ProjectContentComponent::paintOverChildren (Graphics& g)
 
 void ProjectContentComponent::resized()
 {
-    Rectangle<int> r (getLocalBounds());
+    Rectangle<int> r(getLocalBounds());
 
-    loggerComponent.setBounds(r.removeFromBottom(300));
-    
+    // resizing this one triggers resized_after_log()
+    loggerComponent.setBounds (r.removeFromBottom(loggerComponent.getHeight()));
+}
+
+void ProjectContentComponent::resizedAfterLogResized()
+{
+    Rectangle<int> r(getLocalBounds());
+
+    r.removeFromBottom (loggerComponent.getHeight());
+
     if (resizerBarHoriz != nullptr)
         resizerBarHoriz->setBounds(r.withY(r.getBottom()).withHeight(4));
-
 
     if (treeViewTabs.isVisible())
         treeViewTabs.setBounds (r.removeFromLeft (treeViewTabs.getWidth()));

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="M70qfTRRk" name="Editoar" projectType="guiapp" juceFolder="../../juce"
+              jucerVersion="4.3.1" version="0.1" bundleIdentifier="org.skoarcery.Editoar"
+              defines="" includeBinaryInAppConfig="1">
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
+               documentExtensions=".jucer" objCExtraSuffix="zkVtji" bigIcon="OCyr5F"
+               smallIcon="" extraLinkerFlags="" extraCompilerFlags="-Wall -Wshadow -Wno-missing-field-initializers -Wshadow -Wshorten-64-to-32 -Wstrict-aliasing -Wuninitialized -Wunused-parameter -Wconversion -Wsign-compare -Wint-conversion -Woverloaded-virtual -Wreorder -Wconstant-conversion -Wsign-conversion"
+               customPList="&lt;plist&gt;&#10;&lt;dict&gt;&#10;&#9;&lt;key&gt;NSAppTransportSecurity&lt;/key&gt;&#10;&#9;&lt;dict&gt;&#10;&#9;&#9;&lt;key&gt;NSAllowsArbitraryLoads&lt;/key&gt;&#10;&#9;&#9;&lt;true/&gt;&#10;&#9;&#9;&lt;key&gt;NSExceptionDomains&lt;/key&gt;&#10;&#9;&#9;&lt;dict&gt;&#10;&#9;&#9;&#9;&lt;key&gt;amazonaws.com&lt;/key&gt;&#10;&#9;&#9;&#9;&lt;dict&gt;&#10;&#9;&#9;&#9;&#9;&lt;key&gt;NSExceptionAllowsInsecureHTTPLoads&lt;/key&gt;&#10;&#9;&#9;&#9;&#9;&lt;true/&gt;&#10;&#9;&#9;&#9;&#9;&lt;key&gt;NSIncludesSubdomains&lt;/key&gt;&#10;&#9;&#9;&#9;&#9;&lt;true/&gt;&#10;&#9;&#9;&#9;&lt;/dict&gt;&#10;&#9;&#9;&lt;/dict&gt;&#10;&#9;&lt;/dict&gt;&#10;&lt;/dict&gt;&#10;&lt;/plist&gt;"
+               extraFrameworks="AudioUnit; Accelerate; AVFoundation; CoreAudio; CoreAudioKit; CoreMIDI; DiscRecording; QuartzCore; AudioToolbox; OpenGL; QTKit; QuickTime">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Editoar"
+                       osxSDK="default" osxCompatibility="10.9 SDK" osxArchitecture="default"
+                       headerPath="" libraryPath="" cppLibType="libc++"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Editoar"
+                       osxSDK="default" osxCompatibility="10.7 SDK" osxArchitecture="default"
+                       headerPath="" libraryPath="" cppLibType="libc++"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_graphics" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_events" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_data_structures" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_cryptography" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_core" path="..\JUCE\modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <VS2015 targetFolder="Builds/VisualStudio2015" externalLibraries="SkoarCpp.x64.lib"
+            bigIcon="OCyr5F" toolset="v140" vstFolder="">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="1" optimisation="1" targetName="Editoar" headerPath="C:\p\SkoarCpp\SkoarCpp"
+                       libraryPath="C:\p\SkoarCpp\Debug" useRuntimeLibDLL="1"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="0" optimisation="3" targetName="Editoar" headerPath="c:\p\SkoarCpp\SkoarCpp"
+                       libraryPath="C:\p\SkoarCpp\Release" useRuntimeLibDLL="0"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_graphics" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_events" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_data_structures" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_cryptography" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_core" path="..\JUCE\modules"/>
+      </MODULEPATHS>
+    </VS2015>
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile" extraCompilerFlags="-std=c++11"
+                extraLinkerFlags="" bigIcon="OCyr5F" smallIcon="" vstFolder="">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" libraryPath="" isDebug="1" optimisation="1" targetName="Editoar"
+                       headerPath=""/>
+        <CONFIGURATION name="Release" libraryPath="" isDebug="0" optimisation="3" targetName="Editoar"
+                       headerPath=""/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_graphics" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_events" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_data_structures" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_cryptography" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_core" path="..\JUCE\modules"/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
+  </EXPORTFORMATS>
+  <MAINGROUP name="Editoar" id="NhrJq66R">
+    <GROUP id="{026460D5-084B-58BD-E1C5-799C4C7D27E2}" name="Logging">
+      <FILE id="AXKUgt" name="SkoarLogger.cpp" compile="1" resource="0" file="Source/Logging/SkoarLogger.cpp"/>
+      <FILE id="fSQPHR" name="SkoarLogger.hpp" compile="0" resource="0" file="Source/Logging/SkoarLogger.hpp"/>
+      <FILE id="L4Gkl5" name="SkoarLoggerComponent.cpp" compile="1" resource="0"
+            file="Source/Logging/SkoarLoggerComponent.cpp"/>
+      <FILE id="ZLNsWr" name="SkoarLoggerComponent.h" compile="0" resource="0"
+            file="Source/Logging/SkoarLoggerComponent.h"/>
+      <FILE id="ZpCoKW" name="SkoarLoggerPane.cpp" compile="1" resource="0"
+            file="Source/Logging/SkoarLoggerPane.cpp"/>
+      <FILE id="DowUwI" name="SkoarLoggerPane.h" compile="0" resource="0"
+            file="Source/Logging/SkoarLoggerPane.h"/>
+      <FILE id="OkpzDl" name="SkoarLoggerToolBar.cpp" compile="1" resource="0"
+            file="Source/Logging/SkoarLoggerToolBar.cpp"/>
+      <FILE id="Kc97Pg" name="SkoarLoggerToolBar.h" compile="0" resource="0"
+            file="Source/Logging/SkoarLoggerToolBar.h"/>
+    </GROUP>
+    <GROUP id="vD0TyHx" name="Application">
+      <FILE id="QDqaEw" name="jucer_AppearanceSettings.cpp" compile="1" resource="0"
+            file="Source/Application/jucer_AppearanceSettings.cpp"/>
+      <FILE id="mEX07l" name="jucer_AppearanceSettings.h" compile="0" resource="0"
+            file="Source/Application/jucer_AppearanceSettings.h"/>
+      <FILE id="n9nx5w" name="jucer_Application.cpp" compile="0" resource="0"
+            file="Source/Application/jucer_Application.cpp"/>
+      <FILE id="Bcs4ga" name="jucer_Application.h" compile="0" resource="0"
+            file="Source/Application/jucer_Application.h"/>
+      <FILE id="K8GI3t" name="jucer_CommandIDs.h" compile="0" resource="0"
+            file="Source/Application/jucer_CommandIDs.h"/>
+      <FILE id="lYDmsA" name="jucer_CommandLine.cpp" compile="1" resource="0"
+            file="Source/Application/jucer_CommandLine.cpp"/>
+      <FILE id="pWkI3M" name="jucer_CommandLine.h" compile="0" resource="0"
+            file="Source/Application/jucer_CommandLine.h"/>
+      <FILE id="DALClA" name="jucer_CommonHeaders.h" compile="0" resource="0"
+            file="Source/Application/jucer_CommonHeaders.h"/>
+      <FILE id="Y98bJk" name="jucer_DocumentEditorComponent.cpp" compile="1"
+            resource="0" file="Source/Application/jucer_DocumentEditorComponent.cpp"/>
+      <FILE id="prPBQg" name="jucer_DocumentEditorComponent.h" compile="0"
+            resource="0" file="Source/Application/jucer_DocumentEditorComponent.h"/>
+      <FILE id="Sm7ufE" name="jucer_EulaDialogue.h" compile="0" resource="0"
+            file="Source/Application/jucer_EulaDialogue.h"/>
+      <FILE id="eo4r70" name="jucer_FilePreviewComponent.h" compile="0" resource="0"
+            file="Source/Application/jucer_FilePreviewComponent.h"/>
+      <FILE id="Hq3STq" name="jucer_GlobalPreferences.cpp" compile="1" resource="0"
+            file="Source/Application/jucer_GlobalPreferences.cpp"/>
+      <FILE id="Ym81lY" name="jucer_GlobalPreferences.h" compile="0" resource="0"
+            file="Source/Application/jucer_GlobalPreferences.h"/>
+      <FILE id="YVE38f" name="jucer_Headers.h" compile="0" resource="0" file="Source/jucer_Headers.h"/>
+      <FILE id="eMFQFu" name="jucer_Main.cpp" compile="1" resource="0" file="Source/Application/jucer_Main.cpp"/>
+      <FILE id="WuEh1e" name="jucer_MainWindow.cpp" compile="1" resource="0"
+            file="Source/Application/jucer_MainWindow.cpp"/>
+      <FILE id="dj7ZoW" name="jucer_MainWindow.h" compile="0" resource="0"
+            file="Source/Application/jucer_MainWindow.h"/>
+      <FILE id="kwFprr" name="jucer_OpenDocumentManager.cpp" compile="1"
+            resource="0" file="Source/Application/jucer_OpenDocumentManager.cpp"/>
+      <FILE id="mrJkuR" name="jucer_OpenDocumentManager.h" compile="0" resource="0"
+            file="Source/Application/jucer_OpenDocumentManager.h"/>
+    </GROUP>
+    <GROUP id="Ow008xg" name="Code Editor">
+      <FILE id="HAEKTC" name="jucer_SourceCodeEditor.cpp" compile="1" resource="0"
+            file="Source/Code Editor/jucer_SourceCodeEditor.cpp"/>
+      <FILE id="mhpHqC" name="jucer_SourceCodeEditor.h" compile="0" resource="0"
+            file="Source/Code Editor/jucer_SourceCodeEditor.h"/>
+      <FILE id="eN6Jmo" name="SkoarCodeEditor.cpp" compile="1" resource="0"
+            file="Source/Code Editor/SkoarCodeEditor.cpp"/>
+      <FILE id="yLMYNR" name="SkoarCodeEditor.hpp" compile="0" resource="0"
+            file="Source/Code Editor/SkoarCodeEditor.hpp"/>
+      <FILE id="mgVl7m" name="SkoarCodeTokeniser.cpp" compile="1" resource="0"
+            file="Source/Code Editor/SkoarCodeTokeniser.cpp"/>
+      <FILE id="I8CB4E" name="SkoarCodeTokeniser.hpp" compile="0" resource="0"
+            file="Source/Code Editor/SkoarCodeTokeniser.hpp"/>
+    </GROUP>
+    <GROUP id="{11C065B6-1DB3-96F3-3C77-DA83932ACF56}" name="Project">
+      <FILE id="lf9oOX" name="jucer_ConfigTree_Base.h" compile="0" resource="0"
+            file="Source/Project/jucer_ConfigTree_Base.h"/>
+      <FILE id="aytTyi" name="jucer_DependencyPathPropertyComponent.cpp"
+            compile="1" resource="0" file="Source/Project/jucer_DependencyPathPropertyComponent.cpp"/>
+      <FILE id="EDV9Pa" name="jucer_DependencyPathPropertyComponent.h" compile="0"
+            resource="0" file="Source/Project/jucer_DependencyPathPropertyComponent.h"/>
+      <FILE id="CfdjmB" name="jucer_GroupInformationComponent.h" compile="0"
+            resource="0" file="Source/Project/jucer_GroupInformationComponent.h"/>
+      <FILE id="eecwL8" name="jucer_Project.cpp" compile="1" resource="0"
+            file="Source/Project/jucer_Project.cpp"/>
+      <FILE id="p7qo62" name="jucer_Project.h" compile="0" resource="0" file="Source/Project/jucer_Project.h"/>
+      <FILE id="rhvzYd" name="jucer_ProjectContentComponent.cpp" compile="0"
+            resource="0" file="Source/Project/jucer_ProjectContentComponent.cpp"/>
+      <FILE id="xDGBxS" name="jucer_ProjectContentComponent.h" compile="0"
+            resource="0" file="Source/Project/jucer_ProjectContentComponent.h"/>
+      <FILE id="JsTOtf" name="jucer_ProjectTree_Base.h" compile="0" resource="0"
+            file="Source/Project/jucer_ProjectTree_Base.h"/>
+      <FILE id="PnZpGT" name="jucer_ProjectTree_File.h" compile="0" resource="0"
+            file="Source/Project/jucer_ProjectTree_File.h"/>
+      <FILE id="cDYQTe" name="jucer_ProjectTree_Group.h" compile="0" resource="0"
+            file="Source/Project/jucer_ProjectTree_Group.h"/>
+      <FILE id="JfPIT2" name="jucer_ProjectType.h" compile="0" resource="0"
+            file="Source/Project/jucer_ProjectType.h"/>
+      <FILE id="aM4Awh" name="jucer_TreeItemTypes.h" compile="0" resource="0"
+            file="Source/Project/jucer_TreeItemTypes.h"/>
+    </GROUP>
+    <GROUP id="{28174A5F-D7AD-7240-6104-135D5D2DDB3C}" name="Project Saving">
+      <FILE id="jpWU6e" name="jucer_ProjectSaver.cpp" compile="1" resource="0"
+            file="Source/Project Saving/jucer_ProjectSaver.cpp"/>
+      <FILE id="tRMUmL" name="jucer_ProjectSaver.h" compile="0" resource="0"
+            file="Source/Project Saving/jucer_ProjectSaver.h"/>
+      <FILE id="D2KMOk" name="jucer_ResourceFile.cpp" compile="1" resource="0"
+            file="Source/Project Saving/jucer_ResourceFile.cpp"/>
+      <FILE id="OTVc4t" name="jucer_ResourceFile.h" compile="0" resource="0"
+            file="Source/Project Saving/jucer_ResourceFile.h"/>
+    </GROUP>
+    <GROUP id="{58EB50D9-0F01-AF9B-087B-93DB283A339D}" name="Utility">
+      <FILE id="TX2oGI" name="jucer_CodeHelpers.cpp" compile="1" resource="0"
+            file="Source/Utility/jucer_CodeHelpers.cpp"/>
+      <FILE id="mpDJct" name="jucer_CodeHelpers.h" compile="0" resource="0"
+            file="Source/Utility/jucer_CodeHelpers.h"/>
+      <FILE id="ZZK5JV" name="jucer_ColourPropertyComponent.h" compile="0"
+            resource="0" file="Source/Utility/jucer_ColourPropertyComponent.h"/>
+      <FILE id="Y5kN1C" name="jucer_Colours.h" compile="0" resource="0" file="Source/Utility/jucer_Colours.h"/>
+      <FILE id="D0zsDL" name="jucer_DialogLookAndFeel.h" compile="0" resource="0"
+            file="Source/Utility/jucer_DialogLookAndFeel.h"/>
+      <FILE id="Wmahr3" name="jucer_FileHelpers.cpp" compile="1" resource="0"
+            file="Source/Utility/jucer_FileHelpers.cpp"/>
+      <FILE id="UhuxIZ" name="jucer_FileHelpers.h" compile="0" resource="0"
+            file="Source/Utility/jucer_FileHelpers.h"/>
+      <FILE id="sMFFWF" name="jucer_FilePathPropertyComponent.h" compile="0"
+            resource="0" file="Source/Utility/jucer_FilePathPropertyComponent.h"/>
+      <FILE id="bFaUy6" name="jucer_FloatingToolWindow.h" compile="0" resource="0"
+            file="Source/Utility/jucer_FloatingToolWindow.h"/>
+      <FILE id="alvpK9" name="jucer_Icons.cpp" compile="1" resource="0" file="Source/Utility/jucer_Icons.cpp"/>
+      <FILE id="iTXdnI" name="jucer_Icons.h" compile="0" resource="0" file="Source/Utility/jucer_Icons.h"/>
+      <FILE id="umjCJo" name="jucer_JucerTreeViewBase.cpp" compile="1" resource="0"
+            file="Source/Utility/jucer_JucerTreeViewBase.cpp"/>
+      <FILE id="mNeCAH" name="jucer_JucerTreeViewBase.h" compile="0" resource="0"
+            file="Source/Utility/jucer_JucerTreeViewBase.h"/>
+      <FILE id="bxczA9" name="jucer_MiscUtilities.cpp" compile="1" resource="0"
+            file="Source/Utility/jucer_MiscUtilities.cpp"/>
+      <FILE id="Dnp2kv" name="jucer_MiscUtilities.h" compile="0" resource="0"
+            file="Source/Utility/jucer_MiscUtilities.h"/>
+      <FILE id="UzeguW" name="jucer_PresetIDs.h" compile="0" resource="0"
+            file="Source/Utility/jucer_PresetIDs.h"/>
+      <FILE id="BcCvVx" name="jucer_EditoarLookAndFeel.cpp" compile="1" resource="0"
+            file="Source/Utility/jucer_EditoarLookAndFeel.cpp"/>
+      <FILE id="GQ6HN9" name="jucer_EditoarLookAndFeel.h" compile="0" resource="0"
+            file="Source/Utility/jucer_EditoarLookAndFeel.h"/>
+      <FILE id="apFrUR" name="jucer_RelativePath.h" compile="0" resource="0"
+            file="Source/Utility/jucer_RelativePath.h"/>
+      <FILE id="A9wcQK" name="jucer_SlidingPanelComponent.cpp" compile="1"
+            resource="0" file="Source/Utility/jucer_SlidingPanelComponent.cpp"/>
+      <FILE id="lkWTJh" name="jucer_SlidingPanelComponent.h" compile="0"
+            resource="0" file="Source/Utility/jucer_SlidingPanelComponent.h"/>
+      <FILE id="AQuUDQ" name="jucer_StoredSettings.cpp" compile="1" resource="0"
+            file="Source/Utility/jucer_StoredSettings.cpp"/>
+      <FILE id="rZQ1EE" name="jucer_StoredSettings.h" compile="0" resource="0"
+            file="Source/Utility/jucer_StoredSettings.h"/>
+      <FILE id="OWw7bL" name="jucer_ValueSourceHelpers.h" compile="0" resource="0"
+            file="Source/Utility/jucer_ValueSourceHelpers.h"/>
+    </GROUP>
+    <GROUP id="{6DB3765E-3D83-86F1-D434-9B731E5E5887}" name="Wizards">
+      <FILE id="or0AQg" name="jucer_NewFileWizard.cpp" compile="1" resource="0"
+            file="Source/Wizards/jucer_NewFileWizard.cpp"/>
+      <FILE id="ZLhlaY" name="jucer_NewFileWizard.h" compile="0" resource="0"
+            file="Source/Wizards/jucer_NewFileWizard.h"/>
+      <FILE id="Ir4iGQ" name="jucer_NewProjectWizard.h" compile="0" resource="0"
+            file="Source/Wizards/jucer_NewProjectWizard.h"/>
+      <FILE id="kPS6fs" name="jucer_NewProjectWizardClasses.cpp" compile="1"
+            resource="0" file="Source/Wizards/jucer_NewProjectWizardClasses.cpp"/>
+      <FILE id="olilfB" name="jucer_NewProjectWizardClasses.h" compile="0"
+            resource="0" file="Source/Wizards/jucer_NewProjectWizardClasses.h"/>
+      <FILE id="XW740a" name="jucer_NewProjectWizardComponent.h" compile="0"
+            resource="0" file="Source/Wizards/jucer_NewProjectWizardComponent.h"/>
+      <FILE id="CCtra2" name="jucer_ProjectWizard_Blank.h" compile="0" resource="0"
+            file="Source/Wizards/jucer_ProjectWizard_Blank.h"/>
+      <FILE id="SdjK0a" name="jucer_StartPageComponent.h" compile="0" resource="0"
+            file="Source/Wizards/jucer_StartPageComponent.h"/>
+      <FILE id="vXZJSV" name="jucer_TemplateThumbnailsComponent.h" compile="0"
+            resource="0" file="Source/Wizards/jucer_TemplateThumbnailsComponent.h"/>
+    </GROUP>
+    <GROUP id="{D4241EC8-2982-DB90-D1BE-72E57B735268}" name="BinaryData">
+      <GROUP id="{8064F10D-D9BC-1C24-B322-A339C00D0B25}" name="templates">
+        <FILE id="hccxJ3" name="jucer_NewCppFileTemplate.cpp" compile="0" resource="1"
+              file="Source/BinaryData/jucer_NewCppFileTemplate.cpp"/>
+        <FILE id="KbujnX" name="jucer_NewCppFileTemplate.h" compile="0" resource="1"
+              file="Source/BinaryData/jucer_NewCppFileTemplate.h"/>
+      </GROUP>
+      <FILE id="ToD9bB" name="background_logo.svg" compile="0" resource="1"
+            file="Source/BinaryData/background_logo.svg"/>
+      <FILE id="a2EM1O" name="background_tile.png" compile="0" resource="1"
+            file="Source/BinaryData/background_tile.png"/>
+      <FILE id="xboS86" name="colourscheme_dark.xml" compile="0" resource="1"
+            file="Source/BinaryData/colourscheme_dark.xml"/>
+      <FILE id="cVh68s" name="colourscheme_light.xml" compile="0" resource="1"
+            file="Source/BinaryData/colourscheme_light.xml"/>
+      <FILE id="OCyr5F" name="juce_icon.png" compile="0" resource="1" file="Source/BinaryData/juce_icon.png"/>
+      <FILE id="NxFmxY" name="editoar_EULA.txt" compile="0" resource="1"
+            file="Source/BinaryData/editoar_EULA.txt"/>
+      <FILE id="r2M1IP" name="editoar_login_bg.svg" compile="0" resource="1"
+            file="Source/BinaryData/editoar_login_bg.svg"/>
+      <FILE id="eO1a1G" name="RecentFilesMenuTemplate.nib" compile="0" resource="1"
+            file="Source/BinaryData/RecentFilesMenuTemplate.nib"/>
+      <FILE id="gP9mUi" name="wizard_Highlight.svg" compile="0" resource="1"
+            file="Source/BinaryData/wizard_Highlight.svg"/>
+      <FILE id="j6OMeN" name="wizard_Openfile.svg" compile="0" resource="1"
+            file="Source/BinaryData/wizard_Openfile.svg"/>
+    </GROUP>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_ASIO="disabled" JUCE_WASAPI="disabled" JUCE_DIRECTSOUND="disabled"
+               JUCE_ALSA="disabled" JUCE_QUICKTIME="disabled" JUCE_OPENGL="disabled"
+               JUCE_USE_FLAC="disabled" JUCE_USE_CDBURNER="disabled" JUCE_USE_CDREADER="disabled"
+               JUCE_USE_CAMERA="disabled" JUCE_PLUGINHOST_VST="disabled" JUCE_PLUGINHOST_AU="disabled"
+               JUCE_USE_OGGVORBIS="disabled" JUCE_LOG_ASSERTIONS="enabled" JUCE_USE_CURL="enabled"/>
+  <MODULES>
+    <MODULE id="juce_core" showAllCode="1"/>
+    <MODULE id="juce_cryptography" showAllCode="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1"/>
+    <MODULE id="juce_events" showAllCode="1"/>
+    <MODULE id="juce_graphics" showAllCode="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1"/>
+  </MODULES>
+  <LIVE_SETTINGS>
+    <OSX headerPath="~/SDKs/llvm/include&#10;~/SDKs/llvm/tools/clang/include"
+         enableCxx11="1" systemHeaderPath="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/c++/v1&#10;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/4.2/include"/>
+    <WINDOWS enableCxx11="1"/>
+    <LINUX/>
+  </LIVE_SETTINGS>
+</JUCERPROJECT>

@@ -136,23 +136,29 @@ ProjectContentComponent::ProjectContentComponent()
     : project (nullptr),
       currentDocument (nullptr),
       treeViewTabs (TabbedButtonBar::TabsAtTop),
-      loggerComponent (this)
+      loggerComponent ()
 {
     setOpaque (true);
     setWantsKeyboardFocus (true);
 
     addAndMakeVisible (logo = new LogoComponent());
     
+    // -- logger ----
+    loggerSizeConstrainer.setMinimumHeight(24);
+    loggerSizeConstrainer.setMaximumHeight(getHeight() - 50);
+    
     addAndMakeVisible(loggerComponent);
-    addAndMakeVisible(resizerBarHoriz = new ResizableEdgeComponent(&loggerComponent, nullptr,
+    addAndMakeVisible(resizerBarHoriz = new ResizableEdgeComponent(&loggerComponent, &loggerSizeConstrainer,
         ResizableEdgeComponent::topEdge));
     resizerBarHoriz->setAlwaysOnTop(true);
 
+    // -- file tree ---- 
     treeSizeConstrainer.setMinimumWidth (200);
     treeSizeConstrainer.setMaximumWidth (500);
 
     treeViewTabs.setOutline (0);
     treeViewTabs.getTabbedButtonBar().setMinimumTabScaleFactor (0.3);
+
 
     EditoarApplication::getApp().openDocumentManager.addListener (this);
 
@@ -194,37 +200,17 @@ void ProjectContentComponent::paintOverChildren (Graphics& g)
         cg.addColour (0.6, Colours::black.withAlpha (0.02f));
 
         g.setGradientFill (cg);
-        g.fillRect (x - shadowSize, 0, shadowSize, getHeight());
-    }
-
-    if (resizerBarHoriz != nullptr)
-    {
-        const int shadowSize = 15;
-        const int y = resizerBarHoriz->getY();
-
-        ColourGradient cg(Colours::black.withAlpha(0.25f), 0, (float)y,
-            Colours::transparentBlack, 0, (float)(y - shadowSize), false);
-        cg.addColour(0.4, Colours::black.withAlpha(0.07f));
-        cg.addColour(0.6, Colours::black.withAlpha(0.02f));
-
-        g.setGradientFill(cg);
-        g.fillRect(0, y - shadowSize, shadowSize, getWidth());
+        g.fillRect (x - shadowSize, 0, shadowSize, treeViewTabs.getHeight());
     }
 }
 
 void ProjectContentComponent::resized()
 {
     Rectangle<int> r(getLocalBounds());
+    
+    loggerSizeConstrainer.setMaximumHeight(getHeight() - 50);
 
-    // resizing this one triggers resized_after_log()
     loggerComponent.setBounds (r.removeFromBottom(loggerComponent.getHeight()));
-}
-
-void ProjectContentComponent::resizedAfterLogResized()
-{
-    Rectangle<int> r(getLocalBounds());
-
-    r.removeFromBottom (loggerComponent.getHeight());
 
     if (resizerBarHoriz != nullptr)
         resizerBarHoriz->setBounds(r.withY(r.getBottom()).withHeight(4));
@@ -249,7 +235,7 @@ void ProjectContentComponent::lookAndFeelChanged()
 
 void ProjectContentComponent::childBoundsChanged (Component* child)
 {
-    if (child == &treeViewTabs)
+    if (child == &treeViewTabs || child == &loggerComponent)
         resized();
 }
 

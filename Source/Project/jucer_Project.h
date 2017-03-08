@@ -142,7 +142,6 @@ public:
         void setID (const String& newID);
         Item findItemWithID (const String& targetId) const; // (recursive search)
 
-        String getImageFileID() const;
         Drawable* loadAsImageFile() const;
 
         //==============================================================================
@@ -158,15 +157,6 @@ public:
         bool shouldBeAddedToTargetProject() const;
         bool shouldBeCompiled() const;
         Value getShouldCompileValue();
-
-        bool shouldBeAddedToBinaryResources() const;
-        Value getShouldAddToBinaryResourcesValue();
-
-        bool shouldBeAddedToXcodeResources() const;
-        Value getShouldAddToXcodeResourcesValue();
-
-        Value getShouldInhibitWarningsValue();
-        bool shouldInhibitWarnings() const;
 
         bool isModuleCode() const;
 

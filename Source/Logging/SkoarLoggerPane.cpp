@@ -54,7 +54,10 @@ SkoarLoggerPane::SkoarLoggerPane ()
 
 
     //[Constructor] You can add your own custom stuff here..
-    //logPane->getFont().setTypefaceName(Font::getDefaultMonospacedFontName())
+    font.setTypefaceName(Font::getDefaultMonospacedFontName());
+    font.setHeight(12);
+    //logPane->setFont(font);
+    logPane->applyFontToAllText(font);
     //[/Constructor]
 }
 

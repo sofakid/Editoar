@@ -21,8 +21,6 @@
 #define __JUCE_HEADER_7F421CE58DF57D96__
 
 //[Headers]     -- You can add your own extra header files here --
-#include "../../JuceLibraryCode/JuceHeader.h"
-class ProjectContentComponent;
 //[/Headers]
 
 #include "SkoarLoggerToolBar.h"
@@ -46,8 +44,6 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
-    SkoarLoggerComponent(ProjectContentComponent *pcc);
-
     //[/UserMethods]
 
     void paint (Graphics& g) override;
@@ -57,7 +53,6 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    ProjectContentComponent *resizeListeningParent;
     //[/UserVariables]
 
     //==============================================================================

@@ -79,6 +79,9 @@ SkoarLoggerToolBar::SkoarLoggerToolBar ()
 
 
     //[Constructor] You can add your own custom stuff here..
+
+    logLevelComboBox->setSelectedId(2, dontSendNotification);
+
     //[/Constructor]
 }
 

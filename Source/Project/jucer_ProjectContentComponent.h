@@ -102,7 +102,6 @@ public:
     void paint (Graphics&) override;
     void paintOverChildren (Graphics&) override;
     void resized() override;
-    void resizedAfterLogResized();
     void childBoundsChanged (Component*) override;
     void lookAndFeelChanged() override;
 
@@ -120,6 +119,7 @@ private:
     ScopedPointer<ResizableEdgeComponent> resizerBarHoriz;
 
     ComponentBoundsConstrainer treeSizeConstrainer;
+    ComponentBoundsConstrainer loggerSizeConstrainer;
     BubbleMessageComponent bubbleMessage;
 
     SkoarLoggerComponent loggerComponent;

@@ -14,6 +14,8 @@ SkoarCodeEditorComponent::SkoarCodeEditorComponent(const File& f, CodeDocument& 
 	: GenericCodeEditorComponent(f, doc, &skoarTokeniser), docListener(doc)
 {
 	doc.addListener(&docListener);
+
+    setLineSpacing(1.3f);
 }
 
 SkoarCodeEditorComponent::~SkoarCodeEditorComponent() {

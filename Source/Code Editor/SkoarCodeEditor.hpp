@@ -30,8 +30,10 @@ public:
 
 		/** Called by a CodeDocument when text is deleted. */
 		void codeDocumentTextDeleted(int startIndex, int endIndex) override;
+
 	private:
 		CodeDocument& doc;
+        SkoarCodeEditorComponent *ed;
 	};
 private:
 	void insertComponentClass();

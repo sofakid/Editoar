@@ -87,10 +87,6 @@ public:
     PropertiesFile::Options getPropertyFileOptionsFor (const String& filename);
 
     //==============================================================================
-  
-    void addLiveBuildConfigItem (Project&, TreeViewItem&);
-
-    //==============================================================================
     EditoarLookAndFeel lookAndFeel;
 
     ScopedPointer<StoredSettings> settings;

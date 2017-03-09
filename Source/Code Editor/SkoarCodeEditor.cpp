@@ -7,6 +7,7 @@
 #include "../Application/jucer_OpenDocumentManager.h"
 
 #include "../Logging/SkoarLogger.hpp"
+#include "../Logging/SkoarLoggerComponent.h"
 
 static SkoarCodeTokeniser skoarTokeniser;
 
@@ -129,22 +130,18 @@ void SkoarCodeEditorComponent::insertComponentClass()
 
 
 // ------------------------------------------------------------------------------
-static SkoarConsoleLogger logger; 
-static SkoarNullLogger nullLogger;
-
-
 SkoarCodeEditorComponent::DocumentListener::DocumentListener(CodeDocument& document) : doc(document) {}
 SkoarCodeEditorComponent::DocumentListener::~DocumentListener() {}
 
 /** Called by a CodeDocument when text is added. */
 void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextInserted(const String& newText, int insertIndex) {
 
-	wstring skoarce(doc.getAllContent().toWideCharPointer());
-	Skoar skoar(skoarce, &nullLogger);
+    wstring skoarce(doc.getAllContent().toWideCharPointer());
+	Skoar skoar(skoarce, &SkoarLog);
 }
 
 /** Called by a CodeDocument when text is deleted. */
 void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextDeleted(int startIndex, int endIndex) {
 	wstring skoarce(doc.getAllContent().toWideCharPointer());
-	Skoar skoar(skoarce, &nullLogger);
+	Skoar skoar(skoarce, &SkoarLog);
 }

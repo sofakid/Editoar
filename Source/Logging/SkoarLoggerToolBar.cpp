@@ -21,6 +21,7 @@
 //[/Headers]
 
 #include "SkoarLoggerToolBar.h"
+#include "SkoarLoggerComponent.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
@@ -63,12 +64,8 @@ SkoarLoggerToolBar::SkoarLoggerToolBar ()
     logLevelComboBox->setTooltip (TRANS("Log Verbocity"));
     logLevelComboBox->setEditableText (false);
     logLevelComboBox->setJustificationType (Justification::centredLeft);
-    logLevelComboBox->setTextWhenNothingSelected (TRANS("Info"));
+    logLevelComboBox->setTextWhenNothingSelected (String());
     logLevelComboBox->setTextWhenNoChoicesAvailable (TRANS("(no choices)"));
-    logLevelComboBox->addItem (TRANS("Debug"), 1);
-    logLevelComboBox->addItem (TRANS("Info"), 2);
-    logLevelComboBox->addItem (TRANS("Warning"), 3);
-    logLevelComboBox->addItem (TRANS("Error"), 4);
     logLevelComboBox->addListener (this);
 
 
@@ -80,8 +77,12 @@ SkoarLoggerToolBar::SkoarLoggerToolBar ()
 
     //[Constructor] You can add your own custom stuff here..
 
-    logLevelComboBox->setSelectedId(2, dontSendNotification);
+    logLevelComboBox->addItem(TRANS("Debug"), 1);
+    logLevelComboBox->addItem(TRANS("Info"), 2);
+    logLevelComboBox->addItem(TRANS("Warning"), 3);
+    logLevelComboBox->addItem(TRANS("Error"), 4);
 
+    logLevelComboBox->setSelectedId(2, sendNotification);
     //[/Constructor]
 }
 
@@ -130,6 +131,7 @@ void SkoarLoggerToolBar::resized()
 void SkoarLoggerToolBar::buttonClicked (Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
+    SkoarLoggerPane* logPane = static_cast<SkoarLoggerPane*>(SkoarLog.getUi());
     //[/UserbuttonClicked_Pre]
 
     if (buttonThatWasClicked == autoscrollToggler)
@@ -150,6 +152,7 @@ void SkoarLoggerToolBar::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == clearButton)
     {
         //[UserButtonCode_clearButton] -- add your button handler code here..
+        logPane->clearText();
         //[/UserButtonCode_clearButton]
     }
 
@@ -165,6 +168,25 @@ void SkoarLoggerToolBar::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
     if (comboBoxThatHasChanged == logLevelComboBox)
     {
         //[UserComboBoxCode_logLevelComboBox] -- add your combo box handling code here..
+
+        switch (logLevelComboBox->getSelectedId())
+        {
+        case 1:
+            SkoarLog.setLevel(ISkoarLog::debug);
+            break;
+        case 2:
+            SkoarLog.setLevel(ISkoarLog::info);
+            break;
+        case 3:
+            SkoarLog.setLevel(ISkoarLog::warning);
+            break;
+        case 4:
+            SkoarLog.setLevel(ISkoarLog::error);
+            break;
+        default:
+            jassertfalse;
+        }
+
         //[/UserComboBoxCode_logLevelComboBox]
     }
 
@@ -210,8 +232,7 @@ BEGIN_JUCER_METADATA
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <COMBOBOX name="level  combo box" id="e2a29767587cfb75" memberName="logLevelComboBox"
             virtualName="" explicitFocusOrder="0" pos="3 3 70 18" tooltip="Log Verbocity"
-            editable="0" layout="33" items="Debug&#10;Info&#10;Warning&#10;Error"
-            textWhenNonSelected="Info" textWhenNoItems="(no choices)"/>
+            editable="0" layout="33" items="" textWhenNonSelected="" textWhenNoItems="(no choices)"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

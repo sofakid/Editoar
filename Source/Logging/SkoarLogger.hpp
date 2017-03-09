@@ -1,23 +1,50 @@
+#pragma once
 
-#ifndef SKOARLOGGER_H_INCLUDED
-#define SKOARLOGGER_H_INCLUDED
-
-
-#include "../jucer_Headers.h"
-#include "../Application/jucer_Application.h"
+#include "skoar_public.hpp"
+#include "../../JuceLibraryCode/JuceHeader.h"
 
 struct SkoarNullLogger : public ISkoarLog {
-	void d(const std::wstring &s) override;
-	void i(const std::wstring &s) override;
-	void w(const std::wstring &s) override;
-	void e(const std::wstring &s) override;
+	void log_d(const std::wstring &s) override;
+	void log_i(const std::wstring &s) override;
+	void log_w(const std::wstring &s) override;
+	void log_e(const std::wstring &s) override;
 };
 
 struct SkoarConsoleLogger : public ISkoarLog {
-	void d(const std::wstring &s) override;
-	void i(const std::wstring &s) override;
-	void w(const std::wstring &s) override;
-	void e(const std::wstring &s) override;
+	void log_d(const std::wstring &s) override;
+	void log_i(const std::wstring &s) override;
+	void log_w(const std::wstring &s) override;
+	void log_e(const std::wstring &s) override;
 };
 
-#endif  // SKOARLOGGER_H_INCLUDED
+class ISkoarUiLogger {
+public:
+    virtual void logMsg(const std::wstring &s, Colour colour) = 0;
+};
+
+class SkoarUiLogger : public ISkoarLog {
+public:
+    SkoarUiLogger(
+        Colour d_colour,
+        Colour i_colour,
+        Colour w_colour,
+        Colour e_colour);
+    ~SkoarUiLogger();
+
+    void setUi(ISkoarUiLogger *component);
+    ISkoarUiLogger* getUi();
+
+    void log_d(const std::wstring &s) override;
+    void log_i(const std::wstring &s) override;
+    void log_w(const std::wstring &s) override;
+    void log_e(const std::wstring &s) override;
+
+private:
+    ISkoarUiLogger *ui;
+    Colour d_col;
+    Colour i_col;
+    Colour w_col;
+    Colour e_col;
+};
+
+extern SkoarUiLogger SkoarLog;

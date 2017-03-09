@@ -1,22 +1,78 @@
 #include "SkoarLogger.hpp"
 
 // ---------------------------------------------------
-void SkoarNullLogger::d(const std::wstring &s) {}
-void SkoarNullLogger::i(const std::wstring &s) {}
-void SkoarNullLogger::w(const std::wstring &s) {}
-void SkoarNullLogger::e(const std::wstring &s) {}
+void SkoarNullLogger::log_d(const std::wstring &s) {}
+void SkoarNullLogger::log_i(const std::wstring &s) {}
+void SkoarNullLogger::log_w(const std::wstring &s) {}
+void SkoarNullLogger::log_e(const std::wstring &s) {}
 
 // ---------------------------------------------------
-void SkoarConsoleLogger::d(const std::wstring &s) {
+void SkoarConsoleLogger::log_d(const std::wstring &s) {
 	std::wcout << L"D .. " << s << std::endl;
 }
-void SkoarConsoleLogger::i(const std::wstring &s) {
+void SkoarConsoleLogger::log_i(const std::wstring &s) {
 	std::wcout << L"I -- " << s << std::endl;
 }
-void SkoarConsoleLogger::w(const std::wstring &s) {
+void SkoarConsoleLogger::log_w(const std::wstring &s) {
 	std::wcout << L"W == " << s << std::endl;
 }
-void SkoarConsoleLogger::e(const std::wstring &s) {
+void SkoarConsoleLogger::log_e(const std::wstring &s) {
 	std::wcout << L"E !! " << s << std::endl;
 }
 
+// ---------------------------------------------------
+SkoarUiLogger::SkoarUiLogger(
+        Colour d_colour,
+        Colour i_colour,
+        Colour w_colour,
+        Colour e_colour
+    ) : ui(nullptr),
+        d_col(d_colour),
+        i_col(i_colour),
+        w_col(w_colour),
+        e_col(e_colour) {}
+
+SkoarUiLogger::~SkoarUiLogger() {
+    ui = nullptr;
+}
+
+void SkoarUiLogger::setUi(ISkoarUiLogger *component) {
+    ui = component;
+}
+
+ISkoarUiLogger* SkoarUiLogger::getUi() {
+    return ui;
+}
+
+void SkoarUiLogger::log_d(const std::wstring &s) {
+    ISkoarUiLogger *copy = ui;
+    if (copy != nullptr)
+        copy->logMsg(L"D .. " + s + L"\n", d_col);
+}
+void SkoarUiLogger::log_i(const std::wstring &s) {
+    ISkoarUiLogger *copy = ui;
+    if (copy != nullptr)
+        copy->logMsg(L"I -- " + s + L"\n", i_col);
+
+}
+void SkoarUiLogger::log_w(const std::wstring &s) {
+    ISkoarUiLogger *copy = ui;
+    if (copy != nullptr)
+        copy->logMsg(L"W :: " + s + L"\n", w_col);
+}
+void SkoarUiLogger::log_e(const std::wstring &s) {
+    ISkoarUiLogger *copy = ui;
+    if (copy != nullptr)
+        copy->logMsg(L"E !! " + s + L"\n", e_col);
+}
+
+// this is global
+//
+const Colour green(0, 255, 0);
+const Colour white(255, 255, 255);
+const Colour yellow(255, 255, 100);
+const Colour red(255, 70, 70);
+SkoarUiLogger SkoarLog (green, white, yellow, red);
+//
+// the following doesn't work, the static stuff isn't necessarily initialized yet. 
+//SkoarUiLogger SkoarLog(Colours::lightgreen, Colours::white, Colours::lightyellow, Colours::red);

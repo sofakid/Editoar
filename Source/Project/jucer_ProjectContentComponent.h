@@ -27,6 +27,7 @@
 
 #include "jucer_Project.h"
 #include "../Application/jucer_OpenDocumentManager.h"
+#include "../Logging/SkoarLogger.hpp"
 #include "../Logging/SkoarLoggerComponent.h"
 
 //==============================================================================

@@ -23,7 +23,7 @@ void SkoarLoggerComponent::paint (Graphics& g)
 
 void SkoarLoggerComponent::resized()
 {
-    SkoarLog.i(L"w00t");
+    SkoarLog.d(L"w00t", 1, 2.01, "derp", this);
     auto r = getLocalBounds();
     toolbarComponent->setBounds (r.removeFromTop(24));
     logPaneComponent->setBounds (r);

@@ -12,7 +12,7 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
 
-    void logMsg(const std::wstring &s, Colour colour) override;
+    void logMsg(String &s, Colour colour) override;
 
     void clearText();
     

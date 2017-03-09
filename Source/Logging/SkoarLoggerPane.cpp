@@ -58,9 +58,9 @@ void SkoarLoggerPane::disableAutoscroll() {
     logPane->setText (String());
 }
 
-// implementing ISkoarLog
-void SkoarLoggerPane::logMsg(const std::wstring &s, Colour colour) {
-    logPane->setColour (TextEditor::textColourId, colour);
-    String str (s.c_str());
-    logPane->insertTextAtCaret (str);
+// implementing ISkoarUiLoggger
+void SkoarLoggerPane::logMsg(String &s, Colour colour) {
+    logPane->moveCaretToEnd();
+    logPane->setColour(TextEditor::textColourId, colour);
+    logPane->insertTextAtCaret (s);
 }

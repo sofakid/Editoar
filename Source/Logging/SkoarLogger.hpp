@@ -19,7 +19,7 @@ struct SkoarConsoleLogger : public ISkoarLog {
 
 class ISkoarUiLogger {
 public:
-    virtual void logMsg(const std::wstring &s, Colour colour) = 0;
+    virtual void logMsg(String &s, Colour colour) = 0;
 };
 
 class SkoarUiLogger : public ISkoarLog {

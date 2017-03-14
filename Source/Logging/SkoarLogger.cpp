@@ -1,10 +1,10 @@
 #include "SkoarLogger.hpp"
 
 // ---------------------------------------------------
-void SkoarNullLogger::log_d(const std::wstring &s) {}
-void SkoarNullLogger::log_i(const std::wstring &s) {}
-void SkoarNullLogger::log_w(const std::wstring &s) {}
-void SkoarNullLogger::log_e(const std::wstring &s) {}
+void SkoarNullLogger::log_d(const std::wstring &) {}
+void SkoarNullLogger::log_i(const std::wstring &) {}
+void SkoarNullLogger::log_w(const std::wstring &) {}
+void SkoarNullLogger::log_e(const std::wstring &) {}
 
 // ---------------------------------------------------
 void SkoarConsoleLogger::log_d(const std::wstring &s) {

@@ -28,8 +28,6 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Application/jucer_CommonHeaders.h"
 
-#include "skoar_public.hpp"
-
 #if JUCE_DEBUG
  #define RUN_CLANG_IN_CHILD_PROCESS 1
 #else

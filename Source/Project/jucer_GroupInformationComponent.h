@@ -118,7 +118,7 @@ private:
         {
         }
 
-        void paint (Graphics& g) override
+        void paint (Graphics&) override
         {
             /*int x = getHeight() + 6;
 

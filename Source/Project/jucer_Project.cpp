@@ -760,7 +760,7 @@ bool Project::Item::addFileRetainingSortOrder (const File& file, bool shouldComp
     return true;
 }
 
-void Project::Item::addFileUnchecked (const File& file, int insertIndex, const bool shouldCompile)
+void Project::Item::addFileUnchecked (const File& file, int insertIndex, const bool)// shouldCompile)
 {
     Item item (project, ValueTree (Ids::FILE), belongsToModule);
     item.initialiseMissingProperties();
@@ -773,7 +773,7 @@ void Project::Item::addFileUnchecked (const File& file, int insertIndex, const b
     }
 }
 
-bool Project::Item::addRelativeFile (const RelativePath& file, int insertIndex, bool shouldCompile)
+bool Project::Item::addRelativeFile (const RelativePath& file, int insertIndex, bool)// shouldCompile)
 {
     Item item (project, ValueTree (Ids::FILE), belongsToModule);
     item.initialiseMissingProperties();

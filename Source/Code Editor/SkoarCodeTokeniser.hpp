@@ -11,6 +11,9 @@
 #ifndef SKOARCODETOKENIZER_H_INCLUDED
 #define SKOARCODETOKENIZER_H_INCLUDED
 
+#include "../Application/jucer_CommonHeaders.h"
+#include "skoar_public.hpp"
+
 class SkoarCodeTokeniser : public CodeTokeniser
 {
 public:
@@ -25,25 +28,62 @@ public:
 	/** The token values returned by this tokeniser. */
 	enum TokenType
 	{
-		tokenType_error = 0,
-		tokenType_comment,
-		tokenType_keyword,
-		tokenType_operator,
-		tokenType_identifier,
-		tokenType_integer,
-		tokenType_float,
-		tokenType_string,
-		tokenType_bracket,
-		tokenType_punctuation,
-		tokenType_preprocessor
+        False = 0,        
+        True,
+        Times,
+        Choard,
+        Symbol,
+        Comment,
+        MathOp,
+        BooleanOp,
+        HashLevel,
+        Bars,
+        AssOp,
+        Carrot,
+        Voice,
+        Fairy,
+        Freq,
+        String,
+        NamedNoat,
+        MsgOp,
+        Tuplet,
+        Int,
+        Float,
+        
+        //SymbolColon,
+        //Duration,
+        //Cat,
+
+        dynamic,
+        msg,
+        cthulhu,
+        marker,
+        deref,
+        ottavas,
+        listy,
+        beat,
+        conditional,
+        skoarpion,
+        loop
+
+        //lute,
+        //meditation,
+        //ugen,
+        //arg_listy
+
 	};
 
+    CodeDocument *doc;
+    void setDoc(CodeDocument *document);
+
+    void parseSkoarAndPrepareStyles(CodeDocument &source);
 private:
 	//==============================================================================
+    //SkoarNoadPtr lastTree;
+
+    Array<SkoarStyles::EStyle> styles;
+
 	JUCE_LEAK_DETECTOR(SkoarCodeTokeniser)
 };
-
-
-
 
 #endif  // SKOARCODETOKENIZER_H_INCLUDED

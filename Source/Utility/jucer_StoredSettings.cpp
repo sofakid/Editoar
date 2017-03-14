@@ -228,7 +228,8 @@ Value StoredSettings::getGlobalPath (const Identifier& key, DependencyPathOS os)
     return v;
 }
 
-String StoredSettings::getFallbackPath (const Identifier& key, DependencyPathOS os)
+//String StoredSettings::getFallbackPath (const Identifier& key, DependencyPathOS os)
+String StoredSettings::getFallbackPath(const Identifier&, DependencyPathOS)
 {
     //if (key == Ids::androidSDKPath)
     //    return "${user.home}/Library/Android/sdk";
@@ -238,7 +239,8 @@ String StoredSettings::getFallbackPath (const Identifier& key, DependencyPathOS 
     return String();
 }
 
-bool StoredSettings::isGlobalPathValid (const File& relativeTo, const Identifier& key, const String& path)
+//bool StoredSettings::isGlobalPathValid (const File& relativeTo, const Identifier& key, const String& path)
+bool StoredSettings::isGlobalPathValid(const File&, const Identifier&, const String&)
 {
     String fileToCheckFor;
 

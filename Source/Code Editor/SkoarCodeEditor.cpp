@@ -17,6 +17,8 @@ SkoarCodeEditorComponent::SkoarCodeEditorComponent(const File& f, CodeDocument& 
 	doc.addListener(&docListener);
 
     setLineSpacing(1.3f);
+    skoarTokeniser.setDoc(&doc);
+    skoarTokeniser.parseSkoarAndPrepareStyles(doc);
 }
 
 SkoarCodeEditorComponent::~SkoarCodeEditorComponent() {
@@ -134,14 +136,13 @@ SkoarCodeEditorComponent::DocumentListener::DocumentListener(CodeDocument& docum
 SkoarCodeEditorComponent::DocumentListener::~DocumentListener() {}
 
 /** Called by a CodeDocument when text is added. */
-void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextInserted(const String& newText, int insertIndex) {
-
-    wstring skoarce(doc.getAllContent().toWideCharPointer());
-	Skoar skoar(skoarce, &SkoarLog);
+//void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextInserted(const String& newText, int insertIndex)
+void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextInserted(const String&, int) {
+    skoarTokeniser.parseSkoarAndPrepareStyles(doc);
 }
 
 /** Called by a CodeDocument when text is deleted. */
-void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextDeleted(int startIndex, int endIndex) {
-	wstring skoarce(doc.getAllContent().toWideCharPointer());
-	Skoar skoar(skoarce, &SkoarLog);
+//void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextDeleted(int startIndex, int endIndex)
+void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextDeleted(int, int) {
+    skoarTokeniser.parseSkoarAndPrepareStyles(doc);
 }

@@ -65,10 +65,10 @@ public:
     StringArray monospacedFontNames;
 
     //==============================================================================
-    Value getGlobalPath (const Identifier& key, DependencyPathOS);
-    String getFallbackPath (const Identifier& key, DependencyPathOS);
+    Value getGlobalPath (const Identifier&, DependencyPathOS);
+    String getFallbackPath (const Identifier&, DependencyPathOS);
 
-    bool isGlobalPathValid (const File& relativeTo, const Identifier& key, const String& path);
+    bool isGlobalPathValid (const File&, const Identifier&, const String&);
 
 private:
     OwnedArray<PropertiesFile> propertyFiles;

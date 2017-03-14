@@ -15,7 +15,7 @@ SkoarLoggerPane::SkoarLoggerPane ()
     logPane->setColour (TextEditor::backgroundColourId, Colours::black);
     logPane->setText (String());
 
-    setSize (600, 300);
+    setSize (600, 400);
 
     font.setTypefaceName (Font::getDefaultMonospacedFontName());
     font.setHeight (10);

@@ -28,11 +28,11 @@
 #include "../Utility/jucer_ColourPropertyComponent.h"
 
 //==============================================================================
-PathSettingsTab::PathSettingsTab (DependencyPathOS os)
+PathSettingsTab::PathSettingsTab (DependencyPathOS)
 {
     const int maxChars = 1024;
 
-    StoredSettings& settings = getAppSettings();
+    //StoredSettings& settings = getAppSettings();
 
     for (TextPropertyComponent** component = pathComponents.begin(); component != pathComponents.end(); ++component)
     {
@@ -57,7 +57,7 @@ void PathSettingsTab::textPropertyComponentChanged (TextPropertyComponent* textP
     textPropertyComponent->setColour (TextPropertyComponent::textColourId, textColour);
 }
 
-Identifier PathSettingsTab::getKeyForPropertyComponent (TextPropertyComponent* component) const
+Identifier PathSettingsTab::getKeyForPropertyComponent (TextPropertyComponent*) const
 {
     //if (component == vst3PathComponent)       return Ids::vst3Path;
   

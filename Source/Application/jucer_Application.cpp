@@ -476,7 +476,7 @@ void EditoarApplication::createNewProject()
     mainWindowList.avoidSuperimposedWindows (mw);
 }
 
-void EditoarApplication::updateNewlyOpenedProject (Project& p)
+void EditoarApplication::updateNewlyOpenedProject (Project&)
 {
     // no op
 }

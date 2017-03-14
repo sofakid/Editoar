@@ -17,7 +17,7 @@ SkoarLoggerComponent::~SkoarLoggerComponent()
 }
 
 //==============================================================================
-void SkoarLoggerComponent::paint (Graphics& g)
+void SkoarLoggerComponent::paint (Graphics&)
 {
 }
 

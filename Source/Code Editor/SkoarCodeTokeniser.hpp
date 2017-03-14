@@ -28,7 +28,10 @@ public:
 	/** The token values returned by this tokeniser. */
 	enum TokenType
 	{
-        False = 0,        
+        nostyle = 0,
+        parseFail,
+
+        False,        
         True,
         Times,
         Choard,

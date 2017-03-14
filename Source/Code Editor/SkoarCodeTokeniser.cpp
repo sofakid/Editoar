@@ -46,7 +46,9 @@ CodeEditorComponent::ColourScheme SkoarCodeTokeniser::getDefaultColourScheme()
 
     const Type types[] =
     {
-        { "unstyled", Colour( 0 ) },
+        { "nostyle", Colour( 0xffffffff ) },
+        { "parseFail", Colour( 0xffCC2222 ) },
+
 
         { "False",  Colour ( 0xffFFF82E ) },
         { "True",  Colour ( 0xffFFF82E ) },
@@ -108,9 +110,10 @@ CodeEditorComponent::ColourScheme SkoarCodeTokeniser::getDefaultColourScheme()
 
     CodeEditorComponent::ColourScheme cs;
 
-    for (unsigned int i = 0; i < sizeof (types) / sizeof (types[0]); ++i)  // (NB: numElementsInArray doesn't work here in GCC4.2)
-        cs.set (types[i].name, types[i].colour);
-
+    for (unsigned int i = 0; i < sizeof(types) / sizeof(types[0]); ++i) { // (NB: numElementsInArray doesn't work here in GCC4.2)
+        SkoarLog.w("Colour Scheme", types[i].name, i);
+        cs.set(types[i].name, types[i].colour);
+    }
     return cs;
 }
 
@@ -120,15 +123,19 @@ void SkoarCodeTokeniser::parseSkoarAndPrepareStyles(CodeDocument &source) {
     wstring skoarce(source.getAllContent().toWideCharPointer());
 
     SkoarLite skoar(skoarce, &SkoarLog);
-    styles.resize(static_cast<const int>(skoarce.size()));
+    auto oldSize = styles.size();
+    auto newSize = static_cast<const int>(skoarce.size()) + 1;
+    styles.resize(newSize);
 
     //log.d("syntax_highlight", "skoar.parsed_ok", skoar.parsed_ok, "last_tree", last_tree);
     auto v = &styles;
 
     auto f = [&v](SkoarNoad* noad) {
-        auto offs = noad->offs;
+        
         if (noad->style != SkoarStyles::EStyle::nostyle) {
             // colour the entire noad...
+            auto offs = noad->offs;
+            SkoarLog.d("Styling noad", "offs", static_cast<const int>(offs), "size", noad->size, "style", noad->style);
             for (int i = 0; i < noad->size; ++i) {
                 const int j = static_cast<const int>(offs) + i;
                 v->setUnchecked(j, noad->style);
@@ -156,9 +163,16 @@ void SkoarCodeTokeniser::parseSkoarAndPrepareStyles(CodeDocument &source) {
 
         //lastTree = skoar.tree;
 
-        for (auto x : styles)
-            SkoarLog.e(x);
-    };
+       //for (auto x : styles)
+       //     SkoarLog.e(x);
+    }
+    else {
+        if (newSize > oldSize) {
+            for (auto i = oldSize; i < newSize; ++i) {
+                styles.setUnchecked(i, SkoarStyles::EStyle::parseFail);
+            }
+        }
+    }
 }
 
 

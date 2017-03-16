@@ -39,11 +39,6 @@ SkoarLoggerToolBar::SkoarLoggerToolBar ()
     autoscrollToggler->setToggleState (true, dontSendNotification);
     autoscrollToggler->setColour (ToggleButton::textColourId, Colours::azure);
 
-    addAndMakeVisible (wordWrapToggler = new ToggleButton ("word wrap toggler"));
-    wordWrapToggler->setButtonText (TRANS("wrap"));
-    wordWrapToggler->addListener (this);
-    wordWrapToggler->setColour (ToggleButton::textColourId, Colours::azure);
-
     addAndMakeVisible (saveOutputButton = new TextButton ("save output button"));
     saveOutputButton->setButtonText (TRANS("save..."));
     saveOutputButton->addListener (this);
@@ -92,7 +87,6 @@ SkoarLoggerToolBar::~SkoarLoggerToolBar()
     //[/Destructor_pre]
 
     autoscrollToggler = nullptr;
-    wordWrapToggler = nullptr;
     saveOutputButton = nullptr;
     clearButton = nullptr;
     logLevelComboBox = nullptr;
@@ -120,7 +114,6 @@ void SkoarLoggerToolBar::resized()
     //[/UserPreResize]
 
     autoscrollToggler->setBounds (80, 3, 80, 18);
-    wordWrapToggler->setBounds (160, 3, 64, 18);
     saveOutputButton->setBounds (getWidth() - 6 - 65, 3, 65, 18);
     clearButton->setBounds (getWidth() - 76 - 55, 3, 55, 18);
     logLevelComboBox->setBounds (3, 3, 70, 18);
@@ -137,12 +130,8 @@ void SkoarLoggerToolBar::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == autoscrollToggler)
     {
         //[UserButtonCode_autoscrollToggler] -- add your button handler code here..
+        logPane->setAutoScroll(autoscrollToggler->getToggleState());
         //[/UserButtonCode_autoscrollToggler]
-    }
-    else if (buttonThatWasClicked == wordWrapToggler)
-    {
-        //[UserButtonCode_wordWrapToggler] -- add your button handler code here..
-        //[/UserButtonCode_wordWrapToggler]
     }
     else if (buttonThatWasClicked == saveOutputButton)
     {
@@ -201,6 +190,15 @@ void SkoarLoggerToolBar::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 
 
 //==============================================================================
+/*
+word wrap button. word wrap seems to not work. hiding it for now.
+
+<TOGGLEBUTTON name="word wrap toggler" id="2c1d6785f59bd865" memberName="wordWrapToggler"
+virtualName="" explicitFocusOrder="0" pos="160 3 64 18" txtcol="fff0ffff"
+buttonText="wrap" connectedEdges="0" needsCallback="1" radioGroupId="0"
+state="0"/>
+
+*/
 #if 0
 /*  -- Projucer information section --
 
@@ -218,10 +216,6 @@ BEGIN_JUCER_METADATA
                 virtualName="" explicitFocusOrder="0" pos="80 3 80 18" txtcol="fff0ffff"
                 buttonText="autoscroll" connectedEdges="0" needsCallback="1"
                 radioGroupId="0" state="1"/>
-  <TOGGLEBUTTON name="word wrap toggler" id="2c1d6785f59bd865" memberName="wordWrapToggler"
-                virtualName="" explicitFocusOrder="0" pos="160 3 64 18" txtcol="fff0ffff"
-                buttonText="wrap" connectedEdges="0" needsCallback="1" radioGroupId="0"
-                state="0"/>
   <TEXTBUTTON name="save output button" id="479be8de5a48c413" memberName="saveOutputButton"
               virtualName="" explicitFocusOrder="0" pos="6Rr 3 65 18" bgColOff="ff3d3d6f"
               bgColOn="ff6495ed" textCol="fff0ffff" textColOn="fff0ffff" buttonText="save..."

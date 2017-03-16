@@ -2,6 +2,15 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "SkoarLogger.hpp"
 
+class SkoarLoggerPaneTextEditor : public TextEditor {
+public:
+    SkoarLoggerPaneTextEditor(const String &);
+    void mouseUp(const MouseEvent &ev) override;
+
+    bool autoScroll;
+    bool wordWrap;
+};
+
 class SkoarLoggerPane  : public Component, public ISkoarUiLogger
 {
 public:
@@ -16,16 +25,14 @@ public:
 
     void clearText();
     
-    void enableWordWrap();
-    void disableWordWrap();
-    
-    void enableAutoscroll();
-    void disableAutoscroll();
+    void setAutoScroll(bool);
+    void setWordWrap(bool);
+
 
 private:
     //==============================================================================
     Font font;
-    ScopedPointer<TextEditor> logPane;
+    ScopedPointer<SkoarLoggerPaneTextEditor> logPane;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SkoarLoggerPane)
 };

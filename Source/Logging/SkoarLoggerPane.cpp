@@ -1,10 +1,32 @@
 #include "SkoarLoggerPane.h"
 
+SkoarLoggerPaneTextEditor::SkoarLoggerPaneTextEditor(const String &name) :
+    TextEditor(name),
+    autoScroll(true),
+    wordWrap(false) {
+}
+
+void SkoarLoggerPaneTextEditor::mouseUp(const MouseEvent &) {
+
+    auto x = getHighlightedRegion();
+
+    if (x.getLength() > 0) {
+        copyToClipboard();
+        auto end = getTotalNumChars() - 1;
+        auto r = Range<int>(end, end);
+        setScrollToShowCursor(false);
+        setHighlightedRegion(r);
+        moveCaretToEnd();
+        setScrollToShowCursor(autoScroll);
+    }
+
+}
+
 //==============================================================================
 SkoarLoggerPane::SkoarLoggerPane ()
 {
 
-    addAndMakeVisible (logPane = new TextEditor (String()));
+    addAndMakeVisible (logPane = new SkoarLoggerPaneTextEditor(String()));
     logPane->setMultiLine (true);
     logPane->setReturnKeyStartsNewLine (false);
     logPane->setReadOnly (true);
@@ -13,6 +35,9 @@ SkoarLoggerPane::SkoarLoggerPane ()
     logPane->setPopupMenuEnabled (true);
     logPane->setColour (TextEditor::textColourId, Colours::aliceblue);
     logPane->setColour (TextEditor::backgroundColourId, Colours::black);
+    logPane->setColour (TextEditor::highlightColourId, Colours::blue);
+    logPane->setColour (TextEditor::highlightedTextColourId, Colours::yellow);
+
     logPane->setText (String());
 
     setSize (600, 400);
@@ -44,18 +69,15 @@ void SkoarLoggerPane::clearText() {
     logPane->setText (String());
 }
 
-void SkoarLoggerPane::enableWordWrap() {
-    logPane->setMultiLine (true, true);
-}
-void SkoarLoggerPane::disableWordWrap() {
-    logPane->setMultiLine (true, false);
+void SkoarLoggerPane::setWordWrap(bool on) {
+    logPane->wordWrap = on;
+    logPane->setMultiLine (true, on);
+
 }
 
-void SkoarLoggerPane::enableAutoscroll() {
-    logPane->setText (String());
-}
-void SkoarLoggerPane::disableAutoscroll() {
-    logPane->setText (String());
+void SkoarLoggerPane::setAutoScroll(bool on) {
+    logPane->autoScroll = on;
+    logPane->setScrollToShowCursor(on);
 }
 
 // implementing ISkoarUiLoggger

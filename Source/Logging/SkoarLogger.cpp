@@ -61,11 +61,11 @@ void SkoarUiLogger::log_e(const std::wstring &s) {
 //
 // log stuff like: SkoarLog.d("derp", 7, 2.8)
 //
-const Colour green(0, 255, 0);
-const Colour white(255, 255, 255);
-const Colour yellow(255, 255, 100);
-const Colour red(255, 70, 70);
-SkoarUiLogger SkoarLog (green, white, yellow, red);
+const Colour blue(30, 100, 255);
+const Colour white(200, 200, 200);
+const Colour yellow(230, 230, 100);
+const Colour red(255, 95, 70);
+SkoarUiLogger SkoarLog (blue, white, yellow, red);
 //
 // the following doesn't work, other static stuff isn't necessarily initialized yet: 
 //SkoarUiLogger SkoarLog(Colours::lightgreen, Colours::white, Colours::lightyellow, Colours::red);

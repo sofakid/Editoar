@@ -83,15 +83,13 @@ CodeEditorComponent::ColourScheme SkoarCodeTokeniser::getDefaultColourScheme()
         { "ugen",  Colour(0xff1EAE1E) },
         { "arg_listy",  Colour(0xff333344) }
 
-
     };
 
     CodeEditorComponent::ColourScheme cs;
 
-    for (unsigned int i = 0; i < sizeof(types) / sizeof(types[0]); ++i) { // (NB: numElementsInArray doesn't work here in GCC4.2)
-        SkoarLog.w("Colour Scheme", types[i].name, i);
+    for (unsigned int i = 0; i < sizeof(types) / sizeof(types[0]); ++i) // (NB: numElementsInArray doesn't work here in GCC4.2)
         cs.set(types[i].name, types[i].colour);
-    }
+    
     return cs;
 }
 

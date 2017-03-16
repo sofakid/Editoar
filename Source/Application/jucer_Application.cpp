@@ -22,6 +22,8 @@
   ==============================================================================
 */
 
+#include "../Code Editor/SkoarCodeEditor.hpp"
+
 //==============================================================================
 struct EditoarApplication::MainMenuModel  : public MenuBarModel
 {
@@ -602,7 +604,7 @@ void EditoarApplication::initCommandManager()
 
     {
         CodeDocument doc;
-        CppCodeEditorComponent ed (File(), doc);
+        SkoarCodeEditorComponent ed (File(), doc);
         commandManager->registerAllCommandsForTarget (&ed);
     }
 

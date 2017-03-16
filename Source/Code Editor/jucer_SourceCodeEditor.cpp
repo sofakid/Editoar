@@ -124,10 +124,6 @@ SourceCodeEditor::SourceCodeEditor (OpenDocumentManager::Document* doc, CodeDocu
 	if (file.hasFileExtension("skoar")) {
 		ed = new SkoarCodeEditorComponent(file, codeDocument);
 	}
-    else if (fileNeedsCppSyntaxHighlighting (file))
-    {
-        ed = new CppCodeEditorComponent (file, codeDocument);
-    }
     else
     {
         CodeTokeniser* tokeniser = nullptr;
@@ -136,12 +132,6 @@ SourceCodeEditor::SourceCodeEditor (OpenDocumentManager::Document* doc, CodeDocu
         {
             static XmlTokeniser xmlTokeniser;
             tokeniser = &xmlTokeniser;
-        }
-
-        if (file.hasFileExtension ("lua"))
-        {
-            static LuaTokeniser luaTokeniser;
-            tokeniser = &luaTokeniser;
         }
 
         ed = new GenericCodeEditorComponent (file, codeDocument, tokeniser);
@@ -242,7 +232,6 @@ GenericCodeEditorComponent::~GenericCodeEditorComponent() {}
 enum
 {
     showInFinderID = 0x2fe821e3,
-    insertComponentID = 0x2fe821e4
 };
 
 void GenericCodeEditorComponent::addPopupMenuItems (PopupMenu& menu, const MouseEvent* e)
@@ -545,118 +534,4 @@ void GenericCodeEditorComponent::editorViewportPositionChanged()
 {
     CodeEditorComponent::editorViewportPositionChanged();
     listeners.call (&Listener::codeEditorViewportMoved, *this);
-}
-
-//==============================================================================
-static CPlusPlusCodeTokeniser cppTokeniser;
-
-CppCodeEditorComponent::CppCodeEditorComponent (const File& f, CodeDocument& doc)
-    : GenericCodeEditorComponent (f, doc, &cppTokeniser)
-{
-}
-
-CppCodeEditorComponent::~CppCodeEditorComponent() {}
-
-void CppCodeEditorComponent::handleReturnKey()
-{
-    GenericCodeEditorComponent::handleReturnKey();
-
-    CodeDocument::Position pos (getCaretPos());
-
-    String blockIndent, lastLineIndent;
-    CodeHelpers::getIndentForCurrentBlock (pos, getTabString (getTabSize()), blockIndent, lastLineIndent);
-
-    const String remainderOfBrokenLine (pos.getLineText());
-    const int numLeadingWSChars = CodeHelpers::getLeadingWhitespace (remainderOfBrokenLine).length();
-
-    if (numLeadingWSChars > 0)
-        getDocument().deleteSection (pos, pos.movedBy (numLeadingWSChars));
-
-    if (remainderOfBrokenLine.trimStart().startsWithChar ('}'))
-        insertTextAtCaret (blockIndent);
-    else
-        insertTextAtCaret (lastLineIndent);
-
-    const String previousLine (pos.movedByLines (-1).getLineText());
-    const String trimmedPreviousLine (previousLine.trim());
-
-    if ((trimmedPreviousLine.startsWith ("if ")
-          || trimmedPreviousLine.startsWith ("if(")
-          || trimmedPreviousLine.startsWith ("for ")
-          || trimmedPreviousLine.startsWith ("for(")
-          || trimmedPreviousLine.startsWith ("while(")
-          || trimmedPreviousLine.startsWith ("while "))
-         && trimmedPreviousLine.endsWithChar (')'))
-    {
-        insertTabAtCaret();
-    }
-}
-
-void CppCodeEditorComponent::insertTextAtCaret (const String& newText)
-{
-    if (getHighlightedRegion().isEmpty())
-    {
-        const CodeDocument::Position pos (getCaretPos());
-
-        if ((newText == "{" || newText == "}")
-             && pos.getLineNumber() > 0
-             && pos.getLineText().trim().isEmpty())
-        {
-            moveCaretToStartOfLine (true);
-
-            String blockIndent, lastLineIndent;
-            if (CodeHelpers::getIndentForCurrentBlock (pos, getTabString (getTabSize()), blockIndent, lastLineIndent))
-            {
-                GenericCodeEditorComponent::insertTextAtCaret (blockIndent);
-
-                if (newText == "{")
-                    insertTabAtCaret();
-            }
-        }
-    }
-
-    GenericCodeEditorComponent::insertTextAtCaret (newText);
-}
-
-void CppCodeEditorComponent::addPopupMenuItems (PopupMenu& menu, const MouseEvent* e)
-{
-    GenericCodeEditorComponent::addPopupMenuItems (menu, e);
-
-    menu.addSeparator();
-    menu.addItem (insertComponentID, TRANS("Insert code for a new Component class..."));
-}
-
-void CppCodeEditorComponent::performPopupMenuAction (int menuItemID)
-{
-    if (menuItemID == insertComponentID)
-        insertComponentClass();
-
-    GenericCodeEditorComponent::performPopupMenuAction (menuItemID);
-}
-
-void CppCodeEditorComponent::insertComponentClass()
-{
-    AlertWindow aw (TRANS ("Insert a new C++ class"),
-                    TRANS ("Please enter a name for the new class"),
-                    AlertWindow::NoIcon, nullptr);
-
-    const char* classNameField = "Class Name";
-
-    aw.addTextEditor (classNameField, String(), String(), false);
-    aw.addButton (TRANS ("Insert Code"),  1, KeyPress (KeyPress::returnKey));
-    aw.addButton (TRANS ("Cancel"),       0, KeyPress (KeyPress::escapeKey));
-
-    while (aw.runModalLoop() != 0)
-    {
-        const String className (aw.getTextEditorContents (classNameField).trim());
-
-        if (className == CodeHelpers::makeValidIdentifier (className, false, true, false))
-        {
-            String code (BinaryData::NewSkoarFileTemplate_skoar);
-            code = code.replace ("COMPONENTCLASS", className);
-
-            insertTextAtCaret (code);
-            break;
-        }
-    }
 }

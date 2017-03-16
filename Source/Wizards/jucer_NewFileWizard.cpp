@@ -74,85 +74,6 @@ public:
 };
 
 //==============================================================================
-class NewComponentFileWizard  : public NewFileWizard::Type
-{
-public:
-    NewComponentFileWizard() {}
-
-    String getName() override  { return "Component class (split between a CPP & header)"; }
-
-    void createNewFile (Project&, Project::Item parent) override
-    {
-        for (;;)
-        {
-            AlertWindow aw (TRANS ("Create new Component class"),
-                            TRANS ("Please enter the name for the new class"),
-                            AlertWindow::NoIcon, nullptr);
-
-            aw.addTextEditor (getClassNameFieldName(), String(), String(), false);
-            aw.addButton (TRANS ("Create Files"),  1, KeyPress (KeyPress::returnKey));
-            aw.addButton (TRANS ("Cancel"),        0, KeyPress (KeyPress::escapeKey));
-
-            if (aw.runModalLoop() == 0)
-                break;
-
-            const String className (aw.getTextEditorContents (getClassNameFieldName()).trim());
-
-            if (className == CodeHelpers::makeValidIdentifier (className, false, true, false))
-            {
-                const File newFile (askUserToChooseNewFile (className + ".h", "*.h;*.cpp", parent));
-
-                if (newFile != File())
-                    createFiles (parent, className, newFile);
-
-                break;
-            }
-        }
-    }
-
-    static bool create (const String& className, Project::Item parent,
-                        const File& newFile, const char* templateName)
-    {
-        String content = fillInBasicTemplateFields (newFile, parent, templateName)
-                            .replace ("COMPONENTCLASS", className)
-                            .replace ("INCLUDE_JUCE", CodeHelpers::createIncludeStatement (parent.project.getAppIncludeFile(), newFile));
-
-        if (FileHelpers::overwriteFileWithNewDataIfDifferent (newFile, content))
-        {
-            parent.addFileRetainingSortOrder (newFile, true);
-            return true;
-        }
-
-        showFailedToWriteMessage (newFile);
-        return false;
-    }
-
-private:
-    virtual void createFiles (Project::Item parent, const String& className, const File& newFile)
-    {
-        if (create (className, parent, newFile.withFileExtension ("h"),   "jucer_NewComponentTemplate_h"))
-            create (className, parent, newFile.withFileExtension ("cpp"), "jucer_NewComponentTemplate_cpp");
-    }
-
-    static String getClassNameFieldName()  { return "Class Name"; }
-};
-
-//==============================================================================
-class NewSingleFileComponentFileWizard  : public NewComponentFileWizard
-{
-public:
-    NewSingleFileComponentFileWizard() {}
-
-    String getName() override  { return "Component class (in a single source file)"; }
-
-    void createFiles (Project::Item parent, const String& className, const File& newFile) override
-    {
-        create (className, parent, newFile.withFileExtension ("h"), "jucer_NewInlineComponentTemplate_h");
-    }
-};
-
-
-//==============================================================================
 void NewFileWizard::Type::showFailedToWriteMessage (const File& file)
 {
     AlertWindow::showMessageBox (AlertWindow::WarningIcon,
@@ -179,8 +100,6 @@ File NewFileWizard::Type::askUserToChooseNewFile (const String& suggestedFilenam
 NewFileWizard::NewFileWizard()
 {
     registerWizard (new NewSkoarFileWizard());
-    registerWizard (new NewComponentFileWizard());
-    registerWizard (new NewSingleFileComponentFileWizard());
 }
 
 NewFileWizard::~NewFileWizard()

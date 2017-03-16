@@ -220,24 +220,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (GenericCodeEditorComponent)
 };
 
-//==============================================================================
-class CppCodeEditorComponent  : public GenericCodeEditorComponent
-{
-public:
-    CppCodeEditorComponent (const File&, CodeDocument&);
-    ~CppCodeEditorComponent();
-
-    void addPopupMenuItems (PopupMenu&, const MouseEvent*) override;
-    void performPopupMenuAction (int menuItemID) override;
-
-    void handleReturnKey() override;
-    void insertTextAtCaret (const String& newText) override;
-
-private:
-    void insertComponentClass();
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CppCodeEditorComponent)
-};
-
-
 #endif   // JUCER_SOURCECODEEDITOR_H_INCLUDED

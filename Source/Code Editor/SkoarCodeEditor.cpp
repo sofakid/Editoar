@@ -89,47 +89,12 @@ void SkoarCodeEditorComponent::insertTextAtCaret(const String& newText)
 void SkoarCodeEditorComponent::addPopupMenuItems(PopupMenu& menu, const MouseEvent* e)
 {
 	GenericCodeEditorComponent::addPopupMenuItems(menu, e);
-
-	//menu.addSeparator();
-	//menu.addItem(insertComponentID, TRANS("Insert code for a new Component class..."));
 }
 
 void SkoarCodeEditorComponent::performPopupMenuAction(int menuItemID)
 {
-	//if (menuItemID == insertComponentID)
-	//	insertComponentClass();
-
 	GenericCodeEditorComponent::performPopupMenuAction(menuItemID);
 }
-
-void SkoarCodeEditorComponent::insertComponentClass()
-{
-	AlertWindow aw(TRANS("Insert a new C++ class"),
-		TRANS("Please enter a name for the new class"),
-		AlertWindow::NoIcon, nullptr);
-
-	const char* classNameField = "Class Name";
-
-	aw.addTextEditor(classNameField, String(), String(), false);
-	aw.addButton(TRANS("Insert Code"), 1, KeyPress(KeyPress::returnKey));
-	aw.addButton(TRANS("Cancel"), 0, KeyPress(KeyPress::escapeKey));
-
-	while (aw.runModalLoop() != 0)
-	{
-		const String className(aw.getTextEditorContents(classNameField).trim());
-
-		if (className == CodeHelpers::makeValidIdentifier(className, false, true, false))
-		{
-			String code(BinaryData::NewSkoarFileTemplate_skoar);
-			code = code.replace("COMPONENTCLASS", className);
-
-			insertTextAtCaret(code);
-			break;
-		}
-	}
-}
-
-
 
 // ------------------------------------------------------------------------------
 SkoarCodeEditorComponent::DocumentListener::DocumentListener(CodeDocument& document) : doc(document) {}

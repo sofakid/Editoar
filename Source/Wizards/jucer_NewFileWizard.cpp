@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-   This file is part of the JUCE library.
+   This file was part of the JUCE library.
    Copyright (c) 2015 - ROLI Ltd.
 
    Permission is granted to use this software under the terms of either:
@@ -33,12 +33,10 @@ namespace
         return item.project.getFileTemplate (templateName)
                       .replace ("FILENAME", file.getFileName(), false)
                       .replace ("DATE", Time::getCurrentTime().toString (true, true, true), false)
-                      .replace ("AUTHOR", SystemStats::getFullUserName(), false)
-                      .replace ("HEADERGUARD", CodeHelpers::makeHeaderGuardName (file), false)
-                      .replace ("INCLUDE_CORRESPONDING_HEADER", CodeHelpers::createIncludeStatement (file.withFileExtension (".h"), file));
+                      .replace("AUTHOR", SystemStats::getFullUserName(), false);
     }
 
-    static bool fillInNewCppFileTemplate (const File& file, const Project::Item& item, const char* templateName)
+    static bool fillInNewSkoarFileTemplate (const File& file, const Project::Item& item, const char* templateName)
     {
         return FileHelpers::overwriteFileWithNewDataIfDifferent (file, fillInBasicTemplateFields (file, item, templateName));
     }
@@ -47,24 +45,24 @@ namespace
 }
 
 //==============================================================================
-class NewCppFileWizard  : public NewFileWizard::Type
+class NewSkoarFileWizard  : public NewFileWizard::Type
 {
 public:
-    NewCppFileWizard() {}
+    NewSkoarFileWizard() {}
 
-    String getName() override  { return "CPP File"; }
+    String getName() override  { return "Skoar File"; }
 
     void createNewFile (Project&, Project::Item parent) override
     {
-        const File newFile (askUserToChooseNewFile ("SourceCode.cpp", "*.cpp", parent));
+        const File newFile (askUserToChooseNewFile ("SkoarceCoad.skoar", "*.skoar", parent));
 
         if (newFile != File())
-            create (parent, newFile, "jucer_NewCppFileTemplate_cpp");
+            create (parent, newFile, "NewSkoarFileTemplate_skoar");
     }
 
     static bool create (Project::Item parent, const File& newFile, const char* templateName)
     {
-        if (fillInNewCppFileTemplate (newFile, parent, templateName))
+        if (fillInNewSkoarFileTemplate (newFile, parent, templateName))
         {
             parent.addFileRetainingSortOrder (newFile, true);
             return true;
@@ -72,55 +70,6 @@ public:
 
         showFailedToWriteMessage (newFile);
         return false;
-    }
-};
-
-//==============================================================================
-class NewHeaderFileWizard  : public NewFileWizard::Type
-{
-public:
-    NewHeaderFileWizard() {}
-
-    String getName() override  { return "Header File"; }
-
-    void createNewFile (Project&, Project::Item parent) override
-    {
-        const File newFile (askUserToChooseNewFile ("SourceCode.h", "*.h", parent));
-
-        if (newFile != File())
-            create (parent, newFile, "jucer_NewCppFileTemplate_h");
-    }
-
-    static bool create (Project::Item parent, const File& newFile, const char* templateName)
-    {
-        if (fillInNewCppFileTemplate (newFile, parent, templateName))
-        {
-            parent.addFileRetainingSortOrder (newFile, true);
-            return true;
-        }
-
-        showFailedToWriteMessage (newFile);
-        return false;
-    }
-};
-
-//==============================================================================
-class NewCppAndHeaderFileWizard  : public NewFileWizard::Type
-{
-public:
-    NewCppAndHeaderFileWizard() {}
-
-    String getName() override  { return "CPP & Header File"; }
-
-    void createNewFile (Project&, Project::Item parent) override
-    {
-        const File newFile (askUserToChooseNewFile ("SourceCode.h", "*.h;*.cpp", parent));
-
-        if (newFile != File())
-        {
-            if (NewCppFileWizard::create (parent, newFile.withFileExtension ("h"),   "jucer_NewCppFileTemplate_h"))
-                NewCppFileWizard::create (parent, newFile.withFileExtension ("cpp"), "jucer_NewCppFileTemplate_cpp");
-        }
     }
 };
 
@@ -229,9 +178,7 @@ File NewFileWizard::Type::askUserToChooseNewFile (const String& suggestedFilenam
 //==============================================================================
 NewFileWizard::NewFileWizard()
 {
-    registerWizard (new NewCppFileWizard());
-    registerWizard (new NewHeaderFileWizard());
-    registerWizard (new NewCppAndHeaderFileWizard());
+    registerWizard (new NewSkoarFileWizard());
     registerWizard (new NewComponentFileWizard());
     registerWizard (new NewSingleFileComponentFileWizard());
 }

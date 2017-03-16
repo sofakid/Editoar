@@ -652,7 +652,7 @@ void CppCodeEditorComponent::insertComponentClass()
 
         if (className == CodeHelpers::makeValidIdentifier (className, false, true, false))
         {
-            String code (BinaryData::jucer_NewCppFileTemplate_cpp);
+            String code (BinaryData::NewSkoarFileTemplate_skoar);
             code = code.replace ("COMPONENTCLASS", className);
 
             insertTextAtCaret (code);

@@ -243,10 +243,8 @@
     </GROUP>
     <GROUP id="{D4241EC8-2982-DB90-D1BE-72E57B735268}" name="BinaryData">
       <GROUP id="{8064F10D-D9BC-1C24-B322-A339C00D0B25}" name="templates">
-        <FILE id="hccxJ3" name="jucer_NewCppFileTemplate.cpp" compile="0" resource="1"
-              file="Source/BinaryData/jucer_NewCppFileTemplate.cpp"/>
-        <FILE id="KbujnX" name="jucer_NewCppFileTemplate.h" compile="0" resource="1"
-              file="Source/BinaryData/jucer_NewCppFileTemplate.h"/>
+        <FILE id="hccxJ3" name="NewSkoarFileTemplate.skoar" compile="0" resource="1"
+              file="Source/BinaryData/NewSkoarFileTemplate.skoar"/>
       </GROUP>
       <FILE id="ToD9bB" name="background_logo.svg" compile="0" resource="1"
             file="Source/BinaryData/background_logo.svg"/>

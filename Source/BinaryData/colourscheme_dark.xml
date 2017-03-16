@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <COLOUR_SCHEME font="&lt;Monospaced&gt;; 13.0">
-  <COLOUR name="Main Window Bkgd" colour="FF29292A"/>
+  <COLOUR name="Main Window Bkgd" colour="FF000000"/>
   <COLOUR name="Treeview Highlight" colour="2BFFFEC3"/>
-  <COLOUR name="Code Background" colour="FF222222"/>
-  <COLOUR name="Line Number Bkgd" colour="44C1C1C1"/>
-  <COLOUR name="Line Numbers" colour="E9B2B2B2"/>
+  <COLOUR name="Code Background" colour="FF050505"/>
+  <COLOUR name="Line Number Bkgd" colour="44313131"/>
+  <COLOUR name="Line Numbers" colour="E9525252"/>
   <COLOUR name="Plain Text" colour="FFCECECE"/>
   <COLOUR name="Selected Text Bkgd" colour="FF2859AC"/>
   <COLOUR name="Caret" colour="FFFFFFFF"/>

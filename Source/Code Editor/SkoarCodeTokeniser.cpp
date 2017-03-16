@@ -136,7 +136,7 @@ void SkoarCodeTokeniser::parseSkoarAndPrepareStyles(CodeDocument &source) {
     SkoarLite skoar(skoarce, &SkoarLog);
     
     auto oldSize = styles.size();
-    auto newSize = static_cast<const int>(skoarce.size()); // NB skoar adds a single newline at the end
+    auto newSize = static_cast<const int>(skoarce.size()) + 1; // NB skoar adds a single newline at the end
     styles.resize(newSize);
     
     //log.d("syntax_highlight", "skoar.parsed_ok", skoar.parsed_ok, "last_tree", last_tree);

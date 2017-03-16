@@ -35,7 +35,7 @@ public:
         : project (p),
           projectFile (file),
           generatedCodeFolder (project.getGeneratedCodeFolder()),
-          generatedFilesGroup (Project::Item::createGroup (project, getJuceCodeGroupName(), "__generatedcode__", true)),
+          generatedFilesGroup (Project::Item::createGroup (project, getJuceCodeGroupName(), "__generatedcode__")),
           hasBinaryData (false)
     {
         generatedFilesGroup.setID (getGeneratedGroupID());
@@ -111,7 +111,7 @@ public:
         if (! generatedCodeFolder.createDirectory())
         {
             addError ("Couldn't create folder: " + generatedCodeFolder.getFullPathName());
-            return Project::Item (project, ValueTree(), false);
+            return Project::Item (project, ValueTree());
         }
 
         const File file (generatedCodeFolder.getChildFile (filePath));
@@ -119,7 +119,7 @@ public:
         if (replaceFileIfDifferent (file, newData))
             return addFileToGeneratedGroup (file);
 
-        return Project::Item (project, ValueTree(), true);
+        return Project::Item (project, ValueTree());
     }
 
     Project::Item addFileToGeneratedGroup (const File& file)

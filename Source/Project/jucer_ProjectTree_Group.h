@@ -101,15 +101,6 @@ public:
                 openOrCloseAllSubGroups (*sub, shouldOpen);
     }
 
-    static void setFilesToCompile (Project::Item item, const bool shouldCompile)
-    {
-        if (item.isFile())
-            item.getShouldCompileValue() = shouldCompile;
-
-        for (int i = item.getNumChildren(); --i >= 0;)
-            setFilesToCompile (item.getChild (i), shouldCompile);
-    }
-
     void showPopupMenu() override
     {
         PopupMenu m;
@@ -123,14 +114,10 @@ public:
             m.addItem (2, "Expand all Sub-groups");
 
         m.addSeparator();
-        m.addItem (3, "Enable compiling of all enclosed files");
-        m.addItem (4, "Disable compiling of all enclosed files");
-
+        m.addItem (3, "Sort Items Alphabetically");
+        m.addItem (4, "Sort Items Alphabetically (Groups first)");
         m.addSeparator();
-        m.addItem (5, "Sort Items Alphabetically");
-        m.addItem (6, "Sort Items Alphabetically (Groups first)");
-        m.addSeparator();
-        m.addItem (7, "Rename...");
+        m.addItem (5, "Rename...");
 
         if (! isRoot())
             m.addItem (8, "Delete");
@@ -144,12 +131,10 @@ public:
         {
             case 1:     openOrCloseAllSubGroups (*this, false); break;
             case 2:     openOrCloseAllSubGroups (*this, true); break;
-            case 3:     setFilesToCompile (item, true); break;
-            case 4:     setFilesToCompile (item, false); break;
-            case 5:     item.sortAlphabetically (false, false); break;
-            case 6:     item.sortAlphabetically (true, false); break;
-            case 7:     triggerAsyncRename (item); break;
-            case 8:     deleteAllSelectedItems(); break;
+            case 3:     item.sortAlphabetically (false, false); break;
+            case 4:     item.sortAlphabetically (true, false); break;
+            case 5:     triggerAsyncRename (item); break;
+            case 6:     deleteAllSelectedItems(); break;
             default:    processCreateFileMenuItem (resultCode); break;
         }
     }

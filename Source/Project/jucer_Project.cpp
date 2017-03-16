@@ -99,7 +99,7 @@ void Project::setMissingDefaultValues()
     // Create main file group if missing
     if (! projectRoot.getChildWithName (Ids::MAINGROUP).isValid())
     {
-        Item mainGroup (*this, ValueTree (Ids::MAINGROUP), false);
+        Item mainGroup (*this, ValueTree (Ids::MAINGROUP));
         projectRoot.addChild (mainGroup.state, 0, 0);
     }
 
@@ -386,7 +386,7 @@ File Project::getBinaryDataCppFile (int index) const
 
 Project::Item Project::getMainGroup()
 {
-    return Item (*this, projectRoot.getChildWithName (Ids::MAINGROUP), false);
+    return Item (*this, projectRoot.getChildWithName (Ids::MAINGROUP));
 }
 
 PropertiesFile& Project::getStoredProperties() const
@@ -413,13 +413,13 @@ void Project::findAllImageItems (OwnedArray<Project::Item>& items)
 }
 
 //==============================================================================
-Project::Item::Item (Project& p, const ValueTree& s, bool isModuleCode)
-    : project (p), state (s), belongsToModule (isModuleCode)
+Project::Item::Item (Project& p, const ValueTree& s)
+    : project (p), state (s)
 {
 }
 
 Project::Item::Item (const Item& other)
-    : project (other.project), state (other.state), belongsToModule (other.belongsToModule)
+    : project (other.project), state (other.state)
 {
 }
 
@@ -434,9 +434,9 @@ Drawable* Project::Item::loadAsImageFile() const
                      : nullptr;
 }
 
-Project::Item Project::Item::createGroup (Project& project, const String& name, const String& uid, bool isModuleCode)
+Project::Item Project::Item::createGroup (Project& project, const String& name, const String& uid)
 {
-    Item group (project, ValueTree (Ids::GROUP), isModuleCode);
+    Item group (project, ValueTree (Ids::GROUP));
     group.setID (uid);
     group.initialiseMissingProperties();
     group.getNameValue() = name;
@@ -469,7 +469,7 @@ Project::Item Project::Item::findItemWithID (const String& targetId) const
         }
     }
 
-    return Item (project, ValueTree(), false);
+    return Item (project, ValueTree());
 }
 
 bool Project::Item::canContain (const Item& child) const
@@ -485,11 +485,6 @@ bool Project::Item::canContain (const Item& child) const
 }
 
 bool Project::Item::shouldBeAddedToTargetProject() const    { return isFile(); }
-
-Value Project::Item::getShouldCompileValue()                { return state.getPropertyAsValue (Ids::compile, getUndoManager()); }
-bool Project::Item::shouldBeCompiled() const                { return state [Ids::compile]; }
-
-bool Project::Item::isModuleCode() const                    { return belongsToModule; }
 
 String Project::Item::getFilePath() const
 {
@@ -556,7 +551,7 @@ Project::Item Project::Item::findItemForFile (const File& file) const
         }
     }
 
-    return Item (project, ValueTree(), false);
+    return Item (project, ValueTree());
 }
 
 File Project::Item::determineGroupFolder() const
@@ -632,7 +627,7 @@ Project::Item Project::Item::getParent() const
     if (isMainGroup() || ! isGroup())
         return *this;
 
-    return Item (project, state.getParent(), belongsToModule);
+    return Item (project, state.getParent());
 }
 
 struct ItemSorter
@@ -699,7 +694,7 @@ Project::Item Project::Item::getOrCreateSubGroup (const String& name)
     {
         const ValueTree child (state.getChild (i));
         if (child.getProperty (Ids::name) == name && child.hasType (Ids::GROUP))
-            return Item (project, child, belongsToModule);
+            return Item (project, child);
     }
 
     return addNewSubGroup (name, -1);
@@ -713,7 +708,7 @@ Project::Item Project::Item::addNewSubGroup (const String& name, int insertIndex
     while (project.getMainGroup().findItemWithID (newID).isValid())
         newID = createGUID (newID + String (++n));
 
-    Item group (createGroup (project, name, newID, belongsToModule));
+    Item group (createGroup (project, name, newID));
 
     jassert (canContain (group));
     addChild (group, insertIndex);
@@ -762,7 +757,7 @@ bool Project::Item::addFileRetainingSortOrder (const File& file, bool shouldComp
 
 void Project::Item::addFileUnchecked (const File& file, int insertIndex, const bool)// shouldCompile)
 {
-    Item item (project, ValueTree (Ids::FILE), belongsToModule);
+    Item item (project, ValueTree (Ids::FILE));
     item.initialiseMissingProperties();
     item.getNameValue() = file.getFileName();
     
@@ -775,7 +770,7 @@ void Project::Item::addFileUnchecked (const File& file, int insertIndex, const b
 
 bool Project::Item::addRelativeFile (const RelativePath& file, int insertIndex, bool)// shouldCompile)
 {
-    Item item (project, ValueTree (Ids::FILE), belongsToModule);
+    Item item (project, ValueTree (Ids::FILE));
     item.initialiseMissingProperties();
     item.getNameValue() = file.getFileName();
     

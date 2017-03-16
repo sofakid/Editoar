@@ -121,10 +121,10 @@ public:
     {
     public:
         //==============================================================================
-        Item (Project& project, const ValueTree& itemNode, bool isModuleCode);
+        Item (Project& project, const ValueTree& itemNode);
         Item (const Item& other);
 
-        static Item createGroup (Project& project, const String& name, const String& uid, bool isModuleCode);
+        static Item createGroup (Project& project, const String& name, const String& uid);
         void initialiseMissingProperties();
 
         //==============================================================================
@@ -155,15 +155,11 @@ public:
         bool renameFile (const File& newFile);
 
         bool shouldBeAddedToTargetProject() const;
-        bool shouldBeCompiled() const;
-        Value getShouldCompileValue();
-
-        bool isModuleCode() const;
-
+        
         //==============================================================================
         bool canContain (const Item& child) const;
         int getNumChildren() const                      { return state.getNumChildren(); }
-        Item getChild (int index) const                 { return Item (project, state.getChild (index), belongsToModule); }
+        Item getChild (int index) const                 { return Item (project, state.getChild (index)); }
 
         Item addNewSubGroup (const String& name, int insertIndex);
         Item getOrCreateSubGroup (const String& name);
@@ -190,7 +186,6 @@ public:
 
     private:
         Item& operator= (const Item&);
-        bool belongsToModule;
     };
 
     Item getMainGroup();

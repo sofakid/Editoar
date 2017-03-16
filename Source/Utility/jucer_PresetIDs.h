@@ -87,7 +87,6 @@ namespace Ids
     DECLARE_ID (bigIcon);
     DECLARE_ID (smallIcon);
     DECLARE_ID (bundleIdentifier);
-    DECLARE_ID (compile);
     DECLARE_ID (className);
     DECLARE_ID (classDesc);
     DECLARE_ID (controlPoint);

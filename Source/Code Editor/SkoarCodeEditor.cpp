@@ -136,13 +136,13 @@ SkoarCodeEditorComponent::DocumentListener::DocumentListener(CodeDocument& docum
 SkoarCodeEditorComponent::DocumentListener::~DocumentListener() {}
 
 /** Called by a CodeDocument when text is added. */
-//void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextInserted(const String& newText, int insertIndex)
-void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextInserted(const String&, int) {
+void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextInserted(const String& newText, int insertIndex) {
+    skoarTokeniser.growStyles(insertIndex, insertIndex + newText.length());
     skoarTokeniser.parseSkoarAndPrepareStyles(doc);
 }
 
 /** Called by a CodeDocument when text is deleted. */
-//void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextDeleted(int startIndex, int endIndex)
-void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextDeleted(int, int) {
+void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextDeleted(int startIndex, int endIndex) {
+    skoarTokeniser.shrinkStyles(startIndex, endIndex);
     skoarTokeniser.parseSkoarAndPrepareStyles(doc);
 }

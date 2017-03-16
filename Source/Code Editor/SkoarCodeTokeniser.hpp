@@ -53,9 +53,9 @@ public:
         Int,
         Float,
         
-        //SymbolColon,
-        //Duration,
-        //Cat,
+        SymbolColon,
+        Duration,
+        Cat,
 
         dynamic,
         msg,
@@ -67,12 +67,12 @@ public:
         beat,
         conditional,
         skoarpion,
-        loop
+        loop,
 
-        //lute,
-        //meditation,
-        //ugen,
-        //arg_listy
+        lute,
+        meditation,
+        ugen,
+        arg_listy
 
 	};
 
@@ -80,6 +80,10 @@ public:
     void setDoc(CodeDocument *document);
 
     void parseSkoarAndPrepareStyles(CodeDocument &source);
+
+    void growStyles(int start, int end);
+    void shrinkStyles(int start, int end);
+
 private:
 	//==============================================================================
     //SkoarNoadPtr lastTree;

@@ -1,23 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<COLOUR_SCHEME font="&lt;Monospaced&gt;; 13.0">
-  <COLOUR name="Main Window Bkgd" colour="FF000000"/>
-  <COLOUR name="Treeview Highlight" colour="2BFFFEC3"/>
-  <COLOUR name="Code Background" colour="FF050505"/>
-  <COLOUR name="Line Number Bkgd" colour="44313131"/>
-  <COLOUR name="Line Numbers" colour="E9525252"/>
-  <COLOUR name="Plain Text" colour="FFCECECE"/>
-  <COLOUR name="Selected Text Bkgd" colour="FF2859AC"/>
-  <COLOUR name="Caret" colour="FFFFFFFF"/>
-  <COLOUR name="Preprocessor Text" colour="FFF8F631"/>
-  <COLOUR name="Punctuation" colour="FFCFBEFF"/>
-  <COLOUR name="Bracket" colour="FF058202"/>
-  <COLOUR name="String" colour="FFBC45DD"/>
-  <COLOUR name="Float" colour="ff885500"/>
-  <COLOUR name="Integer" colour="FF42C8C4"/>
-  <COLOUR name="Identifier" colour="FFCFCFCF"/>
-  <COLOUR name="Operator" colour="FFC4EB19"/>
-  <COLOUR name="Keyword" colour="FFEE6F6F"/>
-  <COLOUR name="Comment" colour="FF72D20C"/>
-  <COLOUR name="Error" colour="FFE60000"/>
+<COLOUR_SCHEME Font="&lt;Monospaced&gt;; 13.0">
+    <COLOUR name="Main Window Bkgd" colour="FF000000"/>
+    <COLOUR name="Treeview Highlight" colour="2BFFFEC3"/>
+    <COLOUR name="Code Background" colour="FF111111"/>
+    <COLOUR name="Line Number Bkgd" colour="44323232"/>
+    <COLOUR name="Line Numbers" colour="E9616161"/>
+    <COLOUR name="Plain Text" colour="FFCECECE"/>
+    <COLOUR name="Selected Text Bkgd" colour="FF0F274E"/>
+    <COLOUR name="Caret" colour="FFFFFFFF"/>
+    
+    <COLOUR name="parseFail" colour="FFCC2222"/>
+    
+    <COLOUR name="False" colour="FFFFF82E"/>
+    <COLOUR name="True" colour="FFFFF82E"/>
+    <COLOUR name="Times" colour="FFFFF82E"/>
+    <COLOUR name="Choard" colour="FF1EFA67"/>
+
+    <COLOUR name="Symbol" colour="FFEEEECC"/>
+    <COLOUR name="Comment" colour="FFE5E5B5"/>
+    <COLOUR name="MathOp" colour="FFB340B1"/>
+    <COLOUR name="BooleanOp" colour="FFB340B1"/>
+
+    <COLOUR name="HashLevel" colour="FFFFF82E"/>
+    <COLOUR name="Bars" colour="FF9DB562"/>
+    <COLOUR name="AssOp" colour="FFB340B1"/>
+    <COLOUR name="Carrot" colour="FFB340B1"/>
+
+    <COLOUR name="Voice" colour="FF0B6BD9"/>
+    <COLOUR name="Fairy" colour="FFFF99FF"/>
+    <COLOUR name="Freq" colour="FFFFF82E"/>
+    <COLOUR name="String" colour="FFB58962"/>
+
+    <COLOUR name="NamedNoat" colour="FF1EFA67"/>
+    <COLOUR name="MsgOp" colour="FFB340B1"/>
+    <COLOUR name="Tuplet" colour="FFB340B1"/>
+    <COLOUR name="Int" colour="FFFFF82E"/>
+
+    <COLOUR name="Float" colour="FFFFF82E"/>
+    <COLOUR name="SymbolColon" colour="FFEEEECC"/>
+    <COLOUR name="Duration" colour="FFF8FF2E"/>
+    <COLOUR name="Cat" colour="FFFFF82E"/>
+
+    <COLOUR name="dynamic" colour="FF998877"/>
+    <COLOUR name="msg" colour="FF888888"/>
+    <COLOUR name="cthulhu" colour="FFFF2E2E"/>
+    <COLOUR name="marker" colour="FFCCDDFF"/>
+
+    <COLOUR name="dereF" colour="FFB340B1"/>
+    <COLOUR name="ottavas" colour="FF999999"/>
+    <COLOUR name="listy" colour="FF6699EE"/>
+    <COLOUR name="beat" colour="FF1EB1FA"/>
+
+    <COLOUR name="conditional" colour="FFB59D62"/>
+    <COLOUR name="skoarpion" colour="FF9DB562"/>
+    <COLOUR name="loop" colour="FF77EE77"/>
+    <COLOUR name="lute" colour="FFCCCCCC"/>
+
+    <COLOUR name="meditation" colour="FF62B59D"/>
+    <COLOUR name="ugen" colour="FF1EAE1E"/>
+    <COLOUR name="arg_listy" colour="FF333344"/>
+
 </COLOUR_SCHEME>

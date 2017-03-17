@@ -202,7 +202,10 @@ void SourceCodeEditor::resized()
     editor->setBounds (getLocalBounds());
 }
 
-void SourceCodeEditor::updateColourScheme()     { getAppSettings().appearance.applyToCodeEditor (*editor); }
+void SourceCodeEditor::updateColourScheme()
+{
+    getAppSettings().appearance.applyToCodeEditor (*editor);
+}
 
 void SourceCodeEditor::checkSaveState()
 {

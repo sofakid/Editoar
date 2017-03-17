@@ -26,6 +26,7 @@
 #include "jucer_Application.h"
 #include "jucer_AppearanceSettings.h"
 #include "jucer_GlobalPreferences.h"
+#include "../Code Editor/SkoarCodeEditor.hpp"
 
 namespace AppearanceColours
 {
@@ -68,7 +69,7 @@ AppearanceSettings::AppearanceSettings (bool updateAppWhenChanged)
             getColourValue (AppearanceColours::colours[i].name) = lf.findColour (AppearanceColours::colours[i].colourID).toString();
 
         CodeDocument doc;
-        CPlusPlusCodeTokeniser tokeniser;
+        SkoarCodeTokeniser tokeniser;
         CodeEditorComponent editor (doc, &tokeniser);
 
         const CodeEditorComponent::ColourScheme cs (editor.getColourScheme());
@@ -109,8 +110,7 @@ void AppearanceSettings::writeDefaultSchemeFile (const String& xmlString, const 
 void AppearanceSettings::refreshPresetSchemeList()
 {
     writeDefaultSchemeFile (BinaryData::colourscheme_dark_xml,  "Default (Dark)");
-    writeDefaultSchemeFile (BinaryData::colourscheme_light_xml, "Default (Light)");
-
+    
     Array<File> newSchemes;
     getSchemesFolder().findChildFiles (newSchemes, File::findFiles, false, String ("*") + getSchemeFileSuffix());
 

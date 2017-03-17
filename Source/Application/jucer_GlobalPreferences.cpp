@@ -178,7 +178,7 @@ struct AppearanceEditor
 
             Array<PropertyComponent*> props;
             Value fontValue (scheme.getCodeFontValue());
-            props.add (FontNameValueSource::createProperty ("Code Editor Font", fontValue));
+            props.add (FontNameValueSource::createProperty ("Editoar Font", fontValue));
             props.add (FontSizeValueSource::createProperty ("Font Size", fontValue));
 
             const StringArray colourNames (scheme.getColourNames());

@@ -252,8 +252,6 @@
             file="Source/BinaryData/background_tile.png"/>
       <FILE id="xboS86" name="colourscheme_dark.xml" compile="0" resource="1"
             file="Source/BinaryData/colourscheme_dark.xml"/>
-      <FILE id="cVh68s" name="colourscheme_light.xml" compile="0" resource="1"
-            file="Source/BinaryData/colourscheme_light.xml"/>
       <FILE id="OCyr5F" name="juce_icon.png" compile="0" resource="1" file="Source/BinaryData/juce_icon.png"/>
       <FILE id="NxFmxY" name="editoar_EULA.txt" compile="0" resource="1"
             file="Source/BinaryData/editoar_EULA.txt"/>

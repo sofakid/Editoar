@@ -25,7 +25,6 @@
 #ifndef JUCER_APPEARANCESETTINGS_H_INCLUDED
 #define JUCER_APPEARANCESETTINGS_H_INCLUDED
 
-
 class AppearanceSettings    : private ValueTree::Listener
 {
 public:

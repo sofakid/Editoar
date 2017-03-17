@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="M70qfTRRk" name="Editoar" projectType="guiapp" juceFolder="../../juce"
+<JUCERPROJECT id="M70qfTRRk" name="Skoar" projectType="guiapp" juceFolder="../../juce"
               jucerVersion="4.3.1" version="0.1" bundleIdentifier="org.skoarcery.Editoar"
-              defines="" includeBinaryInAppConfig="1">
+              defines="" includeBinaryInAppConfig="1" companyWebsite="skoarcery.org">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
                documentExtensions=".jucer" objCExtraSuffix="zkVtji" bigIcon="OCyr5F"
@@ -28,13 +28,13 @@
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2015 targetFolder="Builds/VisualStudio2015" externalLibraries="SkoarCpp.x64.lib"
-            bigIcon="OCyr5F" toolset="v140" vstFolder="">
+            bigIcon="axHNWg" toolset="v140" vstFolder="">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="1" optimisation="1" targetName="Editoar" headerPath="C:\p\SkoarCpp\SkoarCpp"
+                       isDebug="1" optimisation="1" targetName="Skoar" headerPath="C:\p\SkoarCpp\SkoarCpp"
                        libraryPath="C:\p\SkoarCpp\Debug" useRuntimeLibDLL="1"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="0" optimisation="3" targetName="Editoar" headerPath="c:\p\SkoarCpp\SkoarCpp"
+                       isDebug="0" optimisation="3" targetName="Skoar" headerPath="c:\p\SkoarCpp\SkoarCpp"
                        libraryPath="C:\p\SkoarCpp\Release" useRuntimeLibDLL="0"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
@@ -66,7 +66,7 @@
       </MODULEPATHS>
     </LINUX_MAKE>
   </EXPORTFORMATS>
-  <MAINGROUP name="Editoar" id="NhrJq66R">
+  <MAINGROUP name="Skoar" id="NhrJq66R">
     <GROUP id="{026460D5-084B-58BD-E1C5-799C4C7D27E2}" name="Logging">
       <FILE id="AXKUgt" name="SkoarLogger.cpp" compile="1" resource="0" file="Source/Logging/SkoarLogger.cpp"/>
       <FILE id="fSQPHR" name="SkoarLogger.hpp" compile="0" resource="0" file="Source/Logging/SkoarLogger.hpp"/>
@@ -242,21 +242,20 @@
             resource="0" file="Source/Wizards/jucer_TemplateThumbnailsComponent.h"/>
     </GROUP>
     <GROUP id="{D4241EC8-2982-DB90-D1BE-72E57B735268}" name="BinaryData">
+      <FILE id="axHNWg" name="skoar_icon_256.png" compile="0" resource="1"
+            file="Source/BinaryData/skoar_icon_256.png"/>
+      <FILE id="gmcfme" name="skoar_logo.png" compile="0" resource="1" file="Source/BinaryData/skoar_logo.png"/>
+      <FILE id="ir1D8U" name="skoar_word.png" compile="0" resource="1" file="Source/BinaryData/skoar_word.png"/>
       <GROUP id="{8064F10D-D9BC-1C24-B322-A339C00D0B25}" name="templates">
         <FILE id="hccxJ3" name="NewSkoarFileTemplate.skoar" compile="0" resource="1"
               file="Source/BinaryData/NewSkoarFileTemplate.skoar"/>
       </GROUP>
-      <FILE id="ToD9bB" name="background_logo.svg" compile="0" resource="1"
-            file="Source/BinaryData/background_logo.svg"/>
       <FILE id="a2EM1O" name="background_tile.png" compile="0" resource="1"
             file="Source/BinaryData/background_tile.png"/>
       <FILE id="xboS86" name="colourscheme_dark.xml" compile="0" resource="1"
             file="Source/BinaryData/colourscheme_dark.xml"/>
-      <FILE id="OCyr5F" name="juce_icon.png" compile="0" resource="1" file="Source/BinaryData/juce_icon.png"/>
       <FILE id="NxFmxY" name="editoar_EULA.txt" compile="0" resource="1"
             file="Source/BinaryData/editoar_EULA.txt"/>
-      <FILE id="r2M1IP" name="editoar_login_bg.svg" compile="0" resource="1"
-            file="Source/BinaryData/editoar_login_bg.svg"/>
       <FILE id="eO1a1G" name="RecentFilesMenuTemplate.nib" compile="0" resource="1"
             file="Source/BinaryData/RecentFilesMenuTemplate.nib"/>
       <FILE id="gP9mUi" name="wizard_Highlight.svg" compile="0" resource="1"

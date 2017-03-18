@@ -106,7 +106,7 @@ void Project::setMissingDefaultValues()
     getMainGroup().initialiseMissingProperties();
 
     if (getDocumentTitle().isEmpty())
-        setTitle ("JUCE Project");
+        setTitle ("Skoarbook");
 
     if (! projectRoot.hasProperty (Ids::projectType))
         getProjectTypeValue() = ProjectType_GUIApp::getTypeName();
@@ -147,7 +147,7 @@ Result Project::loadDocument (const File& file)
     ScopedPointer<XmlElement> xml (XmlDocument::parse (file));
 
     if (xml == nullptr || ! xml->hasTagName (Ids::SKOARBOOK.toString()))
-        return Result::fail ("Not a valid Skoar project!");
+        return Result::fail ("Not a valid Skoarbook!");
 
     ValueTree newTree (ValueTree::fromXml (*xml));
 
@@ -755,7 +755,7 @@ bool Project::Item::addFileRetainingSortOrder (const File& file, bool shouldComp
     return true;
 }
 
-void Project::Item::addFileUnchecked (const File& file, int insertIndex, const bool)// shouldCompile)
+void Project::Item::addFileUnchecked (const File& file, int insertIndex, const bool)
 {
     Item item (project, ValueTree (Ids::FILE));
     item.initialiseMissingProperties();
@@ -768,7 +768,7 @@ void Project::Item::addFileUnchecked (const File& file, int insertIndex, const b
     }
 }
 
-bool Project::Item::addRelativeFile (const RelativePath& file, int insertIndex, bool)// shouldCompile)
+bool Project::Item::addRelativeFile (const RelativePath& file, int insertIndex, bool)
 {
     Item item (project, ValueTree (Ids::FILE));
     item.initialiseMissingProperties();

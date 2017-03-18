@@ -25,6 +25,11 @@
         <MODULEPATH id="juce_data_structures" path="..\JUCE\modules"/>
         <MODULEPATH id="juce_cryptography" path="..\JUCE\modules"/>
         <MODULEPATH id="juce_core" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_basics" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_formats" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_devices" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_utils" path="..\JUCE\modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2015 targetFolder="Builds/VisualStudio2015" externalLibraries="SkoarCpp.x64.lib"
@@ -45,6 +50,11 @@
         <MODULEPATH id="juce_data_structures" path="..\JUCE\modules"/>
         <MODULEPATH id="juce_cryptography" path="..\JUCE\modules"/>
         <MODULEPATH id="juce_core" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_basics" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_formats" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_devices" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_utils" path="..\JUCE\modules"/>
       </MODULEPATHS>
     </VS2015>
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile" extraCompilerFlags="-std=c++11"
@@ -63,10 +73,21 @@
         <MODULEPATH id="juce_data_structures" path="..\JUCE\modules"/>
         <MODULEPATH id="juce_cryptography" path="..\JUCE\modules"/>
         <MODULEPATH id="juce_core" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_basics" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_formats" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_devices" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_utils" path="..\JUCE\modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
   </EXPORTFORMATS>
   <MAINGROUP name="Skoar" id="NhrJq66R">
+    <GROUP id="{ABA6593B-2CFE-2635-CE97-D2382C5CEC7B}" name="Samploar">
+      <FILE id="e5QtMc" name="SamploarComponent.cpp" compile="1" resource="0"
+            file="Source/Samploar/SamploarComponent.cpp"/>
+      <FILE id="pUs2Vp" name="SamploarComponent.h" compile="0" resource="0"
+            file="Source/Samploar/SamploarComponent.h"/>
+    </GROUP>
     <GROUP id="{026460D5-084B-58BD-E1C5-799C4C7D27E2}" name="Logging">
       <FILE id="AXKUgt" name="SkoarLogger.cpp" compile="1" resource="0" file="Source/Logging/SkoarLogger.cpp"/>
       <FILE id="fSQPHR" name="SkoarLogger.hpp" compile="0" resource="0" file="Source/Logging/SkoarLogger.hpp"/>
@@ -242,6 +263,8 @@
             resource="0" file="Source/Wizards/jucer_TemplateThumbnailsComponent.h"/>
     </GROUP>
     <GROUP id="{D4241EC8-2982-DB90-D1BE-72E57B735268}" name="BinaryData">
+      <FILE id="COkhCq" name="fontawesome-webfont.ttf" compile="0" resource="1"
+            file="Source/BinaryData/fontawesome-webfont.ttf"/>
       <FILE id="axHNWg" name="skoar_icon_256.png" compile="0" resource="1"
             file="Source/BinaryData/skoar_icon_256.png"/>
       <FILE id="gmcfme" name="skoar_logo.png" compile="0" resource="1" file="Source/BinaryData/skoar_logo.png"/>
@@ -264,12 +287,18 @@
             file="Source/BinaryData/wizard_Openfile.svg"/>
     </GROUP>
   </MAINGROUP>
-  <JUCEOPTIONS JUCE_ASIO="disabled" JUCE_WASAPI="disabled" JUCE_DIRECTSOUND="disabled"
-               JUCE_ALSA="disabled" JUCE_QUICKTIME="disabled" JUCE_OPENGL="disabled"
+  <JUCEOPTIONS JUCE_ASIO="disabled" JUCE_WASAPI="enabled" JUCE_DIRECTSOUND="enabled"
+               JUCE_ALSA="enabled" JUCE_QUICKTIME="disabled" JUCE_OPENGL="disabled"
                JUCE_USE_FLAC="disabled" JUCE_USE_CDBURNER="disabled" JUCE_USE_CDREADER="disabled"
                JUCE_USE_CAMERA="disabled" JUCE_PLUGINHOST_VST="disabled" JUCE_PLUGINHOST_AU="disabled"
-               JUCE_USE_OGGVORBIS="disabled" JUCE_LOG_ASSERTIONS="enabled" JUCE_USE_CURL="enabled"/>
+               JUCE_USE_OGGVORBIS="disabled" JUCE_LOG_ASSERTIONS="enabled" JUCE_USE_CURL="enabled"
+               JUCE_WASAPI_EXCLUSIVE="disabled" JUCE_JACK="enabled"/>
   <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_core" showAllCode="1"/>
     <MODULE id="juce_cryptography" showAllCode="1"/>
     <MODULE id="juce_data_structures" showAllCode="1"/>

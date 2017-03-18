@@ -99,7 +99,7 @@ public:
         bool canOpenFile (const File& file) override
         {
             if (file.hasFileExtension (sourceOrHeaderFileExtensions)
-                 || file.hasFileExtension ("txt;inc;tcc;xml;plist;rtf;html;htm;php;py;rb;cs"))
+                 || file.hasFileExtension ("txt;skoar"))
                 return true;
 
             MemoryBlock mb;

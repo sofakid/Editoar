@@ -104,8 +104,6 @@ struct LogoComponent  : public Component
 {
     LogoComponent()
     {
-        //ScopedPointer<XmlElement> svg (XmlDocument::parse (BinaryData::background_logo_svg));
-        //logo = Drawable::createFromSVG (*svg);
         logo = Drawable::createFromImageData (BinaryData::skoar_logo_png, BinaryData::skoar_logo_pngSize);
     }
 

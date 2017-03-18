@@ -27,6 +27,7 @@
 #include "jucer_FilePreviewComponent.h"
 #include "../Code Editor/jucer_SourceCodeEditor.h"
 #include "jucer_Application.h"
+#include "../Samploar/SamploarComponent.h"
 
 
 //==============================================================================
@@ -84,11 +85,74 @@ private:
 
 
 //==============================================================================
+class SoundFileDocument : public OpenDocumentManager::Document
+{
+public:
+    SoundFileDocument(Project* p, const File& f)
+        : project(p), file(f)
+    {
+        reloadFromFile();
+    }
+
+    //==============================================================================
+    struct Type : public OpenDocumentManager::DocumentType
+    {
+        bool canOpenFile(const File& file) override
+        {
+            if (file.hasFileExtension("wav;WAV"))
+                return true;
+
+            return false;
+        }
+
+        Document* openFile(Project* p, const File& file) override { return new SoundFileDocument(p, file); }
+    };
+
+    //==============================================================================
+    bool loadedOk() const override { return true; }
+    bool isForFile(const File& f) const override { return file == f; }
+    bool isForNode(const ValueTree&) const override { return false; }
+    bool refersToProject(Project& p) const override { return project == &p; }
+    Project* getProject() const override { return project; }
+    bool needsSaving() const override { return false; }
+    bool save() override { return true; }
+    bool saveAs() override { return false; }
+    bool hasFileBeenModifiedExternally() override { return fileModificationTime != file.getLastModificationTime(); }
+    void reloadFromFile() override { fileModificationTime = file.getLastModificationTime(); }
+    String getName() const override { return file.getFileName(); }
+    File getFile() const override { return file; }
+    Component* createEditor() override { return new SamploarComponent(file); }
+    Component* createViewer() override { return createEditor(); }
+    void fileHasBeenRenamed(const File& newFile) override { file = newFile; }
+    String getState() const override { return String(); }
+    void restoreState(const String&) override {}
+
+    String getType() const override
+    {
+        if (file.getFileExtension().isNotEmpty())
+            return file.getFileExtension() + " file";
+
+        jassertfalse;
+        return "Unknown";
+    }
+
+private:
+    Project* const project;
+    File file;
+    Time fileModificationTime;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundFileDocument)
+};
+
+
+//==============================================================================
 
 OpenDocumentManager::OpenDocumentManager()
 {
     registerType (new UnknownDocument::Type());
+    registerType (new SoundFileDocument::Type());
     registerType (new SourceCodeDocument::Type());
+
 }
 
 OpenDocumentManager::~OpenDocumentManager()

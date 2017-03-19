@@ -7,6 +7,7 @@ SkoarishInstrument::SkoarishInstrument(File f) :
     auto mgr = SkoarishInstrumentManager::getInstance();
     id = makeValidUniqueId(f.getFileNameWithoutExtension());
     mgr->addInstrument(this);
+    onRenameSpell = [](SkoarishInstrument*) {};
 }
 
 SkoarishInstrument::~SkoarishInstrument() {
@@ -55,6 +56,8 @@ String SkoarishInstrument::renameId(String proposedId) {
     auto mgr = SkoarishInstrumentManager::getInstance();
     mgr->updateNewId(this);
 
+    onRenameSpell(this);
+
     return id;
 }
 
@@ -63,6 +66,14 @@ void SkoarishInstrument::renameFile(File &newFile) {
     fileName = newFile.getFullPathName();
     auto mgr = SkoarishInstrumentManager::getInstance();
     mgr->updateNewFileName(this, oldFileName);
+}
+
+void SkoarishInstrument::setRenameSpell(SpellOfInstruments spell) {
+    onRenameSpell = spell;
+}
+
+void SkoarishInstrument::unsetRenameSpell() {
+    onRenameSpell = [](SkoarishInstrument*) {};
 }
 
 // --- manager ----------------------------------------------------------

@@ -1,6 +1,10 @@
 #pragma once
 
 #include "../jucer_Headers.h"
+#include <functional>
+
+class SkoarishInstrument;
+typedef std::function<void(SkoarishInstrument*)> SpellOfInstruments;
 
 class SkoarishInstrument
 {
@@ -15,9 +19,14 @@ public:
     String renameId(String);
     void renameFile(File &f);
 
+    void setRenameSpell(SpellOfInstruments);
+    void unsetRenameSpell();
+    
 private:
     String id;
     String fileName;
+
+    SpellOfInstruments onRenameSpell;
 
 };
 

@@ -37,7 +37,7 @@ SamploarComponent::SamploarComponent(SoundFileDocument* doc) :
         readerSource = newSource.release();
     }
 
-    startTimer(5);
+    startTimer(40);
 }
 
     
@@ -169,7 +169,7 @@ void SamploarComponent::paintIfNoFileLoaded(Graphics& g, const Rectangle<int>& t
     g.setColour(Colours::darkgrey);
     g.fillRect(thumbnailBounds);
     g.setColour(Colours::black);
-    g.drawFittedText("No File Loaded", thumbnailBounds, Justification::centred, 1.0f);
+    g.drawFittedText("No File Loaded", thumbnailBounds, Justification::centred, 1, 1.0f);
 }
 
 void SamploarComponent::paintIfFileLoaded(Graphics& g, const Rectangle<int>& thumbnailBounds)

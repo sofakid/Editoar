@@ -10,6 +10,10 @@ public:
         auto f = getFile();
         instrument = mgr->getOrCreateInstrumentByFile(f);
         // todo: register this to update when renamed
+        auto that = this;
+        instrument->setRenameSpell([=](SkoarishInstrument*) {
+            that->repaintItem();
+        });
         
     }
 

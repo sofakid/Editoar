@@ -9,12 +9,17 @@ public:
         auto mgr = SkoarishInstrumentManager::getInstance();
         auto f = getFile();
         instrument = mgr->getOrCreateInstrumentByFile(f);
-        // todo: register this to update when renamed
+        
+        // update when renamed
         auto that = this;
         instrument->setRenameSpell([=](SkoarishInstrument*) {
             that->repaintItem();
         });
         
+    }
+
+    ~SoundFileItem() {
+        instrument->unsetRenameSpell();
     }
 
     bool acceptsFileDrop (const StringArray&) const override             { return false; }

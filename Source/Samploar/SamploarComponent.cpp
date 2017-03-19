@@ -4,8 +4,8 @@
 SamploarComponent::SamploarComponent(SoundFileDocument* doc) :
     document(doc),
     state (Stopped),
-    thumbnailCache(5),                            // [4]
-    thumbnail(512, formatManager, thumbnailCache) // [5]
+    thumbnailCache(5),
+    thumbnail(512, formatManager, thumbnailCache)
 {
     auto file = document->getFile();
     addAndMakeVisible (&toolbar);
@@ -37,7 +37,7 @@ SamploarComponent::SamploarComponent(SoundFileDocument* doc) :
         readerSource = newSource.release();
     }
 
-    startTimer(40);
+    startTimer(30);
 }
 
     
@@ -177,11 +177,11 @@ void SamploarComponent::paintIfFileLoaded(Graphics& g, const Rectangle<int>& thu
     g.setColour(Colours::black);
     g.fillRect(thumbnailBounds);
 
-    g.setColour(Colours::mediumpurple);                                     // [8]
+    g.setColour(Colours::mediumpurple);
 
     const double audioLength(thumbnail.getTotalLength());
 
-    thumbnail.drawChannels(g,                                      // [9]
+    thumbnail.drawChannels(g,
         thumbnailBounds,
         0.0,                                    // start time
         thumbnail.getTotalLength(),             // end time
@@ -190,15 +190,16 @@ void SamploarComponent::paintIfFileLoaded(Graphics& g, const Rectangle<int>& thu
     g.setColour(Colours::blue);
 
     const double audioPosition(transportSource.getCurrentPosition());
-    const float drawPosition((audioPosition / audioLength) 
+    const float x(static_cast<float>((audioPosition / audioLength))
         * thumbnailBounds.getWidth()
-        + thumbnailBounds.getX());                                        // [13]
+        + thumbnailBounds.getX());
     
-    g.drawLine(drawPosition, 
-        thumbnailBounds.getY(), 
-        drawPosition,
-        thumbnailBounds.getBottom(), 
-        2.0f);                                             // [14]
+    const auto y = static_cast<float>(thumbnailBounds.getY());
+    const auto w = 2.0f;
+    const auto h = static_cast<float>(thumbnailBounds.getBottom()) - y;
+    Rectangle<float> r(x, y, w, h);
+    
+    g.fillRect(r);
 }
 
 SoundFileDocument* SamploarComponent::getDocument() {

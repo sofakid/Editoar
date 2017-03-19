@@ -137,6 +137,7 @@ public:
         bool isGroup() const;
         bool isMainGroup() const;
         bool isImageFile() const;
+        bool isSoundFile() const;
 
         String getID() const;
         void setID (const String& newID);

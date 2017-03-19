@@ -453,6 +453,11 @@ bool Project::Item::isImageFile() const
                           || getFile().hasFileExtension ("svg"));
 }
 
+bool Project::Item::isSoundFile() const
+{
+    return isFile() && getFile().hasFileExtension("wav;WAV");
+}
+
 Project::Item Project::Item::findItemWithID (const String& targetId) const
 {
     if (state [Ids::ID] == targetId)
@@ -792,6 +797,13 @@ Icon Project::Item::getIcon() const
     {
         if (isImageFile())
             return Icon (icons.imageDoc, Colours::blue);
+
+        if (isSoundFile())
+            return Icon (icons.play, Colours::blue);
+
+        if (getFile().hasFileExtension("skoar"))
+            return Icon(icons.code, Colours::mediumpurple);
+        
 
         return Icon (icons.document, Colours::yellow);
     }

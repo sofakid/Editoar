@@ -71,14 +71,6 @@ void SamploarComponent::releaseResources()
 // -- changeListener stuff -----------------------------------------------------
 void SamploarComponent::changeListenerCallback (ChangeBroadcaster* source)
 {
-    if (source == &transportSource)
-    {
-        if (transportSource.isPlaying())
-            changeState (Playing);
-        else
-            changeState (Stopped);
-    }
-
     if (source == &transportSource)  transportSourceChanged();
     if (source == &thumbnail)        thumbnailChanged();
 }
@@ -87,8 +79,10 @@ void SamploarComponent::transportSourceChanged()
 {
     if (transportSource.isPlaying())
         changeState(Playing);
-    else
+    else if ((state == Stopping) || (state == Playing))
         changeState(Stopped);
+    else if (Pausing == state)
+        changeState(Paused);
 }
 
 void SamploarComponent::thumbnailChanged()
@@ -102,10 +96,17 @@ void SamploarComponent::thumbnailChanged()
 // by the listeners in the toolbar.
 
 void SamploarComponent::playButtonClicked() {
-    changeState(Starting);
+    if ((state == Stopped) || (state == Paused))
+        changeState(Starting);
+    else if (state == Playing)
+        changeState(Pausing);
 }
+
 void SamploarComponent::stopButtonClicked() {
-    changeState(Stopping);
+    if (state == Paused)
+        changeState(Stopped);
+    else
+        changeState(Stopping);
 }
 
 
@@ -122,6 +123,8 @@ void SamploarComponent::changeState (TransportState newState)
             case Stopped:
                 toolbar.setPlayButtonEnabled (true);
                 toolbar.setStopButtonEnabled (false);
+                toolbar.setPlayButtonAsPlay();
+                toolbar.setStopButtonAsStop();
                 transportSource.setPosition (0.0);
                 break;
                     
@@ -131,7 +134,21 @@ void SamploarComponent::changeState (TransportState newState)
                 break;
                     
             case Playing:
+                toolbar.setPlayButtonAsPause();
+                toolbar.setStopButtonAsStop();
+                toolbar.setPlayButtonEnabled (true);
                 toolbar.setStopButtonEnabled (true);
+                break;
+
+            case Pausing:
+                transportSource.stop();
+                break;
+
+            case Paused:
+                toolbar.setStopButtonAsReset();
+                toolbar.setPlayButtonAsPlay();
+                toolbar.setPlayButtonEnabled(true);
+                toolbar.setStopButtonEnabled(true);
                 break;
                     
             case Stopping:

@@ -49,6 +49,13 @@ public:
     //[UserMethods]     -- You can add your own custom methods in this section.
     void setPlayButtonEnabled(bool);
     void setStopButtonEnabled(bool);
+
+    void setPlayButtonAsPause();
+    void setPlayButtonAsPlay();
+
+    void setStopButtonAsReset();
+    void setStopButtonAsStop();
+
     void setFileName(String fileName);
     void setFileLength(double seconds);
     void setInstrumentId(String id);

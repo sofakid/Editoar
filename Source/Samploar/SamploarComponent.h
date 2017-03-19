@@ -39,7 +39,10 @@ private:
         Stopped,
         Starting,
         Playing,
-        Stopping
+        Pausing,
+        Paused,
+        Stopping,
+        
     };
 
     void changeState(TransportState newState);

@@ -105,12 +105,12 @@ SamploarToolbarComponent::SamploarToolbarComponent ()
     instrumentIdValueLabel->setColour(TextEditor::highlightedTextColourId, Colours::lightyellow);
 
     playButton->setLookAndFeel (&awesome);
-    playButton->setButtonText (CharPointer_UTF16(L"\xf04b"));
     playButton->setEnabled (false);
+    setPlayButtonAsPlay();
 
     stopButton->setLookAndFeel (&awesome);
-    stopButton->setButtonText (CharPointer_UTF16(L"\xf04d"));
     stopButton->setEnabled (false);
+    setStopButtonAsStop();
 
     //[/UserPreSize]
 
@@ -239,6 +239,24 @@ void SamploarToolbarComponent::setPlayButtonEnabled(bool b) {
 
 void SamploarToolbarComponent::setStopButtonEnabled(bool b) {
     stopButton->setEnabled (b);
+}
+
+
+void SamploarToolbarComponent::setPlayButtonAsPause() {
+    playButton->setButtonText(CharPointer_UTF16(L"\xf04c"));
+}
+
+void SamploarToolbarComponent::setPlayButtonAsPlay() {
+    playButton->setButtonText(CharPointer_UTF16(L"\xf04b"));
+}
+
+void SamploarToolbarComponent::setStopButtonAsReset() {
+    stopButton->setButtonText(CharPointer_UTF16(L"\xf049"));
+
+}
+
+void SamploarToolbarComponent::setStopButtonAsStop() {
+    stopButton->setButtonText(CharPointer_UTF16(L"\xf04d"));
 }
 
 void SamploarToolbarComponent::setFileName(String fileName) {

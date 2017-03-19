@@ -29,12 +29,15 @@
 #include "../Wizards/jucer_NewFileWizard.h"
 #include "jucer_GroupInformationComponent.h"
 
+#include "../Skoarish/Instrument.h"
+
 
 struct FileTreeItemTypes
 {
     #include "jucer_ProjectTree_Base.h"
     #include "jucer_ProjectTree_Group.h"
     #include "jucer_ProjectTree_File.h"
+    #include "ProjectTree_SoundFile.h"
 };
 
 struct ConfigTreeItemTypes

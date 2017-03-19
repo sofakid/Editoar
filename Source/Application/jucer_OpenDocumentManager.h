@@ -110,7 +110,6 @@ public:
 
     void registerType (DocumentType* type, int index = -1);
 
-
 private:
     OwnedArray<DocumentType> types;
     OwnedArray<Document> documents;

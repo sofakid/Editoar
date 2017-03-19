@@ -80,8 +80,13 @@ public:
     ProjectTreeItemBase* createSubItem (const Project::Item& child) override
     {
         if (child.isGroup())   return new GroupItem (child);
-        if (child.isFile())    return new SourceFileItem (child);
-
+        if (child.isFile()) {
+            auto file = child.getFile();
+            if (file.hasFileExtension("wav;WAV")) {
+                return new SoundFileItem(child);
+            }
+            return new SourceFileItem(child);
+        }
         jassertfalse;
         return nullptr;
     }

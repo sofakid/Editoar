@@ -1,49 +1,49 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "SamploarComponent.h"
 
-SamploarComponent::SamploarComponent(File file)
-    :   state (Stopped)
+SamploarComponent::SamploarComponent(SoundFileDocument* doc) :
+    document(doc),
+    state (Stopped),
+    thumbnailCache(5),                            // [4]
+    thumbnail(512, formatManager, thumbnailCache) // [5]
 {
-
-    //addAndMakeVisible (&openButton);
-    //openButton.setButtonText ("Open...");
-    //openButton.addListener (this);
-        
-
-    addAndMakeVisible (&playButton);
-    playButton.setLookAndFeel(&lnf);
-    playButton.setButtonText (CharPointer_UTF16(L"\xf04b"));
-    playButton.addListener (this);
-    playButton.setColour (TextButton::buttonColourId, Colours::green);
-    playButton.setEnabled (false);
-
-    addAndMakeVisible (&stopButton);
-    stopButton.setLookAndFeel(&lnf);
-    stopButton.setButtonText (CharPointer_UTF16(L"\xf04d"));
-    stopButton.addListener (this);
-    stopButton.setColour (TextButton::buttonColourId, Colours::red);
-    stopButton.setEnabled (false);
-        
+    auto file = document->getFile();
+    addAndMakeVisible (&toolbar);
+   
     setSize (300, 200);
         
-    formatManager.registerBasicFormats();       // [1]
-    transportSource.addChangeListener (this);   // [2]
+    formatManager.registerBasicFormats();
+    transportSource.addChangeListener (this);
+    thumbnail.addChangeListener(this);
 
     setAudioChannels (0, 2);
 
-    AudioFormatReader* reader = formatManager.createReaderFor(file); // [10]
+    AudioFormatReader* reader = formatManager.createReaderFor(file);
 
     if (reader != nullptr)
     {
-        ScopedPointer<AudioFormatReaderSource> newSource = new AudioFormatReaderSource(reader, true); // [11]
-        transportSource.setSource(newSource, 0, nullptr, reader->sampleRate);                         // [12]
-        playButton.setEnabled(true);                                                                  // [13]
-        readerSource = newSource.release();                                                           // [14]
+        ScopedPointer<AudioFormatReaderSource> newSource = new AudioFormatReaderSource(reader, true);
+        transportSource.setSource(newSource, 0, nullptr, reader->sampleRate);
+        thumbnail.setSource(new FileInputSource(file));
+        toolbar.setPlayButtonEnabled(true);
+        
+        toolbar.setFileName(file.getFullPathName());
+
+        auto seconds = ((double) reader->lengthInSamples) / reader->sampleRate;
+        toolbar.setFileLength(seconds);
+
+        toolbar.setInstrumentId(document->getInstrument()->getId());
+
+        readerSource = newSource.release();
     }
+
+    startTimer(5);
 }
+
     
 SamploarComponent::~SamploarComponent()
 {
+    document = nullptr;
     shutdownAudio();
 }
 
@@ -68,12 +68,7 @@ void SamploarComponent::releaseResources()
     transportSource.releaseResources();
 }
 
-void SamploarComponent::resized()
-{
-    playButton.setBounds (10, 10, getWidth() - 20, 40);
-    stopButton.setBounds (10, 60, getWidth() - 20, 40);
-}
-    
+// -- changeListener stuff -----------------------------------------------------
 void SamploarComponent::changeListenerCallback (ChangeBroadcaster* source)
 {
     if (source == &transportSource)
@@ -83,14 +78,38 @@ void SamploarComponent::changeListenerCallback (ChangeBroadcaster* source)
         else
             changeState (Stopped);
     }
+
+    if (source == &transportSource)  transportSourceChanged();
+    if (source == &thumbnail)        thumbnailChanged();
 }
 
-void SamploarComponent::buttonClicked (Button* button)
+void SamploarComponent::transportSourceChanged()
 {
-    if (button == &playButton)  playButtonClicked();
-    if (button == &stopButton)  stopButtonClicked();
+    if (transportSource.isPlaying())
+        changeState(Playing);
+    else
+        changeState(Stopped);
 }
 
+void SamploarComponent::thumbnailChanged()
+{
+    repaint();
+}
+
+// --- buttons --------------------------------------------------------
+//
+// these aren't button click listeners, these are explicitly called 
+// by the listeners in the toolbar.
+
+void SamploarComponent::playButtonClicked() {
+    changeState(Starting);
+}
+void SamploarComponent::stopButtonClicked() {
+    changeState(Stopping);
+}
+
+
+// --- state ----------------------------------------------------------
     
 void SamploarComponent::changeState (TransportState newState)
 {
@@ -100,38 +119,88 @@ void SamploarComponent::changeState (TransportState newState)
             
         switch (state)
         {
-            case Stopped:                           // [3]
-                stopButton.setEnabled (false);
-                playButton.setEnabled (true);
+            case Stopped:
+                toolbar.setPlayButtonEnabled (true);
+                toolbar.setStopButtonEnabled (false);
                 transportSource.setPosition (0.0);
                 break;
                     
-            case Starting:                          // [4]
-                playButton.setEnabled (false);
+            case Starting:
+                toolbar.setPlayButtonEnabled (false);
                 transportSource.start();
                 break;
                     
-            case Playing:                           // [5]
-                stopButton.setEnabled (true);
+            case Playing:
+                toolbar.setStopButtonEnabled (true);
                 break;
                     
-            case Stopping:                          // [6]
+            case Stopping:
                 transportSource.stop();
                 break;
         }
     }
 }
     
-void SamploarComponent::playButtonClicked()
+// -- painting ---------------------------------------------------------------------
+void SamploarComponent::timerCallback()
 {
-    changeState (Starting);
+    repaint();
 }
-    
-void SamploarComponent::stopButtonClicked()
-{
-    changeState (Stopping);
-}
-    
-//Component* createSamploarContentComponent()     { return new SamploarComponent(); }
 
 
+void SamploarComponent::resized()
+{
+    toolbar.setBounds(0, 0, getWidth(), 128);
+}
+
+
+void SamploarComponent::paint(Graphics& g)
+{
+    const Rectangle<int> thumbnailBounds(10, 128, getWidth() - 20, getHeight() - 140);
+
+    if (thumbnail.getNumChannels() == 0)
+        paintIfNoFileLoaded(g, thumbnailBounds);
+    else
+        paintIfFileLoaded(g, thumbnailBounds);
+}
+
+void SamploarComponent::paintIfNoFileLoaded(Graphics& g, const Rectangle<int>& thumbnailBounds)
+{
+    g.setColour(Colours::darkgrey);
+    g.fillRect(thumbnailBounds);
+    g.setColour(Colours::black);
+    g.drawFittedText("No File Loaded", thumbnailBounds, Justification::centred, 1.0f);
+}
+
+void SamploarComponent::paintIfFileLoaded(Graphics& g, const Rectangle<int>& thumbnailBounds)
+{
+    g.setColour(Colours::black);
+    g.fillRect(thumbnailBounds);
+
+    g.setColour(Colours::mediumpurple);                                     // [8]
+
+    const double audioLength(thumbnail.getTotalLength());
+
+    thumbnail.drawChannels(g,                                      // [9]
+        thumbnailBounds,
+        0.0,                                    // start time
+        thumbnail.getTotalLength(),             // end time
+        1.0f);                                  // vertical zoom
+
+    g.setColour(Colours::blue);
+
+    const double audioPosition(transportSource.getCurrentPosition());
+    const float drawPosition((audioPosition / audioLength) 
+        * thumbnailBounds.getWidth()
+        + thumbnailBounds.getX());                                        // [13]
+    
+    g.drawLine(drawPosition, 
+        thumbnailBounds.getY(), 
+        drawPosition,
+        thumbnailBounds.getBottom(), 
+        2.0f);                                             // [14]
+}
+
+SoundFileDocument* SamploarComponent::getDocument() {
+    return document;
+}

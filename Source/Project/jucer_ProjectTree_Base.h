@@ -140,7 +140,7 @@ public:
     virtual void browseToAddExistingFiles()
     {
         const File location (item.isGroup() ? item.determineGroupFolder() : getFile());
-        FileChooser fc ("Add Files to Jucer Project", location, String(), false);
+        FileChooser fc ("Add Files to Skoar Book", location, String(), false);
 
         if (fc.browseForMultipleFilesOrDirectories())
         {

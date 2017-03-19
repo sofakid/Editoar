@@ -82,11 +82,25 @@
     </LINUX_MAKE>
   </EXPORTFORMATS>
   <MAINGROUP name="Skoar" id="NhrJq66R">
+    <GROUP id="{E8AAD96C-9F82-4ED5-DE3C-7D6A690CE3C0}" name="Skoarish">
+      <FILE id="b6Jlvu" name="Instrument.cpp" compile="1" resource="0" file="Source/Skoarish/Instrument.cpp"/>
+      <FILE id="uIdfLo" name="Instrument.h" compile="0" resource="0" file="Source/Skoarish/Instrument.h"/>
+      <FILE id="ZGflK2" name="Sample.cpp" compile="1" resource="0" file="Source/Skoarish/Sample.cpp"/>
+      <FILE id="GgE7co" name="Sample.h" compile="0" resource="0" file="Source/Skoarish/Sample.h"/>
+    </GROUP>
     <GROUP id="{ABA6593B-2CFE-2635-CE97-D2382C5CEC7B}" name="Samploar">
       <FILE id="e5QtMc" name="SamploarComponent.cpp" compile="1" resource="0"
             file="Source/Samploar/SamploarComponent.cpp"/>
       <FILE id="pUs2Vp" name="SamploarComponent.h" compile="0" resource="0"
             file="Source/Samploar/SamploarComponent.h"/>
+      <FILE id="vWXDeC" name="SamploarToolbarComponent.cpp" compile="1" resource="0"
+            file="Source/Samploar/SamploarToolbarComponent.cpp"/>
+      <FILE id="pTMaXl" name="SamploarToolbarComponent.h" compile="0" resource="0"
+            file="Source/Samploar/SamploarToolbarComponent.h"/>
+      <FILE id="XPAzNH" name="SoundFileDocument.cpp" compile="1" resource="0"
+            file="Source/Samploar/SoundFileDocument.cpp"/>
+      <FILE id="KsGwhX" name="SoundFileDocument.h" compile="0" resource="0"
+            file="Source/Samploar/SoundFileDocument.h"/>
     </GROUP>
     <GROUP id="{026460D5-084B-58BD-E1C5-799C4C7D27E2}" name="Logging">
       <FILE id="AXKUgt" name="SkoarLogger.cpp" compile="1" resource="0" file="Source/Logging/SkoarLogger.cpp"/>
@@ -184,6 +198,8 @@
             file="Source/Project/jucer_ProjectType.h"/>
       <FILE id="aM4Awh" name="jucer_TreeItemTypes.h" compile="0" resource="0"
             file="Source/Project/jucer_TreeItemTypes.h"/>
+      <FILE id="NkCPex" name="ProjectTree_SoundFile.h" compile="0" resource="0"
+            file="Source/Project/ProjectTree_SoundFile.h"/>
     </GROUP>
     <GROUP id="{28174A5F-D7AD-7240-6104-135D5D2DDB3C}" name="Project Saving">
       <FILE id="jpWU6e" name="jucer_ProjectSaver.cpp" compile="1" resource="0"

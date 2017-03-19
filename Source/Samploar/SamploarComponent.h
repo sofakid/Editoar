@@ -1,13 +1,15 @@
 #pragma once
 
-#include "../../JuceLibraryCode/JuceHeader.h"
+#include "../jucer_Headers.h"
+#include "SoundFileDocument.h"
+#include "SamploarToolbarComponent.h"
 
 class SamploarComponent : public AudioAppComponent,
                           public ChangeListener,
-                          public Button::Listener
+                          private Timer
 {
 public:
-    SamploarComponent(File file);
+    SamploarComponent(SoundFileDocument* doc);
     ~SamploarComponent();
 
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
@@ -16,24 +18,21 @@ public:
 
     void resized() override;
     void changeListenerCallback(ChangeBroadcaster* source) override;
-    void buttonClicked(Button* button) override;
+    void paint(Graphics& g) override;
+
+    void playButtonClicked();
+    void stopButtonClicked();
+
+    void timerCallback() override;
+
+    SoundFileDocument* getDocument();
 
 private:
+    void paintIfNoFileLoaded(Graphics& g, const Rectangle<int>& thumbnailBounds);
+    void paintIfFileLoaded(Graphics& g, const Rectangle<int>& thumbnailBounds);
 
-
-    class AwesomeButtonsLNF : public LookAndFeel_V3
-    {
-        Font getTextButtonFont(TextButton&, int buttonHeight) override
-        {
-            auto fontawesome = Typeface::createSystemTypefaceFor(BinaryData::fontawesomewebfont_ttf, BinaryData::fontawesomewebfont_ttfSize);
-            auto size = jmin(15.0f, buttonHeight * 0.6f);
-            auto font = Font(fontawesome);
-            font.setHeight(size);
-            return font;
-        }
-    };
-
-    AwesomeButtonsLNF lnf;
+    void transportSourceChanged();
+    void thumbnailChanged();
 
     enum TransportState
     {
@@ -45,17 +44,19 @@ private:
 
     void changeState(TransportState newState);
 
-    void playButtonClicked();
-    void stopButtonClicked();
+
 
     //==========================================================================
-    TextButton playButton;
-    TextButton stopButton;
+    SoundFileDocument *document;
+
+    SamploarToolbarComponent toolbar;
 
     AudioFormatManager formatManager;
     ScopedPointer<AudioFormatReaderSource> readerSource;
     AudioTransportSource transportSource;
     TransportState state;
+    AudioThumbnailCache thumbnailCache;
+    AudioThumbnail thumbnail;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SamploarComponent)
 };

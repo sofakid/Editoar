@@ -37,7 +37,7 @@
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
                        isDebug="1" optimisation="1" targetName="Skoar" headerPath="C:\p\SkoarCpp\SkoarCpp"
-                       libraryPath="C:\p\SkoarCpp\Debug" useRuntimeLibDLL="1"/>
+                       libraryPath="C:\p\SkoarCpp\Debug&#10;" useRuntimeLibDLL="1"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
                        isDebug="0" optimisation="3" targetName="Skoar" headerPath="c:\p\SkoarCpp\SkoarCpp"
                        libraryPath="C:\p\SkoarCpp\Release" useRuntimeLibDLL="0"/>
@@ -82,6 +82,16 @@
     </LINUX_MAKE>
   </EXPORTFORMATS>
   <MAINGROUP name="Skoar" id="NhrJq66R">
+    <GROUP id="{CE8D224C-A521-AE8C-71A9-A479E2DF5DF0}" name="Testoar">
+      <FILE id="eDGvJl" name="TestoarTreeItemTypes.h" compile="0" resource="0"
+            file="Source/Testoar/TestoarTreeItemTypes.h"/>
+    </GROUP>
+    <GROUP id="{3DA09ACA-AB9E-6AC4-1E50-FDD970C8CE14}" name="Debuggoar">
+      <FILE id="aWqhMw" name="DebuggoarToolbar.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DebuggoarToolbar.cpp"/>
+      <FILE id="yyXuD1" name="DebuggoarToolbar.h" compile="0" resource="0"
+            file="Source/Debuggoar/DebuggoarToolbar.h"/>
+    </GROUP>
     <GROUP id="{E8AAD96C-9F82-4ED5-DE3C-7D6A690CE3C0}" name="Skoarish">
       <FILE id="b6Jlvu" name="Instrument.cpp" compile="1" resource="0" file="Source/Skoarish/Instrument.cpp"/>
       <FILE id="uIdfLo" name="Instrument.h" compile="0" resource="0" file="Source/Skoarish/Instrument.h"/>

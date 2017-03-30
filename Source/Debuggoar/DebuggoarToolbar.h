@@ -17,12 +17,11 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_HEADER_111ACE2DA1697E6__
-#define __JUCE_HEADER_111ACE2DA1697E6__
+#ifndef __JUCE_HEADER_3AFBEB56ED34B57E__
+#define __JUCE_HEADER_3AFBEB56ED34B57E__
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../JuceLibraryCode/JuceHeader.h"
-#include "SkoarLogger.hpp"
 //[/Headers]
 
 
@@ -35,17 +34,30 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class SkoarLoggerToolBar  : public Component,
-                            public ButtonListener,
-                            public ComboBoxListener
+class DebuggoarToolbar  : public Component,
+                          public ButtonListener,
+                          public ComboBoxListener
 {
 public:
     //==============================================================================
-    SkoarLoggerToolBar ();
-    ~SkoarLoggerToolBar();
+    DebuggoarToolbar ();
+    ~DebuggoarToolbar();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+    class AwesomeButtonsLNF : public LookAndFeel_V3
+    {
+        Font getTextButtonFont(TextButton&, int buttonHeight) override
+        {
+            auto fontawesome = Typeface::createSystemTypefaceFor(BinaryData::fontawesomewebfont_ttf, BinaryData::fontawesomewebfont_ttfSize);
+            auto size = jmin(15.0f, buttonHeight * 0.6f);
+            auto font = Font(fontawesome);
+            font.setHeight(size);
+            return font;
+        }
+    };
+
+    AwesomeButtonsLNF awesome;
     //[/UserMethods]
 
     void paint (Graphics& g) override;
@@ -60,17 +72,21 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    ScopedPointer<ToggleButton> autoscrollToggler;
-    ScopedPointer<TextButton> saveOutputButton;
-    ScopedPointer<TextButton> clearButton;
-    ScopedPointer<ComboBox> logLevelComboBox;
+    ScopedPointer<TextButton> stepInButton;
+    ScopedPointer<TextButton> stepOverButton;
+    ScopedPointer<TextButton> stepOutButton;
+    ScopedPointer<TextButton> stopDebuggingButton;
+    ScopedPointer<Label> minstrelLabel;
+    ScopedPointer<ComboBox> minstrelComboBox;
+    ScopedPointer<TextButton> openExtDebuggerButton;
+    ScopedPointer<TextButton> continueDebuggingButton;
 
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SkoarLoggerToolBar)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DebuggoarToolbar)
 };
 
 //[EndFile] You can add extra defines here...
 //[/EndFile]
 
-#endif   // __JUCE_HEADER_111ACE2DA1697E6__
+#endif   // __JUCE_HEADER_3AFBEB56ED34B57E__

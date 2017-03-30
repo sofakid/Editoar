@@ -72,7 +72,7 @@ public:
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     String SamploarToolbarComponent::makeValidId(String s);
-    
+
     class AwesomeButtonsLNF : public LookAndFeel_V3
     {
         Font getTextButtonFont(TextButton&, int buttonHeight) override
@@ -87,7 +87,7 @@ private:
 
     AwesomeButtonsLNF awesome;
     SamploarComponent* samploar;
-    
+
     //[/UserVariables]
 
     //==============================================================================

@@ -216,7 +216,7 @@ void SamploarToolbarComponent::labelTextChanged (Label* labelThatHasChanged)
         {
             auto newId = instrument->renameId(attempt);
             instrumentIdValueLabel->setText(newId, dontSendNotification);
-        } 
+        }
         else
         {
             instrumentIdValueLabel->setText(cleaned, dontSendNotification);
@@ -240,7 +240,6 @@ void SamploarToolbarComponent::setPlayButtonEnabled(bool b) {
 void SamploarToolbarComponent::setStopButtonEnabled(bool b) {
     stopButton->setEnabled (b);
 }
-
 
 void SamploarToolbarComponent::setPlayButtonAsPause() {
     playButton->setButtonText(CharPointer_UTF16(L"\xf04c"));
@@ -269,12 +268,12 @@ String secondsToDurationString(double seconds) {
 
     auto hrs = sec / 3600L;
     sec %= 3600L;
-    
+
     auto min = sec / 60L;
     sec %= 60L;
 
     String s(sec);
-    
+
     if (hrs > 0) {
         s = ((sec < 10) ? ":0" : ":") + s;
         s = ((min < 10) ? ":0" : ":") + String(min) + s;

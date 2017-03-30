@@ -29,8 +29,10 @@
 #include "../Code Editor/jucer_SourceCodeEditor.h"
 #include "../Utility/jucer_FilePathPropertyComponent.h"
 #include "jucer_TreeItemTypes.h"
+#include "../Testoar/TestoarTreeItemTypes.h"
 
 #include "../Logging/SkoarLoggerComponent.h"
+
 
 
 //==============================================================================
@@ -99,6 +101,59 @@ public:
     TextButton createExporterButton;
 };
 
+
+//==============================================================================
+class TestoarTreePanel : public TreePanelBase
+{
+public:
+    TestoarTreePanel(Project& p)
+        : TreePanelBase(&p, "settingsTreeState")
+    {
+        TestoarInitialize([&](std::string s) {
+            SkoarLog.i("Testoar", s);
+        }, [&](std::string s) {
+            SkoarLog.e("Testoar", s);
+        });
+        tree.setMultiSelectEnabled(false);
+        setRoot(new TestoarTreeItemTypes::RootItem());
+        tree.setRootItemVisible(false);
+
+        if (tree.getNumSelectedItems() == 0)
+            tree.getRootItem()->setSelected(true, true);
+
+    }
+
+    void resized() override
+    {
+        Rectangle<int> r(getAvailableBounds());
+        r.removeFromBottom(6);
+
+        if (runAllButton.isVisible())
+        {
+            r.removeFromBottom(10);
+            runAllButton.setBounds(r.removeFromTop(30).reduced(16, 4));
+        }
+
+        tree.setBounds(r);
+    }
+
+    static void reselect(TreeViewItem& item)
+    {
+        item.setSelected(false, true);
+        item.setSelected(true, true);
+    }
+
+    void showProjectSettings()
+    {
+        if (TestoarTreeItemTypes::TestoarTreeItemBase* root = dynamic_cast<TestoarTreeItemTypes::TestoarTreeItemBase*> (rootItem.get()))
+            if (root->isProjectSettings())
+                reselect(*root);
+    }
+
+    TextButton runAllButton;
+};
+
+
 //==============================================================================
 struct LogoComponent  : public Component
 {
@@ -142,6 +197,9 @@ ProjectContentComponent::ProjectContentComponent()
 
     addAndMakeVisible (logo = new LogoComponent());
     
+    // -- debuggoar ----
+    addAndMakeVisible(debuggoarToolbar);
+    
     // -- logger ----
     loggerSizeConstrainer.setMinimumHeight(24);
     loggerSizeConstrainer.setMaximumHeight(getHeight() - 50);
@@ -176,6 +234,7 @@ ProjectContentComponent::~ProjectContentComponent()
     contentView = nullptr;
     removeChildComponent (&bubbleMessage);
     removeChildComponent (&loggerComponent);
+    removeChildComponent (&debuggoarToolbar);
     resizerBarHoriz = nullptr;
 
     jassert (getNumChildComponents() <= 1);
@@ -193,26 +252,29 @@ void ProjectContentComponent::paintOverChildren (Graphics& g)
         const int shadowSize = 15;
         const int x = resizerBar->getX();
 
+        const int y = debuggoarToolbar.getHeight();
+
         ColourGradient cg (Colours::black.withAlpha (0.25f), (float) x, 0,
                            Colours::transparentBlack,        (float) (x - shadowSize), 0, false);
         cg.addColour (0.4, Colours::black.withAlpha (0.07f));
         cg.addColour (0.6, Colours::black.withAlpha (0.02f));
 
         g.setGradientFill (cg);
-        g.fillRect (x - shadowSize, 0, shadowSize, treeViewTabs.getHeight());
+        g.fillRect (x - shadowSize, y, shadowSize, treeViewTabs.getHeight());
     }
 }
 
 void ProjectContentComponent::resized()
 {
     Rectangle<int> r(getLocalBounds());
-    
+
+    debuggoarToolbar.setBounds (r.removeFromTop (debuggoarToolbar.getHeight()));
     loggerSizeConstrainer.setMaximumHeight(getHeight() - 50);
 
-    loggerComponent.setBounds (r.removeFromBottom(loggerComponent.getHeight()));
+    loggerComponent.setBounds (r.removeFromBottom (loggerComponent.getHeight()));
 
     if (resizerBarHoriz != nullptr)
-        resizerBarHoriz->setBounds(r.withY(r.getBottom()).withHeight(4));
+        resizerBarHoriz->setBounds(r.withY (r.getBottom()).withHeight (4));
 
     if (treeViewTabs.isVisible())
         treeViewTabs.setBounds (r.removeFromLeft (treeViewTabs.getWidth()));
@@ -305,6 +367,7 @@ void ProjectContentComponent::createProjectTabs()
 
     treeViewTabs.addTab ("Files",  tabColour, new FileTreePanel (*project), true);
     treeViewTabs.addTab ("Config", tabColour, new ConfigTreePanel (*project), true);
+    treeViewTabs.addTab ("Testing", tabColour, new TestoarTreePanel(*project), true);
 
 }
 

@@ -18,10 +18,10 @@
 */
 
 //[Headers] You can add your own extra header files here...
+#include "SkoarLoggerComponent.h"
 //[/Headers]
 
 #include "SkoarLoggerToolBar.h"
-#include "SkoarLoggerComponent.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
@@ -190,15 +190,6 @@ void SkoarLoggerToolBar::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 
 
 //==============================================================================
-/*
-word wrap button. word wrap seems to not work. hiding it for now.
-
-<TOGGLEBUTTON name="word wrap toggler" id="2c1d6785f59bd865" memberName="wordWrapToggler"
-virtualName="" explicitFocusOrder="0" pos="160 3 64 18" txtcol="fff0ffff"
-buttonText="wrap" connectedEdges="0" needsCallback="1" radioGroupId="0"
-state="0"/>
-
-*/
 #if 0
 /*  -- Projucer information section --
 

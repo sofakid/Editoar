@@ -30,6 +30,7 @@
 #include "../Utility/jucer_FilePathPropertyComponent.h"
 #include "jucer_TreeItemTypes.h"
 #include "../Testoar/TestoarTreeItemTypes.h"
+#include "../Testoar/TestoarResultsConsumer.h"
 
 #include "../Logging/SkoarLoggerComponent.h"
 
@@ -44,6 +45,7 @@ public:
     {
         tree.setMultiSelectEnabled (true);
         setRoot (new FileTreeItemTypes::GroupItem (p.getMainGroup()));
+        tree.setRootItemVisible(false);
     }
 
     void updateMissingFileStatuses()
@@ -66,9 +68,6 @@ public:
         if (tree.getNumSelectedItems() == 0)
             tree.getRootItem()->setSelected (true, true);
 
-       #if JUCE_MAC || JUCE_WINDOWS
-       
-       #endif
     }
 
     void resized() override
@@ -110,10 +109,13 @@ public:
         : TreePanelBase(&p, "settingsTreeState")
     {
         TestoarInitialize([&](std::string s) {
-            SkoarLog.i("Testoar", s);
+            TestoarResultsConsumer::out(s);
+
         }, [&](std::string s) {
-            SkoarLog.e("Testoar", s);
+            TestoarResultsConsumer::err(s);
+
         });
+
         tree.setMultiSelectEnabled(false);
         setRoot(new TestoarTreeItemTypes::RootItem());
         tree.setRootItemVisible(false);

@@ -9,6 +9,9 @@ public:
 
     bool autoScroll;
     bool wordWrap;
+
+private:
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SkoarLoggerPaneTextEditor);
 };
 
 class SkoarLoggerPane  : public Component, public ISkoarUiLogger

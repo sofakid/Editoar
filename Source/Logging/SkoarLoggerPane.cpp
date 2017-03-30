@@ -26,7 +26,7 @@ void SkoarLoggerPaneTextEditor::mouseUp(const MouseEvent &) {
 SkoarLoggerPane::SkoarLoggerPane ()
 {
 
-    addAndMakeVisible (logPane = new SkoarLoggerPaneTextEditor(String()));
+    addAndMakeVisible (logPane = new SkoarLoggerPaneTextEditor(String("SkoarLogger")));
     logPane->setMultiLine (true);
     logPane->setReturnKeyStartsNewLine (false);
     logPane->setReadOnly (true);

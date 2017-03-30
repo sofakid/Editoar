@@ -190,6 +190,22 @@
       <FILE id="FLfd4N" name="toker_fwd.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/toker_fwd.hpp"/>
     </GROUP>
     <GROUP id="{CE8D224C-A521-AE8C-71A9-A479E2DF5DF0}" name="Testoar">
+      <FILE id="UzmwtV" name="TestoarResultsComponent.cpp" compile="1" resource="0"
+            file="Source/Testoar/TestoarResultsComponent.cpp"/>
+      <FILE id="SYWFOi" name="TestoarResultsComponent.h" compile="0" resource="0"
+            file="Source/Testoar/TestoarResultsComponent.h"/>
+      <FILE id="gZM46v" name="TestoarResultsConsumer.cpp" compile="1" resource="0"
+            file="Source/Testoar/TestoarResultsConsumer.cpp"/>
+      <FILE id="APGyha" name="TestoarResultsConsumer.h" compile="0" resource="0"
+            file="Source/Testoar/TestoarResultsConsumer.h"/>
+      <FILE id="AU8y9X" name="TestoarResultsPane.cpp" compile="1" resource="0"
+            file="Source/Testoar/TestoarResultsPane.cpp"/>
+      <FILE id="egoUgb" name="TestoarResultsPane.h" compile="0" resource="0"
+            file="Source/Testoar/TestoarResultsPane.h"/>
+      <FILE id="ry8AF6" name="TestoarResultsToolBar.cpp" compile="1" resource="0"
+            file="Source/Testoar/TestoarResultsToolBar.cpp"/>
+      <FILE id="ArAfiS" name="TestoarResultsToolBar.h" compile="0" resource="0"
+            file="Source/Testoar/TestoarResultsToolBar.h"/>
       <FILE id="eDGvJl" name="TestoarTreeItemTypes.h" compile="0" resource="0"
             file="Source/Testoar/TestoarTreeItemTypes.h"/>
     </GROUP>

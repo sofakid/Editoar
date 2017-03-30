@@ -41,7 +41,7 @@ Colour EditoarLookAndFeel::getTabBackgroundColour (TabBarButton& button)
     const Colour bkg (button.findColour (mainBackgroundColourId).contrasting (0.15f));
 
     if (button.isFrontTab())
-        return bkg.overlaidWith (Colours::yellow.withAlpha (0.5f));
+        return bkg.overlaidWith (Colours::darkblue.withAlpha (0.5f));
 
     return bkg;
 }

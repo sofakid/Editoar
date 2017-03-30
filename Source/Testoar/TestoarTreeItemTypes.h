@@ -4,6 +4,7 @@
 #include "../Application/jucer_MainWindow.h"
 #include "../Application/jucer_Application.h"
 #include "testoar.hpp"
+#include "TestoarResultsComponent.h"
 
 struct TestoarTreeItemTypes
 {
@@ -86,6 +87,24 @@ struct TestoarTreeItemTypes
     public:
         TestoarTreeItemBase() {}
 
+        void showResultsComponent(String &title)
+        {
+            if (ProjectContentComponent* pcc = getProjectContentComponent()) {
+                pcc->setEditorComponent(resultsUi = new TestoarResultsComponent(), nullptr);
+                resultsUi->setTitle(title);
+            }
+        }
+
+        /*void closeSettingsPage()
+        {
+            if (ProjectContentComponent* pcc = getProjectContentComponent())
+            {
+                if (TestoarResultsComponent* ppv = dynamic_cast<TestoarResultsComponent*> (pcc->getEditorComponent()))
+                    if (ppv->viewport.getViewedComponent()->getComponentID() == getUniqueName())
+                        pcc->hideEditor();
+            }
+        }*/
+
         void itemOpennessChanged(bool isNowOpen) override
         {
             if (isNowOpen)
@@ -94,7 +113,8 @@ struct TestoarTreeItemTypes
 
         virtual bool isProjectSettings() const { return false; }
 
-       
+    protected:
+        TestoarResultsComponent* resultsUi;
     private:
         //==============================================================================
         
@@ -138,7 +158,8 @@ struct TestoarTreeItemTypes
     class TestTagItem : public TestoarTreeItemBase
     {
     public:
-        TestTagItem(String s)
+        TestTagItem(String s) :
+            tag(s)
         {
 
         }
@@ -152,7 +173,7 @@ struct TestoarTreeItemTypes
         Icon getIcon() const override {
             return Icon(getIcons().box, Colours::blue);
         }
-        void showDocument() override { SkoarLog.d("TestTagItem::showDocument()"); }
+        void showDocument() override { showResultsComponent(tag); TestoarRunTestsByTag(tag.toStdString()); }
         bool canBeSelected() const override { return true; }
         String getUniqueName() const override { return tag; }
         bool mightContainSubItems() override { return true; }
@@ -172,7 +193,8 @@ struct TestoarTreeItemTypes
     class TestCaseItem : public TestoarTreeItemBase
     {
     public:
-        TestCaseItem(String s)
+        TestCaseItem(String s) :
+            name(s)
         {
 
         }
@@ -186,7 +208,7 @@ struct TestoarTreeItemTypes
         Icon getIcon() const override { 
             return Icon(getIcons().box, Colours::blue);
         }
-        void showDocument() override { SkoarLog.d("TestTagItem::showDocument()"); }
+        void showDocument() override { showResultsComponent(name); TestoarRunTestsByTestCase(name.toStdString()); }
         bool canBeSelected() const override { return true; }
         String getUniqueName() const override { return name; }
         bool mightContainSubItems() override { return false; }

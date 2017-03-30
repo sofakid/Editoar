@@ -32,15 +32,15 @@
         <MODULEPATH id="juce_audio_utils" path="..\JUCE\modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <VS2015 targetFolder="Builds/VisualStudio2015" externalLibraries="SkoarCpp.x64.lib"
-            bigIcon="axHNWg" toolset="v140" vstFolder="">
+    <VS2015 targetFolder="Builds/VisualStudio2015" externalLibraries="" bigIcon="axHNWg"
+            toolset="v140" vstFolder="">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="1" optimisation="1" targetName="Skoar" headerPath="C:\p\SkoarCpp\SkoarCpp"
-                       libraryPath="C:\p\SkoarCpp\Debug&#10;" useRuntimeLibDLL="1"/>
+                       isDebug="1" optimisation="1" targetName="Skoar" headerPath="../../../SkoarCpp/SkoarCpp"
+                       libraryPath="" useRuntimeLibDLL="1"/>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
-                       isDebug="0" optimisation="3" targetName="Skoar" headerPath="c:\p\SkoarCpp\SkoarCpp"
-                       libraryPath="C:\p\SkoarCpp\Release" useRuntimeLibDLL="0"/>
+                       isDebug="0" optimisation="3" targetName="Skoar" headerPath="../../../SkoarCpp/SkoarCpp"
+                       libraryPath="" useRuntimeLibDLL="0"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="..\JUCE\modules"/>
@@ -82,6 +82,113 @@
     </LINUX_MAKE>
   </EXPORTFORMATS>
   <MAINGROUP name="Skoar" id="NhrJq66R">
+    <GROUP id="{38A0CCF5-98E2-06CD-543A-5396A09634D4}" name="UnitTests">
+      <FILE id="oYhygX" name="test_memory.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/test_memory.cpp"/>
+      <FILE id="a0Ux16" name="test_sanity.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/test_sanity.cpp"/>
+    </GROUP>
+    <GROUP id="{16FEBAFB-A232-5970-99CE-E3613C30A999}" name="SkoarCpp">
+      <FILE id="VnBZap" name="all_skoarpuscles.hpp" compile="0" resource="0"
+            file="../SkoarCpp/SkoarCpp/all_skoarpuscles.hpp"/>
+      <FILE id="uZNSKg" name="beaty.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/beaty.cpp"/>
+      <FILE id="eDKyuu" name="beaty.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/beaty.hpp"/>
+      <FILE id="Y27Oqo" name="beaty_fwd.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/beaty_fwd.hpp"/>
+      <FILE id="DkAZs7" name="catch.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/catch.hpp"/>
+      <FILE id="cqix5H" name="decorating.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/decorating.cpp"/>
+      <FILE id="F9QlJO" name="decorating.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/decorating.hpp"/>
+      <FILE id="XDkWqq" name="decorating_fwd.hpp" compile="0" resource="0"
+            file="../SkoarCpp/SkoarCpp/decorating_fwd.hpp"/>
+      <FILE id="qj80IK" name="dsp.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/dsp.cpp"/>
+      <FILE id="UQsmPd" name="dsp.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/dsp.hpp"/>
+      <FILE id="e65qlm" name="envelope.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/envelope.cpp"/>
+      <FILE id="pRaOiE" name="envelope.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/envelope.hpp"/>
+      <FILE id="ety4V0" name="event.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/event.cpp"/>
+      <FILE id="mdEUX1" name="event.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/event.hpp"/>
+      <FILE id="E0wRBM" name="event_fwd.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/event_fwd.hpp"/>
+      <FILE id="RGbcDe" name="exception.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/exception.cpp"/>
+      <FILE id="GLLPFd" name="exception.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/exception.hpp"/>
+      <FILE id="Ug8YXN" name="exception_fwd.hpp" compile="0" resource="0"
+            file="../SkoarCpp/SkoarCpp/exception_fwd.hpp"/>
+      <FILE id="CLYWSD" name="fairy.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/fairy.cpp"/>
+      <FILE id="IAkQac" name="fairy.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/fairy.hpp"/>
+      <FILE id="nFYmqt" name="fairy_fwd.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/fairy_fwd.hpp"/>
+      <FILE id="Hfa4pz" name="koar.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/koar.cpp"/>
+      <FILE id="UNKujB" name="koar.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/koar.hpp"/>
+      <FILE id="YTxtDO" name="koar_fwd.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/koar_fwd.hpp"/>
+      <FILE id="IWF0Lz" name="lex.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/lex.cpp"/>
+      <FILE id="lpYxXV" name="lex.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/lex.hpp"/>
+      <FILE id="UlgcZS" name="lex_fwd.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/lex_fwd.hpp"/>
+      <FILE id="vbbsht" name="logging.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/logging.cpp"/>
+      <FILE id="RrR82B" name="logging.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/logging.hpp"/>
+      <FILE id="usqbH4" name="lute.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/lute.cpp"/>
+      <FILE id="NQJSX4" name="lute.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/lute.hpp"/>
+      <FILE id="R4sSGB" name="make_skoarpuscle.hpp" compile="0" resource="0"
+            file="../SkoarCpp/SkoarCpp/make_skoarpuscle.hpp"/>
+      <FILE id="b70FAr" name="meditation.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/meditation.cpp"/>
+      <FILE id="mscaA1" name="meditation.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/meditation.hpp"/>
+      <FILE id="bHdK72" name="memories.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/memories.cpp"/>
+      <FILE id="qY4QSV" name="memories.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/memories.hpp"/>
+      <FILE id="DJcBL0" name="minstrel.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/minstrel.cpp"/>
+      <FILE id="Uotk4z" name="minstrel.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/minstrel.hpp"/>
+      <FILE id="uLIR5S" name="minstrel_fwd.hpp" compile="0" resource="0"
+            file="../SkoarCpp/SkoarCpp/minstrel_fwd.hpp"/>
+      <FILE id="kR4Z2h" name="noad.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/noad.cpp"/>
+      <FILE id="x95tKY" name="noad.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/noad.hpp"/>
+      <FILE id="H2E5YQ" name="noad_fwd.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/noad_fwd.hpp"/>
+      <FILE id="bY35YL" name="operators.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/operators.cpp"/>
+      <FILE id="Mh08Vv" name="operators.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/operators.hpp"/>
+      <FILE id="DDlRLg" name="operators_fwd.hpp" compile="0" resource="0"
+            file="../SkoarCpp/SkoarCpp/operators_fwd.hpp"/>
+      <FILE id="OjXBJx" name="pitchy.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/pitchy.cpp"/>
+      <FILE id="npCA2W" name="pitchy.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/pitchy.hpp"/>
+      <FILE id="I2MS3v" name="pitchy_fwd.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/pitchy_fwd.hpp"/>
+      <FILE id="bCqfkV" name="rdpp.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/rdpp.cpp"/>
+      <FILE id="CjvkCI" name="rdpp.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/rdpp.hpp"/>
+      <FILE id="ku5dIx" name="rdpp_fwd.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/rdpp_fwd.hpp"/>
+      <FILE id="tjnF9I" name="skoar.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/skoar.cpp"/>
+      <FILE id="k621S9" name="skoar.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/skoar.hpp"/>
+      <FILE id="c337sF" name="skoar_fwd.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/skoar_fwd.hpp"/>
+      <FILE id="c0yt5G" name="skoar_public.hpp" compile="0" resource="0"
+            file="../SkoarCpp/SkoarCpp/skoar_public.hpp"/>
+      <FILE id="vpc0nr" name="skoarcery.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/skoarcery.hpp"/>
+      <FILE id="A3rcE5" name="skoarpion.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/skoarpion.cpp"/>
+      <FILE id="SA7Hbk" name="skoarpion.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/skoarpion.hpp"/>
+      <FILE id="LTNKcl" name="skoarpion_fwd.hpp" compile="0" resource="0"
+            file="../SkoarCpp/SkoarCpp/skoarpion_fwd.hpp"/>
+      <FILE id="Kveqvz" name="skoarpion_skoarpuscle.cpp" compile="1" resource="0"
+            file="../SkoarCpp/SkoarCpp/skoarpion_skoarpuscle.cpp"/>
+      <FILE id="Iw1BAs" name="skoarpion_skoarpuscle.hpp" compile="0" resource="0"
+            file="../SkoarCpp/SkoarCpp/skoarpion_skoarpuscle.hpp"/>
+      <FILE id="SjbzbM" name="skoarpuscle.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/skoarpuscle.cpp"/>
+      <FILE id="K4dhef" name="skoarpuscle.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/skoarpuscle.hpp"/>
+      <FILE id="BIxw1y" name="skoarpuscle_as_string.cpp" compile="1" resource="0"
+            file="../SkoarCpp/SkoarCpp/skoarpuscle_as_string.cpp"/>
+      <FILE id="fP6Jwf" name="skoarpuscle_fwd.hpp" compile="0" resource="0"
+            file="../SkoarCpp/SkoarCpp/skoarpuscle_fwd.hpp"/>
+      <FILE id="dbMMVW" name="skoarpuscle_structors.cpp" compile="1" resource="0"
+            file="../SkoarCpp/SkoarCpp/skoarpuscle_structors.cpp"/>
+      <FILE id="xZWPef" name="skoarpuscle_types.hpp" compile="0" resource="0"
+            file="../SkoarCpp/SkoarCpp/skoarpuscle_types.hpp"/>
+      <FILE id="DVXlk2" name="spells.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/spells.hpp"/>
+      <FILE id="naOKv6" name="styles.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/styles.cpp"/>
+      <FILE id="t7xcI2" name="styles.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/styles.hpp"/>
+      <FILE id="hJUqIA" name="testing_util.cpp" compile="1" resource="0"
+            file="../SkoarCpp/SkoarCpp/testing_util.cpp"/>
+      <FILE id="rfF94R" name="testing_util.hpp" compile="0" resource="0"
+            file="../SkoarCpp/SkoarCpp/testing_util.hpp"/>
+      <FILE id="RglWIP" name="testoar.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/testoar.cpp"/>
+      <FILE id="y3mr3H" name="testoar.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/testoar.hpp"/>
+      <FILE id="ZtYbqK" name="testoar_streams.cpp" compile="1" resource="0"
+            file="../SkoarCpp/SkoarCpp/testoar_streams.cpp"/>
+      <FILE id="tNBGKM" name="testoar_streams.hpp" compile="0" resource="0"
+            file="../SkoarCpp/SkoarCpp/testoar_streams.hpp"/>
+      <FILE id="y4PpuV" name="toke_inspector.cpp" compile="1" resource="0"
+            file="../SkoarCpp/SkoarCpp/toke_inspector.cpp"/>
+      <FILE id="WypGur" name="toke_inspector.hpp" compile="0" resource="0"
+            file="../SkoarCpp/SkoarCpp/toke_inspector.hpp"/>
+      <FILE id="aY7ea7" name="toker.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/toker.cpp"/>
+      <FILE id="LMez85" name="toker.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/toker.hpp"/>
+      <FILE id="FLfd4N" name="toker_fwd.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/toker_fwd.hpp"/>
+    </GROUP>
     <GROUP id="{CE8D224C-A521-AE8C-71A9-A479E2DF5DF0}" name="Testoar">
       <FILE id="eDGvJl" name="TestoarTreeItemTypes.h" compile="0" resource="0"
             file="Source/Testoar/TestoarTreeItemTypes.h"/>

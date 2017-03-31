@@ -29,7 +29,6 @@
 #include "../Application/jucer_OpenDocumentManager.h"
 #include "../Logging/SkoarLogger.hpp"
 #include "../Logging/SkoarLoggerComponent.h"
-#include "../Debuggoar/DebuggoarToolbar.h"
 
 //==============================================================================
 class ProjectContentComponent  : public Component,
@@ -125,7 +124,6 @@ private:
     BubbleMessageComponent bubbleMessage;
 
     SkoarLoggerComponent loggerComponent;
-    DebuggoarToolbar debuggoarToolbar;
 
     bool isForeground = false;
 

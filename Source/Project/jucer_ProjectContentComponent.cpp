@@ -193,10 +193,7 @@ ProjectContentComponent::ProjectContentComponent()
     setWantsKeyboardFocus (true);
 
     addAndMakeVisible (logo = new LogoComponent());
-    
-    // -- debuggoar ----
-    addAndMakeVisible(debuggoarToolbar);
-    
+      
     // -- logger ----
     loggerSizeConstrainer.setMinimumHeight(24);
     loggerSizeConstrainer.setMaximumHeight(getHeight() - 50);
@@ -231,7 +228,6 @@ ProjectContentComponent::~ProjectContentComponent()
     contentView = nullptr;
     removeChildComponent (&bubbleMessage);
     removeChildComponent (&loggerComponent);
-    removeChildComponent (&debuggoarToolbar);
     resizerBarHoriz = nullptr;
 
     jassert (getNumChildComponents() <= 1);
@@ -249,7 +245,7 @@ void ProjectContentComponent::paintOverChildren (Graphics& g)
         const int shadowSize = 15;
         const int x = resizerBar->getX();
 
-        const int y = debuggoarToolbar.getHeight();
+        const int y = 0;
 
         ColourGradient cg (Colours::black.withAlpha (0.25f), (float) x, 0,
                            Colours::transparentBlack,        (float) (x - shadowSize), 0, false);
@@ -265,7 +261,6 @@ void ProjectContentComponent::resized()
 {
     Rectangle<int> r(getLocalBounds());
 
-    debuggoarToolbar.setBounds (r.removeFromTop (debuggoarToolbar.getHeight()));
     loggerSizeConstrainer.setMaximumHeight(getHeight() - 50);
 
     loggerComponent.setBounds (r.removeFromBottom (loggerComponent.getHeight()));

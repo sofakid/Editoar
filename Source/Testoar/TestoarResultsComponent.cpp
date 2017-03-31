@@ -34,7 +34,6 @@ void TestoarResultsComponent::resized()
 }
 
 //==============================================================================
-
 void TestoarResultsComponent::testsPassed() {
     toolbarComponent->testsPassed();
 }

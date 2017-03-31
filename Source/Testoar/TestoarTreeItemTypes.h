@@ -130,7 +130,7 @@ struct TestoarTreeItemTypes
         virtual bool isProjectSettings() const { return false; }
 
         void refreshAllItems() {
-            static_cast<JucerTreeViewBase*>(getOwnerView()->getRootItem())->refreshSubItems();
+            static_cast<TestoarTreeItemBase*>(getOwnerView()->getRootItem())->refreshSubItems();
         }
 
     protected:
@@ -194,8 +194,11 @@ struct TestoarTreeItemTypes
             auto s = getDisplayName();
             showResultsComponent(s);
             Testoar::runAllTests();
+            setOpenness(opennessOpen);
+
             refreshAllItems();
         }
+
         bool canBeSelected() const override { return true; }
         String getUniqueName() const override { return "testoar_all_tests"; }
         bool mightContainSubItems() override { return true; }
@@ -234,6 +237,8 @@ struct TestoarTreeItemTypes
         void showDocument() override { 
             showResultsComponent(tag); 
             Testoar::runTag(tag.toStdString());
+            setOpenness(getTestState() == Testoar::ETestState::passed ? opennessClosed : opennessOpen);
+
             refreshAllItems();
         }
 
@@ -260,12 +265,6 @@ struct TestoarTreeItemTypes
         TestCaseItem(String s) :
             name(s)
         {
-            if (getTestState() == Testoar::ETestState::failed) {
-                setOpen(false);
-            }
-            else {
-                setOpen(true);
-            }
         }
 
         Testoar::ETestState getTestState() const override {
@@ -284,13 +283,16 @@ struct TestoarTreeItemTypes
             std::string s = name.toStdString();
 
             Testoar::runTestCase(s);
+            setOpenness(getTestState() == Testoar::ETestState::passed ? opennessClosed : opennessOpen);
             refreshAllItems();
+
         }
 
         bool canBeSelected() const override { return true; }
         String getUniqueName() const override { return name; }
         bool mightContainSubItems() override { return true; }
         void addSubItems() override {
+            
             auto x = Testoar::getListOfTestCaseSections(name.toStdString());
             for (auto section : x) {
                 String s(section);
@@ -331,6 +333,7 @@ struct TestoarTreeItemTypes
             std::string s_section = section.toStdString();
 
             Testoar::runTestCaseSection(s_tc, s_section);
+            
             refreshAllItems();
         }
 
@@ -338,8 +341,8 @@ struct TestoarTreeItemTypes
         String getUniqueName() const override { return testCase + section; }
         bool mightContainSubItems() override { return false; }
         void addSubItems() override {
-            
         }
+
         void showPopupMenu() override {}
 
     private:

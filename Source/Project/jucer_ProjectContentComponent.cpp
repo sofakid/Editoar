@@ -108,17 +108,12 @@ public:
     TestoarTreePanel(Project& p)
         : TreePanelBase(&p, "settingsTreeState")
     {
-        TestoarInitialize([&](std::string s) {
-            Testoar::out(s);
-
-        }, [&](std::string s) {
-            Testoar::err(s);
-
-        });
+        Testoar::initialize();
 
         tree.setMultiSelectEnabled(false);
         setRoot(new TestoarTreeItemTypes::RootItem());
         tree.setRootItemVisible(false);
+        tree.setDefaultOpenness(false);
 
         if (tree.getNumSelectedItems() == 0)
             tree.getRootItem()->setSelected(true, true);

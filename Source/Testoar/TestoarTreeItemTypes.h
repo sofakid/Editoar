@@ -86,11 +86,14 @@ struct TestoarTreeItemTypes
     {
     public:
 
-        TestoarTreeItemBase() : testState(Testoar::unknown) {}
+        TestoarTreeItemBase() {}
         
+        virtual Testoar::ETestState getTestState() const = 0;
+
         Icon getIcon() const override {
             Colour colour;
 
+            auto testState = getTestState();
             if (testState == Testoar::passed)
                 return Icon(getIcons().box, Colours::green);
 
@@ -132,7 +135,6 @@ struct TestoarTreeItemTypes
 
     protected:
         TestoarResultsComponent* resultsUi;
-        Testoar::ETestState testState;
     private:
         //==============================================================================
         
@@ -144,7 +146,10 @@ struct TestoarTreeItemTypes
     public:
         RootItem()
         {
-            testState = Testoar::ETestState::unknown;
+        }
+
+        Testoar::ETestState getTestState() const override {
+            return Testoar::ETestState::unknown;
         }
 
         bool isRoot() const override { return true; }
@@ -172,7 +177,10 @@ struct TestoarTreeItemTypes
     public:
         AllTestsItem()
         {
-            testState = Testoar::getStateOfAllTests();
+        }
+
+        Testoar::ETestState getTestState() const override {
+            return Testoar::getStateOfAllTests();
         }
 
         bool isRoot() const override { return true; }
@@ -210,7 +218,10 @@ struct TestoarTreeItemTypes
         TestTagItem(String s) :
             tag(s)
         {
-            testState = Testoar::getStateOfTag(s.toStdString());
+        }
+
+        Testoar::ETestState getTestState() const override {
+            return Testoar::getStateOfTag(tag.toStdString());
         }
 
         bool isRoot() const override { return false; }
@@ -232,7 +243,8 @@ struct TestoarTreeItemTypes
         void addSubItems() override {
             ListOfTestCases x = TestoarGetListOfTestCases(tag.toStdString());
             for (auto testCase : x) {
-                addSubItem(new TestCaseItem(testCase));
+                auto tci = new TestCaseItem(testCase);
+                addSubItem(tci);
             }
         }
         void showPopupMenu() override {}
@@ -248,7 +260,16 @@ struct TestoarTreeItemTypes
         TestCaseItem(String s) :
             name(s)
         {
-            testState = Testoar::getStateOfTestCase(s.toStdString());
+            if (getTestState() == Testoar::ETestState::failed) {
+                setOpen(false);
+            }
+            else {
+                setOpen(true);
+            }
+        }
+
+        Testoar::ETestState getTestState() const override {
+            return Testoar::getStateOfTestCase(name.toStdString());
         }
 
         bool isRoot() const override { return false; }
@@ -268,13 +289,62 @@ struct TestoarTreeItemTypes
 
         bool canBeSelected() const override { return true; }
         String getUniqueName() const override { return name; }
-        bool mightContainSubItems() override { return false; }
+        bool mightContainSubItems() override { return true; }
         void addSubItems() override {
+            auto x = Testoar::getListOfTestCaseSections(name.toStdString());
+            for (auto section : x) {
+                String s(section);
+                addSubItem(new SectionItem(name, s));
+            }
         }
         void showPopupMenu() override {}
 
     private:
         String name;
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TestCaseItem)
+    };
+
+    class SectionItem : public TestoarTreeItemBase
+    {
+    public:
+        SectionItem(String tc_name, String section_name) :
+            testCase(tc_name),
+            section(section_name)
+        {
+        }
+
+        Testoar::ETestState getTestState() const override {
+            return Testoar::getStateOfTestCaseSection(testCase.toStdString(), section.toStdString());
+        }
+
+        bool isRoot() const override { return false; }
+        bool isProjectSettings() const override { return false; }
+        String getRenamingName() const override { return section; }
+        String getDisplayName() const override { return section; }
+        void setName(const String&) override {}
+        bool isMissing() override { return false; }
+
+        void showDocument() override {
+            String sLabel = testCase + ": " + section;
+            showResultsComponent(sLabel);
+            std::string s_tc = testCase.toStdString();
+            std::string s_section = section.toStdString();
+
+            Testoar::runTestCaseSection(s_tc, s_section);
+            refreshAllItems();
+        }
+
+        bool canBeSelected() const override { return true; }
+        String getUniqueName() const override { return testCase + section; }
+        bool mightContainSubItems() override { return false; }
+        void addSubItems() override {
+            
+        }
+        void showPopupMenu() override {}
+
+    private:
+        String testCase;
+        String section;
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SectionItem)
     };
 };

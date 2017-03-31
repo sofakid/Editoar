@@ -87,6 +87,10 @@
       <FILE id="a0Ux16" name="test_sanity.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/test_sanity.cpp"/>
     </GROUP>
     <GROUP id="{16FEBAFB-A232-5970-99CE-E3613C30A999}" name="SkoarCpp">
+      <FILE id="kvbcHV" name="testoar_reporter.cpp" compile="1" resource="0"
+            file="../SkoarCpp/SkoarCpp/testoar_reporter.cpp"/>
+      <FILE id="crXKaz" name="testoar_reporter.hpp" compile="0" resource="0"
+            file="../SkoarCpp/SkoarCpp/testoar_reporter.hpp"/>
       <FILE id="VnBZap" name="all_skoarpuscles.hpp" compile="0" resource="0"
             file="../SkoarCpp/SkoarCpp/all_skoarpuscles.hpp"/>
       <FILE id="uZNSKg" name="beaty.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/beaty.cpp"/>

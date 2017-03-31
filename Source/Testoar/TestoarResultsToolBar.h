@@ -57,10 +57,13 @@ public:
     };
 
     void testRunning();
-    void testPassed();
-    void testFailed();
+    void testsPassed();
+    void testsFailed();
 
-    void setText(String&);
+    void setTitle(String&);
+    void setCounts(String &counts);
+
+    void redrawTitle();
 
     //[/UserMethods]
 
@@ -74,6 +77,8 @@ private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     AwesomeButtonsLNF awesome;
     Colour backgroundColour;
+    String titleText;
+    String countsText;
     //[/UserVariables]
 
     //==============================================================================

@@ -14,9 +14,15 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
 
+    void testsPassed();
+    void testsFailed();
+
     void setTitle(String& s);
+    void setCounts(String &counts);
+
     void resultsArriving(std::string s);
     void errorsArriving(std::string s);
+
 
 private:
     //==============================================================================

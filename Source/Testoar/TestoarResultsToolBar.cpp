@@ -50,6 +50,8 @@ TestoarResultsToolBar::TestoarResultsToolBar ()
     //[UserPreSize]
     debugButton->setLookAndFeel(&awesome);
     debugButton->setButtonText(CharPointer_UTF16(L"\xf188"));
+    titleText = String("");
+    countsText = String("");
     //[/UserPreSize]
 
     setSize (600, 400);
@@ -120,19 +122,39 @@ void TestoarResultsToolBar::testRunning() {
     repaint();
 }
 
-void TestoarResultsToolBar::testPassed() {
+void TestoarResultsToolBar::testsPassed() {
     backgroundColour = Colours::darkgreen;
     repaint();
 }
 
-void TestoarResultsToolBar::testFailed() {
+void TestoarResultsToolBar::testsFailed() {
     backgroundColour = Colours::darkred;
     repaint();
 }
 
-void TestoarResultsToolBar::setText(String &s) {
-    textLabel->setText(s, dontSendNotification);
+void TestoarResultsToolBar::setTitle(String &s) {
+    titleText = s;
+    redrawTitle();
 }
+
+void TestoarResultsToolBar::setCounts(String& counts) {
+    countsText = counts;
+    redrawTitle();
+}
+
+void TestoarResultsToolBar::redrawTitle() {
+    String s;
+    if (countsText != "") {
+        s = titleText + " " + countsText;
+    } 
+    else {
+        s = titleText;
+    }
+
+    textLabel->setText(s, sendNotification);
+
+}
+
 //[/MiscUserCode]
 
 

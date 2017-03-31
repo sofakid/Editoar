@@ -30,7 +30,7 @@
 #include "../Utility/jucer_FilePathPropertyComponent.h"
 #include "jucer_TreeItemTypes.h"
 #include "../Testoar/TestoarTreeItemTypes.h"
-#include "../Testoar/TestoarResultsConsumer.h"
+#include "../Testoar/Testoar.h"
 
 #include "../Logging/SkoarLoggerComponent.h"
 
@@ -109,10 +109,10 @@ public:
         : TreePanelBase(&p, "settingsTreeState")
     {
         TestoarInitialize([&](std::string s) {
-            TestoarResultsConsumer::out(s);
+            Testoar::out(s);
 
         }, [&](std::string s) {
-            TestoarResultsConsumer::err(s);
+            Testoar::err(s);
 
         });
 

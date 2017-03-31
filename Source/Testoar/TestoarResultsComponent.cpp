@@ -1,6 +1,6 @@
 #include "TestoarResultsComponent.h"
 #include <regex>
-#include "TestoarResultsConsumer.h"
+#include "Testoar.h"
 
 //==============================================================================
 TestoarResultsComponent::TestoarResultsComponent ()
@@ -10,12 +10,12 @@ TestoarResultsComponent::TestoarResultsComponent ()
 
     setSize (600, 400);
 
-    TestoarResultsConsumer::registerUi(this);
+    Testoar::registerUi(this);
 }
 
 TestoarResultsComponent::~TestoarResultsComponent()
 {
-    TestoarResultsConsumer::unregisterUi(this);
+    Testoar::unregisterUi(this);
 
     toolbarComponent = nullptr;
     resultsPaneComponent = nullptr;
@@ -35,40 +35,29 @@ void TestoarResultsComponent::resized()
 
 //==============================================================================
 
+void TestoarResultsComponent::testsPassed() {
+    toolbarComponent->testsPassed();
+}
+
+void TestoarResultsComponent::testsFailed() {
+    toolbarComponent->testsFailed();
+}
+
+void TestoarResultsComponent::setCounts(String &counts) {
+    toolbarComponent->setCounts(counts);
+}
+
 void TestoarResultsComponent::setTitle(String& s) {
-    toolbarComponent->setText(s);
+    toolbarComponent->setTitle(s);
 }
 
 void TestoarResultsComponent::resultsArriving(std::string s) {
     auto str = String(s);
     resultsPaneComponent->insertText(str, Colours::azure);
-
-    std::smatch sm;
-    std::regex e("test cases.*(\\d+) passed[ |]*(\\d+)\\s*failed");
-
-    if (std::regex_search(s, sm, e) && sm.size() > 1) {
-        auto s_pass = sm.str(1);
-        auto s_fail = sm.str(2);
-
-        //auto i_pass = stoi(s_pass);
-        auto i_fail = stoi(s_fail);
-
-        if (i_fail == 0) {
-            toolbarComponent->testPassed();
-        }
-        else {
-            toolbarComponent->testFailed();
-        }
-    }
-    else {
-        std::regex e2("All tests passed");
-        if (std::regex_search(s, sm, e2)) {
-            toolbarComponent->testPassed();
-        }
-    }
 }
 
 void TestoarResultsComponent::errorsArriving(std::string s) {
     auto str = String(s);
-    resultsPaneComponent->insertText(str, Colours::indianred);
+    Colour red(255, 95, 70);
+    resultsPaneComponent->insertText(str, red);
 }

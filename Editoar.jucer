@@ -175,7 +175,8 @@
             file="../SkoarCpp/SkoarCpp/testing_util.cpp"/>
       <FILE id="rfF94R" name="testing_util.hpp" compile="0" resource="0"
             file="../SkoarCpp/SkoarCpp/testing_util.hpp"/>
-      <FILE id="RglWIP" name="testoar.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/testoar.cpp"/>
+      <FILE id="RglWIP" name="testoar_catch.cpp" compile="1" resource="0"
+            file="../SkoarCpp/SkoarCpp/testoar_catch.cpp"/>
       <FILE id="y3mr3H" name="testoar.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/testoar.hpp"/>
       <FILE id="ZtYbqK" name="testoar_streams.cpp" compile="1" resource="0"
             file="../SkoarCpp/SkoarCpp/testoar_streams.cpp"/>
@@ -194,10 +195,8 @@
             file="Source/Testoar/TestoarResultsComponent.cpp"/>
       <FILE id="SYWFOi" name="TestoarResultsComponent.h" compile="0" resource="0"
             file="Source/Testoar/TestoarResultsComponent.h"/>
-      <FILE id="gZM46v" name="TestoarResultsConsumer.cpp" compile="1" resource="0"
-            file="Source/Testoar/TestoarResultsConsumer.cpp"/>
-      <FILE id="APGyha" name="TestoarResultsConsumer.h" compile="0" resource="0"
-            file="Source/Testoar/TestoarResultsConsumer.h"/>
+      <FILE id="gZM46v" name="Testoar.cpp" compile="1" resource="0" file="Source/Testoar/Testoar.cpp"/>
+      <FILE id="APGyha" name="Testoar.h" compile="0" resource="0" file="Source/Testoar/Testoar.h"/>
       <FILE id="AU8y9X" name="TestoarResultsPane.cpp" compile="1" resource="0"
             file="Source/Testoar/TestoarResultsPane.cpp"/>
       <FILE id="egoUgb" name="TestoarResultsPane.h" compile="0" resource="0"

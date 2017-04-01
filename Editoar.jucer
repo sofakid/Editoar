@@ -213,6 +213,14 @@
             file="Source/Testoar/TestoarTreeItemTypes.h"/>
     </GROUP>
     <GROUP id="{3DA09ACA-AB9E-6AC4-1E50-FDD970C8CE14}" name="Debuggoar">
+      <FILE id="uldyZf" name="DebuggoarComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DebuggoarComponent.cpp"/>
+      <FILE id="OcsbtY" name="DebuggoarComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/DebuggoarComponent.h"/>
+      <FILE id="ExOvkN" name="DebuggoarTable.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DebuggoarTable.cpp"/>
+      <FILE id="BrpSkC" name="DebuggoarTable.h" compile="0" resource="0"
+            file="Source/Debuggoar/DebuggoarTable.h"/>
       <FILE id="aWqhMw" name="DebuggoarToolbar.cpp" compile="1" resource="0"
             file="Source/Debuggoar/DebuggoarToolbar.cpp"/>
       <FILE id="yyXuD1" name="DebuggoarToolbar.h" compile="0" resource="0"
@@ -223,6 +231,14 @@
       <FILE id="uIdfLo" name="Instrument.h" compile="0" resource="0" file="Source/Skoarish/Instrument.h"/>
       <FILE id="ZGflK2" name="Sample.cpp" compile="1" resource="0" file="Source/Skoarish/Sample.cpp"/>
       <FILE id="GgE7co" name="Sample.h" compile="0" resource="0" file="Source/Skoarish/Sample.h"/>
+      <FILE id="HVpBeq" name="SkoarNoadDataModel.cpp" compile="1" resource="0"
+            file="Source/Skoarish/SkoarNoadDataModel.cpp"/>
+      <FILE id="fMTdIp" name="SkoarNoadDataModel.h" compile="0" resource="0"
+            file="Source/Skoarish/SkoarNoadDataModel.h"/>
+      <FILE id="Bb8Ay1" name="SkoarpuscleDataModel.cpp" compile="1" resource="0"
+            file="Source/Skoarish/SkoarpuscleDataModel.cpp"/>
+      <FILE id="EEVqLF" name="SkoarpuscleDataModel.h" compile="0" resource="0"
+            file="Source/Skoarish/SkoarpuscleDataModel.h"/>
     </GROUP>
     <GROUP id="{ABA6593B-2CFE-2635-CE97-D2382C5CEC7B}" name="Samploar">
       <FILE id="e5QtMc" name="SamploarComponent.cpp" compile="1" resource="0"

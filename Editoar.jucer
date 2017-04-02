@@ -243,6 +243,10 @@
             file="Source/Skoarish/SkoarpuscleDataModel.cpp"/>
       <FILE id="EEVqLF" name="SkoarpuscleDataModel.h" compile="0" resource="0"
             file="Source/Skoarish/SkoarpuscleDataModel.h"/>
+      <FILE id="E0Nh3d" name="SkoarpuscleTableComponent.cpp" compile="1"
+            resource="0" file="Source/Skoarish/SkoarpuscleTableComponent.cpp"/>
+      <FILE id="uVIpUT" name="SkoarpuscleTableComponent.h" compile="0" resource="0"
+            file="Source/Skoarish/SkoarpuscleTableComponent.h"/>
     </GROUP>
     <GROUP id="{ABA6593B-2CFE-2635-CE97-D2382C5CEC7B}" name="Samploar">
       <FILE id="e5QtMc" name="SamploarComponent.cpp" compile="1" resource="0"

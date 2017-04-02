@@ -5,6 +5,12 @@
 class SkoarpuscleDataModel : public TableListBoxModel {
 
 public:
+
+    enum EColumn {
+        field = 1,
+        value
+    };
+
     //==============================================================================
     SkoarpuscleDataModel(SkoarpusclePtr);
 
@@ -154,5 +160,34 @@ public:
 private:
 
     SkoarpusclePtr skoarpuscle;
+
+    String type;
+    String val;
+    String impressionable;
+
+    String noatworthy;
+    String county;
+    String kind;
+
+    static const size_t names_n = 6;
+    const String names[names_n] = {
+        "type: ",
+        "val: ",
+        "impressionable: ",
+
+        "noatworthy: ",
+        "county: ",
+        "kind: "
+     
+    };
+
+    const String* vals[names_n] = {
+        &type,
+        &val,
+        &impressionable,
+        &noatworthy,
+        &county,
+        &kind
+    };
 
 };

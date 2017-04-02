@@ -1,7 +1,13 @@
 #include "SkoarpuscleDataModel.h"
 
 SkoarpuscleDataModel::SkoarpuscleDataModel(SkoarpusclePtr p) :
-    skoarpuscle(p)
+    skoarpuscle(p),
+    type(p->typeAsString().c_str()),
+    val(p->valAsString().c_str()),
+    impressionable(p->isImpressionable() ? "true" : "false"),
+    noatworthy(p->isNoatworthy() ? "true" : "false"),
+    county(p->isCounty() ? "true" : "false"),
+    kind(p->kind)
 {
 }
 
@@ -16,7 +22,7 @@ If the number of rows changes, you must call TableListBox::updateContent() to
 cause it to refresh the list.
 */
 int SkoarpuscleDataModel::getNumRows() {
-    return 0;
+    return names_n;
 }
 
 /** This must draw the background behind one of the rows in the table.
@@ -27,10 +33,16 @@ should fill the area specified by the width and height parameters.
 Note that the rowNumber value may be greater than the number of rows in your
 list, so be careful that you don't assume it's less than getNumRows().
 */
-void SkoarpuscleDataModel::paintRowBackground(Graphics&,
+void SkoarpuscleDataModel::paintRowBackground(
+    Graphics& g,
     int /*rowNumber*/,
-    int /*width*/, int /*height*/,
-    bool /*rowIsSelected*/) {
+    int width, int height,
+    bool rowIsSelected) {
+
+    Colour background = rowIsSelected ?
+        Colours::darkmagenta : Colours::black;
+
+    g.fillRect(0, 0, width, height);
 
 }
 
@@ -42,13 +54,35 @@ whose size is specified by (width, height).
 Note that the rowNumber value may be greater than the number of rows in your
 list, so be careful that you don't assume it's less than getNumRows().
 */
-void SkoarpuscleDataModel::paintCell(Graphics&,
-    int /*rowNumber*/,
-    int /*columnId*/,
-    int /*width*/, int /*height*/,
+void SkoarpuscleDataModel::paintCell(
+    Graphics& g,
+    int rowNumber,
+    int columnId,
+    int width, int height,
     bool /*rowIsSelected*/) {
 
+    if (rowNumber >= getNumRows()) {
+        return;
+    }
+
+    if (columnId == EColumn::field) {
+        g.setColour(Colours::grey);
+    }
+    else {
+        g.setColour(Colours::blanchedalmond);
+    }
+    Rectangle<int> r(0, 0, width, height);
+
+    if (columnId == EColumn::field) {
+        auto str = names[rowNumber];
+        g.drawText(str, r, Justification::right);
+    }
+    else {
+        auto str = vals[rowNumber];
+        g.drawText(*str, r, Justification::left);
+    }
 }
+
 
 //==============================================================================
 /** This is used to create or update a custom component to go in a cell.
@@ -127,8 +161,18 @@ Returning 0 means that the column shouldn't be changed.
 
 This is used by TableListBox::autoSizeColumn() and TableListBox::autoSizeAllColumns().
 */
-int SkoarpuscleDataModel::getColumnAutoSizeWidth(int /*columnId*/) {
-    return 0;
+int SkoarpuscleDataModel::getColumnAutoSizeWidth(int columnId) {
+    const int char_width = 7;
+    if (columnId == EColumn::field) {
+        return String("impressionable: ").length() * char_width;
+    }
+    int biggest = 0;
+    for (auto x : vals) {
+        auto w = x->length();
+        if (w > biggest)
+            biggest = w;
+    }
+    return biggest * char_width;
 }
 
 /** Returns a tooltip for a particular cell in the table. */

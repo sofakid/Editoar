@@ -34,6 +34,7 @@
 
 #include "../Logging/SkoarLoggerComponent.h"
 #include "../Skoarish/SkoarNoadTableComponent.h"
+#include "../Skoarish/SkoarpuscleTableComponent.h"
 
 
 
@@ -362,6 +363,7 @@ void ProjectContentComponent::createProjectTabs()
     treeViewTabs.addTab ("Config", tabColour, new ConfigTreePanel (*project), true);
     treeViewTabs.addTab ("Testing", tabColour, new TestoarTreePanel(*project), true);
     treeViewTabs.addTab ("Noad", tabColour, new SkoarNoadTableComponent(), true);
+    treeViewTabs.addTab ("Skoarpuscle", tabColour, new SkoarpuscleTableComponent(), true);
 
 }
 

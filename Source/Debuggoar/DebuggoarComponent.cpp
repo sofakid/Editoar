@@ -32,6 +32,7 @@ DebuggoarComponent::DebuggoarComponent ()
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
+    addAndMakeVisible (component = new DebuggoarToolbar());
 
     //[UserPreSize]
     //[/UserPreSize]
@@ -48,6 +49,7 @@ DebuggoarComponent::~DebuggoarComponent()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
+    component = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -71,6 +73,7 @@ void DebuggoarComponent::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
+    component->setBounds (0, 0, proportionOfWidth (1.0000f), 32);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -95,6 +98,9 @@ BEGIN_JUCER_METADATA
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
                  fixedSize="0" initialWidth="600" initialHeight="400">
   <BACKGROUND backgroundColour="ffffffff"/>
+  <JUCERCOMP name="" id="684f8771b3390c04" memberName="component" virtualName=""
+             explicitFocusOrder="0" pos="0 0 100% 32" sourceFile="DebuggoarToolbar.cpp"
+             constructorParams=""/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

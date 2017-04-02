@@ -1,10 +1,18 @@
 #pragma once
 #include "../jucer_Headers.h"
 #include "noad.hpp"
+#include "koar.hpp"
+#include "skoarpuscle.hpp"
 
 class SkoarNoadDataModel : public TableListBoxModel {
 
 public:
+
+    enum EColumn {
+        field = 1,
+        value
+    };
+
     //==============================================================================
     SkoarNoadDataModel(SkoarNoadPtr);
 
@@ -155,4 +163,50 @@ private:
 
     SkoarNoadPtr noad;
 
+    String name;
+    String address;
+    String parent;
+
+    String skoarpuscle;
+    String toke;
+    String offs;
+    
+    String size;
+    String voice;
+    String skoap;
+
+    static const size_t names_n = 9;
+    const String names[names_n] = {
+        "name: ",
+        "address: ",
+        "parent: ",
+        
+        "skoarpuscle: ",
+        "toke: ",
+        "offs: ",
+        
+        "size: ",
+        "voice: ",
+        "skoap: "
+    };
+    
+    const String* vals[names_n] = {
+        &name,
+        &address,
+        &parent,
+
+        &skoarpuscle,
+        &toke,
+        &offs,
+
+        &size,
+        &voice,
+        &skoap
+    };
+
+    OwnedArray<String> children;
+
+
 };
+
+

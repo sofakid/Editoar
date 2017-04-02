@@ -235,6 +235,10 @@
             file="Source/Skoarish/SkoarNoadDataModel.cpp"/>
       <FILE id="fMTdIp" name="SkoarNoadDataModel.h" compile="0" resource="0"
             file="Source/Skoarish/SkoarNoadDataModel.h"/>
+      <FILE id="SNj0ll" name="SkoarNoadTableComponent.cpp" compile="1" resource="0"
+            file="Source/Skoarish/SkoarNoadTableComponent.cpp"/>
+      <FILE id="UXqjPH" name="SkoarNoadTableComponent.h" compile="0" resource="0"
+            file="Source/Skoarish/SkoarNoadTableComponent.h"/>
       <FILE id="Bb8Ay1" name="SkoarpuscleDataModel.cpp" compile="1" resource="0"
             file="Source/Skoarish/SkoarpuscleDataModel.cpp"/>
       <FILE id="EEVqLF" name="SkoarpuscleDataModel.h" compile="0" resource="0"

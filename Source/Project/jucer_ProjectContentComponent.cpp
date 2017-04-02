@@ -33,6 +33,7 @@
 #include "../Testoar/Testoar.h"
 
 #include "../Logging/SkoarLoggerComponent.h"
+#include "../Skoarish/SkoarNoadTableComponent.h"
 
 
 
@@ -360,6 +361,7 @@ void ProjectContentComponent::createProjectTabs()
     treeViewTabs.addTab ("Files",  tabColour, new FileTreePanel (*project), true);
     treeViewTabs.addTab ("Config", tabColour, new ConfigTreePanel (*project), true);
     treeViewTabs.addTab ("Testing", tabColour, new TestoarTreePanel(*project), true);
+    treeViewTabs.addTab ("Noad", tabColour, new SkoarNoadTableComponent(), true);
 
 }
 

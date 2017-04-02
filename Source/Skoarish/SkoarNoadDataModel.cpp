@@ -2,8 +2,27 @@
 
 
 SkoarNoadDataModel::SkoarNoadDataModel(SkoarNoadPtr p) :
-    noad(p)
+    noad(p),
+    name(p->name.c_str()),
+    address(p->address.code().c_str()),
+    parent(p->parent == nullptr ? 
+        L"" : p->parent->name.c_str()),
+    skoarpuscle(p->skoarpuscle == nullptr ? 
+        L"" : p->skoarpuscle->asString().c_str()),
+    toke(p->toke == nullptr ? 
+        L"" : p->toke->lexeme.c_str()),
+    offs(p->offs),
+    size(p->size),
+    voice(p->voice == nullptr ?
+        L"" : p->voice->name.c_str()
+    ),
+    skoap(p->voice == nullptr ?
+        L"" : p->skoap->name.c_str()
+    )
 {
+    for (auto x : p->children) {
+        children.add(new String(x->name.c_str()));
+    }
 }
 
 SkoarNoadDataModel::~SkoarNoadDataModel() {
@@ -17,7 +36,8 @@ If the number of rows changes, you must call TableListBox::updateContent() to
 cause it to refresh the list.
 */
 int SkoarNoadDataModel::getNumRows() {
-    return 0;
+    int children_n = children.size();
+    return names_n + children_n;
 }
 
 /** This must draw the background behind one of the rows in the table.
@@ -28,11 +48,16 @@ should fill the area specified by the width and height parameters.
 Note that the rowNumber value may be greater than the number of rows in your
 list, so be careful that you don't assume it's less than getNumRows().
 */
-void SkoarNoadDataModel::paintRowBackground(Graphics&,
+void SkoarNoadDataModel::paintRowBackground(Graphics& g,
     int /*rowNumber*/,
-    int /*width*/, int /*height*/,
-    bool /*rowIsSelected*/) {
+    int width, int height,
+    bool rowIsSelected) {
 
+    Colour background = rowIsSelected ? 
+        Colours::darkmagenta : Colours::black;
+    
+    g.fillRect(0, 0, width, height);
+    
 }
 
 /** This must draw one of the cells.
@@ -43,12 +68,45 @@ whose size is specified by (width, height).
 Note that the rowNumber value may be greater than the number of rows in your
 list, so be careful that you don't assume it's less than getNumRows().
 */
-void SkoarNoadDataModel::paintCell(Graphics&,
-    int /*rowNumber*/,
-    int /*columnId*/,
-    int /*width*/, int /*height*/,
+void SkoarNoadDataModel::paintCell(Graphics& g,
+    int rowNumber,
+    int columnId,
+    int width, int height,
     bool /*rowIsSelected*/) {
 
+    if (rowNumber >= getNumRows()) {
+        return;
+    }
+
+    if (columnId == EColumn::field) {
+        g.setColour(Colours::grey);
+    } 
+    else {
+        g.setColour(Colours::blanchedalmond);
+    }
+    Rectangle<int> r(0, 0, width, height);
+
+    if (rowNumber < names_n) {
+        if (columnId == EColumn::field) {
+            auto str = names[rowNumber];
+            g.drawText(str, r, Justification::right);
+        }
+        else {
+            auto str = vals[rowNumber];
+            g.drawText(*str, r, Justification::left);
+        }
+    }
+    else {
+        int child_i = rowNumber - names_n;
+        if (columnId == EColumn::field) {
+            String str("children[");
+            str += child_i + "]";
+            g.drawText(str, r, Justification::right);
+        }
+        else {
+            g.drawText(*children[child_i], r, Justification::left);
+        }
+    }
 }
 
 //==============================================================================
@@ -128,8 +186,18 @@ Returning 0 means that the column shouldn't be changed.
 
 This is used by TableListBox::autoSizeColumn() and TableListBox::autoSizeAllColumns().
 */
-int SkoarNoadDataModel::getColumnAutoSizeWidth(int /*columnId*/) {
-    return 0;
+int SkoarNoadDataModel::getColumnAutoSizeWidth(int columnId) {
+    const int char_width = 7;
+    if (columnId == EColumn::field) {
+        return String("skoarpuscle: ").length() * char_width;
+    }
+    int biggest = 0;
+    for (auto x : vals) {
+        auto w = x->length();
+        if (w > biggest)
+            biggest = w;
+    }
+    return biggest * char_width;
 }
 
 /** Returns a tooltip for a particular cell in the table. */

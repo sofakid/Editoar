@@ -33,8 +33,8 @@
 #include "../Testoar/Testoar.h"
 
 #include "../Logging/SkoarLoggerComponent.h"
-#include "../Skoarish/SkoarNoadTableComponent.h"
-#include "../Skoarish/SkoarpuscleTableComponent.h"
+#include "../Skoarish/SkoarProjectionsComponent.h"
+#include "../Debuggoar/DebuggoarComponent.h"
 
 
 
@@ -362,8 +362,8 @@ void ProjectContentComponent::createProjectTabs()
     treeViewTabs.addTab ("Files",  tabColour, new FileTreePanel (*project), true);
     treeViewTabs.addTab ("Config", tabColour, new ConfigTreePanel (*project), true);
     treeViewTabs.addTab ("Testing", tabColour, new TestoarTreePanel(*project), true);
-    treeViewTabs.addTab ("Noad", tabColour, new SkoarNoadTableComponent(), true);
-    treeViewTabs.addTab ("Skoarpuscle", tabColour, new SkoarpuscleTableComponent(), true);
+    treeViewTabs.addTab ("Projections", tabColour, new SkoarProjectionsComponent(), true);
+
 
 }
 
@@ -501,9 +501,23 @@ bool ProjectContentComponent::setEditorComponent (Component* editor,
     if (editor != nullptr)
     {
         contentView = nullptr;
-        contentView = editor;
         currentDocument = doc;
-        addAndMakeVisible (editor);
+        auto sourceEditor = dynamic_cast<SourceCodeEditor*>(editor);
+        SkoarCodeEditorComponent* skoarEditor = nullptr;
+        if (sourceEditor != nullptr) {
+            skoarEditor = dynamic_cast<SkoarCodeEditorComponent*>(sourceEditor->editor.get());
+        }
+        
+        if (skoarEditor != nullptr) {
+            DebuggoarComponent *debuggoar = new DebuggoarComponent(skoarEditor);
+            contentView = debuggoar;
+            addAndMakeVisible(debuggoar);
+        }
+        else {
+            contentView = editor;
+            addAndMakeVisible(editor);
+
+        }
         resized();
 
         updateMainWindowTitle();

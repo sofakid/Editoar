@@ -6,7 +6,7 @@
 class SkoarNoadTableComponent : public Component {
 public:
 
-    SkoarNoadTableComponent();
+    SkoarNoadTableComponent(SkoarNoadPtr noad);
     ~SkoarNoadTableComponent();
 
 
@@ -17,4 +17,6 @@ private:
     ScopedPointer<GroupComponent> groupComponent;
     ScopedPointer<TableListBox> table;
     ScopedPointer<SkoarNoadDataModel> model;
+
+    SkoarNoadPtr noad;
 };

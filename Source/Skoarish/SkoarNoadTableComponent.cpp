@@ -1,26 +1,23 @@
 #include "SkoarNoadTableComponent.h"
 #include "../Logging/SkoarLogger.hpp"
 
-SkoarNoadTableComponent::SkoarNoadTableComponent() {
+SkoarNoadTableComponent::SkoarNoadTableComponent(SkoarNoadPtr p) :
+    noad(p)
+{
 
-    Skoar skoar (L")))", &SkoarLog);
-
-    addAndMakeVisible(groupComponent = new GroupComponent("groupy",
-        TRANS("Noad")));
+    addAndMakeVisible(groupComponent = new GroupComponent("groupy", TRANS("Noad")));
     groupComponent->setTextLabelPosition(Justification::centredLeft);
     groupComponent->setColour(GroupComponent::outlineColourId, Colour(0x66ffffff));
     groupComponent->setColour(GroupComponent::textColourId, Colours::white);
     
     addAndMakeVisible (table = new TableListBox("noadtable"));
 
-    
-
     TableHeaderComponent* header = new TableHeaderComponent();
     header->addColumn ("", SkoarNoadDataModel::EColumn::field, 30);
     header->addColumn ("", SkoarNoadDataModel::EColumn::value, 300);
     header->setColour (ListBox::backgroundColourId, Colours::darkgrey);
 
-    model = new SkoarNoadDataModel(skoar.tree);
+    model = new SkoarNoadDataModel(noad);
     table->setHeader (header);
     table->setHeaderHeight (0);
     table->setModel (model);
@@ -31,13 +28,13 @@ SkoarNoadTableComponent::SkoarNoadTableComponent() {
 }
 
 SkoarNoadTableComponent::~SkoarNoadTableComponent() {
+    noad = nullptr;
 }
 
 void SkoarNoadTableComponent::paint(Graphics& g)
 {
     g.fillAll(Colours::black);
 }
-
 
 void SkoarNoadTableComponent::resized()
 {

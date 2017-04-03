@@ -217,6 +217,10 @@
             file="Source/Debuggoar/DebuggoarComponent.cpp"/>
       <FILE id="OcsbtY" name="DebuggoarComponent.h" compile="0" resource="0"
             file="Source/Debuggoar/DebuggoarComponent.h"/>
+      <FILE id="n54kRV" name="DebuggoarPopupper.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DebuggoarPopupper.cpp"/>
+      <FILE id="LW6mca" name="DebuggoarPopupper.h" compile="0" resource="0"
+            file="Source/Debuggoar/DebuggoarPopupper.h"/>
       <FILE id="ExOvkN" name="DebuggoarTable.cpp" compile="1" resource="0"
             file="Source/Debuggoar/DebuggoarTable.cpp"/>
       <FILE id="BrpSkC" name="DebuggoarTable.h" compile="0" resource="0"
@@ -239,6 +243,14 @@
             file="Source/Skoarish/SkoarNoadTableComponent.cpp"/>
       <FILE id="UXqjPH" name="SkoarNoadTableComponent.h" compile="0" resource="0"
             file="Source/Skoarish/SkoarNoadTableComponent.h"/>
+      <FILE id="bjhsBy" name="SkoarpionComponent.cpp" compile="1" resource="0"
+            file="Source/Skoarish/SkoarpionComponent.cpp"/>
+      <FILE id="oq29Me" name="SkoarpionComponent.h" compile="0" resource="0"
+            file="Source/Skoarish/SkoarpionComponent.h"/>
+      <FILE id="AK6Kmv" name="SkoarProjectionsComponent.cpp" compile="1"
+            resource="0" file="Source/Skoarish/SkoarProjectionsComponent.cpp"/>
+      <FILE id="NqdruN" name="SkoarProjectionsComponent.h" compile="0" resource="0"
+            file="Source/Skoarish/SkoarProjectionsComponent.h"/>
       <FILE id="Bb8Ay1" name="SkoarpuscleDataModel.cpp" compile="1" resource="0"
             file="Source/Skoarish/SkoarpuscleDataModel.cpp"/>
       <FILE id="EEVqLF" name="SkoarpuscleDataModel.h" compile="0" resource="0"
@@ -247,6 +259,10 @@
             resource="0" file="Source/Skoarish/SkoarpuscleTableComponent.cpp"/>
       <FILE id="uVIpUT" name="SkoarpuscleTableComponent.h" compile="0" resource="0"
             file="Source/Skoarish/SkoarpuscleTableComponent.h"/>
+      <FILE id="rS5TnZ" name="SkoarTreeComponent.cpp" compile="1" resource="0"
+            file="Source/Skoarish/SkoarTreeComponent.cpp"/>
+      <FILE id="EWIL8O" name="SkoarTreeComponent.h" compile="0" resource="0"
+            file="Source/Skoarish/SkoarTreeComponent.h"/>
     </GROUP>
     <GROUP id="{ABA6593B-2CFE-2635-CE97-D2382C5CEC7B}" name="Samploar">
       <FILE id="e5QtMc" name="SamploarComponent.cpp" compile="1" resource="0"

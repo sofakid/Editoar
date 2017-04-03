@@ -2,9 +2,7 @@
 #include "SkoarpuscleTableComponent.h"
 #include "../Logging/SkoarLogger.hpp"
 
-SkoarpuscleTableComponent::SkoarpuscleTableComponent() {
-
-    Skoar skoar(L")))", &SkoarLog);
+SkoarpuscleTableComponent::SkoarpuscleTableComponent(SkoarpusclePtr p) {
 
     addAndMakeVisible(groupComponent = new GroupComponent("groupy",
         TRANS("Skoarpuscle")));
@@ -14,14 +12,12 @@ SkoarpuscleTableComponent::SkoarpuscleTableComponent() {
 
     addAndMakeVisible(table = new TableListBox("noadtable"));
 
-
-
     TableHeaderComponent* header = new TableHeaderComponent();
     header->addColumn("", SkoarpuscleDataModel::EColumn::field, 30);
     header->addColumn("", SkoarpuscleDataModel::EColumn::value, 300);
     header->setColour(ListBox::backgroundColourId, Colours::darkgrey);
 
-    model = new SkoarpuscleDataModel(skoar.tree->skoarpuscle);
+    model = new SkoarpuscleDataModel(p);
     table->setHeader(header);
     table->setHeaderHeight(0);
     table->setModel(model);
@@ -32,6 +28,9 @@ SkoarpuscleTableComponent::SkoarpuscleTableComponent() {
 }
 
 SkoarpuscleTableComponent::~SkoarpuscleTableComponent() {
+    model = nullptr;
+    table = nullptr;
+    groupComponent = nullptr;
 }
 
 void SkoarpuscleTableComponent::paint(Graphics& g)

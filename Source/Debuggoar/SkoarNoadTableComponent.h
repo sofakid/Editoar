@@ -9,9 +9,10 @@ public:
     SkoarNoadTableComponent(SkoarNoadPtr noad);
     ~SkoarNoadTableComponent();
 
-
     void paint(Graphics& g) override;
     void resized() override;
+
+    int getHeightHint();
 
 private:
     ScopedPointer<GroupComponent> groupComponent;

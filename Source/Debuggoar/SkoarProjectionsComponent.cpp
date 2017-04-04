@@ -22,9 +22,9 @@ SkoarProjectionsComponent::~SkoarProjectionsComponent() {
 }
 
 
-void SkoarProjectionsComponent::paint(Graphics& g)
+void SkoarProjectionsComponent::paint(Graphics&)
 {
-    g.fillAll(Colours::black);
+    //g.fillAll(Colours::black);
 }
 
 

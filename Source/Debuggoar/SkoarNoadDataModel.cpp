@@ -99,9 +99,11 @@ void SkoarNoadDataModel::paintCell(Graphics& g,
     else {
         int child_i = rowNumber - names_n;
         if (columnId == EColumn::field) {
-            String str("children[");
-            str += child_i + "]";
-            g.drawText(str, r, Justification::right);
+            String prefix("children[");
+            String index(child_i);
+            String suffix("]: ");
+            
+            g.drawText(prefix + index + suffix, r, Justification::right);
         }
         else {
             g.drawText(*children[child_i], r, Justification::left);

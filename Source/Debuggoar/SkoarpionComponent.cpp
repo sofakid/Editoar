@@ -18,7 +18,7 @@ SkoarpionComponent::~SkoarpionComponent() {
 
 void SkoarpionComponent::paint(Graphics& g)
 {
-    g.fillAll(Colours::yellow.withAlpha(0.5f));
+    //g.fillAll(Colours::yellow.withAlpha(0.5f));
 }
 
 void SkoarpionComponent::resized()

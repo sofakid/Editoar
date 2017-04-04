@@ -89,7 +89,7 @@ void SkoarNoadTreeItem::itemClicked(const MouseEvent&) {
     auto d = DebuggoarComponent::getDebuggoar();
 
     auto rUs = getItemPosition(false);
-    Point<int> p(rUs.getX(), rUs.getY());
+    Point<int> p(rUs.getRight() + 3, rUs.getY() + 96);
 
     d->popupNoad(noad, p);
 }
@@ -115,9 +115,10 @@ SkoarTreeComponent::SkoarTreeComponent(SkoarNoadPtr pRootNoad) :
 {
     rootItem = new SkoarNoadTreeItem(rootNoad, SkoarStyles::EStyle::skoarpion);
     
-    addAndMakeVisible(tree);
+    tree.setLookAndFeel(&LNF);
     tree.setDefaultOpenness(true);
     tree.setRootItem(rootItem);
+    addAndMakeVisible(tree);
 
     setSize(300, 400);
 }

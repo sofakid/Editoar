@@ -27,6 +27,11 @@ void DebuggoarPopupperComponent::popupNoad(SkoarNoadPtr p, Point<int> at) {
     noadPop = make_unique<SkoarNoadTableComponent>(p);
     addAndMakeVisible(noadPop.get());
     
+    auto hint = noadPop->getHeightHint();
+    auto rNoadPop = noadPop->getBounds();
+    rNoadPop.setHeight(hint);
+    noadPop->setBounds(rNoadPop);
+
     auto rLocal = getLocalBounds();
     auto rNoad = noadPop->getBoundsInParent();
     auto noadHeight = rNoad.getHeight();
@@ -49,3 +54,4 @@ void DebuggoarPopupperComponent::popupSkoarpuscle(SkoarpusclePtr p, Point<int>) 
     skoarpusclePop = make_unique<SkoarpuscleTableComponent>(p);
     addAndMakeVisible(skoarpusclePop.get());
 }
+

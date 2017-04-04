@@ -24,7 +24,6 @@ SkoarNoadTableComponent::SkoarNoadTableComponent(SkoarNoadPtr p) :
     table->autoSizeAllColumns();
 
     setSize(330, 200);
-
 }
 
 SkoarNoadTableComponent::~SkoarNoadTableComponent() {
@@ -36,11 +35,19 @@ void SkoarNoadTableComponent::paint(Graphics& g)
     g.fillAll(Colours::black);
 }
 
+#define FUDGE_FACTOR 39
+#define FUDGE_FACTOR_TRACTOR 6 
+int SkoarNoadTableComponent::getHeightHint() {
+    return model->getNumRows() * table->getRowHeight() + FUDGE_FACTOR + FUDGE_FACTOR_TRACTOR;
+}
+
 void SkoarNoadTableComponent::resized()
 {
-    auto th = model->getNumRows() * table->getRowHeight();
-    table->setBounds(20, 20, proportionOfWidth(1.0000f) - 34, th);
+    auto th = getHeightHint();
+    table->setBounds(20, 20, proportionOfWidth(1.0000f) - 34, th - FUDGE_FACTOR - FUDGE_FACTOR_TRACTOR);
     
-    groupComponent->setBounds(6, 0, proportionOfWidth(1.0000f) - 12, th + 39);
+    groupComponent->setBounds(6, 0, proportionOfWidth(1.0000f) - 12, th - FUDGE_FACTOR_TRACTOR);
 
 }
+#undef FUDGE_FACTOR
+#undef FUDGE_FACTOR_TRACTOR

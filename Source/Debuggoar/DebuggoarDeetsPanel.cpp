@@ -26,7 +26,7 @@ void DebuggoarDeets::loadSkoar(Skoar* skoar) {
 
 void DebuggoarDeets::paint(Graphics& g)
 {
-    g.fillAll(Colours::blue.withAlpha(0.5f));
+    g.fillAll(Colours::black);
 }
 
 void DebuggoarDeets::resized()

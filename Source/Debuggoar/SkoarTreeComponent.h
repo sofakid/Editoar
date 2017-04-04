@@ -51,6 +51,15 @@ public:
     void resized() override;
 
 private:
+
+    class : public LookAndFeel_V3 {
+    public:
+        int getTreeViewIndentSize(TreeView &) override {
+            return 8;
+        }
+
+    } LNF;
+
     SkoarNoadPtr rootNoad;
     TreeView tree;
     ScopedPointer<SkoarNoadTreeItem> rootItem;

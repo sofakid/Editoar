@@ -217,6 +217,10 @@
             file="Source/Debuggoar/DebuggoarComponent.cpp"/>
       <FILE id="OcsbtY" name="DebuggoarComponent.h" compile="0" resource="0"
             file="Source/Debuggoar/DebuggoarComponent.h"/>
+      <FILE id="TFWl4T" name="DebuggoarDeetsPanel.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DebuggoarDeetsPanel.cpp"/>
+      <FILE id="hiucLr" name="DebuggoarDeetsPanel.h" compile="0" resource="0"
+            file="Source/Debuggoar/DebuggoarDeetsPanel.h"/>
       <FILE id="n54kRV" name="DebuggoarPopupper.cpp" compile="1" resource="0"
             file="Source/Debuggoar/DebuggoarPopupper.cpp"/>
       <FILE id="LW6mca" name="DebuggoarPopupper.h" compile="0" resource="0"
@@ -229,40 +233,40 @@
             file="Source/Debuggoar/DebuggoarToolbar.cpp"/>
       <FILE id="yyXuD1" name="DebuggoarToolbar.h" compile="0" resource="0"
             file="Source/Debuggoar/DebuggoarToolbar.h"/>
+      <FILE id="Sjrq9P" name="SkoarNoadDataModel.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarNoadDataModel.cpp"/>
+      <FILE id="a3fMjY" name="SkoarNoadDataModel.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarNoadDataModel.h"/>
+      <FILE id="yOOBcG" name="SkoarNoadTableComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarNoadTableComponent.cpp"/>
+      <FILE id="rQxq82" name="SkoarNoadTableComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarNoadTableComponent.h"/>
+      <FILE id="ljGhxg" name="SkoarpionComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarpionComponent.cpp"/>
+      <FILE id="Qx6yOT" name="SkoarpionComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarpionComponent.h"/>
+      <FILE id="Ds9KEy" name="SkoarProjectionsComponent.cpp" compile="1"
+            resource="0" file="Source/Debuggoar/SkoarProjectionsComponent.cpp"/>
+      <FILE id="EGibSJ" name="SkoarProjectionsComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarProjectionsComponent.h"/>
+      <FILE id="Z00ABd" name="SkoarpuscleDataModel.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarpuscleDataModel.cpp"/>
+      <FILE id="EYgVZM" name="SkoarpuscleDataModel.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarpuscleDataModel.h"/>
+      <FILE id="qwQ56A" name="SkoarpuscleTableComponent.cpp" compile="1"
+            resource="0" file="Source/Debuggoar/SkoarpuscleTableComponent.cpp"/>
+      <FILE id="eECtLN" name="SkoarpuscleTableComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarpuscleTableComponent.h"/>
+      <FILE id="WuDDqC" name="SkoarTreeComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarTreeComponent.cpp"/>
+      <FILE id="H53OTk" name="SkoarTreeComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarTreeComponent.h"/>
     </GROUP>
     <GROUP id="{E8AAD96C-9F82-4ED5-DE3C-7D6A690CE3C0}" name="Skoarish">
       <FILE id="b6Jlvu" name="Instrument.cpp" compile="1" resource="0" file="Source/Skoarish/Instrument.cpp"/>
       <FILE id="uIdfLo" name="Instrument.h" compile="0" resource="0" file="Source/Skoarish/Instrument.h"/>
       <FILE id="ZGflK2" name="Sample.cpp" compile="1" resource="0" file="Source/Skoarish/Sample.cpp"/>
       <FILE id="GgE7co" name="Sample.h" compile="0" resource="0" file="Source/Skoarish/Sample.h"/>
-      <FILE id="HVpBeq" name="SkoarNoadDataModel.cpp" compile="1" resource="0"
-            file="Source/Skoarish/SkoarNoadDataModel.cpp"/>
-      <FILE id="fMTdIp" name="SkoarNoadDataModel.h" compile="0" resource="0"
-            file="Source/Skoarish/SkoarNoadDataModel.h"/>
-      <FILE id="SNj0ll" name="SkoarNoadTableComponent.cpp" compile="1" resource="0"
-            file="Source/Skoarish/SkoarNoadTableComponent.cpp"/>
-      <FILE id="UXqjPH" name="SkoarNoadTableComponent.h" compile="0" resource="0"
-            file="Source/Skoarish/SkoarNoadTableComponent.h"/>
-      <FILE id="bjhsBy" name="SkoarpionComponent.cpp" compile="1" resource="0"
-            file="Source/Skoarish/SkoarpionComponent.cpp"/>
-      <FILE id="oq29Me" name="SkoarpionComponent.h" compile="0" resource="0"
-            file="Source/Skoarish/SkoarpionComponent.h"/>
-      <FILE id="AK6Kmv" name="SkoarProjectionsComponent.cpp" compile="1"
-            resource="0" file="Source/Skoarish/SkoarProjectionsComponent.cpp"/>
-      <FILE id="NqdruN" name="SkoarProjectionsComponent.h" compile="0" resource="0"
-            file="Source/Skoarish/SkoarProjectionsComponent.h"/>
-      <FILE id="Bb8Ay1" name="SkoarpuscleDataModel.cpp" compile="1" resource="0"
-            file="Source/Skoarish/SkoarpuscleDataModel.cpp"/>
-      <FILE id="EEVqLF" name="SkoarpuscleDataModel.h" compile="0" resource="0"
-            file="Source/Skoarish/SkoarpuscleDataModel.h"/>
-      <FILE id="E0Nh3d" name="SkoarpuscleTableComponent.cpp" compile="1"
-            resource="0" file="Source/Skoarish/SkoarpuscleTableComponent.cpp"/>
-      <FILE id="uVIpUT" name="SkoarpuscleTableComponent.h" compile="0" resource="0"
-            file="Source/Skoarish/SkoarpuscleTableComponent.h"/>
-      <FILE id="rS5TnZ" name="SkoarTreeComponent.cpp" compile="1" resource="0"
-            file="Source/Skoarish/SkoarTreeComponent.cpp"/>
-      <FILE id="EWIL8O" name="SkoarTreeComponent.h" compile="0" resource="0"
-            file="Source/Skoarish/SkoarTreeComponent.h"/>
     </GROUP>
     <GROUP id="{ABA6593B-2CFE-2635-CE97-D2382C5CEC7B}" name="Samploar">
       <FILE id="e5QtMc" name="SamploarComponent.cpp" compile="1" resource="0"

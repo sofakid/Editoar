@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Skoarish/SkoarNoadTableComponent.h"
-#include "../Skoarish/SkoarpuscleTableComponent.h"
+#include "SkoarNoadTableComponent.h"
+#include "SkoarpuscleTableComponent.h"
 
 class DebuggoarPopupperComponent : public Component {
 public:

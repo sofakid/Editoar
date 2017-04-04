@@ -6,7 +6,7 @@
 
 class SkoarProjectionsComponent : public Component {
 public:
-    SkoarProjectionsComponent();
+    SkoarProjectionsComponent(ListOfSkoarpionProjectionsPtr);
     ~SkoarProjectionsComponent();
 
     void paint(Graphics& g) override;
@@ -15,6 +15,8 @@ public:
 private:
 
     ScopedPointer<TabbedComponent> tabby;
+
+    ListOfSkoarpionProjectionsPtr projections;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SkoarProjectionsComponent)
 

@@ -1,18 +1,31 @@
 #include "DebuggoarComponent.h"
+#include "../Logging/SkoarLogger.hpp"
 
 //==============================================================================
+DebuggoarComponent* instance = nullptr;
+
+DebuggoarComponent* DebuggoarComponent::getDebuggoar() {
+    return instance;
+}
 
 DebuggoarComponent::DebuggoarComponent(SkoarCodeEditorComponent *ed) :
     editor(ed),
     toolbar(new DebuggoarToolbar()),
     popupper(new DebuggoarPopupperComponent()),
-    projections(nullptr)
+    deets(new DebuggoarDeets())
 {
     addAndMakeVisible(toolbar);
     addAndMakeVisible(editor);
-    addAndMakeVisible(popupper);
+    addAndMakeVisible(deets);
+
+    addChildComponent(popupper);
 
     setSize(600, 400);
+
+    instance = this;
+
+    Skoar sk(editor->getDocument().getAllContent().toWideCharPointer(), &SkoarLog);
+    deets->loadSkoar(&sk);
 }
 
 DebuggoarComponent::~DebuggoarComponent()
@@ -20,7 +33,8 @@ DebuggoarComponent::~DebuggoarComponent()
     toolbar = nullptr;
     editor = nullptr;
     popupper = nullptr;
-    projections = nullptr;
+    deets = nullptr;
+    instance = nullptr;
 }
 
 //==============================================================================
@@ -36,9 +50,18 @@ void DebuggoarComponent::resized()
 
     toolbar->setBounds (r.removeFromTop(32));
 
-    if (projections != nullptr && projections->isVisible()) {
-        projections->setBounds(r.removeFromLeft(300));
+    if (deets != nullptr && deets->isVisible()) {
+        deets->setBounds(r.removeFromLeft(300));
     }
 
     editor->setBounds(r);
+}
+
+void DebuggoarComponent::popupNoad(SkoarNoadPtr p, Point<int> pt) {
+    popupper->popupNoad(p, pt);
+
+}
+
+void DebuggoarComponent::popupSkoarpuscle(SkoarpusclePtr p, Point<int> pt) {
+    popupper->popupSkoarpuscle(p, pt);
 }

@@ -4,6 +4,9 @@
 #include "styles.hpp"
 #include "SkoarNoadTableComponent.h"
 
+
+#include "DebuggoarComponent.h"
+
 // we need a reference to editor if we want to get the configured colours, todo.
 const Colour skoar_colours[41] = {
     Colour(0xffffffff),
@@ -77,71 +80,51 @@ void SkoarNoadTreeItem::paintItem(Graphics& g,
 ) {
     Rectangle<int> r(0, 0, width, height);
     String str(noad->name.c_str());
-    String suf(SkoarStyles::to_int(style));
-    String mid(" ");
-    String noadstyle(SkoarStyles::to_int(noad->style));
-
 
     g.setColour(colour);
-    g.drawText(str + mid + suf + mid + noadstyle, r, Justification::left);
-
-
+    g.drawText(str, r, Justification::left);
 }
 
-void SkoarNoadTreeItem::itemClicked(const MouseEvent& e) {
-    auto x = new SkoarNoadTableComponent(noad);
-    x->setAlwaysOnTop(true);
-    auto window = TopLevelWindow::getActiveTopLevelWindow();
+void SkoarNoadTreeItem::itemClicked(const MouseEvent&) {
+    auto d = DebuggoarComponent::getDebuggoar();
 
-    window->addAndMakeVisible(x);
+    auto rUs = getItemPosition(false);
+    Point<int> p(rUs.getX(), rUs.getY());
 
+    d->popupNoad(noad, p);
 }
+
+void SkoarNoadTreeItem::itemOpennessChanged(bool isNowOpen) {
+
+    if (isNowOpen) {
+        for (auto x : noad->children) {
+            addSubItem(new SkoarNoadTreeItem(x, style));
+        }
+    } 
+    else {
+        clearSubItems();
+    }
+}
+
 
 // ==== SkoarTreeComponent ==========================================================================
 SkoarTreeComponent::SkoarTreeComponent(SkoarNoadPtr pRootNoad) :
     rootNoad(pRootNoad),
     rootItem(nullptr),
-    tree(new TreeView())
+    tree()
 {
-    std::list<SkoarStyles::EStyle> style_stack;
-    auto current_style = SkoarStyles::EStyle::skoarpion;
-    style_stack.push_back(current_style);
-
-    rootItem = new SkoarNoadTreeItem(rootNoad, current_style);
+    rootItem = new SkoarNoadTreeItem(rootNoad, SkoarStyles::EStyle::skoarpion);
     
-    std::list<SkoarNoadTreeItem*> stack;
-    SkoarNoadTreeItem* current = &*rootItem;
-    stack.push_back(current);
-
     addAndMakeVisible(tree);
-    tree->setDefaultOpenness(true);
-    tree->setRootItem(rootItem);
-    
-    auto& delThese = deleteTheseLater;
+    tree.setDefaultOpenness(true);
+    tree.setRootItem(rootItem);
 
-    SkoarNoad::inorderBeforeAfter(rootNoad, [&](SkoarNoadPtr p) {
-        auto x = new SkoarNoadTreeItem(p, current_style);
-        //delThese.add(x);
-        current->addSubItem(x);
-        
-        stack.push_back(current);
-        current = x;
-
-        style_stack.push_back(current_style);
-        current_style = x->style;
-    },
-    [&](SkoarNoadPtr p) {
-        stack.pop_back();
-        current = stack.back();
-
-        style_stack.pop_back();
-        current_style = style_stack.back();
-
-    });
+    setSize(300, 400);
 }
 
 SkoarTreeComponent::~SkoarTreeComponent()
 {
+    rootItem->clearSubItems();
     rootNoad = nullptr;
 }
 
@@ -152,6 +135,6 @@ void SkoarTreeComponent::paint (Graphics&)
 void SkoarTreeComponent::resized()
 {
     auto r = getLocalBounds();
-    tree->setBounds(r);
+    tree.setBounds(r);
 }
 

@@ -1,6 +1,9 @@
 #pragma once
 #include "../jucer_Headers.h"
-#include "skoar_public.hpp"
+#include "skoar.hpp"
+#include "noad.hpp"
+#include "styles.hpp"
+#include "spells.hpp"
 #include "../Code Editor/SkoarCodeTokeniser.hpp"
 #include "../Code Editor/SkoarCodeEditor.hpp"
 
@@ -14,6 +17,7 @@ public:
 
     bool canBeSelected() const override { return true; }
     bool mightContainSubItems() override { return true; }
+    void itemOpennessChanged(bool isNowOpen) override;
 
     void paintItem(Graphics&, int, int) override;
 
@@ -48,10 +52,8 @@ public:
 
 private:
     SkoarNoadPtr rootNoad;
-    ScopedPointer<TreeView> tree;
+    TreeView tree;
     ScopedPointer<SkoarNoadTreeItem> rootItem;
-
-    OwnedArray<SkoarNoadTreeItem> deleteTheseLater;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SkoarTreeComponent)
 };

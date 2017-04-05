@@ -49,7 +49,7 @@ public:
 
     void paint (Graphics&) override;
     void resized() override;
-
+    
 private:
 
     class : public LookAndFeel_V3 {

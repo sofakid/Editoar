@@ -11,8 +11,6 @@ SkoarNoadDataModel::SkoarNoadDataModel(SkoarNoadPtr p) :
         L"" : p->skoarpuscle->asString().c_str()),
     toke(p->toke == nullptr ? 
         L"" : p->toke->lexeme.c_str()),
-    offs(p->offs),
-    size(p->size),
     voice(p->voice == nullptr ?
         L"" : p->voice->name.c_str()
     ),

@@ -12,6 +12,8 @@ public:
     void popupNoad(SkoarNoadPtr, Point<int>);
     void popupSkoarpuscle(SkoarpusclePtr, Point<int>);
 
+    void unpop();
+
     void paint(Graphics& g) override;
     void resized() override;
 

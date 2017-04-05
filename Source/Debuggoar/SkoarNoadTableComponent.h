@@ -14,6 +14,8 @@ public:
 
     int getHeightHint();
 
+    void mouseDown(const MouseEvent& /*event*/) override;
+
 private:
     ScopedPointer<GroupComponent> groupComponent;
     ScopedPointer<TableListBox> table;

@@ -24,8 +24,8 @@ DebuggoarComponent::DebuggoarComponent(SkoarCodeEditorComponent *ed) :
 
     instance = this;
 
-    Skoar sk(editor->getDocument().getAllContent().toWideCharPointer(), &SkoarLog);
-    deets->loadSkoar(&sk);
+    skoar = new Skoar(editor->getDocument().getAllContent().toWideCharPointer(), &SkoarLog);
+    deets->loadSkoar(skoar);
 }
 
 DebuggoarComponent::~DebuggoarComponent()
@@ -35,6 +35,7 @@ DebuggoarComponent::~DebuggoarComponent()
     popupper = nullptr;
     deets = nullptr;
     instance = nullptr;
+    skoar = nullptr;
 }
 
 //==============================================================================
@@ -64,4 +65,8 @@ void DebuggoarComponent::popupNoad(SkoarNoadPtr p, Point<int> pt) {
 
 void DebuggoarComponent::popupSkoarpuscle(SkoarpusclePtr p, Point<int> pt) {
     popupper->popupSkoarpuscle(p, pt);
+}
+
+void DebuggoarComponent::unpop() {
+    popupper->unpop();
 }

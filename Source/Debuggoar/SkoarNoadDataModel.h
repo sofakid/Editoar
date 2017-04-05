@@ -169,13 +169,11 @@ private:
 
     String skoarpuscle;
     String toke;
-    String offs;
-    
-    String size;
     String voice;
+    
     String skoap;
 
-    static const size_t names_n = 9;
+    static const size_t names_n = 7;
     const String names[names_n] = {
         "name: ",
         "address: ",
@@ -183,10 +181,8 @@ private:
         
         "skoarpuscle: ",
         "toke: ",
-        "offs: ",
-        
-        "size: ",
         "voice: ",
+        
         "skoap: "
     };
     
@@ -197,15 +193,12 @@ private:
 
         &skoarpuscle,
         &toke,
-        &offs,
-
-        &size,
         &voice,
+        
         &skoap
     };
 
     OwnedArray<String> children;
-
 
 };
 

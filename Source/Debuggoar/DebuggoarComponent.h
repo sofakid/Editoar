@@ -25,6 +25,8 @@ public:
     void popupNoad(SkoarNoadPtr, Point<int>);
     void popupSkoarpuscle(SkoarpusclePtr, Point<int>);
 
+    void unpop();
+
 private:
     ScopedPointer<DebuggoarPopupperComponent> popupper;
     ScopedPointer<SkoarCodeEditorComponent> editor;
@@ -32,7 +34,7 @@ private:
     ScopedPointer<DebuggoarToolbar> toolbar;
     ScopedPointer<DebuggoarDeets> deets;
 
-
+    ScopedPointer<Skoar> skoar;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DebuggoarComponent)

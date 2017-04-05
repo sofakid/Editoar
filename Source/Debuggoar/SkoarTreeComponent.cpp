@@ -88,8 +88,8 @@ void SkoarNoadTreeItem::paintItem(Graphics& g,
 void SkoarNoadTreeItem::itemClicked(const MouseEvent&) {
     auto d = DebuggoarComponent::getDebuggoar();
 
-    auto rUs = getItemPosition(false);
-    Point<int> p(rUs.getRight() + 3, rUs.getY() + 96);
+    auto rUs = getItemPosition(true);
+    Point<int> p(rUs.getRight() + 11, rUs.getY() + 92);
 
     d->popupNoad(noad, p);
 }
@@ -107,6 +107,7 @@ void SkoarNoadTreeItem::itemOpennessChanged(bool isNowOpen) {
 }
 
 
+
 // ==== SkoarTreeComponent ==========================================================================
 SkoarTreeComponent::SkoarTreeComponent(SkoarNoadPtr pRootNoad) :
     rootNoad(pRootNoad),
@@ -121,6 +122,7 @@ SkoarTreeComponent::SkoarTreeComponent(SkoarNoadPtr pRootNoad) :
     addAndMakeVisible(tree);
 
     setSize(300, 400);
+
 }
 
 SkoarTreeComponent::~SkoarTreeComponent()
@@ -138,4 +140,3 @@ void SkoarTreeComponent::resized()
     auto r = getLocalBounds();
     tree.setBounds(r);
 }
-

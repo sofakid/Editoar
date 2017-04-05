@@ -1,5 +1,8 @@
 #include "SkoarNoadTableComponent.h"
 #include "../Logging/SkoarLogger.hpp"
+#include "SkoarNoadDataModel.h"
+#include "DebuggoarComponent.h"
+
 
 SkoarNoadTableComponent::SkoarNoadTableComponent(SkoarNoadPtr p) :
     noad(p)
@@ -51,3 +54,9 @@ void SkoarNoadTableComponent::resized()
 }
 #undef FUDGE_FACTOR
 #undef FUDGE_FACTOR_TRACTOR
+
+
+void SkoarNoadTableComponent::mouseDown(const MouseEvent& /*event*/) {
+    DebuggoarComponent::getDebuggoar()->unpop();
+}
+

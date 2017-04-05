@@ -2,14 +2,16 @@
 
 DebuggoarPopupperComponent::DebuggoarPopupperComponent() {
     setAlwaysOnTop(true);
+    // catch clicks on children, but let other pass through.
+    setInterceptsMouseClicks(false, true);
 }
 
 DebuggoarPopupperComponent::~DebuggoarPopupperComponent() {
 }
 
-void DebuggoarPopupperComponent::paint(Graphics& g)
+void DebuggoarPopupperComponent::paint(Graphics&)
 {
-    g.fillAll(Colours::green.withAlpha(0.5f));
+    //g.fillAll(Colours::green.withAlpha(0.5f));
 }
 
 void DebuggoarPopupperComponent::resized()
@@ -55,3 +57,8 @@ void DebuggoarPopupperComponent::popupSkoarpuscle(SkoarpusclePtr p, Point<int>) 
     addAndMakeVisible(skoarpusclePop.get());
 }
 
+void DebuggoarPopupperComponent::unpop() {
+    setVisible(false);
+    noadPop = nullptr;
+    skoarpusclePop = nullptr;
+}

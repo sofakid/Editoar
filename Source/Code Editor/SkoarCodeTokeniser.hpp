@@ -1,18 +1,8 @@
-/*
-  ==============================================================================
-
-    SkoarCodeTokenizer.h
-    Created: 6 Mar 2017 10:51:26pm
-    Author:  lucas
-
-  ==============================================================================
-*/
-
-#ifndef SKOARCODETOKENIZER_H_INCLUDED
-#define SKOARCODETOKENIZER_H_INCLUDED
+#pragma once
 
 #include "../Application/jucer_CommonHeaders.h"
 #include "skoar_public.hpp"
+#include "../Logging/SkoarLogger.hpp"
 
 class SkoarCodeTokeniser : public CodeTokeniser
 {
@@ -92,5 +82,3 @@ private:
 
 	JUCE_LEAK_DETECTOR(SkoarCodeTokeniser)
 };
-
-#endif  // SKOARCODETOKENIZER_H_INCLUDED

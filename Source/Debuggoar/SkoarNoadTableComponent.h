@@ -13,8 +13,9 @@ public:
     void resized() override;
 
     int getHeightHint();
+    int getWidthHint();
 
-    void mouseDown(const MouseEvent& /*event*/) override;
+    Rectangle<int> getBoundsHint();
 
 private:
     ScopedPointer<GroupComponent> groupComponent;

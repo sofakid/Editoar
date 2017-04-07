@@ -7,7 +7,6 @@
 SkoarNoadTableComponent::SkoarNoadTableComponent(SkoarNoadPtr p) :
     noad(p)
 {
-
     addAndMakeVisible(groupComponent = new GroupComponent("groupy", TRANS("Noad")));
     groupComponent->setTextLabelPosition(Justification::centredLeft);
     groupComponent->setColour(GroupComponent::outlineColourId, Colour(0x66ffffff));
@@ -39,24 +38,27 @@ void SkoarNoadTableComponent::paint(Graphics& g)
 }
 
 #define FUDGE_FACTOR 39
-#define FUDGE_FACTOR_TRACTOR 6 
+#define FUDGE_FACTOR_TRACTOR 12 
 int SkoarNoadTableComponent::getHeightHint() {
     return model->getNumRows() * table->getRowHeight() + FUDGE_FACTOR + FUDGE_FACTOR_TRACTOR;
 }
 
+int SkoarNoadTableComponent::getWidthHint() {
+    table->autoSizeAllColumns();
+    return table->getWidth() + FUDGE_FACTOR_TRACTOR;
+}
+
+Rectangle<int> SkoarNoadTableComponent::getBoundsHint() {
+    return Rectangle<int>(0, 0, getWidthHint(), getHeightHint());
+}
+
 void SkoarNoadTableComponent::resized()
 {
-    auto th = getHeightHint();
-    table->setBounds(20, 20, proportionOfWidth(1.0000f) - 34, th - FUDGE_FACTOR - FUDGE_FACTOR_TRACTOR);
+    auto r = getLocalBounds();
+    table->setBounds(20, 20, r.getWidth() - FUDGE_FACTOR, r.getHeight() - FUDGE_FACTOR - FUDGE_FACTOR_TRACTOR);
     
-    groupComponent->setBounds(6, 0, proportionOfWidth(1.0000f) - 12, th - FUDGE_FACTOR_TRACTOR);
-
+    groupComponent->setBounds(FUDGE_FACTOR_TRACTOR, 0, r.getWidth() - 2 * FUDGE_FACTOR_TRACTOR, r.getHeight() - FUDGE_FACTOR_TRACTOR);
 }
-#undef FUDGE_FACTOR
 #undef FUDGE_FACTOR_TRACTOR
-
-
-void SkoarNoadTableComponent::mouseDown(const MouseEvent& /*event*/) {
-    DebuggoarComponent::getDebuggoar()->unpop();
-}
+#undef FUDGE_FACTOR
 

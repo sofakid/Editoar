@@ -1,27 +1,21 @@
 #include "DebuggoarDeetsPanel.h"
-
 #include "SkoarpionComponent.h"
 
-DebuggoarDeets::DebuggoarDeets() :
-    skoarpionsTabs(nullptr)
+DebuggoarDeets* instance = nullptr;
+
+// static
+DebuggoarDeets* DebuggoarDeets::getInstance() {
+    return instance;
+}
+
+DebuggoarDeets::DebuggoarDeets()
 {
+    instance = this;
     setSize(300, 400);
 }
 
 DebuggoarDeets::~DebuggoarDeets() {
-}
-
-void DebuggoarDeets::loadSkoar(Skoar* skoar) {
-    skoarpionsTabs = new TabbedComponent(TabbedButtonBar::Orientation::TabsAtTop);
-    addAndMakeVisible(skoarpionsTabs);
-    auto& skoarpions = skoar->skoarpions;
-
-    for (auto skoarpion : skoarpions) {
-        skoarpionsTabs->addTab(skoarpion->name.c_str(),
-            Colours::black,
-            new SkoarpionComponent(skoarpion),
-            true /*deleteWhenNotNeeded*/);
-    }
+    instance = nullptr;
 }
 
 void DebuggoarDeets::paint(Graphics& g)
@@ -31,8 +25,46 @@ void DebuggoarDeets::paint(Graphics& g)
 
 void DebuggoarDeets::resized()
 {
-    if (skoarpionsTabs != nullptr) {
-        skoarpionsTabs->setBounds(getLocalBounds());
+    auto r = getLocalBounds();
+
+    if (noadComponent != nullptr) {
+
+        auto hint = noadComponent->getBoundsHint();
+        auto h = min(r.getHeight(), hint.getHeight());
+
+        noadComponent->setBounds(0, 0, hint.getWidth(), h);
 
     }
+
+    if (skoarpuscleComponent != nullptr) {
+        int x = 0;
+        if (noadComponent != nullptr) {
+            x = noadComponent->getWidth();
+        }
+        
+        auto hint = skoarpuscleComponent->getBoundsHint();
+        auto h = min(r.getHeight(), hint.getHeight());
+
+        skoarpuscleComponent->setBounds(x, 0, hint.getWidth(), h);
+    }
+}
+
+void DebuggoarDeets::showNoad(SkoarNoadPtr noad) {
+    if (noadComponent != nullptr) {
+        removeChildComponent(noadComponent.get());
+    }
+
+    noadComponent = make_unique<SkoarNoadTableComponent>(noad);
+    addAndMakeVisible(noadComponent.get());
+    resized();
+}
+
+void DebuggoarDeets::showSkoarpuscle(SkoarpusclePtr skrp) {
+    if (skoarpuscleComponent != nullptr) {
+        removeChildComponent(skoarpuscleComponent.get());
+    }
+    skoarpuscleComponent = make_unique<SkoarpuscleTableComponent>(skrp);
+    addAndMakeVisible(skoarpuscleComponent.get());
+    resized();
+
 }

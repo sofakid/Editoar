@@ -22,18 +22,9 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
 
-    void popupNoad(SkoarNoadPtr, Point<int>);
-    void popupSkoarpuscle(SkoarpusclePtr, Point<int>);
-
-    void unpop();
-
 private:
-    ScopedPointer<DebuggoarPopupperComponent> popupper;
     ScopedPointer<SkoarCodeEditorComponent> editor;
-
     ScopedPointer<DebuggoarToolbar> toolbar;
-    ScopedPointer<DebuggoarDeets> deets;
-
     ScopedPointer<Skoar> skoar;
 
     //==============================================================================

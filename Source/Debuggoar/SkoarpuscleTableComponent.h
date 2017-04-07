@@ -10,9 +10,12 @@ public:
     SkoarpuscleTableComponent(SkoarpusclePtr p);
     ~SkoarpuscleTableComponent();
 
-
     void paint(Graphics& g) override;
     void resized() override;
+
+    int getHeightHint();
+    int getWidthHint();
+    Rectangle<int> getBoundsHint();
 
 private:
     ScopedPointer<GroupComponent> groupComponent;

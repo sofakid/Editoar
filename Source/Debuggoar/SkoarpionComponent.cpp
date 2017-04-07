@@ -16,7 +16,7 @@ SkoarpionComponent::~SkoarpionComponent() {
     projections = nullptr;
 }
 
-void SkoarpionComponent::paint(Graphics& g)
+void SkoarpionComponent::paint(Graphics&)
 {
     //g.fillAll(Colours::yellow.withAlpha(0.5f));
 }

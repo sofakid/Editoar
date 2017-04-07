@@ -4,8 +4,8 @@
 #include "styles.hpp"
 #include "SkoarNoadTableComponent.h"
 
-
 #include "DebuggoarComponent.h"
+#include "DebuggoarDeetsPanel.h"
 
 // we need a reference to editor if we want to get the configured colours, todo.
 const Colour skoar_colours[41] = {
@@ -71,6 +71,7 @@ SkoarNoadTreeItem::SkoarNoadTreeItem(
 
 SkoarNoadTreeItem::~SkoarNoadTreeItem()
 {
+    clearSubItems();
     noad = nullptr;
 }
 
@@ -86,12 +87,21 @@ void SkoarNoadTreeItem::paintItem(Graphics& g,
 }
 
 void SkoarNoadTreeItem::itemClicked(const MouseEvent&) {
-    auto d = DebuggoarComponent::getDebuggoar();
+    /*auto d = DebuggoarComponent::getDebuggoar();
 
     auto rUs = getItemPosition(true);
     Point<int> p(rUs.getRight() + 11, rUs.getY() + 92);
 
-    d->popupNoad(noad, p);
+    d->popupNoad(noad, p);*/
+}
+
+void SkoarNoadTreeItem::itemSelectionChanged(bool isNowSelected) {
+    if (isNowSelected) {
+        auto d = DebuggoarDeets::getInstance();
+
+        d->showNoad(noad);
+        d->showSkoarpuscle(noad->skoarpuscle);
+    }
 }
 
 void SkoarNoadTreeItem::itemOpennessChanged(bool isNowOpen) {
@@ -127,7 +137,7 @@ SkoarTreeComponent::SkoarTreeComponent(SkoarNoadPtr pRootNoad) :
 
 SkoarTreeComponent::~SkoarTreeComponent()
 {
-    rootItem->clearSubItems();
+    rootItem = nullptr;
     rootNoad = nullptr;
 }
 

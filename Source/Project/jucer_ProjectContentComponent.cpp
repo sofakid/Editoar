@@ -33,6 +33,7 @@
 #include "../Testoar/Testoar.h"
 
 #include "../Debuggoar/DebuggoarComponent.h"
+#include "../Debuggoar/SkoarpionsComponent.h"
 
 
 
@@ -187,19 +188,19 @@ ProjectContentComponent::ProjectContentComponent()
     : project (nullptr),
       currentDocument (nullptr),
       treeViewTabs (TabbedButtonBar::TabsAtTop),
-      loggerComponent ()
+      bottomPanelComponent ()
 {
     setOpaque (true);
     setWantsKeyboardFocus (true);
 
     addAndMakeVisible (logo = new LogoComponent());
       
-    // -- logger ----
-    loggerSizeConstrainer.setMinimumHeight(24);
-    loggerSizeConstrainer.setMaximumHeight(getHeight() - 50);
+    // -- bottom panel ----
+    bottomPanelSizeConstrainer.setMinimumHeight(24);
+    bottomPanelSizeConstrainer.setMaximumHeight(getHeight() - 50);
     
-    addAndMakeVisible(loggerComponent);
-    addAndMakeVisible(resizerBarHoriz = new ResizableEdgeComponent(&loggerComponent, &loggerSizeConstrainer,
+    addAndMakeVisible(bottomPanelComponent = new BottomPanelComponent());
+    addAndMakeVisible(resizerBarHoriz = new ResizableEdgeComponent(&*bottomPanelComponent, &bottomPanelSizeConstrainer,
         ResizableEdgeComponent::topEdge));
     resizerBarHoriz->setAlwaysOnTop(true);
 
@@ -227,7 +228,7 @@ ProjectContentComponent::~ProjectContentComponent()
     setProject (nullptr);
     contentView = nullptr;
     removeChildComponent (&bubbleMessage);
-    removeChildComponent (&loggerComponent);
+    removeChildComponent (bottomPanelComponent);
     resizerBarHoriz = nullptr;
 
     jassert (getNumChildComponents() <= 1);
@@ -261,9 +262,9 @@ void ProjectContentComponent::resized()
 {
     Rectangle<int> r(getLocalBounds());
 
-    loggerSizeConstrainer.setMaximumHeight(getHeight() - 50);
+    bottomPanelSizeConstrainer.setMaximumHeight(getHeight() - 50);
 
-    loggerComponent.setBounds (r.removeFromBottom (loggerComponent.getHeight()));
+    bottomPanelComponent->setBounds (r.removeFromBottom (bottomPanelComponent->getHeight()));
 
     if (resizerBarHoriz != nullptr)
         resizerBarHoriz->setBounds(r.withY (r.getBottom()).withHeight (4));
@@ -288,7 +289,7 @@ void ProjectContentComponent::lookAndFeelChanged()
 
 void ProjectContentComponent::childBoundsChanged (Component* child)
 {
-    if (child == &treeViewTabs || child == &loggerComponent)
+    if (child == &treeViewTabs || child == bottomPanelComponent)
         resized();
 }
 
@@ -360,6 +361,8 @@ void ProjectContentComponent::createProjectTabs()
     treeViewTabs.addTab ("Files",  tabColour, new FileTreePanel (*project), true);
     treeViewTabs.addTab ("Config", tabColour, new ConfigTreePanel (*project), true);
     treeViewTabs.addTab ("Testing", tabColour, new TestoarTreePanel(*project), true);
+    treeViewTabs.addTab ("Skoarpions", tabColour, new SkoarpionsComponent(), true);
+
 }
 
 void ProjectContentComponent::deleteProjectTabs()

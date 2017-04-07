@@ -197,6 +197,11 @@ int SkoarNoadDataModel::getColumnAutoSizeWidth(int columnId) {
         if (w > biggest)
             biggest = w;
     }
+    for (auto x : children) {
+        auto w = x->length();
+        if (w > biggest)
+            biggest = w;
+    }
     return biggest * char_width;
 }
 

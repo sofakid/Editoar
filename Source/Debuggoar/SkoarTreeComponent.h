@@ -34,6 +34,8 @@ public:
     */
     void itemClicked(const MouseEvent& e) override;
 
+    void itemSelectionChanged(bool isNowSelected) override;
+
 private:
     SkoarNoadPtr noad;
     Colour colour;

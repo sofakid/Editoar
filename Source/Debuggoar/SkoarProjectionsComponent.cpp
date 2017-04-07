@@ -24,7 +24,6 @@ SkoarProjectionsComponent::~SkoarProjectionsComponent() {
 
 void SkoarProjectionsComponent::paint(Graphics&)
 {
-    //g.fillAll(Colours::black);
 }
 
 

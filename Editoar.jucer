@@ -82,6 +82,10 @@
     </LINUX_MAKE>
   </EXPORTFORMATS>
   <MAINGROUP name="Skoar" id="NhrJq66R">
+    <GROUP id="{8A22BC7C-46D1-6B7B-3722-026377F056FA}" name="Odin">
+      <FILE id="UybFmi" name="Odin.cpp" compile="1" resource="0" file="Source/Odin/Odin.cpp"/>
+      <FILE id="qVrLjo" name="Odin.h" compile="0" resource="0" file="Source/Odin/Odin.h"/>
+    </GROUP>
     <GROUP id="{38A0CCF5-98E2-06CD-543A-5396A09634D4}" name="UnitTests">
       <FILE id="oYhygX" name="test_memory.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/test_memory.cpp"/>
       <FILE id="a0Ux16" name="test_sanity.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/test_sanity.cpp"/>
@@ -245,6 +249,10 @@
             file="Source/Debuggoar/SkoarpionComponent.cpp"/>
       <FILE id="Qx6yOT" name="SkoarpionComponent.h" compile="0" resource="0"
             file="Source/Debuggoar/SkoarpionComponent.h"/>
+      <FILE id="tFJ62o" name="SkoarpionsComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarpionsComponent.cpp"/>
+      <FILE id="Fp5qFl" name="SkoarpionsComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarpionsComponent.h"/>
       <FILE id="Ds9KEy" name="SkoarProjectionsComponent.cpp" compile="1"
             resource="0" file="Source/Debuggoar/SkoarProjectionsComponent.cpp"/>
       <FILE id="EGibSJ" name="SkoarProjectionsComponent.h" compile="0" resource="0"
@@ -299,6 +307,10 @@
             file="Source/Logging/SkoarLoggerToolBar.h"/>
     </GROUP>
     <GROUP id="vD0TyHx" name="Application">
+      <FILE id="oC4Az3" name="BottomPanelComponent.cpp" compile="1" resource="0"
+            file="Source/Application/BottomPanelComponent.cpp"/>
+      <FILE id="RQx6Fi" name="BottomPanelComponent.h" compile="0" resource="0"
+            file="Source/Application/BottomPanelComponent.h"/>
       <FILE id="QDqaEw" name="jucer_AppearanceSettings.cpp" compile="1" resource="0"
             file="Source/Application/jucer_AppearanceSettings.cpp"/>
       <FILE id="mEX07l" name="jucer_AppearanceSettings.h" compile="0" resource="0"
@@ -337,6 +349,10 @@
             resource="0" file="Source/Application/jucer_OpenDocumentManager.cpp"/>
       <FILE id="mrJkuR" name="jucer_OpenDocumentManager.h" compile="0" resource="0"
             file="Source/Application/jucer_OpenDocumentManager.h"/>
+      <FILE id="BiD0vI" name="SidePanelComponent.cpp" compile="1" resource="0"
+            file="Source/Application/SidePanelComponent.cpp"/>
+      <FILE id="pOqJQ0" name="SidePanelComponent.h" compile="0" resource="0"
+            file="Source/Application/SidePanelComponent.h"/>
     </GROUP>
     <GROUP id="Ow008xg" name="Code Editor">
       <FILE id="HAEKTC" name="jucer_SourceCodeEditor.cpp" compile="1" resource="0"

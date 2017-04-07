@@ -27,8 +27,7 @@
 
 #include "jucer_Project.h"
 #include "../Application/jucer_OpenDocumentManager.h"
-#include "../Logging/SkoarLogger.hpp"
-#include "../Logging/SkoarLoggerComponent.h"
+#include "../Application/BottomPanelComponent.h"
 
 //==============================================================================
 class ProjectContentComponent  : public Component,
@@ -120,10 +119,10 @@ private:
     ScopedPointer<ResizableEdgeComponent> resizerBarHoriz;
 
     ComponentBoundsConstrainer treeSizeConstrainer;
-    ComponentBoundsConstrainer loggerSizeConstrainer;
+    ComponentBoundsConstrainer bottomPanelSizeConstrainer;
     BubbleMessageComponent bubbleMessage;
 
-    SkoarLoggerComponent loggerComponent;
+    ScopedPointer<BottomPanelComponent> bottomPanelComponent;
 
     bool isForeground = false;
 

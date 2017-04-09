@@ -229,6 +229,10 @@
             file="Source/Debuggoar/DebuggoarPopupper.cpp"/>
       <FILE id="LW6mca" name="DebuggoarPopupper.h" compile="0" resource="0"
             file="Source/Debuggoar/DebuggoarPopupper.h"/>
+      <FILE id="ZQwRmK" name="DebuggoarSession.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DebuggoarSession.cpp"/>
+      <FILE id="iXXkzB" name="DebuggoarSession.h" compile="0" resource="0"
+            file="Source/Debuggoar/DebuggoarSession.h"/>
       <FILE id="ExOvkN" name="DebuggoarTable.cpp" compile="1" resource="0"
             file="Source/Debuggoar/DebuggoarTable.cpp"/>
       <FILE id="BrpSkC" name="DebuggoarTable.h" compile="0" resource="0"
@@ -253,10 +257,6 @@
             file="Source/Debuggoar/SkoarpionsComponent.cpp"/>
       <FILE id="Fp5qFl" name="SkoarpionsComponent.h" compile="0" resource="0"
             file="Source/Debuggoar/SkoarpionsComponent.h"/>
-      <FILE id="Ds9KEy" name="SkoarProjectionsComponent.cpp" compile="1"
-            resource="0" file="Source/Debuggoar/SkoarProjectionsComponent.cpp"/>
-      <FILE id="EGibSJ" name="SkoarProjectionsComponent.h" compile="0" resource="0"
-            file="Source/Debuggoar/SkoarProjectionsComponent.h"/>
       <FILE id="Z00ABd" name="SkoarpuscleDataModel.cpp" compile="1" resource="0"
             file="Source/Debuggoar/SkoarpuscleDataModel.cpp"/>
       <FILE id="EYgVZM" name="SkoarpuscleDataModel.h" compile="0" resource="0"

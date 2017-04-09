@@ -1,27 +1,64 @@
 #include "SkoarpionComponent.h"
+#include "skoarpion.hpp"
+#include "koar.hpp"
 
-SkoarpionComponent::SkoarpionComponent(SkoarpionPtr p) :
-    skoarpion(p) 
+SkoarpionComponent::SkoarpionComponent(SkoarpionPtr skoarpion) :
+    combo_h(18),
+    combo_pad(6),
+    combo_pad_x2(2 * combo_pad),
+    combo_h_total(combo_h + combo_pad_x2)
 {
-    auto voices = p->skoar->get_all_voices();
-    auto proj = Skoarpion::get_projections(p, voices);
-    projections = new SkoarProjectionsComponent(proj);
-    addAndMakeVisible(projections);
+    addAndMakeVisible(projectionsComboBox = new ComboBox());
+    projectionsComboBox->setTooltip(TRANS("Voice"));
+    projectionsComboBox->setEditableText(false);
+    projectionsComboBox->setJustificationType(Justification::centredLeft);
+    projectionsComboBox->setTextWhenNothingSelected(String());
+    projectionsComboBox->setTextWhenNoChoicesAvailable(TRANS("(no choices)"));
+    projectionsComboBox->addListener(this);
+
+    auto voices = skoarpion->skoar->get_all_voices();
+    auto proj = Skoarpion::get_projections(skoarpion, voices);
+    auto i = 0;
+    for (auto p : *proj) {
+        projections.add(p);
+        projectionsComboBox->addItem(
+            p->proj->voice->name.c_str(), ++i);
+    }
+    projectionsComboBox->setSelectedId(1, sendNotification);
+
     setSize(300, 400);
 
 }
 
 SkoarpionComponent::~SkoarpionComponent() {
-    skoarpion = nullptr;
-    projections = nullptr;
+    
 }
 
-void SkoarpionComponent::paint(Graphics&)
+void SkoarpionComponent::paint(Graphics& g)
 {
-    //g.fillAll(Colours::yellow.withAlpha(0.5f));
+    g.fillAll(Colours::black);
 }
 
 void SkoarpionComponent::resized()
 {
-    projections->setBounds(getLocalBounds());
+    auto r = getLocalBounds();
+    projectionsComboBox->setBounds(combo_pad, combo_pad, r.getWidth() - combo_pad_x2, combo_h);
+    r.removeFromTop(combo_h_total);
+
+    if (projectionComponent != nullptr)
+        projectionComponent->setBounds(r);
+}
+
+void SkoarpionComponent::comboBoxChanged(ComboBox* comboBoxThatHasChanged)
+{
+    if (comboBoxThatHasChanged == projectionsComboBox) {
+        if (projections.size() > 0) {
+            auto p = projections[projectionsComboBox->getSelectedId() - 1];
+            if (projectionComponent != nullptr) {
+                removeChildComponent(projectionComponent);
+            }
+            addAndMakeVisible(projectionComponent = new SkoarTreeComponent(p->proj));
+            resized();
+        }
+    }
 }

@@ -56,7 +56,7 @@ SkoarLoggerToolBar::SkoarLoggerToolBar ()
     clearButton->setColour (TextButton::textColourOnId, Colours::azure);
 
     addAndMakeVisible (logLevelComboBox = new ComboBox ("level  combo box"));
-    logLevelComboBox->setTooltip (TRANS("Log Verbocity"));
+    logLevelComboBox->setTooltip (TRANS("Log Verbosity"));
     logLevelComboBox->setEditableText (false);
     logLevelComboBox->setJustificationType (Justification::centredLeft);
     logLevelComboBox->setTextWhenNothingSelected (String());

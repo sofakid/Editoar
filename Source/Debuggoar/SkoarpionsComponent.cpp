@@ -1,6 +1,12 @@
 #include "SkoarpionsComponent.h"
 #include "SkoarpionComponent.h"
 
+#define COMBO_H = 24
+#define COMBO_PAD = 3
+#define COMBO_PAD_X_2 = (COMBO_PAD + COMBO_PAD)
+
+#define COMBO_H_TOTAL = (COMBO_H + COMBO_PAD_X_2)
+
 //==============================================================================
 SkoarpionsComponent* instance = nullptr;
 
@@ -9,11 +15,22 @@ SkoarpionsComponent* SkoarpionsComponent::getInstance() {
 }
 
 SkoarpionsComponent::SkoarpionsComponent() :
-    skoarpionsTabs(nullptr)
+    combo_h(18),
+    combo_pad(6),
+    combo_pad_x2(2 * combo_pad),
+    combo_h_total(combo_h + combo_pad_x2)
 {
     instance = this;
-    setSize(300, 400);
 
+    addAndMakeVisible(skoarpionsComboBox = new ComboBox());
+    skoarpionsComboBox->setTooltip(TRANS("Skoarpion"));
+    skoarpionsComboBox->setEditableText(false);
+    skoarpionsComboBox->setJustificationType(Justification::centredLeft);
+    skoarpionsComboBox->setTextWhenNothingSelected(String());
+    skoarpionsComboBox->setTextWhenNoChoicesAvailable(TRANS("(no choices)"));
+    skoarpionsComboBox->addListener(this);
+
+    setSize(300, 400);
 }
 
 SkoarpionsComponent::~SkoarpionsComponent() {
@@ -21,16 +38,13 @@ SkoarpionsComponent::~SkoarpionsComponent() {
 }
 
 void SkoarpionsComponent::loadSkoar(Skoar* skoar) {
-    skoarpionsTabs = new TabbedComponent(TabbedButtonBar::Orientation::TabsAtTop);
-    addAndMakeVisible(skoarpionsTabs);
-    auto& skoarpions = skoar->skoarpions;
-
-    for (auto skoarpion : skoarpions) {
-        skoarpionsTabs->addTab(skoarpion->name.c_str(),
-            Colours::black,
-            new SkoarpionComponent(skoarpion),
-            true /*deleteWhenNotNeeded*/);
+    auto i = 0;
+    for (auto skoarpion : skoar->skoarpions) {
+        skoarpions.add(skoarpion);
+        skoarpionsComboBox->addItem(skoarpion->name.c_str(), ++i);
     }
+    skoarpionsComboBox->setSelectedId(1, sendNotification);
+    resized();
 }
 
 void SkoarpionsComponent::paint(Graphics& g)
@@ -40,7 +54,25 @@ void SkoarpionsComponent::paint(Graphics& g)
 
 void SkoarpionsComponent::resized()
 {
-    if (skoarpionsTabs != nullptr) {
-        skoarpionsTabs->setBounds(getLocalBounds());
+    auto r = getLocalBounds();
+    skoarpionsComboBox->setBounds(combo_pad, combo_pad, r.getWidth() - combo_pad_x2, combo_h);
+    r.removeFromTop(combo_h_total);
+
+    if (skoarpionComponent != nullptr)
+        skoarpionComponent->setBounds(r);
+}
+
+
+void SkoarpionsComponent::comboBoxChanged(ComboBox* comboBoxThatHasChanged)
+{
+    if (comboBoxThatHasChanged == skoarpionsComboBox) {
+        if (skoarpions.size() > 0) {
+            auto skoarpion = skoarpions[skoarpionsComboBox->getSelectedId() - 1];
+            if (skoarpionComponent != nullptr) {
+                removeChildComponent(skoarpionComponent);
+            }
+            addAndMakeVisible(skoarpionComponent = new SkoarpionComponent(skoarpion));
+            resized();
+        }
     }
 }

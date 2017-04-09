@@ -12,11 +12,12 @@ public:
     SkoarpionComponent(SkoarpionPtr);
     ~SkoarpionComponent();
     
-    void paint(Graphics& g) override;
+    void paint(Graphics&) override;
     void resized() override;
 
-    void comboBoxChanged(ComboBox* comboBoxThatHasChanged) override;
+    void comboBoxChanged(ComboBox*) override;
 
+    void selectNoad(SkoarNoad*);
 private:
 
     const int combo_h;

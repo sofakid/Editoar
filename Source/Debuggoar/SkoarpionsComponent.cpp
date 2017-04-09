@@ -70,3 +70,11 @@ void SkoarpionsComponent::comboBoxChanged(ComboBox* comboBoxThatHasChanged)
         }
     }
 }
+
+void SkoarpionsComponent::selectNoad(SkoarNoad* noad) {
+
+    if (skoarpionComponent != nullptr) {
+        skoarpionComponent->selectNoad(noad);
+    }
+
+}

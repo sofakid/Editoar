@@ -1,4 +1,5 @@
 #include "DebuggoarSession.h"
+#include "SkoarpionsComponent.h"
 
 // --- DebuggoarSession -----------------------------------------------
 
@@ -11,28 +12,35 @@ DebuggoarSession::DebuggoarSession(String voice, Skoar* skoar)
 
     };
     
-    SpellOfMinstrels before_entering_noad_spell = [&](SkoarMinstrelPtr p) {
+    SpellOfDebuggingNoads before_entering_noad_spell = [=](SkoarMinstrelPtr, SkoarNoad* noad) {
+        // select noad in tree
+        SkoarpionsComponent::getInstance()->selectNoad(noad);
+
+        // highlight text -- do that when selected above.
+    };
+
+    SpellOfDebuggingNoads after_entering_noad_spell = [=](SkoarMinstrelPtr p, SkoarNoad*) {
+    };
+
+    SpellOfDebuggingSkoarpuscles before_entering_skoarpuscle_spell = [=](SkoarMinstrelPtr p, SkoarpusclePtr skoarpuscle) {
+        // animate fairy doing something
+        // or rotate text slightly
+    };
+
+    SpellOfDebuggingSkoarpuscles after_entering_skoarpuscle_spell = [=](SkoarMinstrelPtr p, SkoarpusclePtr skoarpuscle) {
+        // animate fairy impression
+        // fix text
+    };
+
+    SpellOfDebuggingSkoarpions before_entering_skoarpion_spell = [=](SkoarMinstrelPtr p, SkoarpionPtr skoarpion) {
+        // push old skoarpion 
+        // select skoarpion tree
 
     };
 
-    SpellOfMinstrels after_entering_noad_spell = [&](SkoarMinstrelPtr p) {
-
-    };
-
-    SpellOfMinstrels before_entering_skoarpuscle_spell = [&](SkoarMinstrelPtr p) {
-
-    };
-
-    SpellOfMinstrels after_entering_skoarpuscle_spell = [&](SkoarMinstrelPtr p) {
-
-    };
-
-    SpellOfMinstrels before_entering_skoarpion_spell = [&](SkoarMinstrelPtr p) {
-
-    };
-
-    SpellOfMinstrels after_entering_skoarpion_spell = [&](SkoarMinstrelPtr p) {
-
+    SpellOfDebuggingSkoarpions after_entering_skoarpion_spell = [=](SkoarMinstrelPtr p, SkoarpionPtr skoarpion) {
+        // pop old skoarpion
+        // select popped skoarpion tree
     };
 
     MinstrelDebugConfig config(

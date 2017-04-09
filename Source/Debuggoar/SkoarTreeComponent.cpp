@@ -116,6 +116,9 @@ void SkoarNoadTreeItem::itemOpennessChanged(bool isNowOpen) {
     }
 }
 
+bool SkoarNoadTreeItem::isNoad(SkoarNoad* p) {
+    return noad.get() == p;
+}
 
 
 // ==== SkoarTreeComponent ==========================================================================
@@ -150,3 +153,17 @@ void SkoarTreeComponent::resized()
     auto r = getLocalBounds();
     tree.setBounds(r);
 }
+
+void SkoarTreeComponent::selectNoad(SkoarNoad* noad) {
+
+    auto rows = tree.getNumRowsInTree();
+    for (int i = 0; i < rows; ++i) {
+        auto child = static_cast<SkoarNoadTreeItem*>(tree.getItemOnRow(i));
+        if (child->isNoad(noad)) {
+            child->setSelected(true, true, NotificationType::sendNotification);
+            break;
+        }
+    }
+
+}
+

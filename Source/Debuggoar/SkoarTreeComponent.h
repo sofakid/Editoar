@@ -36,6 +36,8 @@ public:
 
     void itemSelectionChanged(bool isNowSelected) override;
 
+    bool isNoad(SkoarNoad*);
+
 private:
     SkoarNoadPtr noad;
     Colour colour;
@@ -51,7 +53,8 @@ public:
 
     void paint (Graphics&) override;
     void resized() override;
-    
+    void selectNoad(SkoarNoad*);
+
 private:
 
     class : public LookAndFeel_V3 {

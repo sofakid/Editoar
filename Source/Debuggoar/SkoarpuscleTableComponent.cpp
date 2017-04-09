@@ -7,8 +7,7 @@ SkoarpuscleTableComponent::SkoarpuscleTableComponent(SkoarpusclePtr p) :
     model(nullptr)
 {
 
-    addAndMakeVisible(groupComponent = new GroupComponent("groupy",
-        TRANS("Skoarpuscle")));
+    addAndMakeVisible(groupComponent = new GroupComponent("groupy", TRANS("Skoarpuscle")));
     groupComponent->setTextLabelPosition(Justification::centredLeft);
     groupComponent->setColour(GroupComponent::outlineColourId, Colour(0x66ffffff));
     groupComponent->setColour(GroupComponent::textColourId, Colours::white);

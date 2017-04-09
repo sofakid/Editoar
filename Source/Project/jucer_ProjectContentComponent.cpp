@@ -200,6 +200,8 @@ ProjectContentComponent::ProjectContentComponent()
     bottomPanelSizeConstrainer.setMaximumHeight(getHeight() - 50);
     
     addAndMakeVisible(bottomPanelComponent = new BottomPanelComponent());
+    bottomPanelComponent->setBounds(0,0,300,500);
+
     addAndMakeVisible(resizerBarHoriz = new ResizableEdgeComponent(&*bottomPanelComponent, &bottomPanelSizeConstrainer,
         ResizableEdgeComponent::topEdge));
     resizerBarHoriz->setAlwaysOnTop(true);
@@ -361,7 +363,7 @@ void ProjectContentComponent::createProjectTabs()
     treeViewTabs.addTab ("Files",  tabColour, new FileTreePanel (*project), true);
     treeViewTabs.addTab ("Config", tabColour, new ConfigTreePanel (*project), true);
     treeViewTabs.addTab ("Testing", tabColour, new TestoarTreePanel(*project), true);
-    treeViewTabs.addTab ("Skoarpions", tabColour, new SkoarpionsComponent(), true);
+    treeViewTabs.addTab ("Noads", tabColour, new SkoarpionsComponent(), true);
 
 }
 

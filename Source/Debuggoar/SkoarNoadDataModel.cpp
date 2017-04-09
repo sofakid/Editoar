@@ -16,7 +16,9 @@ SkoarNoadDataModel::SkoarNoadDataModel(SkoarNoadPtr p) :
     ),
     skoap(p->voice == nullptr ?
         L"" : p->skoap->name.c_str()
-    )
+    ),
+    offs(p->offs),
+    size(p->size)
 {
     for (auto x : p->children) {
         children.add(new String(x->name.c_str()));

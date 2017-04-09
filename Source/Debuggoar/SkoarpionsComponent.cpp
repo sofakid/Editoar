@@ -1,12 +1,6 @@
 #include "SkoarpionsComponent.h"
 #include "SkoarpionComponent.h"
 
-#define COMBO_H = 24
-#define COMBO_PAD = 3
-#define COMBO_PAD_X_2 = (COMBO_PAD + COMBO_PAD)
-
-#define COMBO_H_TOTAL = (COMBO_H + COMBO_PAD_X_2)
-
 //==============================================================================
 SkoarpionsComponent* instance = nullptr;
 

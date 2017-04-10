@@ -249,6 +249,14 @@
             file="Source/Debuggoar/DeetsTableComponent.cpp"/>
       <FILE id="IsaD3x" name="DeetsTableComponent.h" compile="0" resource="0"
             file="Source/Debuggoar/DeetsTableComponent.h"/>
+      <FILE id="WvYti6" name="EventDataModel.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/EventDataModel.cpp"/>
+      <FILE id="wRNrA0" name="EventDataModel.h" compile="0" resource="0"
+            file="Source/Debuggoar/EventDataModel.h"/>
+      <FILE id="LoyMsb" name="EventTableComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/EventTableComponent.cpp"/>
+      <FILE id="iVSfCc" name="EventTableComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/EventTableComponent.h"/>
       <FILE id="MGBzxV" name="FairyDataModel.cpp" compile="1" resource="0"
             file="Source/Debuggoar/FairyDataModel.cpp"/>
       <FILE id="tFxRlw" name="FairyDataModel.h" compile="0" resource="0"

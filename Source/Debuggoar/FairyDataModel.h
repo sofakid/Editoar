@@ -1,18 +1,58 @@
-/*
-  ==============================================================================
+#pragma once
+#include "../jucer_Headers.h"
+#include "fairy.hpp"
 
-    FairyDataModel.h
-    Created: 10 Apr 2017 4:21:03pm
-    Author:  lucas
+class FairyDataModel : public TableListBoxModel {
 
-  ==============================================================================
-*/
+public:
 
-#ifndef FAIRYDATAMODEL_H_INCLUDED
-#define FAIRYDATAMODEL_H_INCLUDED
+    enum EColumn {
+        field = 1,
+        value
+    };
 
+    FairyDataModel(SkoarFairyPtr);
 
+    ~FairyDataModel() override;
 
+    int getNumRows() override;
 
+    void paintRowBackground(Graphics&,
+        int rowNumber,
+        int width, int height,
+        bool rowIsSelected) override;
 
-#endif  // FAIRYDATAMODEL_H_INCLUDED
+    void paintCell(Graphics&,
+        int rowNumber,
+        int columnId,
+        int width, int height,
+        bool rowIsSelected) override;
+
+    int getColumnAutoSizeWidth(int columnId) override;
+
+private:
+
+    String name;
+    String impression;
+    String noat;
+    String boolean_impression;
+    String l_value;
+
+    static const size_t names_n = 5;
+    const String names[names_n] = {
+        "name: ",
+        "impression: ",
+        "noat: ",
+        "boolean_impression: ",
+        "l_value: "
+    };
+
+    const String* vals[names_n] = {
+        &name,
+        &impression,
+        &noat,
+        &boolean_impression,
+        &l_value
+    };
+
+};

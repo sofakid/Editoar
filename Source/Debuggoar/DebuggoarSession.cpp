@@ -27,6 +27,7 @@ DebuggoarSession::DebuggoarSession(String voice, Skoar* skoar) :
         auto d = DebuggoarDeets::getInstance();
 
         d->showKoar(koar);
+        d->showEvent(p);
     };
 
     before_entering_noad_spell = [=](SkoarMinstrelPtr minstrel, SkoarNoad* noad) {
@@ -35,6 +36,10 @@ DebuggoarSession::DebuggoarSession(String voice, Skoar* skoar) :
                 const MessageManagerLock mmLock;
                 // select noad in tree
                 SkoarpionsComponent::getInstance()->selectNoad(noad);
+                auto d = DebuggoarDeets::getInstance();
+                d->showKoar(koar);
+
+                d->showFairy(minstrel->fairy);
             }
 
             // highlight text -- do that when selected above.
@@ -44,6 +49,7 @@ DebuggoarSession::DebuggoarSession(String voice, Skoar* skoar) :
     };
 
     after_entering_noad_spell = [=](SkoarMinstrelPtr p, SkoarNoad*) {
+        
     };
 
     before_entering_skoarpuscle_spell = [=](SkoarMinstrelPtr p, SkoarpusclePtr skoarpuscle) {

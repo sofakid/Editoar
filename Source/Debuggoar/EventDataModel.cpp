@@ -1,20 +1,24 @@
-#include "FairyDataModel.h"
+#include "EventDataModel.h"
 #include "all_skoarpuscles.hpp"
 
-FairyDataModel::FairyDataModel(SkoarFairyPtr p) :
-    name(p->name.c_str()),
-    impression(p->impression == nullptr ?
-        L"" : p->impression->asString().c_str()),
-    noat(p->noat == nullptr ?
-        L"" : p->noat->asString().c_str()),
-    boolean_impression(p->boolean_impression == nullptr ?
-        L"" : p->boolean_impression->asString().c_str()),
-    l_value(p->l_value == nullptr ?
-        L"" : p->l_value->asString().c_str())
+EventDataModel::EventDataModel(SkoarEventPtr p)
 {
+    String suffix(": ");
+
+    for (auto x : p->table) {
+        if (x.second == nullptr)
+            continue;
+        entries.add(
+            make_pair(
+                String(x.first.c_str()) + suffix,
+                String(x.second->asString().c_str())
+            )
+        );
+    }
 }
 
-FairyDataModel::~FairyDataModel() {
+EventDataModel::~EventDataModel() {
+    entries.clear();
 }
 
 //==============================================================================
@@ -23,8 +27,8 @@ FairyDataModel::~FairyDataModel() {
 If the number of rows changes, you must call TableListBox::updateContent() to
 cause it to refresh the list.
 */
-int FairyDataModel::getNumRows() {
-    return names_n;
+int EventDataModel::getNumRows() {
+    return entries.size();
 }
 
 /** This must draw the background behind one of the rows in the table.
@@ -35,7 +39,7 @@ should fill the area specified by the width and height parameters.
 Note that the rowNumber value may be greater than the number of rows in your
 list, so be careful that you don't assume it's less than getNumRows().
 */
-void FairyDataModel::paintRowBackground(
+void EventDataModel::paintRowBackground(
     Graphics& g,
     int /*rowNumber*/,
     int width, int height,
@@ -56,7 +60,7 @@ whose size is specified by (width, height).
 Note that the rowNumber value may be greater than the number of rows in your
 list, so be careful that you don't assume it's less than getNumRows().
 */
-void FairyDataModel::paintCell(
+void EventDataModel::paintCell(
     Graphics& g,
     int rowNumber,
     int columnId,
@@ -67,22 +71,17 @@ void FairyDataModel::paintCell(
         return;
     }
 
-    if (columnId == EColumn::field) {
-        g.setColour(Colours::grey);
-    }
-    else {
-        g.setColour(Colours::blanchedalmond);
-    }
     Rectangle<int> r(0, 0, width, height);
 
     if (columnId == EColumn::field) {
-        auto str = names[rowNumber];
-        g.drawText(str, r, Justification::right);
+        g.setColour(Colours::grey);
+        g.drawText(entries[rowNumber].first, r, Justification::right);
     }
     else {
-        auto str = vals[rowNumber];
-        g.drawText(*str, r, Justification::left);
+        g.setColour(Colours::blanchedalmond);
+        g.drawText(entries[rowNumber].second, r, Justification::left);
     }
+
 }
 
 //==============================================================================
@@ -95,14 +94,14 @@ Returning 0 means that the column shouldn't be changed.
 
 This is used by TableListBox::autoSizeColumn() and TableListBox::autoSizeAllColumns().
 */
-int FairyDataModel::getColumnAutoSizeWidth(int columnId) {
+int EventDataModel::getColumnAutoSizeWidth(int columnId) {
     const int char_width = 8;
     int biggest = 0;
 
     if (columnId == EColumn::field) {
-        // names
-        for (auto x : names) {
-            auto w = x.length();
+        
+        for (auto x : entries) {
+            auto w = x.first.length();
             if (w > biggest)
                 biggest = w;
         }
@@ -110,12 +109,12 @@ int FairyDataModel::getColumnAutoSizeWidth(int columnId) {
         return biggest * char_width;
     }
 
-    // values
-    for (auto x : vals) {
-        auto w = x->length();
+    for (auto x : entries) {
+        auto w = x.second.length();
         if (w > biggest)
             biggest = w;
     }
 
     return biggest * char_width;
 }
+

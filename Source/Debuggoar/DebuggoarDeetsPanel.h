@@ -5,6 +5,8 @@
 #include "SkoarNoadTableComponent.h"
 #include "SkoarpuscleTableComponent.h"
 #include "KoarTableComponent.h"
+#include "EventTableComponent.h"
+#include "FairyTableComponent.h"
 
 
 class DebuggoarDeets : public Component {
@@ -20,14 +22,16 @@ public:
     void showNoad(SkoarNoadPtr);
     void showSkoarpuscle(SkoarpusclePtr);
     void showKoar(SkoarKoarPtr);
-
-   
+    void showEvent(SkoarEventPtr);
+    void showFairy(SkoarFairyPtr);
 
 private:
 
     unique_ptr<SkoarNoadTableComponent> noadComponent;
     unique_ptr<SkoarpuscleTableComponent> skoarpuscleComponent;
     unique_ptr<KoarTableComponent> koarComponent;
+    unique_ptr<EventTableComponent> eventComponent;
+    unique_ptr<FairyTableComponent> fairyComponent;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DebuggoarDeets)
 };

@@ -46,16 +46,16 @@ private:
     static const size_t names_n = 4;
     const String names[names_n] = {
         "name: ",
-        "skoarboard_height: ",
-        "stack_height: ",
-        "state_stack_height: "
+        "skoarboard entries: ",
+        "state_stack height: ",
+        "stack height: "
     };
 
     const String* vals[names_n] = {
         &name,
         &skoarboard_entries,
-        &stack_height,
-        &state_stack_height
+        &state_stack_height,
+        &stack_height
     };
 
     Array<std::pair<String, String>> stack;

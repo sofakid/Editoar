@@ -3,16 +3,20 @@
 
 KoarDataModel::KoarDataModel(SkoarKoarPtr p) :
     koar(p),
+    name(p->name.c_str()),
     skoarboard_entries(p->skoarboard->size()),
     stack_height(p->stack.size()),
     state_stack_height(p->state_stack.size()),
-    skoarboard_pref("skoarboard[ "),
-    stack_pref("stack[ "),
-    state_stack_pref("state_stack[ ")
+    skoarboard_pref("skoarboard :: "),
+    stack_pref("stack :: "),
+    state_stack_pref("state_stack :: ")
 {
-    String suffix(" ]: ");
+    String suffix(": ");
 
     for (auto x : p->skoarboard->table) {
+        if (x.second == nullptr)
+            continue;
+
         skoarboard.add(
             make_pair(
                 skoarboard_pref + String(x.first.c_str()) + suffix,
@@ -23,6 +27,8 @@ KoarDataModel::KoarDataModel(SkoarKoarPtr p) :
 
     for (auto x : p->state_stack) {
         for (auto y : x->table) {
+            if (y.second == nullptr)
+                continue;
             state_stack.add(
                 make_pair(
                     state_stack_pref + String(y.first.c_str()) + suffix,
@@ -34,6 +40,8 @@ KoarDataModel::KoarDataModel(SkoarKoarPtr p) :
 
     for (auto x : p->stack) {
         for (auto y : x->table) {
+            if (y.second == nullptr)
+                continue;
             stack.add(
                 make_pair(
                     stack_pref + String(y.first.c_str()) + suffix,
@@ -129,8 +137,10 @@ void KoarDataModel::paintCell(
         // skoarboard
         if (rowNumber < state_stack_offs)
         {
+
             int child_i = rowNumber - static_cast<int>(skoarboard_offs);
             if (columnId == EColumn::field) {
+                g.setColour(Colours::darkgrey);
                 g.drawText(skoarboard[child_i].first, r, Justification::right);
             }
             else {
@@ -153,8 +163,10 @@ void KoarDataModel::paintCell(
 
         // stack
         else {
+
             int child_i = rowNumber - static_cast<int>(stack_offs);
             if (columnId == EColumn::field) {
+                g.setColour(Colours::darkgrey);
                 g.drawText(stack[child_i].first, r, Justification::right);
             }
             else {

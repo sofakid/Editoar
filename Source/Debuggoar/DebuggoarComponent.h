@@ -25,6 +25,8 @@ public:
 
     void startSession();
 
+    void focusOnNoad(SkoarNoadPtr noad);
+
 
 private:
     ScopedPointer<DebuggoarSession> session;

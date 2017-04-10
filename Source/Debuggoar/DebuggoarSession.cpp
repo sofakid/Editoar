@@ -9,8 +9,7 @@ DebuggoarSession* DebuggoarSession::getInstance() {
 }
 
 DebuggoarSession::DebuggoarSession(String voice, Skoar* skoar) :
-    lock("DebuggoarSessionLock"),
-    current_skoarpion(nullptr)
+    lock("DebuggoarSessionLock")
 {
     session = this;
 
@@ -20,7 +19,6 @@ DebuggoarSession::DebuggoarSession(String voice, Skoar* skoar) :
     auto lockRef = &lock;
     auto stateRef = &state;
     auto skoarpionsRef = &skoarpions;
-    auto cur_sko_ref = &current_skoarpion;
     
 
     happening = [](SkoarEventPtr p) {

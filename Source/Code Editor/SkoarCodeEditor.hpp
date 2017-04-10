@@ -35,6 +35,9 @@ public:
 		CodeDocument& doc;
         SkoarCodeEditorComponent *ed;
 	};
+
+    SkoarCodeTokeniser* getTokeniser();
+
 private:
 	void insertComponentClass();
 

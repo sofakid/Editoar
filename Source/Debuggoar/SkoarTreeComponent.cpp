@@ -101,6 +101,11 @@ void SkoarNoadTreeItem::itemSelectionChanged(bool isNowSelected) {
 
         d->showNoad(noad);
         d->showSkoarpuscle(noad->skoarpuscle);
+
+        auto deb = DebuggoarComponent::getDebuggoar();
+
+        deb->focusOnNoad(noad);
+
     }
 }
 

@@ -76,6 +76,14 @@ CodeEditorComponent::ColourScheme SkoarCodeTokeniser::getDefaultColourScheme()
     for (unsigned int i = 0; i < sizeof(types) / sizeof(types[0]); ++i) // (NB: numElementsInArray doesn't work here in GCC4.2)
         cs.set(types[i].name, types[i].colour);
     
+    for (unsigned int i = 2; i < sizeof(types) / sizeof(types[0]); ++i) { // (NB: numElementsInArray doesn't work here in GCC4.2)
+        std::string name(types[i].name);
+        std::string suf("_inactive");
+
+        cs.set(name + suf, types[i].colour.withAlpha(0.35f));
+    }
+
+
     return cs;
 }
 
@@ -114,6 +122,31 @@ void SkoarCodeTokeniser::shrinkStyles(int start, int end) {
     styles.removeRange(start, end - start);
 }
 
+
+void SkoarCodeTokeniser::activate_range(size_t offs, size_t size) {
+    const auto end = offs + size;
+    const auto n = styles.size();
+    for (int i = 0; i < n; ++i) {
+        if (i < offs) {
+            int current_style = static_cast<int>(styles[i]);
+            if (current_style < (num_regular_styles + 2)) {
+                styles.set(i, SkoarStyles::EStyle(current_style + num_regular_styles));
+            }
+        } 
+        else if (i < end) {
+            int current_style = static_cast<int>(styles[i]);
+            if (current_style > (num_regular_styles + 2)) {
+                styles.set(i, SkoarStyles::EStyle(current_style - num_regular_styles));
+            }
+        }
+        else {
+            int current_style = static_cast<int>(styles[i]);
+            if (current_style < (num_regular_styles + 2)) {
+                styles.set(i, SkoarStyles::EStyle(current_style + num_regular_styles));
+            }
+        }
+    }
+}
 
 void SkoarCodeTokeniser::parseSkoarAndPrepareStyles(CodeDocument &source) {
 

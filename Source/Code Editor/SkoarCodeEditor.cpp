@@ -21,6 +21,10 @@ SkoarCodeEditorComponent::SkoarCodeEditorComponent(const File& f, CodeDocument& 
     skoarTokeniser.parseSkoarAndPrepareStyles(doc);
 }
 
+SkoarCodeTokeniser* SkoarCodeEditorComponent::getTokeniser() {
+    return &skoarTokeniser;
+}
+
 SkoarCodeEditorComponent::~SkoarCodeEditorComponent() {
 	getDocument().removeListener(&docListener);
 }

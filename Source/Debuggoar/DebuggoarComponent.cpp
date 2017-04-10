@@ -56,3 +56,18 @@ void DebuggoarComponent::startSession() {
     session = new DebuggoarSession(toolbar->getVoice(), skoar);
     session->start();
 }
+
+void DebuggoarComponent::focusOnNoad(SkoarNoadPtr p) {
+    if (p->size > 0) {
+        editor->getTokeniser()->activate_range(p->offs, p->size);
+        editor->resized();
+        CodeDocument::Position startPos(editor->getDocument(), p->offs);
+        CodeDocument::Position endPos(editor->getDocument(), p->offs + p->size);
+
+        auto startLine = startPos.getLineNumber();
+        auto endLine = endPos.getLineNumber();
+
+        Range<int> scrollTo(startLine, endLine);
+        editor->scrollToKeepLinesOnScreen(scrollTo);
+    }
+}

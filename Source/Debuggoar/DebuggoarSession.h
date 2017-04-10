@@ -49,7 +49,6 @@ private:
     WaitableEvent lock;
     SkoarMinstrelPtr m;
     ListOfSkoarpions skoarpions;
-    SkoarpionPtr current_skoarpion;
 
     ScopedPointer<MinstrelThread> minstrel_thread;
 };

@@ -78,3 +78,18 @@ void SkoarpionsComponent::selectNoad(SkoarNoad* noad) {
     }
 
 }
+
+void SkoarpionsComponent::selectSkoarpion(SkoarpionPtr skoarpion, String voice) {
+
+    auto i = 0;
+    for (auto x : skoarpions) {
+        ++i;
+        if (x == skoarpion) {
+            skoarpionsComboBox->setSelectedId(i, sendNotificationSync);
+            skoarpionComponent->selectVoice(voice);
+        }
+        
+    }
+    
+
+}

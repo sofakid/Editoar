@@ -2,6 +2,11 @@
 #include "SkoarpuscleTableComponent.h"
 #include "../Logging/SkoarLogger.hpp"
 
+
+#define FUDGE_FACTOR 39
+#define FUDGE_FACTOR_TRACTOR 12 
+#define FUDGE_FACTOR_MOAR 50
+
 SkoarpuscleTableComponent::SkoarpuscleTableComponent(SkoarpusclePtr p) :
     table(nullptr),
     model(nullptr)
@@ -11,6 +16,7 @@ SkoarpuscleTableComponent::SkoarpuscleTableComponent(SkoarpusclePtr p) :
     groupComponent->setTextLabelPosition(Justification::centredLeft);
     groupComponent->setColour(GroupComponent::outlineColourId, Colour(0x66ffffff));
     groupComponent->setColour(GroupComponent::textColourId, Colours::white);
+
 
     if (p != nullptr) {
         addAndMakeVisible(table = new TableListBox("noadtable"));
@@ -25,9 +31,20 @@ SkoarpuscleTableComponent::SkoarpuscleTableComponent(SkoarpusclePtr p) :
         table->setHeaderHeight(0);
         table->setModel(model);
         table->autoSizeAllColumns();
+        
+        int desired_width = 0;
+        for (int i = 0; i < header->getNumColumns(true); ++i) {
+            auto columnId = header->getColumnIdOfIndex(i, true);
+            const int width = model != nullptr ? model->getColumnAutoSizeWidth(columnId) : 0;
+            desired_width += width;
+        }
+
+        setSize(desired_width + FUDGE_FACTOR_MOAR, 500);
+    }
+    else {
+        setSize(400, 500);
     }
 
-    setSize(330, 200);
 
 }
 
@@ -42,8 +59,6 @@ void SkoarpuscleTableComponent::paint(Graphics& g)
     g.fillAll(Colours::black);
 }
 
-#define FUDGE_FACTOR 39
-#define FUDGE_FACTOR_TRACTOR 12 
 int SkoarpuscleTableComponent::getHeightHint() {
     if (table != nullptr)
         return model->getNumRows() * table->getRowHeight() + FUDGE_FACTOR + FUDGE_FACTOR_TRACTOR;
@@ -54,9 +69,15 @@ int SkoarpuscleTableComponent::getHeightHint() {
 int SkoarpuscleTableComponent::getWidthHint() {
     if (table != nullptr) {
         table->autoSizeAllColumns();
-        return table->getWidth() + FUDGE_FACTOR_TRACTOR;
+        int desired_width = 0;
+        for (int i = 0; i < table->getHeader().getNumColumns(true); ++i) {
+            auto columnId = table->getHeader().getColumnIdOfIndex(i, true);
+            const int width = model != nullptr ? model->getColumnAutoSizeWidth(columnId) : 0;
+            desired_width += width;
+        }
+        return desired_width + FUDGE_FACTOR_MOAR + FUDGE_FACTOR_TRACTOR;
     }
-    return FUDGE_FACTOR_TRACTOR;
+    return FUDGE_FACTOR_MOAR * 3;
 }
 
 Rectangle<int> SkoarpuscleTableComponent::getBoundsHint() {

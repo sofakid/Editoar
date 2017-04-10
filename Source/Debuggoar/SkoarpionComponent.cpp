@@ -24,7 +24,7 @@ SkoarpionComponent::SkoarpionComponent(SkoarpionPtr skoarpion) :
         projectionsComboBox->addItem(
             p->proj->voice->name.c_str(), ++i);
     }
-    projectionsComboBox->setSelectedId(1, sendNotification);
+    //projectionsComboBox->setSelectedId(1, sendNotification);
 
     setSize(300, 400);
 
@@ -69,4 +69,16 @@ void SkoarpionComponent::selectNoad(SkoarNoad* noad) {
         projectionComponent->selectNoad(noad);
     }
 
+}
+
+
+void SkoarpionComponent::selectVoice(String voice) {
+
+    auto i = 0;
+    for (auto x : projections) {
+        ++i;
+        if (String(x->proj->voice->name.c_str()) == voice) {
+            projectionsComboBox->setSelectedId(i, sendNotification);
+        }
+    }
 }

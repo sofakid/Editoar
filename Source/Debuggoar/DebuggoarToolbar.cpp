@@ -18,18 +18,29 @@
 */
 
 //[Headers] You can add your own extra header files here...
+#include "DebuggoarSession.h"
 //[/Headers]
 
 #include "DebuggoarToolbar.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
+#include "DebuggoarComponent.h"
+
+DebuggoarToolbar* instance = nullptr;
+
+DebuggoarToolbar* DebuggoarToolbar::getInstance() {
+    return instance;
+}
+
+
 //[/MiscUserDefs]
 
 //==============================================================================
 DebuggoarToolbar::DebuggoarToolbar ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
+    instance = this;
     //[/Constructor_pre]
 
     addAndMakeVisible (stepInButton = new TextButton ("stepInButton"));
@@ -57,7 +68,7 @@ DebuggoarToolbar::DebuggoarToolbar ()
     stopDebuggingButton->setColour (TextButton::textColourOnId, Colours::white);
 
     addAndMakeVisible (minstrelLabel = new Label ("minstrelLabel",
-                                                  TRANS("Minstrel:")));
+                                                  TRANS("Voice:")));
     minstrelLabel->setFont (Font (15.00f, Font::plain));
     minstrelLabel->setJustificationType (Justification::centredRight);
     minstrelLabel->setEditable (false, false, false);
@@ -119,6 +130,7 @@ DebuggoarToolbar::DebuggoarToolbar ()
 DebuggoarToolbar::~DebuggoarToolbar()
 {
     //[Destructor_pre]. You can add your own custom destruction code here..
+    instance = nullptr;
     //[/Destructor_pre]
 
     stepInButton = nullptr;
@@ -129,7 +141,6 @@ DebuggoarToolbar::~DebuggoarToolbar()
     minstrelComboBox = nullptr;
     openExtDebuggerButton = nullptr;
     continueDebuggingButton = nullptr;
-
 
     //[Destructor]. You can add your own custom destruction code here..
     //[/Destructor]
@@ -172,16 +183,25 @@ void DebuggoarToolbar::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == stepInButton)
     {
         //[UserButtonCode_stepInButton] -- add your button handler code here..
+        auto x = DebuggoarSession::getInstance();
+        if (x != nullptr)
+            x->stepIn();
         //[/UserButtonCode_stepInButton]
     }
     else if (buttonThatWasClicked == stepOverButton)
     {
         //[UserButtonCode_stepOverButton] -- add your button handler code here..
+        auto x = DebuggoarSession::getInstance();
+        if (x != nullptr)
+            x->stepOver();
         //[/UserButtonCode_stepOverButton]
     }
     else if (buttonThatWasClicked == stepOutButton)
     {
         //[UserButtonCode_stepOutButton] -- add your button handler code here..
+        auto x = DebuggoarSession::getInstance();
+        if (x != nullptr)
+            x->stepOut();
         //[/UserButtonCode_stepOutButton]
     }
     else if (buttonThatWasClicked == stopDebuggingButton)
@@ -197,6 +217,15 @@ void DebuggoarToolbar::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == continueDebuggingButton)
     {
         //[UserButtonCode_continueDebuggingButton] -- add your button handler code here..
+        auto x = DebuggoarSession::getInstance();
+        if (x != nullptr)
+            x->continueRunning();
+        else
+        {
+            auto debuggoar = DebuggoarComponent::getDebuggoar();
+            debuggoar->startSession();
+        }
+
         //[/UserButtonCode_continueDebuggingButton]
     }
 
@@ -222,6 +251,18 @@ void DebuggoarToolbar::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+String DebuggoarToolbar::getVoice() {
+    return minstrelComboBox->getText();
+}
+
+void DebuggoarToolbar::loadSkoar(Skoar* skoar) {
+    minstrelComboBox->clear();
+    int i = 0;
+    for (auto voice : skoar->voices) {
+        minstrelComboBox->addItem(voice.first.c_str(), ++i);
+    }
+    minstrelComboBox->setSelectedId(1, dontSendNotification);
+}
 //[/MiscUserCode]
 
 

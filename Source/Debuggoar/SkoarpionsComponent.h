@@ -21,6 +21,7 @@ public:
     void comboBoxChanged(ComboBox*) override;
 
     void selectNoad(SkoarNoad*);
+    void selectSkoarpion(SkoarpionPtr, String);
 
 private:
     

@@ -7,6 +7,7 @@
 #include "../Code Editor/SkoarCodeEditor.hpp"
 #include "DebuggoarToolbar.h"
 #include "DebuggoarDeetsPanel.h"
+#include "DebuggoarSession.h"
 
 class DebuggoarComponent  : public Component
 {
@@ -22,7 +23,11 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
 
+    void startSession();
+
+
 private:
+    ScopedPointer<DebuggoarSession> session;
     ScopedPointer<SkoarCodeEditorComponent> editor;
     ScopedPointer<DebuggoarToolbar> toolbar;
     ScopedPointer<Skoar> skoar;

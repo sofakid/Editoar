@@ -58,6 +58,9 @@ public:
     };
 
     AwesomeButtonsLNF awesome;
+    String getVoice();
+    void loadSkoar(Skoar*);
+    static DebuggoarToolbar* getInstance();
     //[/UserMethods]
 
     void paint (Graphics& g) override;
@@ -65,8 +68,7 @@ public:
     void buttonClicked (Button* buttonThatWasClicked) override;
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
 
-
-
+    
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     //[/UserVariables]

@@ -18,6 +18,8 @@ public:
     void comboBoxChanged(ComboBox*) override;
 
     void selectNoad(SkoarNoad*);
+    void selectVoice(String);
+
 private:
 
     const int combo_h;

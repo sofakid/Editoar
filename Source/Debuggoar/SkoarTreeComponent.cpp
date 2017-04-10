@@ -132,6 +132,7 @@ SkoarTreeComponent::SkoarTreeComponent(SkoarNoadPtr pRootNoad) :
     tree.setLookAndFeel(&LNF);
     tree.setDefaultOpenness(true);
     tree.setRootItem(rootItem);
+    tree.setColour(TreeView::ColourIds::selectedItemBackgroundColourId, Colours::darkcyan.withAlpha(0.5f));
     addAndMakeVisible(tree);
 
     setSize(300, 400);
@@ -154,6 +155,7 @@ void SkoarTreeComponent::resized()
     tree.setBounds(r);
 }
 
+#define NAICE 5
 void SkoarTreeComponent::selectNoad(SkoarNoad* noad) {
 
     auto rows = tree.getNumRowsInTree();
@@ -161,6 +163,18 @@ void SkoarTreeComponent::selectNoad(SkoarNoad* noad) {
         auto child = static_cast<SkoarNoadTreeItem*>(tree.getItemOnRow(i));
         if (child->isNoad(noad)) {
             child->setSelected(true, true, NotificationType::sendNotification);
+             
+            if (rows - i < NAICE) {
+                auto scrollTo = static_cast<SkoarNoadTreeItem*>(tree.getItemOnRow(rows-1));
+                tree.scrollToKeepItemVisible(scrollTo);
+                tree.scrollToKeepItemVisible(child);
+
+            }
+            else {
+                auto scrollTo = static_cast<SkoarNoadTreeItem*>(tree.getItemOnRow(i + NAICE));
+                tree.scrollToKeepItemVisible(scrollTo);
+                tree.scrollToKeepItemVisible(child);
+            }
             break;
         }
     }

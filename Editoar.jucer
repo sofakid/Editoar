@@ -233,6 +233,10 @@
             file="Source/Debuggoar/DebuggoarSession.cpp"/>
       <FILE id="iXXkzB" name="DebuggoarSession.h" compile="0" resource="0"
             file="Source/Debuggoar/DebuggoarSession.h"/>
+      <FILE id="i6X5pQ" name="DebuggoarStepper.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DebuggoarStepper.cpp"/>
+      <FILE id="xQw0BF" name="DebuggoarStepper.h" compile="0" resource="0"
+            file="Source/Debuggoar/DebuggoarStepper.h"/>
       <FILE id="ExOvkN" name="DebuggoarTable.cpp" compile="1" resource="0"
             file="Source/Debuggoar/DebuggoarTable.cpp"/>
       <FILE id="BrpSkC" name="DebuggoarTable.h" compile="0" resource="0"

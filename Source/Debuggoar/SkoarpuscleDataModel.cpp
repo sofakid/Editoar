@@ -162,7 +162,7 @@ Returning 0 means that the column shouldn't be changed.
 This is used by TableListBox::autoSizeColumn() and TableListBox::autoSizeAllColumns().
 */
 int SkoarpuscleDataModel::getColumnAutoSizeWidth(int columnId) {
-    const int char_width = 7;
+    const int char_width = 8;
     if (columnId == EColumn::field) {
         return String("impressionable: ").length() * char_width;
     }

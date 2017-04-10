@@ -3,6 +3,10 @@
 #include "SkoarNoadDataModel.h"
 #include "DebuggoarComponent.h"
 
+#define FUDGE_FACTOR 39
+#define FUDGE_FACTOR_TRACTOR 12 
+#define FUDGE_FACTOR_MOAR 50 
+
 
 SkoarNoadTableComponent::SkoarNoadTableComponent(SkoarNoadPtr p) :
     noad(p)
@@ -25,7 +29,14 @@ SkoarNoadTableComponent::SkoarNoadTableComponent(SkoarNoadPtr p) :
     table->setModel (model);
     table->autoSizeAllColumns();
 
-    setSize(330, 200);
+    int desired_width = 0;
+    for (int i = 0; i < header->getNumColumns(true); ++i) {
+        auto columnId = header->getColumnIdOfIndex(i, true);
+        const int width = model != nullptr ? model->getColumnAutoSizeWidth(columnId) : 0;
+        desired_width += width;
+    }
+
+    setSize(desired_width + FUDGE_FACTOR_MOAR, 500);
 }
 
 SkoarNoadTableComponent::~SkoarNoadTableComponent() {
@@ -37,15 +48,19 @@ void SkoarNoadTableComponent::paint(Graphics& g)
     g.fillAll(Colours::black);
 }
 
-#define FUDGE_FACTOR 39
-#define FUDGE_FACTOR_TRACTOR 12 
+
 int SkoarNoadTableComponent::getHeightHint() {
     return model->getNumRows() * table->getRowHeight() + FUDGE_FACTOR + FUDGE_FACTOR_TRACTOR;
 }
 
 int SkoarNoadTableComponent::getWidthHint() {
-    table->autoSizeAllColumns();
-    return table->getWidth() + FUDGE_FACTOR_TRACTOR;
+    int desired_width = 0;
+    for (int i = 0; i < table->getHeader().getNumColumns(true); ++i) {
+        auto columnId = table->getHeader().getColumnIdOfIndex(i, true);
+        const int width = model != nullptr ? model->getColumnAutoSizeWidth(columnId) : 0;
+        desired_width += width;
+    }
+    return desired_width + FUDGE_FACTOR_MOAR + FUDGE_FACTOR_TRACTOR;
 }
 
 Rectangle<int> SkoarNoadTableComponent::getBoundsHint() {

@@ -47,6 +47,21 @@ void DebuggoarDeets::resized()
 
         skoarpuscleComponent->setBounds(x, 0, hint.getWidth(), h);
     }
+
+    if (koarComponent != nullptr) {
+        int x = 0;
+        if (noadComponent != nullptr) {
+            x = noadComponent->getWidth();
+        }
+        if (skoarpuscleComponent != nullptr) {
+            x += skoarpuscleComponent->getWidth();
+        }
+
+        auto hint = koarComponent->getBoundsHint();
+        auto h = min(r.getHeight(), hint.getHeight());
+
+        koarComponent->setBounds(x, 0, hint.getWidth(), h);
+    }
 }
 
 void DebuggoarDeets::showNoad(SkoarNoadPtr noad) {
@@ -65,6 +80,17 @@ void DebuggoarDeets::showSkoarpuscle(SkoarpusclePtr skrp) {
     }
     skoarpuscleComponent = make_unique<SkoarpuscleTableComponent>(skrp);
     addAndMakeVisible(skoarpuscleComponent.get());
+    resized();
+
+}
+
+
+void DebuggoarDeets::showKoar(SkoarKoarPtr koar) {
+    if (koarComponent != nullptr) {
+        removeChildComponent(koarComponent.get());
+    }
+    koarComponent = make_unique<KoarTableComponent>(koar);
+    addAndMakeVisible(koarComponent.get());
     resized();
 
 }

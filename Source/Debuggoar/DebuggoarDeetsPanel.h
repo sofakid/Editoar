@@ -2,8 +2,9 @@
 
 #include "../jucer_Headers.h"
 #include "skoar_public.hpp"
-#include "../Debuggoar/SkoarNoadTableComponent.h"
-#include "../Debuggoar/SkoarpuscleTableComponent.h"
+#include "SkoarNoadTableComponent.h"
+#include "SkoarpuscleTableComponent.h"
+#include "KoarTableComponent.h"
 
 
 class DebuggoarDeets : public Component {
@@ -18,14 +19,15 @@ public:
 
     void showNoad(SkoarNoadPtr);
     void showSkoarpuscle(SkoarpusclePtr);
-    //void showNoad(SkoarNoadPtr);
-    //void showNoad(SkoarNoadPtr);
+    void showKoar(SkoarKoarPtr);
 
+   
 
 private:
 
     unique_ptr<SkoarNoadTableComponent> noadComponent;
     unique_ptr<SkoarpuscleTableComponent> skoarpuscleComponent;
+    unique_ptr<KoarTableComponent> koarComponent;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DebuggoarDeets)
 };

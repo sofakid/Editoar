@@ -32,6 +32,8 @@ SkoarpionsComponent::~SkoarpionsComponent() {
 }
 
 void SkoarpionsComponent::loadSkoar(Skoar* skoar) {
+    skoarpions.clearQuick();
+    skoarpionsComboBox->clear();
     auto i = 0;
     for (auto skoarpion : skoar->skoarpions) {
         skoarpions.add(skoarpion);

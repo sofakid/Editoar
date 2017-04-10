@@ -245,6 +245,25 @@
             file="Source/Debuggoar/DebuggoarToolbar.cpp"/>
       <FILE id="yyXuD1" name="DebuggoarToolbar.h" compile="0" resource="0"
             file="Source/Debuggoar/DebuggoarToolbar.h"/>
+      <FILE id="tQMGG7" name="DeetsTableComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DeetsTableComponent.cpp"/>
+      <FILE id="IsaD3x" name="DeetsTableComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/DeetsTableComponent.h"/>
+      <FILE id="MGBzxV" name="FairyDataModel.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/FairyDataModel.cpp"/>
+      <FILE id="tFxRlw" name="FairyDataModel.h" compile="0" resource="0"
+            file="Source/Debuggoar/FairyDataModel.h"/>
+      <FILE id="uNcEgn" name="FairyTableComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/FairyTableComponent.cpp"/>
+      <FILE id="X4TI5G" name="FairyTableComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/FairyTableComponent.h"/>
+      <FILE id="s4afaQ" name="KoarDataModel.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/KoarDataModel.cpp"/>
+      <FILE id="cTBhqn" name="KoarDataModel.h" compile="0" resource="0" file="Source/Debuggoar/KoarDataModel.h"/>
+      <FILE id="wNlf0g" name="KoarTableComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/KoarTableComponent.cpp"/>
+      <FILE id="IQc0iA" name="KoarTableComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/KoarTableComponent.h"/>
       <FILE id="Sjrq9P" name="SkoarNoadDataModel.cpp" compile="1" resource="0"
             file="Source/Debuggoar/SkoarNoadDataModel.cpp"/>
       <FILE id="a3fMjY" name="SkoarNoadDataModel.h" compile="0" resource="0"

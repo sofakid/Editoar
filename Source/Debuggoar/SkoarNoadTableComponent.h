@@ -1,26 +1,10 @@
 #pragma once
-#include "../jucer_Headers.h"
-#include "skoar_public.hpp"
+#include "DeetsTableComponent.h"
 #include "SkoarNoadDataModel.h"
 
-class SkoarNoadTableComponent : public Component {
+class SkoarNoadTableComponent : public DeetsTableComponent {
 public:
-
     SkoarNoadTableComponent(SkoarNoadPtr noad);
-    ~SkoarNoadTableComponent();
-
-    void paint(Graphics& g) override;
-    void resized() override;
-
-    int getHeightHint();
-    int getWidthHint();
-
-    Rectangle<int> getBoundsHint();
-
 private:
-    ScopedPointer<GroupComponent> groupComponent;
-    ScopedPointer<TableListBox> table;
-    ScopedPointer<SkoarNoadDataModel> model;
-
-    SkoarNoadPtr noad;
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SkoarNoadTableComponent)
 };

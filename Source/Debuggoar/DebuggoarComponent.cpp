@@ -61,8 +61,8 @@ void DebuggoarComponent::focusOnNoad(SkoarNoadPtr p) {
     if (p->size > 0) {
         editor->getTokeniser()->activate_range(p->offs, p->size);
         editor->resized();
-        CodeDocument::Position startPos(editor->getDocument(), p->offs);
-        CodeDocument::Position endPos(editor->getDocument(), p->offs + p->size);
+        CodeDocument::Position startPos(editor->getDocument(), static_cast<int>(p->offs));
+        CodeDocument::Position endPos(editor->getDocument(), static_cast<int>(p->offs + p->size));
 
         auto startLine = startPos.getLineNumber();
         auto endLine = endPos.getLineNumber();

@@ -1,5 +1,6 @@
 #include "DebuggoarSession.h"
 #include "SkoarpionsComponent.h"
+#include "DebuggoarDeetsPanel.h"
 
 // --- DebuggoarSession -----------------------------------------------
 DebuggoarSession* session = nullptr;
@@ -21,8 +22,11 @@ DebuggoarSession::DebuggoarSession(String voice, Skoar* skoar) :
     auto skoarpionsRef = &skoarpions;
     
 
-    happening = [](SkoarEventPtr p) {
+    happening = [=](SkoarEventPtr p) {
+        const MessageManagerLock mmLock;
+        auto d = DebuggoarDeets::getInstance();
 
+        d->showKoar(koar);
     };
 
     before_entering_noad_spell = [=](SkoarMinstrelPtr minstrel, SkoarNoad* noad) {

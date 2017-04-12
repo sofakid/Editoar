@@ -117,7 +117,9 @@ namespace Ids
     DECLARE_ID (includeBinaryInAppConfig);
     DECLARE_ID (binaryDataNamespace);
     DECLARE_ID (characterSet);
+
 	DECLARE_ID (SKOARBOOK);
+    DECLARE_ID (SKOARUNITTESTSGROUP);
 
     DECLARE_ID (MAINGROUP);
     DECLARE_ID (EXPORTFORMATS);

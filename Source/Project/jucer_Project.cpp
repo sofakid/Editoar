@@ -389,6 +389,11 @@ Project::Item Project::getMainGroup()
     return Item (*this, projectRoot.getChildWithName (Ids::MAINGROUP));
 }
 
+Project::Item Project::getUnitTestsGroup ()
+{
+    return Item (*this, projectRoot.getChildWithName (Ids::SKOARUNITTESTSGROUP));
+}
+
 PropertiesFile& Project::getStoredProperties() const
 {
     return getAppSettings().getProjectProperties (getProjectUID());

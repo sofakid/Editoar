@@ -1,6 +1,3 @@
-
-
-
 #include "../jucer_Headers.h"
 #include "SkoarCodeEditor.hpp"
 #include "../Application/jucer_Application.h"
@@ -10,6 +7,10 @@
 #include "../Logging/SkoarLoggerComponent.h"
 
 static SkoarCodeTokeniser skoarTokeniser;
+
+void SkoarCodeEditorComponent::startScratchBuffer() {
+
+}
 
 SkoarCodeEditorComponent::SkoarCodeEditorComponent(const File& f, CodeDocument& doc)
 	: GenericCodeEditorComponent(f, doc, &skoarTokeniser), docListener(doc)

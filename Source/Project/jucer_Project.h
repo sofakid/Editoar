@@ -190,6 +190,7 @@ public:
     };
 
     Item getMainGroup();
+    Item getUnitTestsGroup();
 
     void findAllImageItems (OwnedArray<Item>& items);
 

@@ -60,3 +60,8 @@ void TestoarResultsComponent::errorsArriving(std::string s) {
     Colour red(255, 95, 70);
     resultsPaneComponent->insertText(str, red);
 }
+
+String TestoarResultsComponent::getResultsText ()
+{
+    return resultsPaneComponent->getResultsText();
+}

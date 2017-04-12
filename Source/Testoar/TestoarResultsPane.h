@@ -21,6 +21,7 @@ public:
     void resized() override;
 
     void insertText(String &s, Colour colour);
+    String getResultsText ();
 
 private:
     //==============================================================================

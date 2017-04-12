@@ -31,9 +31,9 @@ namespace
     static String fillInBasicTemplateFields (const File& file, const Project::Item& item, const char* templateName)
     {
         return item.project.getFileTemplate (templateName)
-                      .replace ("FILENAME", file.getFileName(), false)
-                      .replace ("DATE", Time::getCurrentTime().toString (true, true, true), false)
-                      .replace("AUTHOR", SystemStats::getFullUserName(), false);
+            .replace ("FILENAME", file.getFileName (), false)
+            .replace ("DATE", Time::getCurrentTime ().toString (true, true, true), false)
+            .replace ("AUTHOR", SystemStats::getFullUserName (), false);
     }
 
     static bool fillInNewSkoarFileTemplate (const File& file, const Project::Item& item, const char* templateName)
@@ -45,12 +45,12 @@ namespace
 }
 
 //==============================================================================
-class NewSkoarFileWizard  : public NewFileWizard::Type
+class NewSkoarFileWizard : public NewFileWizard::Type
 {
 public:
-    NewSkoarFileWizard() {}
+    NewSkoarFileWizard () {}
 
-    String getName() override  { return "Skoar File"; }
+    String getName() override { return "Skoar File"; }
 
     void createNewFile (Project&, Project::Item parent) override
     {

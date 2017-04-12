@@ -73,3 +73,8 @@ void TestoarResultsPane::insertText(String &s, Colour colour) {
 
     //SkoarLog.i("wtf", s);
 }
+
+String TestoarResultsPane::getResultsText ()
+{
+    return resultsPane->getText();
+}

@@ -38,7 +38,6 @@ DebuggoarSession::DebuggoarSession(String voice, Skoar* skoar) :
                 SkoarpionsComponent::getInstance()->selectNoad(noad);
                 auto d = DebuggoarDeets::getInstance();
                 d->showKoar(koar);
-
                 d->showFairy(minstrel->fairy);
             }
 

@@ -23,6 +23,7 @@ public:
     void resultsArriving(std::string s);
     void errorsArriving(std::string s);
 
+    String getResultsText ();
 
 private:
     //==============================================================================

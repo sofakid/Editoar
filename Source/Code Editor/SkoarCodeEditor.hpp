@@ -10,6 +10,9 @@
 class SkoarCodeEditorComponent : public GenericCodeEditorComponent
 {
 public:
+
+    static void SkoarCodeEditorComponent::startScratchBuffer();
+
 	SkoarCodeEditorComponent(const File&, CodeDocument&);
 	~SkoarCodeEditorComponent();
 

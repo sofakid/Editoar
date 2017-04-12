@@ -439,6 +439,8 @@
             file="Source/Project Saving/jucer_ResourceFile.h"/>
     </GROUP>
     <GROUP id="{58EB50D9-0F01-AF9B-087B-93DB283A339D}" name="Utility">
+      <FILE id="Wz4dk5" name="TestoarUtil.cpp" compile="1" resource="0" file="Source/Utility/TestoarUtil.cpp"/>
+      <FILE id="FD9Wrt" name="TestoarUtil.h" compile="0" resource="0" file="Source/Utility/TestoarUtil.h"/>
       <FILE id="TX2oGI" name="jucer_CodeHelpers.cpp" compile="1" resource="0"
             file="Source/Utility/jucer_CodeHelpers.cpp"/>
       <FILE id="mpDJct" name="jucer_CodeHelpers.h" compile="0" resource="0"

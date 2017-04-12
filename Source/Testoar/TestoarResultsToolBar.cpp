@@ -19,9 +19,11 @@
 
 //[Headers] You can add your own extra header files here...
 #include "TestoarResultsComponent.h"
+#include <regex>
 //[/Headers]
 
 #include "TestoarResultsToolBar.h"
+#include "../Utility/TestoarUtil.h"
 
 
 //[MiscUserDefs] You can add your own user definitions and misc code here...
@@ -107,6 +109,34 @@ void TestoarResultsToolBar::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == debugButton)
     {
         //[UserButtonCode_debugButton] -- add your button handler code here..
+
+        TestoarResultsComponent& results (static_cast<TestoarResultsComponent&>(*getParentComponent ()));
+        std::string s (results.getResultsText().toStdString());
+        std::smatch sm;
+
+        std::regex eSkoarce ("run_and_expect :: Skoar :: \"(.*)\"");
+
+        auto reg_flags = std::regex_constants::format_first_only;
+        if (std::regex_search (s, sm, eSkoarce, reg_flags))
+        {
+            std::string dirtyTestName (textLabel->getText ().toStdString ());
+            String skoarce (sm.str (1));
+
+            std::regex eDirty ("[^a-zA-Z0-9_]+");
+            String testName (std::regex_replace (dirtyTestName, eDirty, "_"));
+
+            EditoarApplication& app(EditoarApplication::getApp ());
+            auto p (app.mainWindowList.getFrontmostProject ());
+            
+            if (p != nullptr)
+            {
+                auto file = TestoarUtil::createUnitTest (*p, testName, skoarce);
+                app.openFile (file);
+            }
+
+        }
+
+
         //[/UserButtonCode_debugButton]
     }
 

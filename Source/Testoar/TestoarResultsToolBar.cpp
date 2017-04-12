@@ -114,7 +114,7 @@ void TestoarResultsToolBar::buttonClicked (Button* buttonThatWasClicked)
         std::string s (results.getResultsText().toStdString());
         std::smatch sm;
 
-        std::regex eSkoarce ("run_and_expect :: Skoar :: \"(.*)\"");
+        std::regex eSkoarce ("SkoarBegin :: \"(.*)\" :: SkoarEnd");
 
         auto reg_flags = std::regex_constants::format_first_only;
         if (std::regex_search (s, sm, eSkoarce, reg_flags))

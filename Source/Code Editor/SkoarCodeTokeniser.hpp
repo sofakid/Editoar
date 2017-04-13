@@ -53,6 +53,8 @@ public:
         
         msg,
         cthulhu,
+
+        dal_goto,
         marker,
         deref,
         ottavas,
@@ -98,6 +100,7 @@ public:
         dynamic_inactive,
         msg_inactive,
         cthulhu_inactive,
+        dal_goto_inactive,
         marker_inactive,
         deref_inactive,
         ottavas_inactive,

@@ -56,6 +56,7 @@ CodeEditorComponent::ColourScheme SkoarCodeTokeniser::getDefaultColourScheme()
         { "dynamic",  Colour(0xff998877) },
         { "msg",  Colour(0xff888888) },
         { "cthulhu",  Colour(0xffFF2E2E) },
+        { "dal_goto",  Colour (0xffCCDDFF) },
         { "marker",  Colour(0xffCCDDFF) },
         { "deref",  Colour(0xffB340B1) },
         { "ottavas",  Colour(0xff999999) },

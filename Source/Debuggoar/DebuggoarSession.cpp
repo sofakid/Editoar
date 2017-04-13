@@ -118,7 +118,13 @@ DebuggoarSession::MinstrelThread::~MinstrelThread() {
 
 void DebuggoarSession::MinstrelThread::run()
 {
-    m->start();
+    try {
+        m->start ();
+    }
+    catch (SkoarError &)
+    {
+
+    }
 }
 
 void DebuggoarSession::start() {
@@ -145,4 +151,11 @@ void DebuggoarSession::stepOut() {
 
 void DebuggoarSession::continueRunning() {
     state = EState::running;
+}
+
+void DebuggoarSession::stop () {
+    //state = EState::running;
+    state = EState::steppingIn;
+    //lock.signal();
+    minstrel_thread->startThread ();
 }

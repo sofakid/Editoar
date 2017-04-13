@@ -26,6 +26,8 @@ public:
 
     void continueRunning();
 
+    void stop ();
+
 private:    
     
     class MinstrelThread : public Thread {

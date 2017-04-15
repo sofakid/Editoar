@@ -121,7 +121,7 @@ void DebuggoarSession::MinstrelThread::run()
     try {
         m->start ();
     }
-    catch (SkoarError &)
+    catch (SkoarError &e)
     {
 
     }

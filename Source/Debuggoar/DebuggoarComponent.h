@@ -8,6 +8,7 @@
 #include "DebuggoarToolbar.h"
 #include "DebuggoarDeetsPanel.h"
 #include "DebuggoarSession.h"
+#include "../Vision/VisionCanvas.h"
 
 class DebuggoarComponent  : public Component
 {
@@ -33,6 +34,7 @@ private:
     ScopedPointer<SkoarCodeEditorComponent> editor;
     ScopedPointer<DebuggoarToolbar> toolbar;
     ScopedPointer<Skoar> skoar;
+    ScopedPointer<SkoarLite> skoar_lite;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DebuggoarComponent)

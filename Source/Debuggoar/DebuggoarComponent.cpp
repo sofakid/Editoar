@@ -5,32 +5,36 @@
 //==============================================================================
 DebuggoarComponent* instance = nullptr;
 
-DebuggoarComponent* DebuggoarComponent::getDebuggoar() {
+DebuggoarComponent* DebuggoarComponent::getDebuggoar () {
     return instance;
 }
 
-DebuggoarComponent::DebuggoarComponent(SkoarCodeEditorComponent *ed) :
-    editor(ed),
-    toolbar(new DebuggoarToolbar()),
-    session(nullptr)
+DebuggoarComponent::DebuggoarComponent (SkoarCodeEditorComponent *ed) :
+    editor (ed),
+    toolbar (new DebuggoarToolbar ()),
+    session (nullptr)
 {
-    addAndMakeVisible(toolbar);
-    addAndMakeVisible(editor);
+    addAndMakeVisible (toolbar);
+    addAndMakeVisible (editor);
 
-    setSize(600, 400);
 
     instance = this;
-
-    skoar = new Skoar(editor->getDocument().getAllContent().toWideCharPointer(), &SkoarLog);
-    auto skoarpions = SkoarpionsComponent::getInstance();
-    if (skoarpions != nullptr) {
-        skoarpions->loadSkoar(skoar);
+    SkoarString skoarce(editor->getDocument ().getAllContent ().toWideCharPointer ());
+    
+    skoar = new Skoar (skoarce, &SkoarLog);
+    auto skoarpions = SkoarpionsComponent::getInstance ();
+    if (skoarpions != nullptr)
+    {
+        skoarpions->loadSkoar (skoar);
     }
 
-    toolbar->loadSkoar(skoar);
+    toolbar->loadSkoar (skoar);
+
+
+    setSize (600, 400);
 }
 
-DebuggoarComponent::~DebuggoarComponent()
+DebuggoarComponent::~DebuggoarComponent ()
 {
     toolbar = nullptr;
     editor = nullptr;
@@ -45,29 +49,19 @@ void DebuggoarComponent::paint (Graphics& g)
     g.fillAll (Colours::white);
 }
 
-void DebuggoarComponent::resized()
+void DebuggoarComponent::resized ()
 {
-    auto r = getLocalBounds();
-    toolbar->setBounds (r.removeFromTop(32));
-    editor->setBounds(r);
+    auto r = getLocalBounds ();
+    toolbar->setBounds (r.removeFromTop (32));
+    editor->setBounds (r);
 }
 
-void DebuggoarComponent::startSession() {
-    session = new DebuggoarSession(toolbar->getVoice(), skoar);
-    session->start();
+void DebuggoarComponent::startSession () {
+    session = new DebuggoarSession (toolbar->getVoice (), skoar);
+    session->start ();
 }
 
-void DebuggoarComponent::focusOnNoad(SkoarNoadPtr p) {
-    if (p->size > 0) {
-        editor->getTokeniser()->activate_range(p->offs, p->size);
-        editor->resized();
-        CodeDocument::Position startPos(editor->getDocument(), static_cast<int>(p->offs));
-        CodeDocument::Position endPos(editor->getDocument(), static_cast<int>(p->offs + p->size));
-
-        auto startLine = startPos.getLineNumber();
-        auto endLine = endPos.getLineNumber();
-
-        Range<int> scrollTo(startLine, endLine);
-        editor->scrollToKeepLinesOnScreen(scrollTo);
-    }
+void DebuggoarComponent::focusOnNoad (SkoarNoadPtr p) {
+    if (p->size > 0)
+        editor->focusOnNoad (p);
 }

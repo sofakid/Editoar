@@ -6,18 +6,20 @@
 #include "../Application/jucer_DocumentEditorComponent.h"
 #include "jucer_SourceCodeEditor.h"
 #include "SkoarCodeTokeniser.hpp"
+#include "../Utility/jucer_EditoarLookAndFeel.h"
+#include "../Vision/VisionCanvas.h"
 
 class SkoarCodeEditorComponent : public GenericCodeEditorComponent
 {
 public:
-
-    static void SkoarCodeEditorComponent::startScratchBuffer();
 
 	SkoarCodeEditorComponent(const File&, CodeDocument&);
 	~SkoarCodeEditorComponent();
 
 	void addPopupMenuItems(PopupMenu&, const MouseEvent*) override;
 	void performPopupMenuAction(int menuItemID) override;
+
+    void editorViewportPositionChanged () override;
 
 	void handleReturnKey() override;
 	void insertTextAtCaret(const String& newText) override;
@@ -41,10 +43,19 @@ public:
 
     SkoarCodeTokeniser* getTokeniser();
 
-private:
-	void insertComponentClass();
+    void resized () override;
+    void paint (Graphics&) override {};
 
+    void updateCaretPosition () override;
+
+    void focusGained (FocusChangeType) override;
+    void focusLost (FocusChangeType) override;
+
+    void focusOnNoad (SkoarNoadPtr p);
+
+private:
 	DocumentListener docListener;
+    ScopedPointer<VisionCanvas> vision;
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SkoarCodeEditorComponent)
 };

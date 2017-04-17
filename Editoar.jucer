@@ -82,6 +82,25 @@
     </LINUX_MAKE>
   </EXPORTFORMATS>
   <MAINGROUP name="Skoar" id="NhrJq66R">
+    <GROUP id="{F94732AD-BF5B-5C49-C88E-8C24947B4047}" name="Vision">
+      <FILE id="tZ2EzJ" name="DebuggoarVision.cpp" compile="1" resource="0"
+            file="Source/Vision/DebuggoarVision.cpp"/>
+      <FILE id="FwD0NG" name="DebuggoarVision.h" compile="0" resource="0"
+            file="Source/Vision/DebuggoarVision.h"/>
+      <FILE id="nMHxgP" name="FairyCursor.cpp" compile="1" resource="0" file="Source/Vision/FairyCursor.cpp"/>
+      <FILE id="q8zAJV" name="FairyCursor.h" compile="0" resource="0" file="Source/Vision/FairyCursor.h"/>
+      <FILE id="WwCxzJ" name="NormalVision.cpp" compile="1" resource="0"
+            file="Source/Vision/NormalVision.cpp"/>
+      <FILE id="hknDE3" name="NormalVision.h" compile="0" resource="0" file="Source/Vision/NormalVision.h"/>
+      <FILE id="uLFSZW" name="Vision.cpp" compile="1" resource="0" file="Source/Vision/Vision.cpp"/>
+      <FILE id="R3E0Rj" name="Vision.h" compile="0" resource="0" file="Source/Vision/Vision.h"/>
+      <FILE id="CTpTqr" name="VisionCanvas.cpp" compile="1" resource="0"
+            file="Source/Vision/VisionCanvas.cpp"/>
+      <FILE id="nCqydT" name="VisionCanvas.h" compile="0" resource="0" file="Source/Vision/VisionCanvas.h"/>
+      <FILE id="NreJ3J" name="VisionSegment.cpp" compile="1" resource="0"
+            file="Source/Vision/VisionSegment.cpp"/>
+      <FILE id="rmKrw1" name="VisionSegment.h" compile="0" resource="0" file="Source/Vision/VisionSegment.h"/>
+    </GROUP>
     <GROUP id="{8A22BC7C-46D1-6B7B-3722-026377F056FA}" name="Odin">
       <FILE id="UybFmi" name="Odin.cpp" compile="1" resource="0" file="Source/Odin/Odin.cpp"/>
       <FILE id="qVrLjo" name="Odin.h" compile="0" resource="0" file="Source/Odin/Odin.h"/>

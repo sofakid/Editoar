@@ -516,7 +516,6 @@ bool ProjectContentComponent::setEditorComponent (Component* editor,
         else {
             contentView = editor;
             addAndMakeVisible(editor);
-
         }
         resized();
 

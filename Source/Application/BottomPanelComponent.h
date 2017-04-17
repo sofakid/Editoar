@@ -3,6 +3,7 @@
 #include "../jucer_Headers.h"
 #include "../Utility/jucer_EditoarLookAndFeel.h"
 
+
 class BottomPanelComponent : public Component {
 public:
     BottomPanelComponent();

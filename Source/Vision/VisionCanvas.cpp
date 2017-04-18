@@ -104,6 +104,14 @@ void VisionCanvas::makeSegment (int offs, int size, SkoarStyles::EStyle style) {
         return;
 
     auto s = doc.getTextBetween (start, end);
+
+
+    const wregex re_newline (L"[\\n]");
+    if (regex_search (s.toWideCharPointer (), re_newline))
+    {
+        return;
+    }
+
     auto seg = new VisionSegment (this, s, start, end);
 
     auto colour = cs.types.getUnchecked (SkoarStyles::to_int (style)).colour;

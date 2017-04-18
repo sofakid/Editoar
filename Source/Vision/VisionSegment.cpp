@@ -21,7 +21,9 @@ VisionSegment::VisionSegment (VisionCanvas* vision_canvas, String txt, CodeDocum
     selectionStart(0),
     selectionEnd(0)
 {
+    
     setPaintingIsUnclipped (true);
+
 }
 
 VisionSegment::~VisionSegment ()

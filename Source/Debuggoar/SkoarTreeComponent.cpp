@@ -7,66 +7,16 @@
 #include "DebuggoarComponent.h"
 #include "DebuggoarDeetsPanel.h"
 
-// we need a reference to editor if we want to get the configured colours, todo.
-const Colour skoar_colours[41] = {
-    Colour(0xffffffff),
-    Colour(0xffCC2222),
-    Colour(0xffFFF82E),
-    Colour(0xffFFF82E),
-    Colour(0xffFFF82E),
-    Colour(0xff1EFA67),
-    Colour(0xffEEEECC),
-    Colour(0xffE5E5B5),
-    Colour(0xffB340B1),
-    Colour(0xffB340B1),
-    Colour(0xffFFF82E),
-    Colour(0xff9DB562),
-    Colour(0xffB340B1),
-    Colour(0xffB340B1),
-    Colour(0xff0B6BD9),
-    Colour(0xffFF99FF),
-    Colour(0xffFFF82E),
-    Colour(0xffB58962),
-    Colour(0xff1EFA67),
-    Colour(0xffB340B1),
-    Colour(0xffB340B1),
-    Colour(0xffFFF82E),
-    Colour(0xffFFF82E),
-    Colour(0xffEEEECC),
-    Colour(0xffF8FF2E),
-    Colour(0xffFFF82E),
-    Colour(0xff998877),
-    Colour(0xff888888),
-    Colour(0xffFF2E2E),
-    Colour(0xffCCDDFF),
-    Colour(0xffB340B1),
-    Colour(0xff999999),
-    Colour(0xff6699EE),
-    Colour(0xff1EB1FA),
-    Colour(0xffB59D62),
-    Colour(0xff9DB562),
-    Colour(0xff77EE77),
-    Colour(0xffCCCCCC),
-    Colour(0xff62B59D),
-    Colour(0xff1EAE1E),
-    Colour(0xff333344)
-};
-
 // === SkoarNoadTreeItem ===========================================================================
-SkoarNoadTreeItem::SkoarNoadTreeItem(SkoarNoadPtr p) :
-    noad(p),
-    style(p->style),
-    colour(skoar_colours[SkoarStyles::to_int(style)])
-{
-}
-
 SkoarNoadTreeItem::SkoarNoadTreeItem(
     SkoarNoadPtr p,
-    const SkoarStyles::EStyle defaultStyle) :
+    const SkoarStyles::EStyle defaultStyle, 
+    const SkoarCodeEditorComponent::ColourScheme& cs) :
+    colour_scheme(cs),
     noad(p),
     style(p->style == SkoarStyles::EStyle::nostyle ? defaultStyle : p->style)
 {
-    colour = skoar_colours[SkoarStyles::to_int(style)];
+    colour = colour_scheme.types.getUnchecked(SkoarStyles::to_int(style)).colour;
 }
 
 SkoarNoadTreeItem::~SkoarNoadTreeItem()
@@ -113,7 +63,7 @@ void SkoarNoadTreeItem::itemOpennessChanged(bool isNowOpen) {
 
     if (isNowOpen) {
         for (auto x : noad->children) {
-            addSubItem(new SkoarNoadTreeItem(x, style));
+            addSubItem(new SkoarNoadTreeItem(x, style, colour_scheme));
         }
     } 
     else {
@@ -132,7 +82,8 @@ SkoarTreeComponent::SkoarTreeComponent(SkoarNoadPtr pRootNoad) :
     rootItem(nullptr),
     tree()
 {
-    rootItem = new SkoarNoadTreeItem(rootNoad, SkoarStyles::EStyle::skoarpion);
+    auto cs = DebuggoarComponent::getColourScheme ();
+    rootItem = new SkoarNoadTreeItem(rootNoad, SkoarStyles::EStyle::skoarpion, cs);
     
     tree.setLookAndFeel(&LNF);
     tree.setDefaultOpenness(true);

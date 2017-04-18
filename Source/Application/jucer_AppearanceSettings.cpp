@@ -228,6 +228,10 @@ void AppearanceSettings::applyToCodeEditor (CodeEditorComponent& editor) const
     }
 
     editor.setColourScheme (cs);
+    SkoarCodeEditorComponent* sked = dynamic_cast<SkoarCodeEditorComponent*>(&editor);
+    if (sked != nullptr)
+        sked->reloadColourScheme ();
+    
     editor.setFont (getCodeFont());
 
     for (int i = 0; i < AppearanceColours::numColours; ++i)

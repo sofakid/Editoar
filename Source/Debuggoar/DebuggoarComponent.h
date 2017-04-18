@@ -15,6 +15,7 @@ class DebuggoarComponent  : public Component
 public:
 
     static DebuggoarComponent* getDebuggoar();
+    static const SkoarCodeEditorComponent::ColourScheme& getColourScheme ();
 
     //==============================================================================
     DebuggoarComponent(SkoarCodeEditorComponent *ed);

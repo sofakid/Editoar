@@ -10,9 +10,9 @@
 class SkoarNoadTreeItem : public TreeViewItem {
 public:
     const SkoarStyles::EStyle style;
+    const SkoarCodeEditorComponent::ColourScheme& colour_scheme;
 
-    SkoarNoadTreeItem(SkoarNoadPtr p);
-    SkoarNoadTreeItem(SkoarNoadPtr p, const SkoarStyles::EStyle defaultStyle);
+    SkoarNoadTreeItem(SkoarNoadPtr p, const SkoarStyles::EStyle defaultStyle, const SkoarCodeEditorComponent::ColourScheme&);
     ~SkoarNoadTreeItem();
 
     bool canBeSelected() const override { return true; }
@@ -59,7 +59,7 @@ private:
 
     class : public LookAndFeel_V3 {
     public:
-        int getTreeViewIndentSize(TreeView &) override {
+        int getTreeViewIndentSize(TreeView&) override {
             return 8;
         }
 

@@ -102,6 +102,7 @@ void VisionCanvas::makeSegment (int offs, int size, SkoarStyles::EStyle style) {
 
     if (on_screen_r.getBottom () > r.getBottom ())
         return;
+
     auto s = doc.getTextBetween (start, end);
     auto seg = new VisionSegment (this, s, start, end);
 
@@ -191,7 +192,6 @@ void VisionCanvas::focusOnNoad (SkoarNoadPtr p)
         return;
 
     int offs (p->offs > INT32_MAX ? 0 : static_cast<int>(p->offs));
-    int size (p->size > INT32_MAX ? 0 : static_cast<int>(p->size));
     size_t x (p->offs + p->size);
 
     int end (x > INT32_MAX ? offs : static_cast<int>(x));
@@ -217,4 +217,10 @@ void VisionCanvas::focusOnNoad (SkoarNoadPtr p)
 void VisionCanvas::unfocusOnNoad ()
 {
     focusNoad = nullptr;
+}
+
+void VisionCanvas::reloadColourScheme ()
+{
+    cs = editor.getColourScheme ();
+    reload ();
 }

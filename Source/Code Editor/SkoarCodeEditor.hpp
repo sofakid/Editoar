@@ -27,7 +27,7 @@ public:
 	class DocumentListener : public CodeDocument::Listener
 	{
 	public:
-		DocumentListener(CodeDocument& document);
+		DocumentListener(CodeDocument& document, SkoarCodeEditorComponent* ed);
 		~DocumentListener() override;
 
 		/** Called by a CodeDocument when text is added. */
@@ -38,7 +38,7 @@ public:
 
 	private:
 		CodeDocument& doc;
-        SkoarCodeEditorComponent *ed;
+        SkoarCodeEditorComponent* editor;
 	};
 
     SkoarCodeTokeniser* getTokeniser();
@@ -52,6 +52,8 @@ public:
     void focusLost (FocusChangeType) override;
 
     void focusOnNoad (SkoarNoadPtr p);
+
+    void reloadColourScheme ();
 
 private:
 	DocumentListener docListener;

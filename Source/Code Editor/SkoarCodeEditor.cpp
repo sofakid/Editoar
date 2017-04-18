@@ -10,11 +10,10 @@
 
 
 static SkoarCodeTokeniser skoarTokeniser;
-static SkoarCodeEditorComponent* editor (nullptr);
 
 SkoarCodeEditorComponent::SkoarCodeEditorComponent (const File& f, CodeDocument& doc) : 
     GenericCodeEditorComponent (f, doc, &skoarTokeniser), 
-    docListener (doc),
+    docListener (doc, this),
     vision (nullptr)
 {
     
@@ -22,7 +21,6 @@ SkoarCodeEditorComponent::SkoarCodeEditorComponent (const File& f, CodeDocument&
         return;
 
     vision = new VisionCanvas (this);
-    editor = this;
     doc.addListener (&docListener);
     setLineSpacing (1.3f);
     addAndMakeVisible (vision);
@@ -33,7 +31,7 @@ SkoarCodeEditorComponent::~SkoarCodeEditorComponent () {
     getDocument ().removeListener (&docListener);
     if (vision != nullptr)
         removeChildComponent (vision);
-    editor = nullptr;
+    vision = nullptr;
 }
 
 SkoarCodeTokeniser* SkoarCodeEditorComponent::getTokeniser () {
@@ -70,6 +68,11 @@ void SkoarCodeEditorComponent::focusLost (FocusChangeType t)
 void SkoarCodeEditorComponent::focusOnNoad (SkoarNoadPtr p)
 {
     vision->focusOnNoad (p);
+}
+
+void SkoarCodeEditorComponent::reloadColourScheme ()
+{
+    vision->reloadColourScheme ();
 }
 
 void SkoarCodeEditorComponent::handleReturnKey ()
@@ -145,19 +148,20 @@ void SkoarCodeEditorComponent::performPopupMenuAction (int menuItemID)
 }
 
 // ------------------------------------------------------------------------------
-SkoarCodeEditorComponent::DocumentListener::DocumentListener (CodeDocument& document) : doc (document) {}
+SkoarCodeEditorComponent::DocumentListener::DocumentListener (CodeDocument& document, SkoarCodeEditorComponent* ed) : 
+    doc (document),
+    editor (ed)
+    {}
 SkoarCodeEditorComponent::DocumentListener::~DocumentListener () {}
 
 /** Called by a CodeDocument when text is added. */
 void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextInserted (const String& /*newText*/, int /*insertIndex*/) {
-    if (editor != nullptr)
-        editor->vision->reload ();
+    editor->vision->reload ();
 }
 
 /** Called by a CodeDocument when text is deleted. */
 void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextDeleted (int /*startIndex*/, int /*endIndex*/) {
-    if (editor != nullptr)
-        editor->vision->reload ();
+    editor->vision->reload ();
 }
 
 

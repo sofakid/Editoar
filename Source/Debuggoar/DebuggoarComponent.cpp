@@ -9,6 +9,12 @@ DebuggoarComponent* DebuggoarComponent::getDebuggoar () {
     return instance;
 }
 
+const SkoarCodeEditorComponent::ColourScheme & DebuggoarComponent::getColourScheme ()
+{
+    auto deb = getDebuggoar ();
+    return deb->editor->getColourScheme ();
+}
+
 DebuggoarComponent::DebuggoarComponent (SkoarCodeEditorComponent *ed) :
     editor (ed),
     toolbar (new DebuggoarToolbar ()),

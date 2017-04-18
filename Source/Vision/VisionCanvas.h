@@ -36,6 +36,8 @@ public:
     void focusOnNoad (SkoarNoadPtr p);
     void unfocusOnNoad ();
 
+    void reloadColourScheme ();
+
 private:
     SkoarNoadPtr focusNoad;
 

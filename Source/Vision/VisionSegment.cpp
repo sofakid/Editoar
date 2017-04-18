@@ -26,7 +26,7 @@ VisionSegment::VisionSegment (VisionCanvas* vision_canvas, String txt, CodeDocum
 
 VisionSegment::~VisionSegment ()
 {
-    canvas->removeChildComponent (this);
+    //canvas->removeChildComponent (this);
 }
 
 void VisionSegment::setColour (Colour & col)

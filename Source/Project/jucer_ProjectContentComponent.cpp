@@ -509,7 +509,7 @@ bool ProjectContentComponent::setEditorComponent (Component* editor,
         }
         
         if (skoarEditor != nullptr) {
-            DebuggoarComponent *debuggoar = new DebuggoarComponent(skoarEditor);
+            DebuggoarComponent *debuggoar = new DebuggoarComponent(skoarEditor, editor);
             contentView = debuggoar;
             addAndMakeVisible(debuggoar);
         }

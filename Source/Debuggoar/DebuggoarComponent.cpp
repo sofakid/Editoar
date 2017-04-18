@@ -15,8 +15,9 @@ const SkoarCodeEditorComponent::ColourScheme & DebuggoarComponent::getColourSche
     return deb->editor->getColourScheme ();
 }
 
-DebuggoarComponent::DebuggoarComponent (SkoarCodeEditorComponent *ed) :
+DebuggoarComponent::DebuggoarComponent (SkoarCodeEditorComponent *ed, Component* outerEditor) :
     editor (ed),
+    documentEditor (outerEditor),
     toolbar (new DebuggoarToolbar ()),
     session (nullptr)
 {
@@ -43,10 +44,13 @@ DebuggoarComponent::DebuggoarComponent (SkoarCodeEditorComponent *ed) :
 DebuggoarComponent::~DebuggoarComponent ()
 {
     toolbar = nullptr;
-    editor = nullptr;
-    instance = nullptr;
+    if (instance == this)
+        instance = nullptr;
+
     skoar = nullptr;
     session = nullptr;
+    documentEditor = nullptr;
+    editor = nullptr;
 }
 
 //==============================================================================

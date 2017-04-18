@@ -3,7 +3,6 @@
 #include "../Code Editor/SkoarCodeEditor.hpp"
 #include "../Application/jucer_Application.h"
 
-
 VisionCanvas::VisionCanvas (SkoarCodeEditorComponent* ed) :
     editor (*ed),
     doc (ed->getDocument ()),
@@ -104,7 +103,6 @@ void VisionCanvas::makeSegment (int offs, int size, SkoarStyles::EStyle style) {
         return;
 
     auto s = doc.getTextBetween (start, end);
-
 
     const wregex re_newline (L"[\\n]");
     if (regex_search (s.toWideCharPointer (), re_newline))

@@ -18,7 +18,7 @@ public:
     static const SkoarCodeEditorComponent::ColourScheme& getColourScheme ();
 
     //==============================================================================
-    DebuggoarComponent(SkoarCodeEditorComponent *ed);
+    DebuggoarComponent(SkoarCodeEditorComponent *ed, Component *outerEditor);
     ~DebuggoarComponent();
 
     //==============================================================================
@@ -32,10 +32,14 @@ public:
 
 private:
     ScopedPointer<DebuggoarSession> session;
-    ScopedPointer<SkoarCodeEditorComponent> editor;
     ScopedPointer<DebuggoarToolbar> toolbar;
     ScopedPointer<Skoar> skoar;
     ScopedPointer<SkoarLite> skoar_lite;
+    
+    SkoarCodeEditorComponent* editor; // documentEditor owns this
+    ScopedPointer<Component> documentEditor; // the skoarcodeeditor is inside this 
+                                             // object, we keep it around so we can destroy it.
+                                             // i assume this is temporary.
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DebuggoarComponent)

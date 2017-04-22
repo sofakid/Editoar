@@ -30,12 +30,14 @@ DebuggoarSession::DebuggoarSession(String voice, Skoar* skoar) :
         d->showEvent(p);
     };
 
-    before_entering_noad_spell = [=](SkoarMinstrelPtr minstrel, SkoarNoad* noad) {
+    before_entering_noad_spell = [=](SkoarMinstrelPtr minstrel, SkoarNoadite* noad) {
+        
+
         if (*stateRef == EState::steppingIn || noad->breakpoint) {
             {
                 const MessageManagerLock mmLock;
                 // select noad in tree
-                SkoarpionsComponent::getInstance()->selectNoad(noad);
+                //SkoarpionsComponent::getInstance()->selectNoad(noad); TODO
                 auto d = DebuggoarDeets::getInstance();
                 d->showKoar(koar);
                 d->showFairy(minstrel->fairy);
@@ -45,9 +47,23 @@ DebuggoarSession::DebuggoarSession(String voice, Skoar* skoar) :
             lockRef->wait();
             lockRef->reset();
         }
+        
+        if (*stateRef == EState::stopping)
+        {
+            throw SkoarNav (SkoarNav::DONE);
+        }
+
+#if SKOAR_DEBUG_BUILD
+        if (*stateRef == EState::debuggerStepping)
+        {
+            *stateRef = EState::steppingIn;
+            JUCE_BREAK_IN_DEBUGGER;
+        }
+#endif
+
     };
 
-    after_entering_noad_spell = [=](SkoarMinstrelPtr p, SkoarNoad*) {
+    after_entering_noad_spell = [=](SkoarMinstrelPtr p, SkoarNoadite*) {
         
     };
 
@@ -112,7 +128,7 @@ DebuggoarSession::MinstrelThread::MinstrelThread(SkoarMinstrelPtr p) :
 }
 
 DebuggoarSession::MinstrelThread::~MinstrelThread() {
-    stopThread(1000);
+    stopThread(10);
 }
 
 
@@ -121,7 +137,7 @@ void DebuggoarSession::MinstrelThread::run()
     try {
         m->start ();
     }
-    catch (SkoarError &e)
+    catch (SkoarError &)
     {
 
     }
@@ -155,7 +171,13 @@ void DebuggoarSession::continueRunning() {
 
 void DebuggoarSession::stop () {
     //state = EState::running;
-    state = EState::steppingIn;
-    //lock.signal();
-    minstrel_thread->startThread ();
+    state = EState::stopping;
+    lock.signal();
+    minstrel_thread->stopThread (1000);
+}
+
+
+void DebuggoarSession::cpp_breakpoint () {
+    state = EState::debuggerStepping;
+    lock.signal();
 }

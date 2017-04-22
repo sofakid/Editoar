@@ -35,7 +35,6 @@ CodeEditorComponent::ColourScheme SkoarCodeTokeniser::getDefaultColourScheme ()
         { "BooleanOp",  Colour (0xffB340B1) },
         { "HashLevel",  Colour (0xffFFF82E) },
         { "Bars",  Colour (0xff9DB562) },
-        { "AssOp",  Colour (0xffB340B1) },
         { "Carrot",  Colour (0xffB340B1) },
         { "Voice",  Colour (0xff0B6BD9) },
         { "Fairy",  Colour (0xffFF99FF) },
@@ -67,6 +66,7 @@ CodeEditorComponent::ColourScheme SkoarCodeTokeniser::getDefaultColourScheme ()
         { "arg_listy",  Colour (0xff333344) }
 
     };
+
 
     CodeEditorComponent::ColourScheme cs;
 

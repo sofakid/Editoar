@@ -33,7 +33,6 @@ public:
         HashLevel,
         Bars,
         
-        AssOp,
         Carrot,
         Voice,
         Fairy,

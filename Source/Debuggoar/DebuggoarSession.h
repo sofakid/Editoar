@@ -10,7 +10,10 @@ public:
         running,
         steppingIn,
         steppingOver,
-        steppingOut
+        steppingOut,
+        stopping,
+        stopped,
+        debuggerStepping
     };
 
     static DebuggoarSession* getInstance();
@@ -27,6 +30,8 @@ public:
     void continueRunning();
 
     void stop ();
+
+    void cpp_breakpoint ();
 
 private:    
     
@@ -47,7 +52,7 @@ private:
     SpellOfDebuggingSkoarpions before_entering_skoarpion_spell;
     SpellOfDebuggingSkoarpions after_entering_skoarpion_spell;
 
-    EState state;
+    volatile EState state;
     WaitableEvent lock;
     SkoarMinstrelPtr m;
     ListOfSkoarpions skoarpions;

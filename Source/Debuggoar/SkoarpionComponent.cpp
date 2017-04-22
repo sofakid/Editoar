@@ -22,7 +22,7 @@ SkoarpionComponent::SkoarpionComponent(SkoarpionPtr skoarpion) :
     for (auto p : *proj) {
         projections.add(p);
         projectionsComboBox->addItem(
-            p->proj->voice->name.c_str(), ++i);
+            p->voice_name.c_str(), ++i);
     }
     //projectionsComboBox->setSelectedId(1, sendNotification);
 
@@ -57,7 +57,7 @@ void SkoarpionComponent::comboBoxChanged(ComboBox* comboBoxThatHasChanged)
             if (projectionComponent != nullptr) {
                 removeChildComponent(projectionComponent);
             }
-            addAndMakeVisible(projectionComponent = new SkoarTreeComponent(p->proj));
+            //addAndMakeVisible(projectionComponent = new SkoarTreeComponent(p)); TODO
             resized();
         }
     }
@@ -77,7 +77,7 @@ void SkoarpionComponent::selectVoice(String voice) {
     auto i = 0;
     for (auto x : projections) {
         ++i;
-        if (String(x->proj->voice->name.c_str()) == voice) {
+        if (String(x->voice_name.c_str()) == voice) {
             projectionsComboBox->setSelectedId(i, sendNotification);
         }
     }

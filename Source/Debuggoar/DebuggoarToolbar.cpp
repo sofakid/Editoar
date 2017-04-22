@@ -202,16 +202,23 @@ void DebuggoarToolbar::buttonClicked (Button* buttonThatWasClicked)
         auto x = DebuggoarSession::getInstance();
         if (x != nullptr)
             x->stepOut();
+        
         //[/UserButtonCode_stepOutButton]
     }
     else if (buttonThatWasClicked == stopDebuggingButton)
     {
         //[UserButtonCode_stopDebuggingButton] -- add your button handler code here..
+        auto x = DebuggoarSession::getInstance ();
+        if (x != nullptr)
+            x->stop ();
         //[/UserButtonCode_stopDebuggingButton]
     }
     else if (buttonThatWasClicked == openExtDebuggerButton)
     {
         //[UserButtonCode_openExtDebuggerButton] -- add your button handler code here..
+        auto x = DebuggoarSession::getInstance ();
+        if (x != nullptr)
+            x->cpp_breakpoint ();
         //[/UserButtonCode_openExtDebuggerButton]
     }
     else if (buttonThatWasClicked == continueDebuggingButton)

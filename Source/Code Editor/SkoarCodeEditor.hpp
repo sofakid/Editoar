@@ -52,6 +52,7 @@ public:
     void focusLost (FocusChangeType) override;
 
     void focusOnNoad (SkoarNoadPtr p);
+    void focusOnNoadite (const SkoarNoadite & noadite);
 
     void reloadColourScheme ();
 

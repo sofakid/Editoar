@@ -291,6 +291,10 @@
             file="Source/Debuggoar/KoarTableComponent.cpp"/>
       <FILE id="IQc0iA" name="KoarTableComponent.h" compile="0" resource="0"
             file="Source/Debuggoar/KoarTableComponent.h"/>
+      <FILE id="LZdsFQ" name="NoaditesListComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/NoaditesListComponent.cpp"/>
+      <FILE id="GyNQA1" name="NoaditesListComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/NoaditesListComponent.h"/>
       <FILE id="Sjrq9P" name="SkoarNoadDataModel.cpp" compile="1" resource="0"
             file="Source/Debuggoar/SkoarNoadDataModel.cpp"/>
       <FILE id="a3fMjY" name="SkoarNoadDataModel.h" compile="0" resource="0"

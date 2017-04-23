@@ -57,7 +57,7 @@ void SkoarpionComponent::comboBoxChanged(ComboBox* comboBoxThatHasChanged)
             if (projectionComponent != nullptr) {
                 removeChildComponent(projectionComponent);
             }
-            //addAndMakeVisible(projectionComponent = new SkoarTreeComponent(p)); TODO
+            addAndMakeVisible(projectionComponent = new NoaditesListComponent(p));
             resized();
         }
     }
@@ -66,7 +66,7 @@ void SkoarpionComponent::comboBoxChanged(ComboBox* comboBoxThatHasChanged)
 void SkoarpionComponent::selectNoad(SkoarNoad* noad) {
 
     if (projectionComponent != nullptr) {
-        projectionComponent->selectNoad(noad);
+        //projectionComponent->selectNoad(noad);
     }
 
 }

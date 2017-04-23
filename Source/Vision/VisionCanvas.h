@@ -34,12 +34,14 @@ public:
     void hideFairy ();
 
     void focusOnNoad (SkoarNoadPtr p);
+    void focusOnNoadite (const SkoarNoadite& noadite);
     void unfocusOnNoad ();
 
     void reloadColourScheme ();
 
 private:
     SkoarNoadPtr focusNoad;
+    const SkoarNoadite* focusNoadite;
 
     ScopedPointer<FairyCursor> fairy;
     OwnedArray<VisionSegment> segments;

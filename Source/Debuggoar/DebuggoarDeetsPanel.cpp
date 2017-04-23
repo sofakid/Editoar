@@ -122,6 +122,17 @@ void DebuggoarDeets::showNoad(SkoarNoadPtr noad) {
     resized();
 }
 
+void DebuggoarDeets::showNoadite (const SkoarNoadite& noad) {
+    if (noadComponent != nullptr)
+    {
+        removeChildComponent (noadComponent.get ());
+    }
+
+    noadComponent = make_unique<SkoarNoadTableComponent> (noad);
+    addAndMakeVisible (noadComponent.get ());
+    resized ();
+}
+
 void DebuggoarDeets::showSkoarpuscle(SkoarpusclePtr skrp) {
     if (skoarpuscleComponent != nullptr) {
         removeChildComponent(skoarpuscleComponent.get());

@@ -19,7 +19,9 @@ public:
     void paint(Graphics& g) override;
     void resized() override;
 
-    void showNoad(SkoarNoadPtr);
+    void showNoad (SkoarNoadPtr);
+    void showNoadite (const SkoarNoadite&);
+    
     void showSkoarpuscle(SkoarpusclePtr);
     void showKoar(SkoarKoarPtr);
     void showEvent(SkoarEventPtr);

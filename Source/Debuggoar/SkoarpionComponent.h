@@ -3,7 +3,7 @@
 #include "../jucer_Headers.h"
 #include "skoar_public.hpp"
 #include "skoarpion.hpp"
-#include "SkoarTreeComponent.h"
+#include "NoaditesListComponent.h"
 
 class SkoarpionComponent : 
     public Component,
@@ -28,7 +28,7 @@ private:
     const int combo_h_total;
 
     Array<SkoarpionProjectionPtr> projections;
-    ScopedPointer<SkoarTreeComponent> projectionComponent;
+    ScopedPointer<NoaditesListComponent> projectionComponent;
 
     ScopedPointer<ComboBox> projectionsComboBox;
 

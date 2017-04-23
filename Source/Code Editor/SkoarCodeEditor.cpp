@@ -70,6 +70,13 @@ void SkoarCodeEditorComponent::focusOnNoad (SkoarNoadPtr p)
     vision->focusOnNoad (p);
 }
 
+
+void SkoarCodeEditorComponent::focusOnNoadite (const SkoarNoadite& noadite)
+{
+    vision->focusOnNoadite (noadite);
+}
+
+
 void SkoarCodeEditorComponent::reloadColourScheme ()
 {
     vision->reloadColourScheme ();

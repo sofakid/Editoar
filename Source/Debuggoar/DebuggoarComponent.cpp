@@ -75,3 +75,8 @@ void DebuggoarComponent::focusOnNoad (SkoarNoadPtr p) {
     if (p->size > 0)
         editor->focusOnNoad (p);
 }
+
+
+void DebuggoarComponent::focusOnNoadite (const SkoarNoadite& noadite) {
+    editor->focusOnNoadite (noadite);
+}

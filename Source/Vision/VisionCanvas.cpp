@@ -8,7 +8,8 @@ VisionCanvas::VisionCanvas (SkoarCodeEditorComponent* ed) :
     doc (ed->getDocument ()),
     fairy (new FairyCursor (*ed)),
     cs (ed->getColourScheme ()),
-    focusNoad (nullptr)
+    focusNoad (nullptr),
+    focusNoadite (nullptr)
 {
     setInterceptsMouseClicks (false, false);
     reload ();
@@ -23,7 +24,6 @@ void VisionCanvas::rebuildSegments ()
 {
     if (skoar == nullptr)
         return;
-
 
     if (skoar->parsedOk == false)
     {
@@ -58,7 +58,11 @@ void VisionCanvas::rebuildSegments ()
         }
     );
 
-    focusOnNoad (focusNoad);
+    if (focusNoad != nullptr)
+        focusOnNoad (focusNoad);
+
+    else if (focusNoadite != nullptr)
+        focusOnNoadite (*focusNoadite);
 }
 
 void VisionCanvas::rebuildFailedParseSegments ()
@@ -193,6 +197,7 @@ void VisionCanvas::hideFairy ()
 void VisionCanvas::focusOnNoad (SkoarNoadPtr p)
 {
     focusNoad = p;
+    focusNoadite = nullptr;
 
     if (focusNoad == nullptr)
         return;
@@ -220,9 +225,40 @@ void VisionCanvas::focusOnNoad (SkoarNoadPtr p)
     repaint ();
 }
 
+
+void VisionCanvas::focusOnNoadite (const SkoarNoadite& noadite)
+{
+    focusNoadite = &noadite;
+    focusNoad = nullptr;
+
+    int offs (noadite.offs > INT32_MAX ? 0 : static_cast<int>(noadite.offs));
+    size_t x (noadite.offs + noadite.size);
+
+    int end (x > INT32_MAX ? offs : static_cast<int>(x));
+
+    for (auto seg : segments)
+        if (seg->start.getPosition () >= offs && seg->end.getPosition () <= end)
+            seg->light ();
+        else
+            seg->dim ();
+
+    CodeDocument::Position startPos (doc, offs);
+    CodeDocument::Position endPos (doc, end);
+
+    auto start_line = startPos.getLineNumber ();
+    auto end_line = endPos.getLineNumber ();
+
+    Range<int> scrollTo (start_line, end_line);
+    editor.scrollToKeepLinesOnScreen (scrollTo);
+
+    repaint ();
+}
+
+
 void VisionCanvas::unfocusOnNoad ()
 {
     focusNoad = nullptr;
+    focusNoadite = nullptr;
 }
 
 void VisionCanvas::reloadColourScheme ()

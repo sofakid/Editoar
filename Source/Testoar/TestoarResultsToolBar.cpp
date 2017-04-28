@@ -20,6 +20,7 @@
 //[Headers] You can add your own extra header files here...
 #include "TestoarResultsComponent.h"
 #include <regex>
+#include "../Logging/SkoarLogger.hpp"
 //[/Headers]
 
 #include "TestoarResultsToolBar.h"
@@ -115,13 +116,14 @@ void TestoarResultsToolBar::buttonClicked (Button* buttonThatWasClicked)
         std::smatch sm;
         
 
-        std::regex eUnitTestFile ("SkoarUT<<([^>]*)>>SkoarUT");
+        std::regex eUnitTestFile ("SkoarUT<<([^>]*)>\\s*>\\s*S\\s*k\\s*o\\s*a\\s*r\\s*U\\s*T");
         if (std::regex_search (s, sm, eUnitTestFile))
         {
             std::string dirtyFileName (sm.str (1));
-            std::regex eDirty ("[\\n\\r]*");
+            std::regex eDirty ("\\s*[\\n\\r]+\\s*");
             String unitTestFile (std::regex_replace (dirtyFileName, eDirty, ""));
 
+            SkoarLog.i (unitTestFile.toWideCharPointer ());
             EditoarApplication& app (EditoarApplication::getApp ());
 
             juce::File f (unitTestFile);

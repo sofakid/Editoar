@@ -41,7 +41,7 @@ public:
 
     void paintItem (Graphics&, int, int) override;
     void itemSelectionChanged (bool isNowSelected) override;
-    bool isNoadite (SkoarNoadite*);
+    bool isNoadite (const SkoarNoadite&);
 
 private:
     const SkoarNoadite& noadite;
@@ -58,7 +58,7 @@ public:
 
     void paint (Graphics&) override;
     void resized () override;
-    void selectNoad (SkoarNoadite*);
+    void selectNoadite (const SkoarNoadite&);
 
 private:
 

@@ -76,8 +76,8 @@ void NoaditesTreeItem::itemSelectionChanged (bool isNowSelected) {
     }
 }
 
-bool NoaditesTreeItem::isNoadite (SkoarNoadite* p) {
-    return noadite.offs == p->offs && noadite.kind == p->kind;
+bool NoaditesTreeItem::isNoadite (const SkoarNoadite& p) {
+    return noadite.offs == p.offs && noadite.kind == p.kind;
 }
 
 
@@ -117,7 +117,7 @@ void NoaditesListComponent::resized ()
 }
 
 #define NAICE 5
-void NoaditesListComponent::selectNoad (SkoarNoadite* noadite) {
+void NoaditesListComponent::selectNoadite (const SkoarNoadite& noadite) {
 
     auto rows = tree.getNumRowsInTree ();
     for (int i = 0; i < rows; ++i)

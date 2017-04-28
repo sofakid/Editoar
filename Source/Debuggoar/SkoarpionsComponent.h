@@ -4,27 +4,29 @@
 #include "SkoarpionComponent.h"
 #include "skoar.hpp"
 
-class SkoarpionsComponent : 
+class SkoarpionsComponent :
     public Component,
-    public ComboBoxListener {
+    public ComboBoxListener
+{
 public:
-    static SkoarpionsComponent* SkoarpionsComponent::getInstance();
+    static SkoarpionsComponent* SkoarpionsComponent::getInstance ();
 
-    SkoarpionsComponent();
-    ~SkoarpionsComponent();
+    SkoarpionsComponent ();
+    ~SkoarpionsComponent ();
 
-    void paint(Graphics&) override;
-    void resized() override;
+    void paint (Graphics&) override;
+    void resized () override;
 
-    void loadSkoar(Skoar*);
+    void loadSkoar (Skoar*);
 
-    void comboBoxChanged(ComboBox*) override;
+    void comboBoxChanged (ComboBox*) override;
 
-    void selectNoad(SkoarNoad*);
-    void selectSkoarpion(SkoarpionPtr, String);
+    void selectNoad (SkoarNoad*);
+    void selectNoadite (const SkoarNoadite&);
+    void selectSkoarpion (SkoarpionPtr, String);
 
 private:
-    
+
     const int combo_h;
     const int combo_pad;
     const int combo_pad_x2;
@@ -35,5 +37,5 @@ private:
 
     ScopedPointer<ComboBox> skoarpionsComboBox;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SkoarpionsComponent)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SkoarpionsComponent)
 };

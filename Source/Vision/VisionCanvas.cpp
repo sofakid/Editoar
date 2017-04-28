@@ -37,24 +37,14 @@ void VisionCanvas::rebuildSegments ()
     auto style = SkoarStyles::EStyle::nostyle;
     std::list<SkoarStyles::EStyle> styles { style };
 
-    SkoarNoad::inorderBeforeAfter (skoar->tree,
-        // before
+    SkoarNoad::inorder (skoar->tree,
         [&](SkoarNoadPtr p) {
-            if (p->style != SkoarStyles::EStyle::nostyle)
-                style = p->style;
-            styles.push_back (style);
-
             if (p->size > 0)
             {
                 int offs = p->offs > INT32_MAX ? 0 : static_cast<int> (p->offs);
                 int size = p->size > INT32_MAX ? 0 : static_cast<int> (p->size);
-                makeSegment (offs, size, style);
+                makeSegment (offs, size, p->style);
             }
-        },
-        // after
-        [&](SkoarNoadPtr p) {
-            styles.pop_back ();
-            style = styles.back ();
         }
     );
 

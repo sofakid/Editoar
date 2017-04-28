@@ -113,6 +113,25 @@ void TestoarResultsToolBar::buttonClicked (Button* buttonThatWasClicked)
         TestoarResultsComponent& results (static_cast<TestoarResultsComponent&>(*getParentComponent ()));
         std::string s (results.getResultsText().toStdString());
         std::smatch sm;
+        
+
+        std::regex eUnitTestFile ("SkoarUT<<([^>]*)>>SkoarUT");
+        if (std::regex_search (s, sm, eUnitTestFile))
+        {
+            std::string dirtyFileName (sm.str (1));
+            std::regex eDirty ("[\\n\\r]*");
+            String unitTestFile (std::regex_replace (dirtyFileName, eDirty, ""));
+
+            EditoarApplication& app (EditoarApplication::getApp ());
+
+            juce::File f (unitTestFile);
+
+            if (f.existsAsFile ())
+                app.openFile (f);
+
+            return;
+
+        }
 
         std::regex eSkoarce (R"delim(SkoarBegin :: "([^"]*)"\s+::\s+SkoarEnd)delim");
 

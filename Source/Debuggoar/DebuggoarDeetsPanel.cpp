@@ -19,7 +19,8 @@ DebuggoarDeets::DebuggoarDeets() :
 }
 
 DebuggoarDeets::~DebuggoarDeets() {
-    instance = nullptr;
+    if (this == instance)
+        instance = nullptr;
 }
 
 void DebuggoarDeets::paint(Graphics& g)

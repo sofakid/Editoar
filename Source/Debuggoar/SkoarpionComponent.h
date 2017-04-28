@@ -5,20 +5,22 @@
 #include "skoarpion.hpp"
 #include "NoaditesListComponent.h"
 
-class SkoarpionComponent : 
+class SkoarpionComponent :
     public Component,
-    public ComboBoxListener {
+    public ComboBoxListener
+{
 public:
-    SkoarpionComponent(SkoarpionPtr);
-    ~SkoarpionComponent();
-    
-    void paint(Graphics&) override;
-    void resized() override;
+    SkoarpionComponent (SkoarpionPtr);
+    ~SkoarpionComponent ();
 
-    void comboBoxChanged(ComboBox*) override;
+    void paint (Graphics&) override;
+    void resized () override;
 
-    void selectNoad(SkoarNoad*);
-    void selectVoice(String);
+    void comboBoxChanged (ComboBox*) override;
+
+    void selectNoad (SkoarNoad*);
+    void selectNoadite (const SkoarNoadite&);
+    void selectVoice (String);
 
 private:
 
@@ -32,5 +34,5 @@ private:
 
     ScopedPointer<ComboBox> projectionsComboBox;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SkoarpionComponent)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SkoarpionComponent)
 };

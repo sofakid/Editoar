@@ -28,7 +28,8 @@ SkoarpionsComponent::SkoarpionsComponent() :
 }
 
 SkoarpionsComponent::~SkoarpionsComponent() {
-    instance = nullptr;
+    if (instance == this)
+        instance = nullptr;
 }
 
 void SkoarpionsComponent::loadSkoar(Skoar* skoar) {
@@ -77,6 +78,16 @@ void SkoarpionsComponent::selectNoad(SkoarNoad* noad) {
 
     if (skoarpionComponent != nullptr) {
         skoarpionComponent->selectNoad(noad);
+    }
+
+}
+
+
+void SkoarpionsComponent::selectNoadite (const SkoarNoadite& noad) {
+
+    if (skoarpionComponent != nullptr)
+    {
+        skoarpionComponent->selectNoadite (noad);
     }
 
 }

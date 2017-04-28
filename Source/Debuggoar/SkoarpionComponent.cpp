@@ -72,6 +72,16 @@ void SkoarpionComponent::selectNoad(SkoarNoad* noad) {
 }
 
 
+void SkoarpionComponent::selectNoadite (const SkoarNoadite& noad) {
+
+    if (projectionComponent != nullptr)
+    {
+        projectionComponent->selectNoadite(noad);
+    }
+
+}
+
+
 void SkoarpionComponent::selectVoice(String voice) {
 
     auto i = 0;

@@ -31,13 +31,12 @@ DebuggoarSession::DebuggoarSession(String voice, Skoar* skoar) :
     };
 
     before_entering_noad_spell = [=](SkoarMinstrelPtr minstrel, SkoarNoadite* noad) {
-        
 
         if (*stateRef == EState::steppingIn || noad->breakpoint) {
             {
                 const MessageManagerLock mmLock;
                 // select noad in tree
-                //SkoarpionsComponent::getInstance()->selectNoad(noad); TODO
+                SkoarpionsComponent::getInstance()->selectNoadite(*noad);
                 auto d = DebuggoarDeets::getInstance();
                 d->showKoar(koar);
                 d->showFairy(minstrel->fairy);

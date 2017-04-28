@@ -108,6 +108,11 @@
     <GROUP id="{38A0CCF5-98E2-06CD-543A-5396A09634D4}" name="UnitTests">
       <FILE id="oYhygX" name="test_memory.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/test_memory.cpp"/>
       <FILE id="a0Ux16" name="test_sanity.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/test_sanity.cpp"/>
+      <FILE id="Zx0zgO" name="test_skoartests.cpp" compile="1" resource="0"
+            file="../SkoarCpp/SkoarCpp/test_skoartests.cpp"/>
+    </GROUP>
+    <GROUP id="{0B73570C-A0DF-019D-47C6-01C7FD8E3926}" name="UnitTestsWithJuce">
+      <FILE id="lTXZm1" name="test_skoars.cpp" compile="1" resource="0" file="Source/UnitTestsWithJuce/test_skoars.cpp"/>
     </GROUP>
     <GROUP id="{16FEBAFB-A232-5970-99CE-E3613C30A999}" name="SkoarCpp">
       <FILE id="kvbcHV" name="testoar_reporter.cpp" compile="1" resource="0"

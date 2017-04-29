@@ -18,8 +18,10 @@ public:
 
     static DebuggoarSession* getInstance();
 
-    DebuggoarSession(String voice, Skoar* skoar);
+    DebuggoarSession(SkoarpionPtr p, String voice, Skoar* skoar);
     ~DebuggoarSession();
+
+    void die ();
 
     void start();
 
@@ -32,6 +34,10 @@ public:
     void stop ();
 
     void cpp_breakpoint ();
+
+    void endSession ();
+
+    EState getState ();
 
 private:    
     
@@ -51,11 +57,13 @@ private:
     SpellOfDebuggingSkoarpuscles after_entering_skoarpuscle_spell;
     SpellOfDebuggingSkoarpions before_entering_skoarpion_spell;
     SpellOfDebuggingSkoarpions after_entering_skoarpion_spell;
+    SpellOfDebuggingExiting exiting_spell;
 
     volatile EState state;
     WaitableEvent lock;
     SkoarMinstrelPtr m;
     ListOfSkoarpions skoarpions;
+    SkoarpionPtr skoarpion;
 
     ScopedPointer<MinstrelThread> minstrel_thread;
 };

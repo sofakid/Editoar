@@ -40,6 +40,7 @@ public:
     int getTabButtonBestWidth (TabBarButton&, int tabDepth) override;
     void drawConcertinaPanelHeader (Graphics&, const juce::Rectangle<int>&, bool, bool, ConcertinaPanel&, Component&) override;
     static Colour getTabBackgroundColour (TabBarButton&);
+    void drawStretchableLayoutResizerBar (Graphics&, int w, int h, bool isVerticalBar, bool isMouseOver, bool isMouseDragging) override;
 
 private:
     Image backgroundTexture;

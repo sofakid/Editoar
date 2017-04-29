@@ -300,6 +300,10 @@
             file="Source/Debuggoar/NoaditesListComponent.cpp"/>
       <FILE id="GyNQA1" name="NoaditesListComponent.h" compile="0" resource="0"
             file="Source/Debuggoar/NoaditesListComponent.h"/>
+      <FILE id="Iwaro0" name="SkoarASTComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarASTComponent.cpp"/>
+      <FILE id="YjvTtK" name="SkoarASTComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarASTComponent.h"/>
       <FILE id="Sjrq9P" name="SkoarNoadDataModel.cpp" compile="1" resource="0"
             file="Source/Debuggoar/SkoarNoadDataModel.cpp"/>
       <FILE id="a3fMjY" name="SkoarNoadDataModel.h" compile="0" resource="0"
@@ -316,6 +320,10 @@
             file="Source/Debuggoar/SkoarpionsComponent.cpp"/>
       <FILE id="Fp5qFl" name="SkoarpionsComponent.h" compile="0" resource="0"
             file="Source/Debuggoar/SkoarpionsComponent.h"/>
+      <FILE id="KmS9Kb" name="SkoarProjectionComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarProjectionComponent.cpp"/>
+      <FILE id="uHLM8I" name="SkoarProjectionComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarProjectionComponent.h"/>
       <FILE id="Z00ABd" name="SkoarpuscleDataModel.cpp" compile="1" resource="0"
             file="Source/Debuggoar/SkoarpuscleDataModel.cpp"/>
       <FILE id="EYgVZM" name="SkoarpuscleDataModel.h" compile="0" resource="0"

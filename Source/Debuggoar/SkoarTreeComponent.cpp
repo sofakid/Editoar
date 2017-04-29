@@ -97,8 +97,6 @@ SkoarTreeComponent::SkoarTreeComponent(SkoarNoadPtr pRootNoad) :
 
 SkoarTreeComponent::~SkoarTreeComponent()
 {
-    rootItem = nullptr;
-    rootNoad = nullptr;
 }
 
 void SkoarTreeComponent::paint (Graphics&)

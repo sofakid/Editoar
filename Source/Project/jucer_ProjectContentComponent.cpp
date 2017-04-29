@@ -33,7 +33,8 @@
 #include "../Testoar/Testoar.h"
 
 #include "../Debuggoar/DebuggoarComponent.h"
-#include "../Debuggoar/SkoarpionsComponent.h"
+#include "../Debuggoar/SkoarASTComponent.h"
+#include "../Debuggoar/SkoarProjectionComponent.h"
 
 
 
@@ -361,9 +362,11 @@ void ProjectContentComponent::createProjectTabs()
     const Colour tabColour (Colours::transparentBlack);
 
     treeViewTabs.addTab ("Files",  tabColour, new FileTreePanel (*project), true);
-    treeViewTabs.addTab ("Config", tabColour, new ConfigTreePanel (*project), true);
+    //treeViewTabs.addTab ("Config", tabColour, new ConfigTreePanel (*project), true);
     treeViewTabs.addTab ("Testing", tabColour, new TestoarTreePanel(*project), true);
-    treeViewTabs.addTab ("Noads", tabColour, new SkoarpionsComponent(), true);
+    treeViewTabs.addTab ("Trees", tabColour, new SkoarASTComponent(), true);
+    treeViewTabs.addTab ("Projection", tabColour, new SkoarProjectionComponent (), true);
+
 
 }
 

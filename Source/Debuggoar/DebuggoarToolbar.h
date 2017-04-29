@@ -22,6 +22,8 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../JuceLibraryCode/JuceHeader.h"
+#include "SkoarASTComponent.h"
+#include "SkoarProjectionComponent.h"
 //[/Headers]
 
 
@@ -34,43 +36,51 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class DebuggoarToolbar  : public Component,
-                          public ButtonListener,
-                          public ComboBoxListener
+class DebuggoarToolbar : public Component,
+    public ButtonListener,
+    public ComboBoxListener
 {
 public:
     //==============================================================================
     DebuggoarToolbar ();
-    ~DebuggoarToolbar();
+    ~DebuggoarToolbar ();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
     class AwesomeButtonsLNF : public LookAndFeel_V3
     {
-        Font getTextButtonFont(TextButton&, int buttonHeight) override
+        Font getTextButtonFont (TextButton&, int buttonHeight) override
         {
-            auto fontawesome = Typeface::createSystemTypefaceFor(BinaryData::fontawesomewebfont_ttf, BinaryData::fontawesomewebfont_ttfSize);
-            auto size = jmin(15.0f, buttonHeight * 0.6f);
-            auto font = Font(fontawesome);
-            font.setHeight(size);
+            auto fontawesome = Typeface::createSystemTypefaceFor (BinaryData::fontawesomewebfont_ttf, BinaryData::fontawesomewebfont_ttfSize);
+            auto size = jmin (15.0f, buttonHeight * 0.6f);
+            auto font = Font (fontawesome);
+            font.setHeight (size);
             return font;
         }
     };
 
     AwesomeButtonsLNF awesome;
-    String getVoice();
-    void loadSkoar(Skoar*);
-    static DebuggoarToolbar* getInstance();
+    void updateTabs ();
+    String getVoice ();
+    SkoarpionPtr getSkoarpion ();
+    void loadSkoar (Skoar*);
+    static DebuggoarToolbar* getInstance ();
+    void selectSkoarpion (SkoarpionPtr skoarpion, String voice);
+
     //[/UserMethods]
 
     void paint (Graphics& g) override;
-    void resized() override;
+    void resized () override;
     void buttonClicked (Button* buttonThatWasClicked) override;
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
 
-    
+
+
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+    Array<SkoarpionPtr> skoarpions;
+    Array<String> voices;
+
     //[/UserVariables]
 
     //==============================================================================
@@ -82,6 +92,8 @@ private:
     ScopedPointer<ComboBox> minstrelComboBox;
     ScopedPointer<TextButton> openExtDebuggerButton;
     ScopedPointer<TextButton> continueDebuggingButton;
+    ScopedPointer<Label> skoarpionLabel;
+    ScopedPointer<ComboBox> skoarpionComboBox;
 
 
     //==============================================================================

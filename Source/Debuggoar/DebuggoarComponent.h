@@ -30,6 +30,12 @@ public:
     void focusOnNoad (SkoarNoadPtr noad);
     void focusOnNoadite (const SkoarNoadite& noad);
 
+    void selectSkoarpion (SkoarpionPtr skoarpion, String voice);
+    void resetVision ();
+    void sessionEnded ();
+
+    void reloadSkoar ();
+
 private:
     ScopedPointer<DebuggoarSession> session;
     ScopedPointer<DebuggoarToolbar> toolbar;

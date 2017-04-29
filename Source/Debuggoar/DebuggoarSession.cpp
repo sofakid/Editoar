@@ -1,52 +1,55 @@
 #include "DebuggoarSession.h"
-#include "SkoarpionsComponent.h"
 #include "DebuggoarDeetsPanel.h"
+#include "SkoarProjectionComponent.h"
+#include "DebuggoarComponent.h"
 
 // --- DebuggoarSession -----------------------------------------------
 DebuggoarSession* session = nullptr;
 
-DebuggoarSession* DebuggoarSession::getInstance() {
+DebuggoarSession* DebuggoarSession::getInstance () {
     return session;
 }
 
-DebuggoarSession::DebuggoarSession(String voice, Skoar* skoar) :
-    lock("DebuggoarSessionLock")
+DebuggoarSession::DebuggoarSession (SkoarpionPtr p, String voice, Skoar* skoar) :
+    skoarpion (p),
+    lock ("DebuggoarSessionLock")
 {
     session = this;
 
-    SkoarString v(voice.toWideCharPointer());
-    auto koar = skoar->get_voice(v);
+    SkoarString v (voice.toWideCharPointer ());
+    auto koar = skoar->get_voice (v);
 
     auto lockRef = &lock;
     auto stateRef = &state;
     auto skoarpionsRef = &skoarpions;
-    
+
 
     happening = [=](SkoarEventPtr p) {
         const MessageManagerLock mmLock;
-        auto d = DebuggoarDeets::getInstance();
+        auto d = DebuggoarDeets::getInstance ();
 
-        d->showKoar(koar);
-        d->showEvent(p);
+        d->showKoar (koar);
+        d->showEvent (p);
     };
 
     before_entering_noad_spell = [=](SkoarMinstrelPtr minstrel, SkoarNoadite* noad) {
 
-        if (*stateRef == EState::steppingIn || noad->breakpoint) {
+        if (*stateRef == EState::steppingIn || noad->breakpoint)
+        {
             {
                 const MessageManagerLock mmLock;
                 // select noad in tree
-                SkoarpionsComponent::getInstance()->selectNoadite(*noad);
-                auto d = DebuggoarDeets::getInstance();
-                d->showKoar(koar);
-                d->showFairy(minstrel->fairy);
+                SkoarProjectionComponent::getInstance ()->selectNoadite (*noad);
+                auto d = DebuggoarDeets::getInstance ();
+                d->showKoar (koar);
+                d->showFairy (minstrel->fairy);
             }
 
             // highlight text -- do that when selected above.
-            lockRef->wait();
-            lockRef->reset();
+            lockRef->wait ();
+            lockRef->reset ();
         }
-        
+
         if (*stateRef == EState::stopping)
         {
             throw SkoarNav (SkoarNav::DONE);
@@ -63,7 +66,7 @@ DebuggoarSession::DebuggoarSession(String voice, Skoar* skoar) :
     };
 
     after_entering_noad_spell = [=](SkoarMinstrelPtr p, SkoarNoadite*) {
-        
+
     };
 
     before_entering_skoarpuscle_spell = [=](SkoarMinstrelPtr p, SkoarpusclePtr skoarpuscle) {
@@ -81,59 +84,72 @@ DebuggoarSession::DebuggoarSession(String voice, Skoar* skoar) :
             const MessageManagerLock mmLock;
             // push old skoarpion 
             //if (current_skoarpion != nullptr) {
-            skoarpionsRef->push_back(skoarpion);
+            skoarpionsRef->push_back (skoarpion);
             //}
 
             // select skoarpion tree
-            SkoarpionsComponent::getInstance()->selectSkoarpion(skoarpion, v.c_str());
+            DebuggoarComponent::getDebuggoar ()->selectSkoarpion (skoarpion, v.c_str ());
         }
     };
 
     after_entering_skoarpion_spell = [=](SkoarMinstrelPtr p, SkoarpionPtr skoarpion) {
         // pop old skoarpion
 
-        if (skoarpionsRef->size() > 1) {
-            skoarpionsRef->pop_back();
-            auto x = skoarpionsRef->back();
+        if (skoarpionsRef->size () > 1)
+        {
+            skoarpionsRef->pop_back ();
+            auto x = skoarpionsRef->back ();
+            if (*stateRef == EState::stopping)
+                return;
+
             const MessageManagerLock mmLock;
-            SkoarpionsComponent::getInstance()->selectSkoarpion(x, v.c_str());
+            DebuggoarComponent::getDebuggoar ()->selectSkoarpion (x, v.c_str ());
         }
-        
+
     };
 
-    MinstrelDebugConfig config(
+    exiting_spell = [&]() {
+        MessageManager::callAsync ([&]() {
+            const MessageManagerLock mmLock;
+            endSession ();
+        });
+    };
+
+    MinstrelDebugConfig config (
         before_entering_noad_spell,
         after_entering_noad_spell,
         before_entering_skoarpuscle_spell,
         after_entering_skoarpuscle_spell,
         before_entering_skoarpion_spell,
-        after_entering_skoarpion_spell
+        after_entering_skoarpion_spell,
+        exiting_spell
     );
 
-    m = SkoarMinstrel::NewDebugging(L"debuggoar", koar, skoar, happening, config);
-    minstrel_thread = new MinstrelThread(m);
+    m = SkoarMinstrel::NewDebuggingForSkoarpion (L"debuggoar", koar, skoar, skoarpion, happening, config);
+    minstrel_thread = new MinstrelThread (m);
 
 }
 
-DebuggoarSession::~DebuggoarSession() {
+DebuggoarSession::~DebuggoarSession () {
+    die ();
     m = nullptr;
     session = nullptr;
 }
 
-DebuggoarSession::MinstrelThread::MinstrelThread(SkoarMinstrelPtr p) :
-    Thread(p->name.c_str()),
-    m(p)
+DebuggoarSession::MinstrelThread::MinstrelThread (SkoarMinstrelPtr p) :
+    Thread (p->name.c_str ()),
+    m (p)
 {
 }
 
-DebuggoarSession::MinstrelThread::~MinstrelThread() {
-    stopThread(10);
+DebuggoarSession::MinstrelThread::~MinstrelThread () {
 }
 
 
-void DebuggoarSession::MinstrelThread::run()
+void DebuggoarSession::MinstrelThread::run ()
 {
-    try {
+    try
+    {
         m->start ();
     }
     catch (SkoarError &)
@@ -142,41 +158,74 @@ void DebuggoarSession::MinstrelThread::run()
     }
 }
 
-void DebuggoarSession::start() {
+void DebuggoarSession::die () {
+    if (minstrel_thread == nullptr)
+        return;
+
+    bool died (minstrel_thread->waitForThreadToExit (10));
+
+    if (!died)
+    {
+        stop ();
+        died = minstrel_thread->waitForThreadToExit (3000);
+    }
+
+    if (!died)
+    {
+        minstrel_thread->stopThread (500);
+    }
+
+    minstrel_thread = nullptr;
+}
+
+void DebuggoarSession::start () {
     //state = EState::running;
     state = EState::steppingIn;
     //lock.signal();
-    minstrel_thread->startThread();
+    minstrel_thread->startThread ();
 }
 
-void DebuggoarSession::stepIn() {
+void DebuggoarSession::stepIn () {
     state = EState::steppingIn;
-    lock.signal();
+    lock.signal ();
 }
 
-void DebuggoarSession::stepOver() {
+void DebuggoarSession::stepOver () {
     state = EState::steppingOver;
-    lock.signal();
+    lock.signal ();
 }
 
-void DebuggoarSession::stepOut() {
+void DebuggoarSession::stepOut () {
     state = EState::steppingOut;
-    lock.signal();
+    lock.signal ();
 }
 
-void DebuggoarSession::continueRunning() {
+void DebuggoarSession::continueRunning () {
     state = EState::running;
 }
 
 void DebuggoarSession::stop () {
     //state = EState::running;
     state = EState::stopping;
-    lock.signal();
-    minstrel_thread->stopThread (1000);
+    lock.signal ();
 }
 
 
 void DebuggoarSession::cpp_breakpoint () {
     state = EState::debuggerStepping;
-    lock.signal();
+    lock.signal ();
+}
+
+void DebuggoarSession::endSession ()
+{
+    state = EState::stopped;
+
+    auto debuggoar (DebuggoarComponent::getDebuggoar ());
+    debuggoar->sessionEnded ();
+
+}
+
+DebuggoarSession::EState DebuggoarSession::getState ()
+{
+    return state;
 }

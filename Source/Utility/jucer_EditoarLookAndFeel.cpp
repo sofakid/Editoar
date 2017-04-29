@@ -46,6 +46,13 @@ Colour EditoarLookAndFeel::getTabBackgroundColour (TabBarButton& button)
     return bkg;
 }
 
+void EditoarLookAndFeel::drawStretchableLayoutResizerBar (Graphics& g, int /*w*/, int /*h*/, bool /*isVerticalBar*/,
+    bool isMouseOver, bool isMouseDragging)
+{
+    if (isMouseOver || isMouseDragging)
+        g.fillAll (Colours::magenta.withAlpha (0.7f));
+}
+
 void EditoarLookAndFeel::drawTabButton (TabBarButton& button, Graphics& g, bool isMouseOver, bool isMouseDown)
 {
     const Rectangle<int> activeArea (button.getActiveArea());

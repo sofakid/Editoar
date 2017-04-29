@@ -7,6 +7,7 @@
 #include "../Logging/SkoarLoggerComponent.h"
 
 #include "../Vision/VisionCanvas.h" 
+#include "../Debuggoar/DebuggoarComponent.h"
 
 
 static SkoarCodeTokeniser skoarTokeniser;
@@ -74,6 +75,12 @@ void SkoarCodeEditorComponent::focusOnNoad (SkoarNoadPtr p)
 void SkoarCodeEditorComponent::focusOnNoadite (const SkoarNoadite& noadite)
 {
     vision->focusOnNoadite (noadite);
+}
+
+void SkoarCodeEditorComponent::resetVision ()
+{
+    vision->unfocusOnNoad ();
+    vision->redraw ();
 }
 
 
@@ -164,11 +171,27 @@ SkoarCodeEditorComponent::DocumentListener::~DocumentListener () {}
 /** Called by a CodeDocument when text is added. */
 void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextInserted (const String& /*newText*/, int /*insertIndex*/) {
     editor->vision->reload ();
+    MessageManager::callAsync ([&]() {
+        auto debuggoar (DebuggoarComponent::getDebuggoar ());
+        if (debuggoar == nullptr)
+            return;
+
+        const MessageManagerLock mmLock;
+        debuggoar->reloadSkoar ();
+    });
 }
 
 /** Called by a CodeDocument when text is deleted. */
 void SkoarCodeEditorComponent::DocumentListener::codeDocumentTextDeleted (int /*startIndex*/, int /*endIndex*/) {
     editor->vision->reload ();
+    MessageManager::callAsync ([&]() {
+        auto debuggoar (DebuggoarComponent::getDebuggoar ());
+        if (debuggoar == nullptr)
+            return;
+
+        const MessageManagerLock mmLock;
+        debuggoar->reloadSkoar ();
+    });
 }
 
 

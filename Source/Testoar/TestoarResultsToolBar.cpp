@@ -114,7 +114,6 @@ void TestoarResultsToolBar::buttonClicked (Button* buttonThatWasClicked)
         TestoarResultsComponent& results (static_cast<TestoarResultsComponent&>(*getParentComponent ()));
         std::string s (results.getResultsText().toStdString());
         std::smatch sm;
-        
 
         std::regex eUnitTestFile ("SkoarUT<<([^>]*)>\\s*>\\s*S\\s*k\\s*o\\s*a\\s*r\\s*U\\s*T");
         if (std::regex_search (s, sm, eUnitTestFile))
@@ -195,12 +194,10 @@ void TestoarResultsToolBar::setCounts(String& counts) {
 
 void TestoarResultsToolBar::redrawTitle() {
     String s;
-    if (countsText != "") {
+    if (countsText != "") 
         s = titleText + " " + countsText;
-    } 
-    else {
+    else
         s = titleText;
-    }
 
     textLabel->setText(s, sendNotification);
 

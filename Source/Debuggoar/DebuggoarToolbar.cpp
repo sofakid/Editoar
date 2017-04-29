@@ -33,6 +33,57 @@ DebuggoarToolbar* DebuggoarToolbar::getInstance() {
     return instance;
 }
 
+void DebuggoarToolbar::selectSkoarpion (SkoarpionPtr skoarpion, String voice)
+{
+    int i (0);
+    bool found (false);
+    for (auto& v : voices)
+    {
+        ++i;
+        if (v == voice)
+        {
+            found = true;
+            break;
+        }
+    }
+
+    if (!found)
+        i = 0;
+
+    auto selected (minstrelComboBox->getSelectedId ());
+    if (selected <= 0)
+    {
+        minstrelComboBox->setSelectedId (i, sendNotification);
+        selected = i;
+    }
+
+    if (selected == i)
+    {
+        i = 0;
+        found = false;
+        for (auto& s : skoarpions)
+        {
+            ++i;
+            if (s == skoarpion)
+            {
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+            i = 0;
+
+        selected = skoarpionComboBox->getSelectedId ();
+        if (selected <= 0)
+            selected = i;
+
+        if (selected != i)
+            skoarpionComboBox->setSelectedId (i, sendNotification);
+
+    }
+}
+
 
 //[/MiscUserDefs]
 
@@ -97,6 +148,22 @@ DebuggoarToolbar::DebuggoarToolbar ()
     continueDebuggingButton->setColour (TextButton::textColourOffId, Colours::black);
     continueDebuggingButton->setColour (TextButton::textColourOnId, Colours::white);
 
+    addAndMakeVisible (skoarpionLabel = new Label ("skoarpionLabel",
+                                                   TRANS("Skoarpion:")));
+    skoarpionLabel->setFont (Font (15.00f, Font::plain));
+    skoarpionLabel->setJustificationType (Justification::centredRight);
+    skoarpionLabel->setEditable (false, false, false);
+    skoarpionLabel->setColour (Label::textColourId, Colours::white);
+    skoarpionLabel->setColour (TextEditor::textColourId, Colours::black);
+    skoarpionLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+
+    addAndMakeVisible (skoarpionComboBox = new ComboBox ("skoarpionComboBox"));
+    skoarpionComboBox->setEditableText (false);
+    skoarpionComboBox->setJustificationType (Justification::centredLeft);
+    skoarpionComboBox->setTextWhenNothingSelected (String());
+    skoarpionComboBox->setTextWhenNoChoicesAvailable (TRANS("(no choices)"));
+    skoarpionComboBox->addListener (this);
+
 
     //[UserPreSize]
     openExtDebuggerButton->setLookAndFeel (&awesome);
@@ -141,6 +208,9 @@ DebuggoarToolbar::~DebuggoarToolbar()
     minstrelComboBox = nullptr;
     openExtDebuggerButton = nullptr;
     continueDebuggingButton = nullptr;
+    skoarpionLabel = nullptr;
+    skoarpionComboBox = nullptr;
+
 
     //[Destructor]. You can add your own custom destruction code here..
     //[/Destructor]
@@ -166,11 +236,13 @@ void DebuggoarToolbar::resized()
     stepInButton->setBounds (getWidth() - 185, 6, 32, 20);
     stepOverButton->setBounds (getWidth() - 145, 6, 32, 20);
     stepOutButton->setBounds (getWidth() - 105, 6, 32, 20);
-    stopDebuggingButton->setBounds (344, 6, 40, 20);
-    minstrelLabel->setBounds (8, 6, 79, 20);
-    minstrelComboBox->setBounds (88, 6, 150, 20);
+    stopDebuggingButton->setBounds (512, 6, 40, 20);
+    minstrelLabel->setBounds (240, 6, 55, 20);
+    minstrelComboBox->setBounds (296, 6, 150, 20);
     openExtDebuggerButton->setBounds (getWidth() - 49, 6, 40, 20);
-    continueDebuggingButton->setBounds (296, 6, 40, 20);
+    continueDebuggingButton->setBounds (464, 6, 40, 20);
+    skoarpionLabel->setBounds (7, 6, 79, 20);
+    skoarpionComboBox->setBounds (87, 6, 150, 20);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -202,7 +274,7 @@ void DebuggoarToolbar::buttonClicked (Button* buttonThatWasClicked)
         auto x = DebuggoarSession::getInstance();
         if (x != nullptr)
             x->stepOut();
-        
+
         //[/UserButtonCode_stepOutButton]
     }
     else if (buttonThatWasClicked == stopDebuggingButton)
@@ -224,15 +296,8 @@ void DebuggoarToolbar::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == continueDebuggingButton)
     {
         //[UserButtonCode_continueDebuggingButton] -- add your button handler code here..
-        auto x = DebuggoarSession::getInstance();
-        if (x != nullptr)
-            x->continueRunning();
-        else
-        {
-            auto debuggoar = DebuggoarComponent::getDebuggoar();
-            debuggoar->startSession();
-        }
-
+        auto debuggoar = DebuggoarComponent::getDebuggoar();
+        debuggoar->startSession();
         //[/UserButtonCode_continueDebuggingButton]
     }
 
@@ -248,7 +313,14 @@ void DebuggoarToolbar::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
     if (comboBoxThatHasChanged == minstrelComboBox)
     {
         //[UserComboBoxCode_minstrelComboBox] -- add your combo box handling code here..
+        updateTabs ();
         //[/UserComboBoxCode_minstrelComboBox]
+    }
+    else if (comboBoxThatHasChanged == skoarpionComboBox)
+    {
+        //[UserComboBoxCode_skoarpionComboBox] -- add your combo box handling code here..
+        updateTabs ();
+        //[/UserComboBoxCode_skoarpionComboBox]
     }
 
     //[UsercomboBoxChanged_Post]
@@ -258,17 +330,103 @@ void DebuggoarToolbar::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+void DebuggoarToolbar::updateTabs () {
+
+    const auto selected_voice (minstrelComboBox->getSelectedId ());
+    if (selected_voice <= 0)
+        return;
+
+    const auto voice (voices.getUnchecked (selected_voice - 1));
+    if (voice == "")
+        return;
+
+    const auto selected_skoarpion (skoarpionComboBox->getSelectedId ());
+    if (selected_skoarpion <= 0)
+        return;
+
+    const auto skoarpion (skoarpions.getUnchecked (selected_skoarpion - 1));
+    if (skoarpion == nullptr)
+        return;
+
+    auto ast (SkoarASTComponent::getInstance ());
+    if (ast != nullptr)
+        ast->loadSkoarpion (skoarpion);
+
+    auto projection (SkoarProjectionComponent::getInstance ());
+    if (projection != nullptr)
+    {
+        SkoarString v (voice.toWideCharPointer ());
+        projection->loadProjection (Skoarpion::projection (skoarpion, v));
+    }
+}
+
 String DebuggoarToolbar::getVoice() {
     return minstrelComboBox->getText();
 }
 
+SkoarpionPtr DebuggoarToolbar::getSkoarpion () {
+    auto id (skoarpionComboBox->getSelectedId ());
+    if (id > 0)
+        return skoarpions.getUnchecked (id - 1);
+
+    if (skoarpions.size() > 0)
+        return skoarpions.getUnchecked (0);
+    
+    return nullptr;
+}
+
 void DebuggoarToolbar::loadSkoar(Skoar* skoar) {
+
+    const int already_selected_minstrel_id (minstrelComboBox->getSelectedId ());
+    const int already_selected_skoarpion_id (skoarpionComboBox->getSelectedId ());
+
+    const String all (L"all");
+    const auto already_selected_minstrel (already_selected_minstrel_id > 0 ?
+        voices.getUnchecked (already_selected_minstrel_id - 1) : all
+    );
+
+    const SkoarString skoar_name (L"skoar");
+    const String already_selected_skoarpion (already_selected_skoarpion_id > 0 ?
+        skoarpions.getUnchecked (already_selected_skoarpion_id - 1)->name.c_str() : skoar_name.c_str()
+    );
+
+    // load minstrels
     minstrelComboBox->clear();
     int i = 0;
-    for (auto voice : skoar->voices) {
-        minstrelComboBox->addItem(voice.first.c_str(), ++i);
+    int selected_minstrel = 1;
+    voices.clearQuick ();
+
+    for (auto x : skoar->voices) {
+        
+        String voice (x.first.c_str ());
+        minstrelComboBox->addItem(voice, ++i);
+
+        if (already_selected_minstrel == voice)
+            selected_minstrel = i;
+
+        voices.add (voice);
     }
-    minstrelComboBox->setSelectedId(1, dontSendNotification);
+
+    // load skoarpions
+    skoarpionComboBox->clear ();
+    i = 0;
+    auto selected_skoarpion = 1;
+    skoarpions.clearQuick ();
+
+    for (auto x : skoar->skoarpions)
+    {
+        String skoarpion_name (x->name.c_str ());
+
+        skoarpionComboBox->addItem (skoarpion_name, ++i);
+
+        if (already_selected_skoarpion == skoarpion_name)
+            selected_skoarpion = i;
+
+        skoarpions.add (x);
+    }
+
+    minstrelComboBox->setSelectedId (selected_minstrel, dontSendNotification);
+    skoarpionComboBox->setSelectedId (selected_skoarpion, sendNotification);
 }
 //[/MiscUserCode]
 
@@ -297,24 +455,32 @@ BEGIN_JUCER_METADATA
               virtualName="" explicitFocusOrder="0" pos="105R 6 32 20" tooltip="Step Out"
               buttonText="&#94;" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="stopDebuggingButton" id="a45ece5ceebbbd29" memberName="stopDebuggingButton"
-              virtualName="" explicitFocusOrder="0" pos="344 6 40 20" tooltip="Stop Debugging"
+              virtualName="" explicitFocusOrder="0" pos="512 6 40 20" tooltip="Stop Debugging"
               bgColOff="ff808080" bgColOn="ff808080" textCol="ff000000" textColOn="ffffffff"
               buttonText="[]" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <LABEL name="minstrelLabel" id="c7289d80657b1183" memberName="minstrelLabel"
-         virtualName="" explicitFocusOrder="0" pos="8 6 79 20" textCol="ffffffff"
-         edTextCol="ff000000" edBkgCol="0" labelText="Minstrel:" editableSingleClick="0"
+         virtualName="" explicitFocusOrder="0" pos="240 6 55 20" textCol="ffffffff"
+         edTextCol="ff000000" edBkgCol="0" labelText="Voice:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
          fontsize="15" bold="0" italic="0" justification="34"/>
   <COMBOBOX name="minstrelComboBox" id="a72a491faf27f472" memberName="minstrelComboBox"
-            virtualName="" explicitFocusOrder="0" pos="88 6 150 20" editable="0"
+            virtualName="" explicitFocusOrder="0" pos="296 6 150 20" editable="0"
             layout="33" items="" textWhenNonSelected="" textWhenNoItems="(no choices)"/>
   <TEXTBUTTON name="openExtDebuggerButton" id="91eb8a63ec94aba2" memberName="openExtDebuggerButton"
               virtualName="" explicitFocusOrder="0" pos="49R 6 40 20" tooltip="Open C++ Debugger"
               buttonText="%" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="continueDebuggingButton" id="7c72eca150a64948" memberName="continueDebuggingButton"
-              virtualName="" explicitFocusOrder="0" pos="296 6 40 20" tooltip="Continue"
+              virtualName="" explicitFocusOrder="0" pos="464 6 40 20" tooltip="Continue"
               bgColOff="ff808080" bgColOn="ff808080" textCol="ff000000" textColOn="ffffffff"
               buttonText=")&gt;" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <LABEL name="skoarpionLabel" id="d1178de96fd98116" memberName="skoarpionLabel"
+         virtualName="" explicitFocusOrder="0" pos="7 6 79 20" textCol="ffffffff"
+         edTextCol="ff000000" edBkgCol="0" labelText="Skoarpion:" editableSingleClick="0"
+         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
+         fontsize="15" bold="0" italic="0" justification="34"/>
+  <COMBOBOX name="skoarpionComboBox" id="27b93cd8bd15bb1d" memberName="skoarpionComboBox"
+            virtualName="" explicitFocusOrder="0" pos="87 6 150 20" editable="0"
+            layout="33" items="" textWhenNonSelected="" textWhenNoItems="(no choices)"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

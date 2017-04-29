@@ -54,6 +54,8 @@ public:
     void focusOnNoad (SkoarNoadPtr p);
     void focusOnNoadite (const SkoarNoadite & noadite);
 
+    void resetVision ();
+
     void reloadColourScheme ();
 
 private:

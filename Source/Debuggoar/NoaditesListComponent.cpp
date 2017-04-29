@@ -27,15 +27,14 @@ void NoaditesRootItem::itemOpennessChanged (bool isNowOpen) {
 
     if (isNowOpen)
     {
+        if (noadites.size () == 0)
+            return;
+
         for (const auto& x : noadites)
-        {
             addSubItem (new NoaditesTreeItem (x, default_style, colour_scheme));
-        }
     }
     else
-    {
         clearSubItems ();
-    }
 }
 
 // === NoaditesTreeItem ===========================================================================
@@ -84,6 +83,7 @@ bool NoaditesTreeItem::isNoadite (const SkoarNoadite& p) {
 
 // ==== NoaditesListComponent ==========================================================================
 NoaditesListComponent::NoaditesListComponent (SkoarpionProjectionPtr p) :
+    projection (p),
     rootItem (nullptr),
     tree ()
 {

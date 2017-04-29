@@ -24,19 +24,9 @@ DebuggoarComponent::DebuggoarComponent (SkoarCodeEditorComponent *ed, Component*
     addAndMakeVisible (toolbar);
     addAndMakeVisible (editor);
 
-
     instance = this;
-    SkoarString skoarce(editor->getDocument ().getAllContent ().toWideCharPointer ());
     
-    skoar = new Skoar (skoarce, &SkoarLog);
-    auto skoarpions = SkoarpionsComponent::getInstance ();
-    if (skoarpions != nullptr)
-    {
-        skoarpions->loadSkoar (skoar);
-    }
-
-    toolbar->loadSkoar (skoar);
-
+    reloadSkoar ();
 
     setSize (600, 400);
 }
@@ -67,7 +57,12 @@ void DebuggoarComponent::resized ()
 }
 
 void DebuggoarComponent::startSession () {
-    session = new DebuggoarSession (toolbar->getVoice (), skoar);
+    if (session != nullptr)
+    {
+        session->die ();
+        session = nullptr;
+    }
+    session = new DebuggoarSession (toolbar->getSkoarpion (), toolbar->getVoice (), skoar);
     session->start ();
 }
 
@@ -79,4 +74,27 @@ void DebuggoarComponent::focusOnNoad (SkoarNoadPtr p) {
 
 void DebuggoarComponent::focusOnNoadite (const SkoarNoadite& noadite) {
     editor->focusOnNoadite (noadite);
+}
+
+void DebuggoarComponent::selectSkoarpion (SkoarpionPtr skoarpion, String voice)
+{
+    toolbar->selectSkoarpion (skoarpion, voice);
+}
+
+void DebuggoarComponent::resetVision ()
+{
+    editor->resetVision ();
+}
+
+void DebuggoarComponent::sessionEnded ()
+{
+    resetVision ();
+}
+
+void DebuggoarComponent::reloadSkoar () {
+    SkoarString skoarce (editor->getDocument ().getAllContent ().toWideCharPointer ());
+
+    skoar = new Skoar (skoarce, &SkoarLog);
+
+    toolbar->loadSkoar (skoar);
 }

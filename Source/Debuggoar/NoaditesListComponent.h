@@ -73,6 +73,7 @@ private:
     SkoarNoadPtr rootNoad;
     TreeView tree;
     ScopedPointer<NoaditesRootItem> rootItem;
+    SkoarpionProjectionPtr projection;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NoaditesListComponent)
 };

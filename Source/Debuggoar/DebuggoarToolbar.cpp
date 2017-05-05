@@ -399,6 +399,9 @@ void DebuggoarToolbar::loadSkoar(Skoar* skoar) {
     for (auto x : skoar->voices) {
         
         String voice (x.first.c_str ());
+        if (voice == "")
+            continue;
+
         minstrelComboBox->addItem(voice, ++i);
 
         if (already_selected_minstrel == voice)
@@ -416,6 +419,8 @@ void DebuggoarToolbar::loadSkoar(Skoar* skoar) {
     for (auto x : skoar->skoarpions)
     {
         String skoarpion_name (x->name.c_str ());
+        if (skoarpion_name == "")
+            continue;
 
         skoarpionComboBox->addItem (skoarpion_name, ++i);
 

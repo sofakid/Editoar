@@ -462,7 +462,7 @@ bool ProjectContentComponent::showDocument (OpenDocumentManager::Document* doc, 
 
     if (doc == getCurrentDocument() && contentView != nullptr)
     {
-        if (grabFocus)
+        if (grabFocus && contentView->isShowing () && contentView->isOnDesktop ())
             contentView->grabKeyboardFocus();
 
         return true;
@@ -472,7 +472,7 @@ bool ProjectContentComponent::showDocument (OpenDocumentManager::Document* doc, 
 
     bool opened = setEditorComponent (doc->createEditor(), doc);
 
-    if (opened && grabFocus)
+    if (opened && grabFocus && contentView != nullptr && contentView->isShowing () && contentView->isOnDesktop ())
         contentView->grabKeyboardFocus();
 
     return opened;

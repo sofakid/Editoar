@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 4.3.1
+  Created with Projucer version: 5.0.1
 
   ------------------------------------------------------------------------------
 
@@ -45,7 +45,7 @@ SamploarToolbarComponent::SamploarToolbarComponent ()
 
     addAndMakeVisible (fileNameLabel = new Label ("fileNameLabel",
                                                   TRANS("File Name:")));
-    fileNameLabel->setFont (Font (15.00f, Font::plain));
+    fileNameLabel->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
     fileNameLabel->setJustificationType (Justification::centredRight);
     fileNameLabel->setEditable (false, false, false);
     fileNameLabel->setColour (Label::textColourId, Colours::grey);
@@ -54,7 +54,7 @@ SamploarToolbarComponent::SamploarToolbarComponent ()
 
     addAndMakeVisible (fileNameValueLabel = new Label ("fileNameValueLabel",
                                                        TRANS("C:\\wavs\\monkeys.wav")));
-    fileNameValueLabel->setFont (Font (15.00f, Font::plain));
+    fileNameValueLabel->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
     fileNameValueLabel->setJustificationType (Justification::centredLeft);
     fileNameValueLabel->setEditable (false, false, false);
     fileNameValueLabel->setColour (Label::textColourId, Colours::white);
@@ -63,7 +63,7 @@ SamploarToolbarComponent::SamploarToolbarComponent ()
 
     addAndMakeVisible (instrumentIdLabel = new Label ("instrumentIdLabel",
                                                       TRANS("Instrument ID:")));
-    instrumentIdLabel->setFont (Font (15.00f, Font::plain));
+    instrumentIdLabel->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
     instrumentIdLabel->setJustificationType (Justification::centredRight);
     instrumentIdLabel->setEditable (false, false, false);
     instrumentIdLabel->setColour (Label::textColourId, Colours::grey);
@@ -72,7 +72,7 @@ SamploarToolbarComponent::SamploarToolbarComponent ()
 
     addAndMakeVisible (instrumentIdValueLabel = new Label ("instrumentIdValueLabel",
                                                            TRANS("@monkeys")));
-    instrumentIdValueLabel->setFont (Font (Font::getDefaultMonospacedFontName(), 15.00f, Font::plain));
+    instrumentIdValueLabel->setFont (Font (Font::getDefaultMonospacedFontName(), 15.00f, Font::plain).withTypefaceStyle ("Regular"));
     instrumentIdValueLabel->setJustificationType (Justification::centredLeft);
     instrumentIdValueLabel->setEditable (true, true, false);
     instrumentIdValueLabel->setColour (Label::textColourId, Colours::white);
@@ -83,7 +83,7 @@ SamploarToolbarComponent::SamploarToolbarComponent ()
 
     addAndMakeVisible (lengthLabel = new Label ("lengthLabel",
                                                 TRANS("Length:")));
-    lengthLabel->setFont (Font (15.00f, Font::plain));
+    lengthLabel->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
     lengthLabel->setJustificationType (Justification::centredRight);
     lengthLabel->setEditable (false, false, false);
     lengthLabel->setColour (Label::textColourId, Colours::grey);
@@ -92,7 +92,7 @@ SamploarToolbarComponent::SamploarToolbarComponent ()
 
     addAndMakeVisible (lengthValueLabel = new Label ("lengthValueLabel",
                                                      TRANS("0:35")));
-    lengthValueLabel->setFont (Font (15.00f, Font::plain));
+    lengthValueLabel->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
     lengthValueLabel->setJustificationType (Justification::centredLeft);
     lengthValueLabel->setEditable (false, false, false);
     lengthValueLabel->setColour (Label::textColourId, Colours::white);
@@ -328,33 +328,35 @@ BEGIN_JUCER_METADATA
          virtualName="" explicitFocusOrder="0" pos="8 8 104 24" textCol="ff808080"
          edTextCol="ff000000" edBkgCol="0" labelText="File Name:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15" bold="0" italic="0" justification="34"/>
+         fontsize="15" kerning="0" bold="0" italic="0" justification="34"/>
   <LABEL name="fileNameValueLabel" id="3404a363575e087a" memberName="fileNameValueLabel"
          virtualName="" explicitFocusOrder="0" pos="120 8 129M 24" textCol="ffffffff"
          edTextCol="ff000000" edBkgCol="0" labelText="C:\wavs\monkeys.wav"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15" bold="0" italic="0" justification="33"/>
+         fontname="Default font" fontsize="15" kerning="0" bold="0" italic="0"
+         justification="33"/>
   <LABEL name="instrumentIdLabel" id="b068a761a3281054" memberName="instrumentIdLabel"
          virtualName="" explicitFocusOrder="0" pos="8 56 104 24" textCol="ff808080"
          edTextCol="ff000000" edBkgCol="0" labelText="Instrument ID:"
          editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15" bold="0" italic="0" justification="34"/>
+         fontname="Default font" fontsize="15" kerning="0" bold="0" italic="0"
+         justification="34"/>
   <LABEL name="instrumentIdValueLabel" id="3f0054f060a5bea6" memberName="instrumentIdValueLabel"
          virtualName="" explicitFocusOrder="0" pos="120 56 569M 24" textCol="ffffffff"
          edTextCol="ffffffff" edBkgCol="0" hiliteCol="ff000085" labelText="@monkeys"
          editableSingleClick="1" editableDoubleClick="1" focusDiscardsChanges="0"
-         fontname="Default monospaced font" fontsize="15" bold="0" italic="0"
-         justification="33"/>
+         fontname="Default monospaced font" fontsize="15" kerning="0"
+         bold="0" italic="0" justification="33"/>
   <LABEL name="lengthLabel" id="f649dd56a64d8bf" memberName="lengthLabel"
          virtualName="" explicitFocusOrder="0" pos="8 32 104 24" textCol="ff808080"
          edTextCol="ff000000" edBkgCol="0" labelText="Length:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15" bold="0" italic="0" justification="34"/>
+         fontsize="15" kerning="0" bold="0" italic="0" justification="34"/>
   <LABEL name="lengthValueLabel" id="edaf7f94cd3ba042" memberName="lengthValueLabel"
          virtualName="" explicitFocusOrder="0" pos="120 32 777M 24" textCol="ffffffff"
          edTextCol="ff000000" edBkgCol="0" labelText="0:35" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15" bold="0" italic="0" justification="33"/>
+         fontsize="15" kerning="0" bold="0" italic="0" justification="33"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

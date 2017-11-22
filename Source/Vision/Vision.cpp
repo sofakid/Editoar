@@ -26,27 +26,28 @@ void Vision::see_text_reset ()
 // this road seems terrible.
 void Vision::see_text_highlight (const int offs, const int size)
 {
-    int x = 0, y = 0, bottom = 0, right = 0, maxright = 0;
+    int x (0), y (0), bottom (0), right (0), maxright (0);
+
     // init top corner
     {
         CodeDocument::Position pos (doc, offs);
-        auto rChar = editor.getCharacterBounds (pos);
+        auto rChar (editor.getCharacterBounds (pos));
         x = rChar.getX ();
         y = rChar.getY ();
         bottom = rChar.getBottom ();
         right = rChar.getRight ();
     }
 
-    const auto n = offs + size;
+    const auto n (offs + size);
     for (int i = offs; i < n; ++i)
     {
         CodeDocument::Position pos (doc, i);
-        auto rChar = editor.getCharacterBounds (pos);
-        
-        auto rcX = rChar.getX ();
-        auto rcY = rChar.getY ();
-        auto rcBottom = rChar.getBottom ();
-        auto rcRight = rChar.getRight ();
+        auto rChar (editor.getCharacterBounds (pos));
+        auto rcX (rChar.getX ());
+        auto rcY (rChar.getY ());
+        auto rcBottom (rChar.getBottom ());
+        auto rcRight (rChar.getRight ());
+
         // same line?
         if (rcBottom == bottom)
         {
@@ -57,9 +58,7 @@ void Vision::see_text_highlight (const int offs, const int size)
         {
             // next line but same left edge
             if (rcX == x)
-            {
                 bottom = rcBottom;
-            }
 
             // next line, x is the the left.
             else if (rcX < x) 
@@ -85,8 +84,8 @@ void Vision::see_text_highlight (const int offs, const int size)
     if (right < maxright)
     {
         CodeDocument::Position pos (doc, offs + size);
-        auto rChar = editor.getCharacterBounds (pos);
-        auto h = rChar.getHeight ();
+        auto rChar (editor.getCharacterBounds (pos));
+        auto h (rChar.getHeight ());
         
         y = rChar.getY ();
         // end the block above

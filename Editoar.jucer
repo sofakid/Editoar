@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="M70qfTRRk" name="Skoar" projectType="guiapp" juceFolder="../../juce"
-              jucerVersion="5.0.0" version="0.1" bundleIdentifier="org.skoarcery.Editoar"
+              jucerVersion="5.0.1" version="0.1" bundleIdentifier="org.skoarcery.Editoar"
               defines="" includeBinaryInAppConfig="1" companyWebsite="skoarcery.org"
               displaySplashScreen="1" reportAppUsage="1" splashScreenColour="Dark">
   <EXPORTFORMATS>
@@ -19,18 +19,18 @@
                        headerPath="" libraryPath="" cppLibType="libc++"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_gui_extra" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_gui_basics" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_graphics" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_events" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_data_structures" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_cryptography" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_core" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_basics" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_formats" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_devices" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_processors" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_utils" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_extra" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_graphics" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_events" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_data_structures" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_cryptography" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_core" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_audio_basics" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_audio_formats" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_audio_devices" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_audio_utils" path="..\JUCE5\modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2015 targetFolder="Builds/VisualStudio2015" externalLibraries="" bigIcon="axHNWg"
@@ -42,6 +42,9 @@
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
                        isDebug="0" optimisation="3" targetName="Skoar" headerPath="../../../SkoarCpp/SkoarCpp"
                        libraryPath="" useRuntimeLibDLL="0"/>
+        <CONFIGURATION name="PGO Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       targetName="Skoar" headerPath="../../../SkoarCpp/SkoarCpp" optimisation="3"
+                       useRuntimeLibDLL="0"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="..\JUCE5\modules"/>
@@ -67,18 +70,18 @@
                        headerPath=""/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_gui_extra" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_gui_basics" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_graphics" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_events" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_data_structures" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_cryptography" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_core" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_basics" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_formats" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_devices" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_processors" path="..\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_utils" path="..\JUCE\modules"/>
+        <MODULEPATH id="juce_gui_extra" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_graphics" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_events" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_data_structures" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_cryptography" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_core" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_audio_basics" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_audio_formats" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_audio_devices" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="..\JUCE5\modules"/>
+        <MODULEPATH id="juce_audio_utils" path="..\JUCE5\modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
   </EXPORTFORMATS>

@@ -212,7 +212,7 @@ Colour StoredSettings::ColourSelectorWithSwatches::getSwatchColour (int index) c
     return getAppSettings().swatchColours [index];
 }
 
-void StoredSettings::ColourSelectorWithSwatches::setSwatchColour (int index, const Colour& newColour) const
+void StoredSettings::ColourSelectorWithSwatches::setSwatchColour (int index, const Colour& newColour)
 {
     getAppSettings().swatchColours.set (index, newColour);
 }

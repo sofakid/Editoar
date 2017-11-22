@@ -104,11 +104,11 @@ void SkoarCodeEditorComponent::handleReturnKey ()
     if (numLeadingWSChars > 0)
         getDocument ().deleteSection (pos, pos.movedBy (numLeadingWSChars));
 
-    if (remainderOfBrokenLine.trimStart ().startsWithChar ('}'))
-        insertTextAtCaret (blockIndent);
-    else
+    //if (remainderOfBrokenLine.trimStart ().startsWithChar ('}'))
+    //    insertTextAtCaret (blockIndent);
+    //else
         insertTextAtCaret (lastLineIndent);
-
+    /*
     const String previousLine (pos.movedByLines (-1).getLineText ());
     const String trimmedPreviousLine (previousLine.trim ());
 
@@ -121,7 +121,7 @@ void SkoarCodeEditorComponent::handleReturnKey ()
         && trimmedPreviousLine.endsWithChar (')'))
     {
         insertTabAtCaret ();
-    }
+    }*/
 }
 
 void SkoarCodeEditorComponent::insertTextAtCaret (const String& newText)

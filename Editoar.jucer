@@ -34,7 +34,7 @@
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2015 targetFolder="Builds/VisualStudio2015" externalLibraries="" bigIcon="axHNWg"
-            toolset="v140" vstFolder="">
+            toolset="v140" vstFolder="" extraCompilerFlags="/bigobj">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
                        isDebug="1" optimisation="1" targetName="Skoar" headerPath="../../../SkoarCpp/SkoarCpp"
@@ -119,6 +119,8 @@
       <FILE id="lTXZm1" name="test_skoars.cpp" compile="1" resource="0" file="Source/UnitTestsWithJuce/test_skoars.cpp"/>
     </GROUP>
     <GROUP id="{16FEBAFB-A232-5970-99CE-E3613C30A999}" name="SkoarCpp">
+      <FILE id="mbWO4h" name="operators_table.cpp" compile="1" resource="0"
+            file="../SkoarCpp/SkoarCpp/operators_table.cpp"/>
       <FILE id="kvbcHV" name="testoar_reporter.cpp" compile="1" resource="0"
             file="../SkoarCpp/SkoarCpp/testoar_reporter.cpp"/>
       <FILE id="crXKaz" name="testoar_reporter.hpp" compile="0" resource="0"

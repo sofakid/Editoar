@@ -14,7 +14,7 @@ SkoarNoadTreeItem::SkoarNoadTreeItem(
     const SkoarCodeEditorComponent::ColourScheme& cs) :
     colour_scheme(cs),
     noad(p),
-    style(p->style == SkoarStyles::EStyle::nostyle ? defaultStyle : p->style)
+    style(p == nullptr ? defaultStyle : p->style == SkoarStyles::EStyle::nostyle ? defaultStyle : p->style)
 {
     colour = colour_scheme.types.getUnchecked(SkoarStyles::to_int(style)).colour;
 }
@@ -29,6 +29,9 @@ void SkoarNoadTreeItem::paintItem(Graphics& g,
     int width,
     int height
 ) {
+    if (noad == nullptr)
+        return;
+
     Rectangle<int> r(0, 0, width, height);
     String str(noad->name.c_str());
 
@@ -46,6 +49,9 @@ void SkoarNoadTreeItem::itemClicked(const MouseEvent&) {
 }
 
 void SkoarNoadTreeItem::itemSelectionChanged(bool isNowSelected) {
+    if (noad == nullptr)
+        return;
+
     if (isNowSelected) {
         auto d = DebuggoarDeets::getInstance();
 
@@ -60,6 +66,8 @@ void SkoarNoadTreeItem::itemSelectionChanged(bool isNowSelected) {
 }
 
 void SkoarNoadTreeItem::itemOpennessChanged(bool isNowOpen) {
+    if (noad == nullptr)
+        return;
 
     if (isNowOpen) {
         for (auto x : noad->children) {
@@ -72,6 +80,9 @@ void SkoarNoadTreeItem::itemOpennessChanged(bool isNowOpen) {
 }
 
 bool SkoarNoadTreeItem::isNoad(SkoarNoad* p) {
+    if (noad == nullptr)
+        return false;
+
     return noad.get() == p;
 }
 

@@ -65,8 +65,13 @@ void test_skoars (std::string file_prefix, should_test_memory should_test_memori
 }
 
 
-TEST_CASE ("Elementary", "[elementary]") {
-    test_skoars ("elem_", should_test_memory::dont_test_memory, should_run_skoar::do_run_skoar);
+TEST_CASE ("Elementary Structural", "[elementary_struct]") {
+    test_skoars ("elem_struct_", should_test_memory::dont_test_memory, should_run_skoar::do_run_skoar);
+}
+
+
+TEST_CASE ("Elementary Musical", "[elementary_mus]") {
+    test_skoars ("elem_mus_", should_test_memory::dont_test_memory, should_run_skoar::do_run_skoar);
 }
 
 
@@ -147,12 +152,21 @@ TEST_CASE ("ops_div_Hash", "[ops], [ops-div]") {
 #if SKOAR_DEBUG_MEMORY
 
 
-TEST_CASE ("Memories - Compiled - Elementary", "[memory]") {
-    test_skoars ("elem_", should_test_memory::do_test_memory, should_run_skoar::dont_run_skoar);
+
+TEST_CASE ("Memories - Compiled - Elementary Structural", "[memory]") {
+    test_skoars ("elem_struct_", should_test_memory::do_test_memory, should_run_skoar::dont_run_skoar);
 }
 
-TEST_CASE ("Memories - Ran - Elementary", "[memory]") {
-    test_skoars ("elem_", should_test_memory::do_test_memory, should_run_skoar::do_run_skoar);
+TEST_CASE ("Memories - Ran - Elementary Structural", "[memory]") {
+    test_skoars ("elem_struct_", should_test_memory::do_test_memory, should_run_skoar::do_run_skoar);
+}
+
+TEST_CASE ("Memories - Compiled - Elementary Musical", "[memory]") {
+    test_skoars ("elem_mus_", should_test_memory::do_test_memory, should_run_skoar::dont_run_skoar);
+}
+
+TEST_CASE ("Memories - Ran - Elementary Musical", "[memory]") {
+    test_skoars ("elem_mus_", should_test_memory::do_test_memory, should_run_skoar::do_run_skoar);
 }
 
 

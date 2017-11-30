@@ -6,11 +6,7 @@ FairyDataModel::FairyDataModel(SkoarFairyPtr p) :
     impression(p->impression == nullptr ?
         L"" : p->impression->asString().c_str()),
     noat(p->noat == nullptr ?
-        L"" : p->noat->asString().c_str()),
-    boolean_impression(p->boolean_impression == nullptr ?
-        L"" : p->boolean_impression->asString().c_str()),
-    l_value(p->l_value == nullptr ?
-        L"" : p->l_value->asString().c_str())
+        L"" : p->noat->asString().c_str())
 {
 }
 

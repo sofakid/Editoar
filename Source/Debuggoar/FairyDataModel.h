@@ -35,24 +35,18 @@ private:
     String name;
     String impression;
     String noat;
-    String boolean_impression;
-    String l_value;
-
-    static const size_t names_n = 5;
+   
+    static const size_t names_n = 3;
     const String names[names_n] = {
         "name: ",
         "impression: ",
-        "noat: ",
-        "boolean_impression: ",
-        "l_value: "
+        "noat: "
     };
 
     const String* vals[names_n] = {
         &name,
         &impression,
-        &noat,
-        &boolean_impression,
-        &l_value
+        &noat
     };
 
 };

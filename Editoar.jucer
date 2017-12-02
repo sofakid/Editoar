@@ -119,6 +119,8 @@
       <FILE id="lTXZm1" name="test_skoars.cpp" compile="1" resource="0" file="Source/UnitTestsWithJuce/test_skoars.cpp"/>
     </GROUP>
     <GROUP id="{16FEBAFB-A232-5970-99CE-E3613C30A999}" name="SkoarCpp">
+      <FILE id="HyU5aK" name="skoarpuscle_msg.cpp" compile="1" resource="0"
+            file="../SkoarCpp/SkoarCpp/skoarpuscle_msg.cpp"/>
       <FILE id="GD68qk" name="magic_words.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/magic_words.cpp"/>
       <FILE id="DHYB7A" name="magic_words.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/magic_words.hpp"/>
       <FILE id="mbWO4h" name="operators_table.cpp" compile="1" resource="0"

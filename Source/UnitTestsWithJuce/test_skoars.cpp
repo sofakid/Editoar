@@ -85,6 +85,18 @@ TEST_CASE ("Dev Functionality", "[dev]") {
 }
 
 
+TEST_CASE ("Msgs - Int", "[msgs]") {
+    test_skoars ("msg_int_", should_test_memory::dont_test_memory, should_run_skoar::do_run_skoar);
+}
+
+TEST_CASE ("Msgs - Float", "[msgs]") {
+    test_skoars ("msg_float_", should_test_memory::dont_test_memory, should_run_skoar::do_run_skoar);
+}
+
+TEST_CASE ("Msgs - List", "[msgs]") {
+    test_skoars ("msg_list_", should_test_memory::dont_test_memory, should_run_skoar::do_run_skoar);
+}
+
 // --- Operators -------------------------------------------------
 //
 // These are separated into so many, because there is some kind of O(n^2) unhappiness

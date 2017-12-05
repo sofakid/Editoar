@@ -1,6 +1,7 @@
 #include "FairyCursor.h"
 #include "Vision.h"
 #include "../Code Editor/SkoarCodeEditor.hpp"
+#include <climits>
 
 FairyCursor::FairyCursor (SkoarCodeEditorComponent & ed) :
     editor(ed),

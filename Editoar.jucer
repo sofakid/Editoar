@@ -62,12 +62,13 @@
       </MODULEPATHS>
     </VS2015>
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile" extraCompilerFlags="-std=c++11"
-                extraLinkerFlags="" bigIcon="OCyr5F" smallIcon="" vstFolder="">
+                extraLinkerFlags="" bigIcon="axHNWg" smallIcon="" vstFolder=""
+                cppLanguageStandard="-std=c++14">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" libraryPath="" isDebug="1" optimisation="1" targetName="Editoar"
-                       headerPath=""/>
+                       headerPath="../../../SkoarCpp/SkoarCpp"/>
         <CONFIGURATION name="Release" libraryPath="" isDebug="0" optimisation="3" targetName="Editoar"
-                       headerPath=""/>
+                       headerPath="../../../SkoarCpp/SkoarCpp"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_gui_extra" path="..\JUCE5\modules"/>

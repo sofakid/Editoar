@@ -8,7 +8,7 @@ class SkoarASTComponent :
     public Component
 {
 public:
-    static SkoarASTComponent* SkoarASTComponent::getInstance ();
+    static SkoarASTComponent* getInstance ();
 
     SkoarASTComponent ();
     ~SkoarASTComponent ();

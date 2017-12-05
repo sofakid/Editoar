@@ -9,7 +9,7 @@ class SkoarpionsComponent :
     public ComboBoxListener
 {
 public:
-    static SkoarpionsComponent* SkoarpionsComponent::getInstance ();
+    static SkoarpionsComponent* getInstance ();
 
     SkoarpionsComponent ();
     ~SkoarpionsComponent ();

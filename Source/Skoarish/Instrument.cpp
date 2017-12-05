@@ -80,7 +80,7 @@ void SkoarishInstrument::unsetRenameSpell() {
 
 SkoarishInstrumentManager* SkoarishInstrumentManager::getInstance() {
     static bool initialized = false;
-    static SkoarishInstrumentManager* instance;
+    static SkoarishInstrumentManager* instance (nullptr);
 
     if (initialized == false) {
         instance = new SkoarishInstrumentManager();

@@ -1,7 +1,7 @@
 #include "DebuggoarDeetsPanel.h"
 #include "SkoarpionComponent.h"
 
-DebuggoarDeets* instance = nullptr;
+static DebuggoarDeets* instance (nullptr);
 
 // static
 DebuggoarDeets* DebuggoarDeets::getInstance() {

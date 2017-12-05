@@ -2,7 +2,7 @@
 #include "SkoarpionComponent.h"
 
 //==============================================================================
-SkoarpionsComponent* instance = nullptr;
+static SkoarpionsComponent* instance (nullptr);
 
 SkoarpionsComponent* SkoarpionsComponent::getInstance() {
     return instance;

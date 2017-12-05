@@ -27,7 +27,7 @@
 //[MiscUserDefs] You can add your own user definitions and misc code here...
 #include "DebuggoarComponent.h"
 
-DebuggoarToolbar* instance = nullptr;
+static DebuggoarToolbar* instance (nullptr);
 
 DebuggoarToolbar* DebuggoarToolbar::getInstance() {
     return instance;

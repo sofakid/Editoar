@@ -3,7 +3,7 @@
 #include "SkoarpionsComponent.h"
 
 //==============================================================================
-DebuggoarComponent* instance = nullptr;
+static DebuggoarComponent* instance (nullptr);
 
 DebuggoarComponent* DebuggoarComponent::getDebuggoar () {
     return instance;

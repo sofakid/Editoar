@@ -2,7 +2,7 @@
 #include "skoarpion.hpp"
 #include "koar.hpp"
 
-SkoarProjectionComponent* instance (nullptr);
+static SkoarProjectionComponent* instance (nullptr);
 
 // static
 SkoarProjectionComponent* SkoarProjectionComponent::getInstance () {

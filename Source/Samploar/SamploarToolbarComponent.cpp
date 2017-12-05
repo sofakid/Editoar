@@ -242,20 +242,20 @@ void SamploarToolbarComponent::setStopButtonEnabled(bool b) {
 }
 
 void SamploarToolbarComponent::setPlayButtonAsPause() {
-    playButton->setButtonText(CharPointer_UTF16(L"\xf04c"));
+    playButton->setButtonText(L"\xf04c");
 }
 
 void SamploarToolbarComponent::setPlayButtonAsPlay() {
-    playButton->setButtonText(CharPointer_UTF16(L"\xf04b"));
+    playButton->setButtonText(L"\xf04b");
 }
 
 void SamploarToolbarComponent::setStopButtonAsReset() {
-    stopButton->setButtonText(CharPointer_UTF16(L"\xf049"));
+    stopButton->setButtonText(L"\xf049");
 
 }
 
 void SamploarToolbarComponent::setStopButtonAsStop() {
-    stopButton->setButtonText(CharPointer_UTF16(L"\xf04d"));
+    stopButton->setButtonText(L"\xf04d");
 }
 
 void SamploarToolbarComponent::setFileName(String fileName) {

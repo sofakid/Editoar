@@ -35,7 +35,7 @@ void VisionCanvas::rebuildSegments ()
     segments.clearQuick (true);
 
     auto style = SkoarStyles::EStyle::nostyle;
-    std::list<SkoarStyles::EStyle> styles { style };
+    std::vector<SkoarStyles::EStyle> styles { style };
 
     SkoarNoad::inorder (skoar->tree,
         [&](SkoarNoadPtr p) {

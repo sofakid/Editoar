@@ -167,22 +167,22 @@ DebuggoarToolbar::DebuggoarToolbar ()
 
     //[UserPreSize]
     openExtDebuggerButton->setLookAndFeel (&awesome);
-    openExtDebuggerButton->setButtonText(CharPointer_UTF16(L"\xf188"));
+    openExtDebuggerButton->setButtonText(L"\xf188");
 
     continueDebuggingButton->setLookAndFeel (&awesome);
-    continueDebuggingButton->setButtonText(CharPointer_UTF16(L"\xf144"));
+    continueDebuggingButton->setButtonText(L"\xf144");
 
     stopDebuggingButton->setLookAndFeel (&awesome);
-    stopDebuggingButton->setButtonText(CharPointer_UTF16(L"\xf28d"));
+    stopDebuggingButton->setButtonText(L"\xf28d");
 
     stepInButton->setLookAndFeel (&awesome);
-    stepInButton->setButtonText(CharPointer_UTF16(L"\xf13a"));
+    stepInButton->setButtonText(L"\xf13a");
 
     stepOutButton->setLookAndFeel (&awesome);
-    stepOutButton->setButtonText(CharPointer_UTF16(L"\xf139"));
+    stepOutButton->setButtonText(L"\xf139");
 
     stepOverButton->setLookAndFeel (&awesome);
-    stepOverButton->setButtonText(CharPointer_UTF16(L"\xf138"));
+    stepOverButton->setButtonText(L"\xf138");
 
 
     //[/UserPreSize]

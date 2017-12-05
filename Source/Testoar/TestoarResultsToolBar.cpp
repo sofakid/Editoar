@@ -52,7 +52,7 @@ TestoarResultsToolBar::TestoarResultsToolBar ()
 
     //[UserPreSize]
     debugButton->setLookAndFeel(&awesome);
-    debugButton->setButtonText(CharPointer_UTF16(L"\xf188"));
+    debugButton->setButtonText(L"\xf188");
     titleText = String("");
     countsText = String("");
     //[/UserPreSize]

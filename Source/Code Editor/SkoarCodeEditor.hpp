@@ -13,33 +13,33 @@ class SkoarCodeEditorComponent : public GenericCodeEditorComponent
 {
 public:
 
-	SkoarCodeEditorComponent(const File&, CodeDocument&);
-	~SkoarCodeEditorComponent();
+    SkoarCodeEditorComponent(const File&, CodeDocument&);
+    ~SkoarCodeEditorComponent();
 
-	void addPopupMenuItems(PopupMenu&, const MouseEvent*) override;
-	void performPopupMenuAction(int menuItemID) override;
+    void addPopupMenuItems(PopupMenu&, const MouseEvent*) override;
+    void performPopupMenuAction(int menuItemID) override;
 
     void editorViewportPositionChanged () override;
 
-	void handleReturnKey() override;
-	void insertTextAtCaret(const String& newText) override;
+    void handleReturnKey() override;
+    void insertTextAtCaret(const String& newText) override;
 
-	class DocumentListener : public CodeDocument::Listener
-	{
-	public:
-		DocumentListener(CodeDocument& document, SkoarCodeEditorComponent* ed);
-		~DocumentListener() override;
+    class DocumentListener : public CodeDocument::Listener
+    {
+    public:
+        DocumentListener(CodeDocument& document, SkoarCodeEditorComponent* ed);
+        ~DocumentListener() override;
 
-		/** Called by a CodeDocument when text is added. */
-		void codeDocumentTextInserted(const String& newText, int insertIndex) override;
+        /** Called by a CodeDocument when text is added. */
+        void codeDocumentTextInserted(const String& newText, int insertIndex) override;
 
-		/** Called by a CodeDocument when text is deleted. */
-		void codeDocumentTextDeleted(int startIndex, int endIndex) override;
+        /** Called by a CodeDocument when text is deleted. */
+        void codeDocumentTextDeleted(int startIndex, int endIndex) override;
 
-	private:
-		CodeDocument& doc;
+    private:
+        CodeDocument& doc;
         SkoarCodeEditorComponent* editor;
-	};
+    };
 
     SkoarCodeTokeniser* getTokeniser();
 
@@ -59,10 +59,10 @@ public:
     void reloadColourScheme ();
 
 private:
-	DocumentListener docListener;
+    DocumentListener docListener;
     ScopedPointer<VisionCanvas> vision;
 
-	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SkoarCodeEditorComponent)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SkoarCodeEditorComponent)
 };
 
 

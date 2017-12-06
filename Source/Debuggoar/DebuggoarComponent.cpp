@@ -62,6 +62,8 @@ void DebuggoarComponent::startSession () {
         session->die ();
         session = nullptr;
     }
+
+    editor->setEnabled (false);
     session = new DebuggoarSession (toolbar->getSkoarpion (), toolbar->getVoice (), skoar);
     session->start ();
 }
@@ -88,6 +90,7 @@ void DebuggoarComponent::resetVision ()
 
 void DebuggoarComponent::sessionEnded ()
 {
+    editor->setEnabled (true);
     resetVision ();
 }
 

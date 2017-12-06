@@ -142,6 +142,9 @@ void Testoar::out (std::string s) {
 
         std::smatch sm;
 
+        std::regex eAnsiCodes ("\\[\\d+(;\\d+)?m");
+        s = std::regex_replace (s, eAnsiCodes, "", std::regex_constants::match_any);
+
         std::regex eSectionEndingPassed ("TESTOAR SECTION PASSED tc<<([^>]*)>> section<<([^>]*)>>\n");
         std::regex eSectionEndingFailed ("TESTOAR SECTION FAILED tc<<([^>]*)>> section<<([^>]*)>>\n");
 

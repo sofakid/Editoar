@@ -133,6 +133,11 @@ void Testoar::unregisterUi (TestoarResultsComponent* component) {
         ui = nullptr;
 }
 
+static std::regex eAnsiCodes ("\\[\\d+(;\\d+)?m", regex_constants::optimize);
+
+static std::regex eSectionEndingPassed ("TESTOAR SECTION PASSED tc<<([^>]*)>> section<<([^>]*)>>\n", regex_constants::optimize);
+static std::regex eSectionEndingFailed ("TESTOAR SECTION FAILED tc<<([^>]*)>> section<<([^>]*)>>\n", regex_constants::optimize);
+
 // --- output hooks ------------------------------------------------------------------
 void Testoar::out (std::string s) {
     const ScopedLock myScopedLock (objectLock);
@@ -142,12 +147,8 @@ void Testoar::out (std::string s) {
 
         std::smatch sm;
 
-        std::regex eAnsiCodes ("\\[\\d+(;\\d+)?m");
         s = std::regex_replace (s, eAnsiCodes, "", std::regex_constants::match_any);
-
-        std::regex eSectionEndingPassed ("TESTOAR SECTION PASSED tc<<([^>]*)>> section<<([^>]*)>>\n");
-        std::regex eSectionEndingFailed ("TESTOAR SECTION FAILED tc<<([^>]*)>> section<<([^>]*)>>\n");
-
+        
         auto flags = std::regex_constants::format_first_only;
         bool something_found;
         do
@@ -178,6 +179,9 @@ void Testoar::out (std::string s) {
 
 void Testoar::err (std::string s) {
     const ScopedLock myScopedLock (objectLock);
+    
+    s = std::regex_replace (s, eAnsiCodes, "", std::regex_constants::match_any);
+
     if (ui != nullptr)
         ui->errorsArriving (s);
 }

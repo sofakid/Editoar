@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 4.3.1
+  Created with Projucer version: 5.0.1
 
   ------------------------------------------------------------------------------
 
@@ -17,8 +17,7 @@
   ==============================================================================
 */
 
-#ifndef __JUCE_HEADER_3AFBEB56ED34B57E__
-#define __JUCE_HEADER_3AFBEB56ED34B57E__
+#pragma once
 
 //[Headers]     -- You can add your own extra header files here --
 #include "../../JuceLibraryCode/JuceHeader.h"
@@ -36,14 +35,14 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class DebuggoarToolbar : public Component,
-    public ButtonListener,
-    public ComboBoxListener
+class DebuggoarToolbar  : public Component,
+                          public ButtonListener,
+                          public ComboBoxListener
 {
 public:
     //==============================================================================
     DebuggoarToolbar ();
-    ~DebuggoarToolbar ();
+    ~DebuggoarToolbar();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
@@ -70,7 +69,7 @@ public:
     //[/UserMethods]
 
     void paint (Graphics& g) override;
-    void resized () override;
+    void resized() override;
     void buttonClicked (Button* buttonThatWasClicked) override;
     void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
 
@@ -94,6 +93,7 @@ private:
     ScopedPointer<TextButton> continueDebuggingButton;
     ScopedPointer<Label> skoarpionLabel;
     ScopedPointer<ComboBox> skoarpionComboBox;
+    ScopedPointer<TextButton> stepToBeatButton;
 
 
     //==============================================================================
@@ -102,5 +102,3 @@ private:
 
 //[EndFile] You can add extra defines here...
 //[/EndFile]
-
-#endif   // __JUCE_HEADER_3AFBEB56ED34B57E__

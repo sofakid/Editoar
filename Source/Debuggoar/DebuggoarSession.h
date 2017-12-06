@@ -11,6 +11,7 @@ public:
         steppingIn,
         steppingOver,
         steppingOut,
+        steppingToBeat,
         stopping,
         stopped,
         debuggerStepping
@@ -26,6 +27,7 @@ public:
     void start();
 
     void stepIn();
+    void stepToBeat ();
     void stepOut();
     void stepOver();
 

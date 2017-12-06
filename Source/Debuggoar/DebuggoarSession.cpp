@@ -23,7 +23,6 @@ DebuggoarSession::DebuggoarSession (SkoarpionPtr p, String voice, Skoar* skoar) 
     auto stateRef = &state;
     auto skoarpionsRef = &skoarpions;
 
-
     happening = [=](SkoarEventPtr p) {
         const MessageManagerLock mmLock;
         auto d = DebuggoarDeets::getInstance ();
@@ -34,7 +33,14 @@ DebuggoarSession::DebuggoarSession (SkoarpionPtr p, String voice, Skoar* skoar) 
 
     before_entering_noad_spell = [=](SkoarMinstrelPtr minstrel, SkoarNoadite* noad) {
 
-        if (*stateRef == EState::steppingIn || noad->breakpoint)
+        auto& state (*stateRef);
+
+        if (
+            noad->breakpoint ||
+            state == EState::steppingIn || 
+            state == EState::steppingToBeat && 
+               (noad->name == L"regular_beat" || noad->name == L"exact_beat_end")
+        )
         {
             {
                 const MessageManagerLock mmLock;
@@ -49,16 +55,14 @@ DebuggoarSession::DebuggoarSession (SkoarpionPtr p, String voice, Skoar* skoar) 
             lockRef->wait ();
             lockRef->reset ();
         }
-
-        if (*stateRef == EState::stopping)
-        {
+        
+        if (state == EState::stopping)
             throw SkoarNav (SkoarNav::DONE);
-        }
 
 #if SKOAR_DEBUG_BUILD
-        if (*stateRef == EState::debuggerStepping)
+        if (state == EState::debuggerStepping)
         {
-            *stateRef = EState::steppingIn;
+            state = EState::steppingIn;
             JUCE_BREAK_IN_DEBUGGER;
         }
 #endif
@@ -189,6 +193,12 @@ void DebuggoarSession::stepIn () {
     state = EState::steppingIn;
     lock.signal ();
 }
+
+void DebuggoarSession::stepToBeat () {
+    state = EState::steppingToBeat;
+    lock.signal ();
+}
+
 
 void DebuggoarSession::stepOver () {
     state = EState::steppingOver;

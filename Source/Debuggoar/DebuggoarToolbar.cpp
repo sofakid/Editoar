@@ -7,7 +7,7 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 4.3.1
+  Created with Projucer version: 5.0.1
 
   ------------------------------------------------------------------------------
 
@@ -120,7 +120,7 @@ DebuggoarToolbar::DebuggoarToolbar ()
 
     addAndMakeVisible (minstrelLabel = new Label ("minstrelLabel",
                                                   TRANS("Voice:")));
-    minstrelLabel->setFont (Font (15.00f, Font::plain));
+    minstrelLabel->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
     minstrelLabel->setJustificationType (Justification::centredRight);
     minstrelLabel->setEditable (false, false, false);
     minstrelLabel->setColour (Label::textColourId, Colours::white);
@@ -150,7 +150,7 @@ DebuggoarToolbar::DebuggoarToolbar ()
 
     addAndMakeVisible (skoarpionLabel = new Label ("skoarpionLabel",
                                                    TRANS("Skoarpion:")));
-    skoarpionLabel->setFont (Font (15.00f, Font::plain));
+    skoarpionLabel->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
     skoarpionLabel->setJustificationType (Justification::centredRight);
     skoarpionLabel->setEditable (false, false, false);
     skoarpionLabel->setColour (Label::textColourId, Colours::white);
@@ -163,6 +163,11 @@ DebuggoarToolbar::DebuggoarToolbar ()
     skoarpionComboBox->setTextWhenNothingSelected (String());
     skoarpionComboBox->setTextWhenNoChoicesAvailable (TRANS("(no choices)"));
     skoarpionComboBox->addListener (this);
+
+    addAndMakeVisible (stepToBeatButton = new TextButton ("stepToBeatButton"));
+    stepToBeatButton->setTooltip (TRANS("Step To Beat"));
+    stepToBeatButton->setButtonText (TRANS(")"));
+    stepToBeatButton->addListener (this);
 
 
     //[UserPreSize]
@@ -210,6 +215,7 @@ DebuggoarToolbar::~DebuggoarToolbar()
     continueDebuggingButton = nullptr;
     skoarpionLabel = nullptr;
     skoarpionComboBox = nullptr;
+    stepToBeatButton = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -243,6 +249,7 @@ void DebuggoarToolbar::resized()
     continueDebuggingButton->setBounds (464, 6, 40, 20);
     skoarpionLabel->setBounds (7, 6, 79, 20);
     skoarpionComboBox->setBounds (87, 6, 150, 20);
+    stepToBeatButton->setBounds (getWidth() - 225, 6, 32, 20);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -299,6 +306,14 @@ void DebuggoarToolbar::buttonClicked (Button* buttonThatWasClicked)
         auto debuggoar = DebuggoarComponent::getDebuggoar();
         debuggoar->startSession();
         //[/UserButtonCode_continueDebuggingButton]
+    }
+    else if (buttonThatWasClicked == stepToBeatButton)
+    {
+        //[UserButtonCode_stepToBeatButton] -- add your button handler code here..
+        auto x = DebuggoarSession::getInstance();
+        if (x != nullptr)
+            x->stepToBeat();
+        //[/UserButtonCode_stepToBeatButton]
     }
 
     //[UserbuttonClicked_Post]
@@ -371,7 +386,7 @@ SkoarpionPtr DebuggoarToolbar::getSkoarpion () {
 
     if (skoarpions.size() > 0)
         return skoarpions.getUnchecked (0);
-    
+
     return nullptr;
 }
 
@@ -397,7 +412,7 @@ void DebuggoarToolbar::loadSkoar(Skoar* skoar) {
     voices.clearQuick ();
 
     for (auto x : skoar->voices) {
-        
+
         String voice (x.first.c_str ());
         if (voice == "")
             continue;
@@ -467,7 +482,7 @@ BEGIN_JUCER_METADATA
          virtualName="" explicitFocusOrder="0" pos="240 6 55 20" textCol="ffffffff"
          edTextCol="ff000000" edBkgCol="0" labelText="Voice:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15" bold="0" italic="0" justification="34"/>
+         fontsize="15" kerning="0" bold="0" italic="0" justification="34"/>
   <COMBOBOX name="minstrelComboBox" id="a72a491faf27f472" memberName="minstrelComboBox"
             virtualName="" explicitFocusOrder="0" pos="296 6 150 20" editable="0"
             layout="33" items="" textWhenNonSelected="" textWhenNoItems="(no choices)"/>
@@ -482,10 +497,13 @@ BEGIN_JUCER_METADATA
          virtualName="" explicitFocusOrder="0" pos="7 6 79 20" textCol="ffffffff"
          edTextCol="ff000000" edBkgCol="0" labelText="Skoarpion:" editableSingleClick="0"
          editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15" bold="0" italic="0" justification="34"/>
+         fontsize="15" kerning="0" bold="0" italic="0" justification="34"/>
   <COMBOBOX name="skoarpionComboBox" id="27b93cd8bd15bb1d" memberName="skoarpionComboBox"
             virtualName="" explicitFocusOrder="0" pos="87 6 150 20" editable="0"
             layout="33" items="" textWhenNonSelected="" textWhenNoItems="(no choices)"/>
+  <TEXTBUTTON name="stepToBeatButton" id="56083f64c910b9a3" memberName="stepToBeatButton"
+              virtualName="" explicitFocusOrder="0" pos="225R 6 32 20" tooltip="Step To Beat"
+              buttonText=")" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

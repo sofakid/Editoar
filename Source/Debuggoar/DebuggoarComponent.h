@@ -26,6 +26,7 @@ public:
     void resized () override;
 
     void startSession ();
+    void playWithoutDebugging ();
 
     void focusOnNoad (SkoarNoadPtr noad);
     void focusOnNoadite (const SkoarNoadite& noad);

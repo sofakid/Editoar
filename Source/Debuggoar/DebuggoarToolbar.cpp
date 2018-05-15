@@ -19,6 +19,7 @@
 
 //[Headers] You can add your own extra header files here...
 #include "DebuggoarSession.h"
+#include "../Playoar/PlayoarSession.h"
 //[/Headers]
 
 #include "DebuggoarToolbar.h"
@@ -169,6 +170,15 @@ DebuggoarToolbar::DebuggoarToolbar ()
     stepToBeatButton->setButtonText (TRANS(")"));
     stepToBeatButton->addListener (this);
 
+    addAndMakeVisible (playWithoutDebuggingButton = new TextButton ("playWithoutDebuggingButton"));
+    playWithoutDebuggingButton->setTooltip (TRANS("Play Without Debugging"));
+    playWithoutDebuggingButton->setButtonText (TRANS(")>"));
+    playWithoutDebuggingButton->addListener (this);
+    playWithoutDebuggingButton->setColour (TextButton::buttonColourId, Colours::grey);
+    playWithoutDebuggingButton->setColour (TextButton::buttonOnColourId, Colours::grey);
+    playWithoutDebuggingButton->setColour (TextButton::textColourOffId, Colours::black);
+    playWithoutDebuggingButton->setColour (TextButton::textColourOnId, Colours::white);
+
 
     //[UserPreSize]
     openExtDebuggerButton->setLookAndFeel (&awesome);
@@ -188,6 +198,9 @@ DebuggoarToolbar::DebuggoarToolbar ()
 
     stepOverButton->setLookAndFeel (&awesome);
     stepOverButton->setButtonText(L"\xf138");
+
+    playWithoutDebuggingButton->setLookAndFeel (&awesome);
+    playWithoutDebuggingButton->setButtonText (L"\xf04b");
 
 
     //[/UserPreSize]
@@ -216,6 +229,7 @@ DebuggoarToolbar::~DebuggoarToolbar()
     skoarpionLabel = nullptr;
     skoarpionComboBox = nullptr;
     stepToBeatButton = nullptr;
+    playWithoutDebuggingButton = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -250,6 +264,7 @@ void DebuggoarToolbar::resized()
     skoarpionLabel->setBounds (7, 6, 79, 20);
     skoarpionComboBox->setBounds (87, 6, 150, 20);
     stepToBeatButton->setBounds (getWidth() - 225, 6, 32, 20);
+    playWithoutDebuggingButton->setBounds (600, 6, 40, 20);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -262,7 +277,7 @@ void DebuggoarToolbar::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == stepInButton)
     {
         //[UserButtonCode_stepInButton] -- add your button handler code here..
-        auto x = DebuggoarSession::getInstance();
+        auto x = DebuggoarSession::getInstance ();
         if (x != nullptr)
             x->stepIn();
         //[/UserButtonCode_stepInButton]
@@ -270,7 +285,7 @@ void DebuggoarToolbar::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == stepOverButton)
     {
         //[UserButtonCode_stepOverButton] -- add your button handler code here..
-        auto x = DebuggoarSession::getInstance();
+        auto x = DebuggoarSession::getInstance ();
         if (x != nullptr)
             x->stepOver();
         //[/UserButtonCode_stepOverButton]
@@ -278,7 +293,7 @@ void DebuggoarToolbar::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == stepOutButton)
     {
         //[UserButtonCode_stepOutButton] -- add your button handler code here..
-        auto x = DebuggoarSession::getInstance();
+        auto x = DebuggoarSession::getInstance ();
         if (x != nullptr)
             x->stepOut();
 
@@ -303,17 +318,24 @@ void DebuggoarToolbar::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == continueDebuggingButton)
     {
         //[UserButtonCode_continueDebuggingButton] -- add your button handler code here..
-        auto debuggoar = DebuggoarComponent::getDebuggoar();
+        auto debuggoar = DebuggoarComponent::getDebuggoar ();
         debuggoar->startSession();
         //[/UserButtonCode_continueDebuggingButton]
     }
     else if (buttonThatWasClicked == stepToBeatButton)
     {
         //[UserButtonCode_stepToBeatButton] -- add your button handler code here..
-        auto x = DebuggoarSession::getInstance();
+        auto x = DebuggoarSession::getInstance ();
         if (x != nullptr)
             x->stepToBeat();
         //[/UserButtonCode_stepToBeatButton]
+    }
+    else if (buttonThatWasClicked == playWithoutDebuggingButton)
+    {
+        //[UserButtonCode_playWithoutDebuggingButton] -- add your button handler code here..
+        auto debuggoar = DebuggoarComponent::getDebuggoar ();
+        debuggoar->playWithoutDebugging ();
+        //[/UserButtonCode_playWithoutDebuggingButton]
     }
 
     //[UserbuttonClicked_Post]
@@ -504,6 +526,10 @@ BEGIN_JUCER_METADATA
   <TEXTBUTTON name="stepToBeatButton" id="56083f64c910b9a3" memberName="stepToBeatButton"
               virtualName="" explicitFocusOrder="0" pos="225R 6 32 20" tooltip="Step To Beat"
               buttonText=")" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+  <TEXTBUTTON name="playWithoutDebuggingButton" id="36f02a2041b9626e" memberName="playWithoutDebuggingButton"
+              virtualName="" explicitFocusOrder="0" pos="600 6 40 20" tooltip="Play Without Debugging"
+              bgColOff="ff808080" bgColOn="ff808080" textCol="ff000000" textColOn="ffffffff"
+              buttonText=")&gt;" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

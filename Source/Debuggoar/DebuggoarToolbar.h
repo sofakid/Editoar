@@ -94,6 +94,7 @@ private:
     ScopedPointer<Label> skoarpionLabel;
     ScopedPointer<ComboBox> skoarpionComboBox;
     ScopedPointer<TextButton> stepToBeatButton;
+    ScopedPointer<TextButton> playWithoutDebuggingButton;
 
 
     //==============================================================================

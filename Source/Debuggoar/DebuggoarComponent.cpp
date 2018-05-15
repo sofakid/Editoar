@@ -1,6 +1,7 @@
 #include "DebuggoarComponent.h"
 #include "../Logging/SkoarLogger.hpp"
 #include "SkoarpionsComponent.h"
+#include "../Playoar/PlayoarSession.h"
 
 //==============================================================================
 static DebuggoarComponent* instance (nullptr);
@@ -66,6 +67,12 @@ void DebuggoarComponent::startSession () {
     editor->setEnabled (false);
     session = new DebuggoarSession (toolbar->getSkoarpion (), toolbar->getVoice (), skoar);
     session->start ();
+}
+
+void DebuggoarComponent::playWithoutDebugging ()
+{
+    auto ps = new PlayoarSession (L"all", skoar);
+    ps->start ();
 }
 
 void DebuggoarComponent::focusOnNoad (SkoarNoadPtr p) {

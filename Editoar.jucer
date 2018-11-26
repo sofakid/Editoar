@@ -83,28 +83,6 @@
         <MODULEPATH id="juce_audio_utils" path="..\JUCE5\modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
-    <CODEBLOCKS_WINDOWS targetFolder="Builds/CodeBlocksWindows">
-      <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" windowsCodeBlocksArchitecture="-m64" isDebug="1"
-                       optimisation="1" targetName="Skoar" headerPath="../../../SkoarCpp/SkoarCpp"/>
-        <CONFIGURATION name="Release" windowsCodeBlocksArchitecture="-m64" isDebug="0"
-                       optimisation="3" targetName="Skoar" headerPath="../../../SkoarCpp/SkoarCpp"/>
-      </CONFIGURATIONS>
-      <MODULEPATHS>
-        <MODULEPATH id="juce_gui_extra" path="..\JUCE5\modules"/>
-        <MODULEPATH id="juce_gui_basics" path="..\JUCE5\modules"/>
-        <MODULEPATH id="juce_graphics" path="..\JUCE5\modules"/>
-        <MODULEPATH id="juce_events" path="..\JUCE5\modules"/>
-        <MODULEPATH id="juce_data_structures" path="..\JUCE5\modules"/>
-        <MODULEPATH id="juce_cryptography" path="..\JUCE5\modules"/>
-        <MODULEPATH id="juce_core" path="..\JUCE5\modules"/>
-        <MODULEPATH id="juce_audio_utils" path="..\JUCE5\modules"/>
-        <MODULEPATH id="juce_audio_processors" path="..\JUCE5\modules"/>
-        <MODULEPATH id="juce_audio_formats" path="..\JUCE5\modules"/>
-        <MODULEPATH id="juce_audio_devices" path="..\JUCE5\modules"/>
-        <MODULEPATH id="juce_audio_basics" path="..\JUCE5\modules"/>
-      </MODULEPATHS>
-    </CODEBLOCKS_WINDOWS>
     <VS2017 targetFolder="Builds/VisualStudio2017" extraCompilerFlags="/bigobj"
             bigIcon="axHNWg">
       <CONFIGURATIONS>
@@ -651,18 +629,18 @@
                JUCE_LOG_ASSERTIONS="1" JUCE_USE_CURL="1" JUCE_WASAPI_EXCLUSIVE="0"
                JUCE_JACK="1"/>
   <MODULES>
-    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="1"/>
-    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="1"/>
-    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="1"/>
-    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="1"/>
-    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="1"/>
-    <MODULE id="juce_core" showAllCode="1" useLocalCopy="1"/>
-    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="1"/>
-    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="1"/>
-    <MODULE id="juce_events" showAllCode="1" useLocalCopy="1"/>
-    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="1"/>
-    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="1"/>
-    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
   <LIVE_SETTINGS>
     <OSX headerPath="~/SDKs/llvm/include&#10;~/SDKs/llvm/tools/clang/include"

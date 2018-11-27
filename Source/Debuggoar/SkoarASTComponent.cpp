@@ -35,9 +35,10 @@ void SkoarASTComponent::resized ()
 void SkoarASTComponent::loadSkoarpion (SkoarpionPtr skoarpion)
 {
     if (skoarpionComponent != nullptr)
-        removeChildComponent (skoarpionComponent);
-    
-    addAndMakeVisible (skoarpionComponent = new SkoarTreeComponent (skoarpion->body));
+        removeChildComponent (skoarpionComponent.get());
+
+    skoarpionComponent.reset (new SkoarTreeComponent (skoarpion->body));
+    addAndMakeVisible (skoarpionComponent.get ());
 }
 
 void SkoarASTComponent::selectNoad (SkoarNoad* noad) {

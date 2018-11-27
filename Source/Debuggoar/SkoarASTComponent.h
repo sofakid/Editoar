@@ -20,7 +20,7 @@ public:
     void selectNoad (SkoarNoad*);
 
 private:
-    ScopedPointer<SkoarTreeComponent> skoarpionComponent;
+    std::unique_ptr<SkoarTreeComponent> skoarpionComponent;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SkoarASTComponent)
 };

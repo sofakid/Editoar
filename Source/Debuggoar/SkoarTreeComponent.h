@@ -10,7 +10,7 @@
 class SkoarNoadTreeItem : public TreeViewItem {
 public:
     const SkoarStyles::EStyle style;
-    const SkoarCodeEditorComponent::ColourScheme& colour_scheme;
+    const SkoarCodeEditorComponent::ColourScheme& colourScheme;
 
     SkoarNoadTreeItem(SkoarNoadPtr p, const SkoarStyles::EStyle defaultStyle, const SkoarCodeEditorComponent::ColourScheme&);
     ~SkoarNoadTreeItem();
@@ -67,7 +67,8 @@ private:
 
     SkoarNoadPtr rootNoad;
     TreeView tree;
-    ScopedPointer<SkoarNoadTreeItem> rootItem;
+    SkoarNoadTreeItem* rootItem;
+    const SkoarCodeEditorComponent::ColourScheme colourScheme;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SkoarTreeComponent)
 };

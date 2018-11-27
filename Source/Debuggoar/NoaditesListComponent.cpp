@@ -13,7 +13,7 @@ NoaditesRootItem::NoaditesRootItem (
     const SkoarStyles::EStyle defaultStyle,
     const SkoarCodeEditorComponent::ColourScheme& cs) :
     noadites (v),
-    colour_scheme (cs),
+    colourScheme (cs),
     default_style (defaultStyle)
 {
 }
@@ -31,7 +31,7 @@ void NoaditesRootItem::itemOpennessChanged (bool isNowOpen) {
             return;
 
         for (const auto& x : noadites)
-            addSubItem (new NoaditesTreeItem (x, default_style, colour_scheme));
+            addSubItem (new NoaditesTreeItem (x, default_style, colourScheme));
     }
     else
         clearSubItems ();
@@ -42,11 +42,11 @@ NoaditesTreeItem::NoaditesTreeItem (
     const SkoarNoadite& p,
     const SkoarStyles::EStyle defaultStyle,
     const SkoarCodeEditorComponent::ColourScheme& cs) :
-    colour_scheme (cs),
+    colourScheme (cs),
     noadite (p),
     style (p.style == SkoarStyles::EStyle::nostyle ? defaultStyle : p.style)
 {
-    colour = colour_scheme.types.getUnchecked (SkoarStyles::to_int (style)).colour;
+    colour = colourScheme.types.getUnchecked (SkoarStyles::to_int (style)).colour;
 }
 
 void NoaditesTreeItem::paintItem (Graphics& g,
@@ -85,10 +85,10 @@ bool NoaditesTreeItem::isNoadite (const SkoarNoadite& p) {
 NoaditesListComponent::NoaditesListComponent (SkoarpionProjectionPtr p) :
     projection (p),
     rootItem (nullptr),
-    tree ()
+    tree (),
+    colourScheme (DebuggoarComponent::getColourScheme ())
 {
-    auto cs = DebuggoarComponent::getColourScheme ();
-    rootItem = new NoaditesRootItem (p->noadites, SkoarStyles::EStyle::skoarpion, cs);
+    rootItem = new NoaditesRootItem (p->noadites, SkoarStyles::EStyle::skoarpion, colourScheme);
 
     tree.setLookAndFeel (&LNF);
     tree.setDefaultOpenness (true);
@@ -104,6 +104,7 @@ NoaditesListComponent::~NoaditesListComponent ()
 {
     rootItem = nullptr;
     rootNoad = nullptr;
+    tree.deleteRootItem ();
 }
 
 void NoaditesListComponent::paint (Graphics&)

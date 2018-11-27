@@ -22,7 +22,7 @@ public:
 private:
     const VectorOfNoadites& noadites;
     const SkoarStyles::EStyle default_style;
-    const SkoarCodeEditorComponent::ColourScheme& colour_scheme;
+    const SkoarCodeEditorComponent::ColourScheme& colourScheme;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NoaditesRootItem)
 };
@@ -32,7 +32,7 @@ class NoaditesTreeItem : public TreeViewItem
 {
 public:
     const SkoarStyles::EStyle style;
-    const SkoarCodeEditorComponent::ColourScheme& colour_scheme;
+    const SkoarCodeEditorComponent::ColourScheme& colourScheme;
 
     NoaditesTreeItem (const SkoarNoadite& p, const SkoarStyles::EStyle defaultStyle, const SkoarCodeEditorComponent::ColourScheme&);
 
@@ -72,8 +72,9 @@ private:
 
     SkoarNoadPtr rootNoad;
     TreeView tree;
-    ScopedPointer<NoaditesRootItem> rootItem;
+    NoaditesRootItem* rootItem;
     SkoarpionProjectionPtr projection;
+    const SkoarCodeEditorComponent::ColourScheme colourScheme;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NoaditesListComponent)
 };

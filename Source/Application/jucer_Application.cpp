@@ -71,9 +71,9 @@ void EditoarApplication::initialise (const String& commandLine)
     {
         initialiseLogger ("IDE_Log_");
         Logger::writeToLog (SystemStats::getOperatingSystemName());
-        Logger::writeToLog ("CPU: " + String (SystemStats::getCpuSpeedInMegaherz())
-                              + "MHz  Cores: " + String (SystemStats::getNumCpus())
-                              + "  " + String (SystemStats::getMemorySizeInMegabytes()) + "MB");
+        //Logger::writeToLog ("CPU: " + String (SystemStats::getCpuSpeedInMegaherz())
+        //                      + "MHz  Cores: " + String (SystemStats::getNumCpus())
+        //                      + "  " + String (SystemStats::getMemorySizeInMegabytes()) + "MB");
 
         initialiseBasics();
 

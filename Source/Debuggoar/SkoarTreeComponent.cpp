@@ -12,11 +12,11 @@ SkoarNoadTreeItem::SkoarNoadTreeItem(
     SkoarNoadPtr p,
     const SkoarStyles::EStyle defaultStyle, 
     const SkoarCodeEditorComponent::ColourScheme& cs) :
-    colour_scheme(cs),
+    colourScheme(cs),
     noad(p),
     style(p == nullptr ? defaultStyle : p->style == SkoarStyles::EStyle::nostyle ? defaultStyle : p->style)
 {
-    colour = colour_scheme.types.getUnchecked(SkoarStyles::to_int(style)).colour;
+    colour = colourScheme.types.getUnchecked(SkoarStyles::to_int(style)).colour;
 }
 
 SkoarNoadTreeItem::~SkoarNoadTreeItem()
@@ -61,7 +61,6 @@ void SkoarNoadTreeItem::itemSelectionChanged(bool isNowSelected) {
         auto deb = DebuggoarComponent::getDebuggoar();
 
         deb->focusOnNoad(noad);
-
     }
 }
 
@@ -71,7 +70,7 @@ void SkoarNoadTreeItem::itemOpennessChanged(bool isNowOpen) {
 
     if (isNowOpen) {
         for (auto x : noad->children) {
-            addSubItem(new SkoarNoadTreeItem(x, style, colour_scheme));
+            addSubItem(new SkoarNoadTreeItem(x, style, colourScheme));
         }
     } 
     else {
@@ -91,10 +90,10 @@ bool SkoarNoadTreeItem::isNoad(SkoarNoad* p) {
 SkoarTreeComponent::SkoarTreeComponent(SkoarNoadPtr pRootNoad) :
     rootNoad(pRootNoad),
     rootItem(nullptr),
-    tree()
+    tree(),
+    colourScheme(DebuggoarComponent::getColourScheme ())
 {
-    auto cs = DebuggoarComponent::getColourScheme ();
-    rootItem = new SkoarNoadTreeItem(rootNoad, SkoarStyles::EStyle::skoarpion, cs);
+    rootItem = new SkoarNoadTreeItem(rootNoad, SkoarStyles::EStyle::skoarpion, colourScheme);
     
     tree.setLookAndFeel(&LNF);
     tree.setDefaultOpenness(true);
@@ -108,6 +107,9 @@ SkoarTreeComponent::SkoarTreeComponent(SkoarNoadPtr pRootNoad) :
 
 SkoarTreeComponent::~SkoarTreeComponent()
 {
+    tree.deleteRootItem ();
+    rootNoad = nullptr;
+    rootItem = nullptr;
 }
 
 void SkoarTreeComponent::paint (Graphics&)

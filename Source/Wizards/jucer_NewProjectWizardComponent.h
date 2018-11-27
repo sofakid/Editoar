@@ -32,9 +32,9 @@
     a list box of platform targets to generate.
 */
 class WizardComp  : public Component,
-                    private ButtonListener,
-                    private ComboBoxListener,
-                    private TextEditorListener,
+                    private Button::Listener,
+                    private ComboBox::Listener,
+                    private TextEditor::Listener,
                     private FileBrowserListener
 {
 public:
@@ -52,42 +52,51 @@ public:
     {
         setOpaque (false);
 
+        auto bounds = getBounds ();
+        Rectangle<int> projectNameBounds (120, 34, bounds.getWidth () / 2 - 10, bounds.getY () + 22);
+        Rectangle<int> projectTypeBounds (120, projectNameBounds.getBottom () + 4, projectNameBounds.getRight (), bounds.getY () + 22);
+        Rectangle<int> fileOutlineBounds (30, projectTypeBounds.getBottom () + 20, projectTypeBounds.getRight (), bounds.getHeight () - 30);
+        Rectangle<int> targetsOutlineBounds (fileOutlineBounds.getRight () + 20, projectTypeBounds.getBottom () + 20, bounds.getWidth () - 30, bounds.getHeight () - 70);
+        Rectangle<int> fileBrowserBounds (fileOutlineBounds.getX () + 10, fileOutlineBounds.getY () + 20, fileOutlineBounds.getRight () - 30, fileOutlineBounds.getBottom () - 32);
+        Rectangle<int> createButtonBounds (bounds.getRight () - 130, bounds.getBottom () - 34, bounds.getWidth () - 30, bounds.getHeight () - 30);
+        Rectangle<int> cancelButtonBounds (bounds.getRight () - 130, createButtonBounds.getY (), createButtonBounds.getX () - 10, createButtonBounds.getBottom ());
+
         addChildAndSetID (&projectName, "projectName");
         projectName.setText ("NewProject");
-        projectName.setBounds ("120, 34, parent.width / 2 - 10, top + 22");
+        projectName.setBounds (projectNameBounds);
         nameLabel.attachToComponent (&projectName, true);
         projectName.addListener (this);
 
         addChildAndSetID (&projectType, "projectType");
         projectType.addItemList (getWizardNames(), 1);
         projectType.setSelectedId (1, dontSendNotification);
-        projectType.setBounds ("120, projectName.bottom + 4, projectName.right, top + 22");
+        projectType.setBounds (projectTypeBounds);
         typeLabel.attachToComponent (&projectType, true);
         projectType.addListener (this);
 
         addChildAndSetID (&fileOutline, "fileOutline");
         fileOutline.setColour (GroupComponent::outlineColourId, Colours::black.withAlpha (0.2f));
         fileOutline.setTextLabelPosition (Justification::centred);
-        fileOutline.setBounds ("30, projectType.bottom + 20, projectType.right, parent.height - 30");
+        fileOutline.setBounds (fileOutlineBounds);
 
         addChildAndSetID (&targetsOutline, "targetsOutline");
         targetsOutline.setColour (GroupComponent::outlineColourId, Colours::black.withAlpha (0.2f));
         targetsOutline.setTextLabelPosition (Justification::centred);
-        targetsOutline.setBounds ("fileOutline.right + 20, projectType.bottom + 20, parent.width - 30, parent.height - 70");
+        targetsOutline.setBounds (targetsOutlineBounds);
 
         addChildAndSetID (&fileBrowser, "fileBrowser");
-        fileBrowser.setBounds ("fileOutline.left + 10, fileOutline.top + 20, fileOutline.right - 10, fileOutline.bottom - 32");
+        fileBrowser.setBounds (fileBrowserBounds);
         fileBrowser.setFilenameBoxLabel ("Folder:");
         fileBrowser.setFileName (File::createLegalFileName (projectName.getText()));
         fileBrowser.addListener (this);
 
         addChildAndSetID (&createButton, "createButton");
-        createButton.setBounds ("right - 130, bottom - 34, parent.width - 30, parent.height - 30");
+        createButton.setBounds (createButtonBounds);
         createButton.addListener (this);
 
         addChildAndSetID (&cancelButton, "cancelButton");
         cancelButton.addShortcut (KeyPress (KeyPress::escapeKey));
-        cancelButton.setBounds ("right - 130, createButton.top, createButton.left - 10, createButton.bottom");
+        cancelButton.setBounds (cancelButtonBounds);
         cancelButton.addListener (this);
 
         updateCustomItems();

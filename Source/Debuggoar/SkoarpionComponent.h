@@ -7,7 +7,7 @@
 
 class SkoarpionComponent :
     public Component,
-    public ComboBoxListener
+    public ComboBox::Listener
 {
 public:
     SkoarpionComponent (SkoarpionPtr);

@@ -105,7 +105,8 @@ public:
 
     void resized() override
     {
-        thumb->setBoundsToFit (0, 0, getWidth(), getHeight(), Justification::centred, false);
+        Rectangle<int> r (0, 0, getWidth (), getHeight ());
+        thumb->setBoundsToFit (r, Justification::centred, false);
     }
 
     void setDescription (String descript) noexcept

@@ -64,7 +64,7 @@ private:
             const Colour colour (getColour());
 
             g.fillAll (Colours::grey);
-            g.fillCheckerBoard (getLocalBounds().reduced (2),
+            g.fillCheckerBoard (getLocalBounds().reduced (2).toFloat(),
                                 10, 10,
                                 Colour (0xffdddddd).overlaidWith (colour),
                                 Colour (0xffffffff).overlaidWith (colour));
@@ -139,7 +139,7 @@ private:
     struct PopupColourSelector   : public Component,
                                    public ChangeListener,
                                    public Value::Listener,
-                                   public ButtonListener
+                                   public Button::Listener
     {
         PopupColourSelector (const Value& colour,
                              Colour defaultCol,

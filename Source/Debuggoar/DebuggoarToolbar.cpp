@@ -1,31 +1,8 @@
-/*
-  ==============================================================================
 
-  This is an automatically generated GUI class created by the Projucer!
-
-  Be careful when adding custom code to these files, as only the code within
-  the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
-  and re-saved.
-
-  Created with Projucer version: 5.0.1
-
-  ------------------------------------------------------------------------------
-
-  The Projucer is part of the JUCE library - "Jules' Utility Class Extensions"
-  Copyright (c) 2015 - ROLI Ltd.
-
-  ==============================================================================
-*/
-
-//[Headers] You can add your own extra header files here...
 #include "DebuggoarSession.h"
 #include "../Playoar/PlayoarSession.h"
-//[/Headers]
 
 #include "DebuggoarToolbar.h"
-
-
-//[MiscUserDefs] You can add your own user definitions and misc code here...
 #include "DebuggoarComponent.h"
 
 static DebuggoarToolbar* instance (nullptr);
@@ -85,15 +62,10 @@ void DebuggoarToolbar::selectSkoarpion (SkoarpionPtr skoarpion, String voice)
     }
 }
 
-
-//[/MiscUserDefs]
-
 //==============================================================================
 DebuggoarToolbar::DebuggoarToolbar ()
 {
-    //[Constructor_pre] You can add your own custom stuff here..
     instance = this;
-    //[/Constructor_pre]
 
     addAndMakeVisible (stepInButton = new TextButton ("stepInButton"));
     stepInButton->setTooltip (TRANS("Step In"));
@@ -179,8 +151,6 @@ DebuggoarToolbar::DebuggoarToolbar ()
     playWithoutDebuggingButton->setColour (TextButton::textColourOffId, Colours::black);
     playWithoutDebuggingButton->setColour (TextButton::textColourOnId, Colours::white);
 
-
-    //[UserPreSize]
     openExtDebuggerButton->setLookAndFeel (&awesome);
     openExtDebuggerButton->setButtonText(L"\xf188");
 
@@ -202,21 +172,12 @@ DebuggoarToolbar::DebuggoarToolbar ()
     playWithoutDebuggingButton->setLookAndFeel (&awesome);
     playWithoutDebuggingButton->setButtonText (L"\xf04b");
 
-
-    //[/UserPreSize]
-
     setSize (600, 32);
-
-
-    //[Constructor] You can add your own custom stuff here..
-    //[/Constructor]
 }
 
 DebuggoarToolbar::~DebuggoarToolbar()
 {
-    //[Destructor_pre]. You can add your own custom destruction code here..
     instance = nullptr;
-    //[/Destructor_pre]
 
     stepInButton = nullptr;
     stepOverButton = nullptr;
@@ -230,29 +191,16 @@ DebuggoarToolbar::~DebuggoarToolbar()
     skoarpionComboBox = nullptr;
     stepToBeatButton = nullptr;
     playWithoutDebuggingButton = nullptr;
-
-
-    //[Destructor]. You can add your own custom destruction code here..
-    //[/Destructor]
 }
 
 //==============================================================================
 void DebuggoarToolbar::paint (Graphics& g)
 {
-    //[UserPrePaint] Add your own custom painting code here..
-    //[/UserPrePaint]
-
     g.fillAll (Colour (0xff222222));
-
-    //[UserPaint] Add your own custom painting code here..
-    //[/UserPaint]
 }
 
 void DebuggoarToolbar::resized()
 {
-    //[UserPreResize] Add your own custom resize code here..
-    //[/UserPreResize]
-
     stepInButton->setBounds (getWidth() - 185, 6, 32, 20);
     stepOverButton->setBounds (getWidth() - 145, 6, 32, 20);
     stepOutButton->setBounds (getWidth() - 105, 6, 32, 20);
@@ -265,108 +213,66 @@ void DebuggoarToolbar::resized()
     skoarpionComboBox->setBounds (87, 6, 150, 20);
     stepToBeatButton->setBounds (getWidth() - 225, 6, 32, 20);
     playWithoutDebuggingButton->setBounds (600, 6, 40, 20);
-    //[UserResized] Add your own custom resize handling here..
-    //[/UserResized]
 }
 
 void DebuggoarToolbar::buttonClicked (Button* buttonThatWasClicked)
 {
-    //[UserbuttonClicked_Pre]
-    //[/UserbuttonClicked_Pre]
-
     if (buttonThatWasClicked == stepInButton)
     {
-        //[UserButtonCode_stepInButton] -- add your button handler code here..
         auto x = DebuggoarSession::getInstance ();
         if (x != nullptr)
             x->stepIn();
-        //[/UserButtonCode_stepInButton]
     }
     else if (buttonThatWasClicked == stepOverButton)
     {
-        //[UserButtonCode_stepOverButton] -- add your button handler code here..
         auto x = DebuggoarSession::getInstance ();
         if (x != nullptr)
             x->stepOver();
-        //[/UserButtonCode_stepOverButton]
     }
     else if (buttonThatWasClicked == stepOutButton)
     {
-        //[UserButtonCode_stepOutButton] -- add your button handler code here..
         auto x = DebuggoarSession::getInstance ();
         if (x != nullptr)
             x->stepOut();
-
-        //[/UserButtonCode_stepOutButton]
     }
     else if (buttonThatWasClicked == stopDebuggingButton)
     {
-        //[UserButtonCode_stopDebuggingButton] -- add your button handler code here..
         auto x = DebuggoarSession::getInstance ();
         if (x != nullptr)
             x->stop ();
-        //[/UserButtonCode_stopDebuggingButton]
     }
     else if (buttonThatWasClicked == openExtDebuggerButton)
     {
-        //[UserButtonCode_openExtDebuggerButton] -- add your button handler code here..
         auto x = DebuggoarSession::getInstance ();
         if (x != nullptr)
             x->cpp_breakpoint ();
-        //[/UserButtonCode_openExtDebuggerButton]
     }
     else if (buttonThatWasClicked == continueDebuggingButton)
     {
-        //[UserButtonCode_continueDebuggingButton] -- add your button handler code here..
         auto debuggoar = DebuggoarComponent::getDebuggoar ();
         debuggoar->startSession();
-        //[/UserButtonCode_continueDebuggingButton]
     }
     else if (buttonThatWasClicked == stepToBeatButton)
     {
-        //[UserButtonCode_stepToBeatButton] -- add your button handler code here..
         auto x = DebuggoarSession::getInstance ();
         if (x != nullptr)
             x->stepToBeat();
-        //[/UserButtonCode_stepToBeatButton]
     }
     else if (buttonThatWasClicked == playWithoutDebuggingButton)
     {
-        //[UserButtonCode_playWithoutDebuggingButton] -- add your button handler code here..
         auto debuggoar = DebuggoarComponent::getDebuggoar ();
         debuggoar->playWithoutDebugging ();
-        //[/UserButtonCode_playWithoutDebuggingButton]
     }
-
-    //[UserbuttonClicked_Post]
-    //[/UserbuttonClicked_Post]
 }
 
 void DebuggoarToolbar::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 {
-    //[UsercomboBoxChanged_Pre]
-    //[/UsercomboBoxChanged_Pre]
-
     if (comboBoxThatHasChanged == minstrelComboBox)
-    {
-        //[UserComboBoxCode_minstrelComboBox] -- add your combo box handling code here..
         updateTabs ();
-        //[/UserComboBoxCode_minstrelComboBox]
-    }
     else if (comboBoxThatHasChanged == skoarpionComboBox)
-    {
-        //[UserComboBoxCode_skoarpionComboBox] -- add your combo box handling code here..
         updateTabs ();
-        //[/UserComboBoxCode_skoarpionComboBox]
-    }
-
-    //[UsercomboBoxChanged_Post]
-    //[/UsercomboBoxChanged_Post]
 }
 
-
-
-//[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 void DebuggoarToolbar::updateTabs () {
 
     const auto selected_voice (minstrelComboBox->getSelectedId ());
@@ -470,72 +376,3 @@ void DebuggoarToolbar::loadSkoar(Skoar* skoar) {
     minstrelComboBox->setSelectedId (selected_minstrel, dontSendNotification);
     skoarpionComboBox->setSelectedId (selected_skoarpion, sendNotification);
 }
-//[/MiscUserCode]
-
-
-//==============================================================================
-#if 0
-/*  -- Projucer information section --
-
-    This is where the Projucer stores the metadata that describe this GUI layout, so
-    make changes in here at your peril!
-
-BEGIN_JUCER_METADATA
-
-<JUCER_COMPONENT documentType="Component" className="DebuggoarToolbar" componentName=""
-                 parentClasses="public Component" constructorParams="" variableInitialisers=""
-                 snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"
-                 fixedSize="0" initialWidth="600" initialHeight="32">
-  <BACKGROUND backgroundColour="ff222222"/>
-  <TEXTBUTTON name="stepInButton" id="909e9dcb9b6b4c62" memberName="stepInButton"
-              virtualName="" explicitFocusOrder="0" pos="185R 6 32 20" tooltip="Step In"
-              buttonText="_" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="stepOverButton" id="d56b77bf5a3ed385" memberName="stepOverButton"
-              virtualName="" explicitFocusOrder="0" pos="145R 6 32 20" tooltip="Step Over"
-              buttonText="-&gt;" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="stepOutButton" id="79810f1a7ad348f0" memberName="stepOutButton"
-              virtualName="" explicitFocusOrder="0" pos="105R 6 32 20" tooltip="Step Out"
-              buttonText="&#94;" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="stopDebuggingButton" id="a45ece5ceebbbd29" memberName="stopDebuggingButton"
-              virtualName="" explicitFocusOrder="0" pos="512 6 40 20" tooltip="Stop Debugging"
-              bgColOff="ff808080" bgColOn="ff808080" textCol="ff000000" textColOn="ffffffff"
-              buttonText="[]" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <LABEL name="minstrelLabel" id="c7289d80657b1183" memberName="minstrelLabel"
-         virtualName="" explicitFocusOrder="0" pos="240 6 55 20" textCol="ffffffff"
-         edTextCol="ff000000" edBkgCol="0" labelText="Voice:" editableSingleClick="0"
-         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15" kerning="0" bold="0" italic="0" justification="34"/>
-  <COMBOBOX name="minstrelComboBox" id="a72a491faf27f472" memberName="minstrelComboBox"
-            virtualName="" explicitFocusOrder="0" pos="296 6 150 20" editable="0"
-            layout="33" items="" textWhenNonSelected="" textWhenNoItems="(no choices)"/>
-  <TEXTBUTTON name="openExtDebuggerButton" id="91eb8a63ec94aba2" memberName="openExtDebuggerButton"
-              virtualName="" explicitFocusOrder="0" pos="49R 6 40 20" tooltip="Open C++ Debugger"
-              buttonText="%" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="continueDebuggingButton" id="7c72eca150a64948" memberName="continueDebuggingButton"
-              virtualName="" explicitFocusOrder="0" pos="464 6 40 20" tooltip="Continue"
-              bgColOff="ff808080" bgColOn="ff808080" textCol="ff000000" textColOn="ffffffff"
-              buttonText=")&gt;" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <LABEL name="skoarpionLabel" id="d1178de96fd98116" memberName="skoarpionLabel"
-         virtualName="" explicitFocusOrder="0" pos="7 6 79 20" textCol="ffffffff"
-         edTextCol="ff000000" edBkgCol="0" labelText="Skoarpion:" editableSingleClick="0"
-         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15" kerning="0" bold="0" italic="0" justification="34"/>
-  <COMBOBOX name="skoarpionComboBox" id="27b93cd8bd15bb1d" memberName="skoarpionComboBox"
-            virtualName="" explicitFocusOrder="0" pos="87 6 150 20" editable="0"
-            layout="33" items="" textWhenNonSelected="" textWhenNoItems="(no choices)"/>
-  <TEXTBUTTON name="stepToBeatButton" id="56083f64c910b9a3" memberName="stepToBeatButton"
-              virtualName="" explicitFocusOrder="0" pos="225R 6 32 20" tooltip="Step To Beat"
-              buttonText=")" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="playWithoutDebuggingButton" id="36f02a2041b9626e" memberName="playWithoutDebuggingButton"
-              virtualName="" explicitFocusOrder="0" pos="600 6 40 20" tooltip="Play Without Debugging"
-              bgColOff="ff808080" bgColOn="ff808080" textCol="ff000000" textColOn="ffffffff"
-              buttonText=")&gt;" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-</JUCER_COMPONENT>
-
-END_JUCER_METADATA
-*/
-#endif
-
-
-//[EndFile] You can add extra defines here...
-//[/EndFile]

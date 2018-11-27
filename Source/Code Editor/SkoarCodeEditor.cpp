@@ -9,7 +9,6 @@
 #include "../Vision/VisionCanvas.h" 
 #include "../Debuggoar/DebuggoarComponent.h"
 
-
 static SkoarCodeTokeniser skoarTokeniser;
 
 SkoarCodeEditorComponent::SkoarCodeEditorComponent (const File& f, CodeDocument& doc) : 

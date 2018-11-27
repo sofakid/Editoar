@@ -34,10 +34,10 @@ DeetsTableComponent::DeetsTableComponent(
         desired_width += width;
     }
 
-    auto scrollbar = table->getVerticalScrollBar();
-    scrollbar->setColour(ScrollBar::ColourIds::thumbColourId, Colours::darkgrey);
-    scrollbar->setColour(ScrollBar::ColourIds::trackColourId, Colours::black);
-    scrollbar->setColour(ScrollBar::ColourIds::backgroundColourId, Colours::black);
+    auto& scrollbar (table->getVerticalScrollBar());
+    scrollbar.setColour(ScrollBar::ColourIds::thumbColourId, Colours::darkgrey);
+    scrollbar.setColour(ScrollBar::ColourIds::trackColourId, Colours::black);
+    scrollbar.setColour(ScrollBar::ColourIds::backgroundColourId, Colours::black);
 
     table->setColour(ListBox::ColourIds::backgroundColourId, Colours::black);
 

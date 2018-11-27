@@ -50,7 +50,7 @@ public:
 
             if (DrawableComposite* dc = dynamic_cast<DrawableComposite*> (drawable.get()))
             {
-                Rectangle<float> r (dc->getContentArea().resolve (nullptr));
+                Rectangle<float> r (dc->getContentArea());
 
                 if (! r.isEmpty())
                     contentBounds = r;
@@ -63,7 +63,7 @@ public:
             p.addRectangle (area);
             DropShadow (Colours::black.withAlpha (0.5f), 6, Point<int> (0, 1)).drawForPath (g, p);
 
-            g.fillCheckerBoard (area.getSmallestIntegerContainer(), 24, 24,
+            g.fillCheckerBoard (area.getSmallestIntegerContainer().toFloat(), 24, 24,
                                 Colour (0xffffffff), Colour (0xffeeeeee));
 
             drawable->draw (g, 1.0f, RectanglePlacement (RectanglePlacement::stretchToFit)

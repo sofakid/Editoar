@@ -42,7 +42,12 @@ static ComboBox& createFileCreationOptionComboBox (Component& setupComp,
     l->attachToComponent (c, true);
     itemsCreated.add (l);
 
-    c->setBounds ("parent.width / 2 + 160, 30, parent.width - 30, top + 22");
+    auto parentBounds = setupComp.getBounds ();
+    auto parentWidth = parentBounds.getWidth ();
+    auto parentTop = parentBounds.getY ();
+    Rectangle<int> r (parentWidth / 2 + 160, 30, parentWidth - 30, parentTop + 22);
+
+    c->setBounds (r);
 
     return *c;
 }

@@ -1,39 +1,12 @@
-/*
-  ==============================================================================
-
-  This is an automatically generated GUI class created by the Projucer!
-
-  Be careful when adding custom code to these files, as only the code within
-  the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
-  and re-saved.
-
-  Created with Projucer version: 5.0.1
-
-  ------------------------------------------------------------------------------
-
-  The Projucer is part of the JUCE library - "Jules' Utility Class Extensions"
-  Copyright (c) 2015 - ROLI Ltd.
-
-  ==============================================================================
-*/
-
-//[Headers] You can add your own extra header files here...
 #include <regex>
 #include "SamploarComponent.h"
-//[/Headers]
 
 #include "SamploarToolbarComponent.h"
-
-
-//[MiscUserDefs] You can add your own user definitions and misc code here...
-//[/MiscUserDefs]
 
 //==============================================================================
 SamploarToolbarComponent::SamploarToolbarComponent ()
 {
-    //[Constructor_pre] You can add your own custom stuff here..
     samploar = nullptr;
-    //[/Constructor_pre]
 
     addAndMakeVisible (playButton = new TextButton ("playButton"));
     playButton->setButtonText (TRANS(">"));
@@ -99,9 +72,6 @@ SamploarToolbarComponent::SamploarToolbarComponent ()
     lengthValueLabel->setColour (TextEditor::textColourId, Colours::black);
     lengthValueLabel->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
 
-
-    //[UserPreSize]
-
     instrumentIdValueLabel->setColour(TextEditor::highlightedTextColourId, Colours::lightyellow);
 
     playButton->setLookAndFeel (&awesome);
@@ -112,20 +82,11 @@ SamploarToolbarComponent::SamploarToolbarComponent ()
     stopButton->setEnabled (false);
     setStopButtonAsStop();
 
-    //[/UserPreSize]
-
     setSize (600, 400);
-
-
-    //[Constructor] You can add your own custom stuff here..
-    //[/Constructor]
 }
 
 SamploarToolbarComponent::~SamploarToolbarComponent()
 {
-    //[Destructor_pre]. You can add your own custom destruction code here..
-    //[/Destructor_pre]
-
     playButton = nullptr;
     stopButton = nullptr;
     fileNameLabel = nullptr;
@@ -134,30 +95,17 @@ SamploarToolbarComponent::~SamploarToolbarComponent()
     instrumentIdValueLabel = nullptr;
     lengthLabel = nullptr;
     lengthValueLabel = nullptr;
-
-
-    //[Destructor]. You can add your own custom destruction code here..
     samploar = nullptr;
-    //[/Destructor]
 }
 
 //==============================================================================
 void SamploarToolbarComponent::paint (Graphics& g)
 {
-    //[UserPrePaint] Add your own custom painting code here..
-    //[/UserPrePaint]
-
     g.fillAll (Colours::black);
-
-    //[UserPaint] Add your own custom painting code here..
-    //[/UserPaint]
 }
 
 void SamploarToolbarComponent::resized()
 {
-    //[UserPreResize] Add your own custom resize code here..
-    //[/UserPreResize]
-
     playButton->setBounds (16, 88, 60, 32);
     stopButton->setBounds (88, 88, 60, 32);
     fileNameLabel->setBounds (8, 8, 104, 24);
@@ -166,46 +114,33 @@ void SamploarToolbarComponent::resized()
     instrumentIdValueLabel->setBounds (120, 56, getWidth() - 569, 24);
     lengthLabel->setBounds (8, 32, 104, 24);
     lengthValueLabel->setBounds (120, 32, getWidth() - 777, 24);
-    //[UserResized] Add your own custom resize handling here..
-    //[/UserResized]
 }
 
 void SamploarToolbarComponent::buttonClicked (Button* buttonThatWasClicked)
 {
-    //[UserbuttonClicked_Pre]
     if (samploar == nullptr) {
         samploar = static_cast<SamploarComponent*>(getParentComponent());
     }
-    //[/UserbuttonClicked_Pre]
 
     if (buttonThatWasClicked == playButton)
     {
-        //[UserButtonCode_playButton] -- add your button handler code here..
         samploar->playButtonClicked();
-        //[/UserButtonCode_playButton]
     }
     else if (buttonThatWasClicked == stopButton)
     {
-        //[UserButtonCode_stopButton] -- add your button handler code here..
         samploar->stopButtonClicked();
-        //[/UserButtonCode_stopButton]
     }
 
-    //[UserbuttonClicked_Post]
-    //[/UserbuttonClicked_Post]
 }
 
 void SamploarToolbarComponent::labelTextChanged (Label* labelThatHasChanged)
 {
-    //[UserlabelTextChanged_Pre]
     if (samploar == nullptr) {
         samploar = static_cast<SamploarComponent*>(getParentComponent());
     }
-    //[/UserlabelTextChanged_Pre]
 
     if (labelThatHasChanged == instrumentIdValueLabel)
     {
-        //[UserLabelCode_instrumentIdValueLabel] -- add your label text handling code here..
         auto instrument = samploar->getDocument()->getInstrument();
 
         auto oldInstrumentId = instrument->getId();
@@ -221,17 +156,9 @@ void SamploarToolbarComponent::labelTextChanged (Label* labelThatHasChanged)
         {
             instrumentIdValueLabel->setText(cleaned, dontSendNotification);
         }
-
-        //[/UserLabelCode_instrumentIdValueLabel]
     }
 
-    //[UserlabelTextChanged_Post]
-    //[/UserlabelTextChanged_Post]
 }
-
-
-
-//[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 
 void SamploarToolbarComponent::setPlayButtonEnabled(bool b) {
     playButton->setEnabled (b);
@@ -299,70 +226,3 @@ void SamploarToolbarComponent::setFileLength(double seconds) {
 void SamploarToolbarComponent::setInstrumentId(String id) {
     instrumentIdValueLabel->setText(id, sendNotification);
 }
-
-
-//[/MiscUserCode]
-
-
-//==============================================================================
-#if 0
-/*  -- Projucer information section --
-
-    This is where the Projucer stores the metadata that describe this GUI layout, so
-    make changes in here at your peril!
-
-BEGIN_JUCER_METADATA
-
-<JUCER_COMPONENT documentType="Component" className="SamploarToolbarComponent"
-                 componentName="" parentClasses="public Component" constructorParams=""
-                 variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
-                 overlayOpacity="0.330" fixedSize="0" initialWidth="600" initialHeight="400">
-  <BACKGROUND backgroundColour="ff000000"/>
-  <TEXTBUTTON name="playButton" id="8df13766622bf75" memberName="playButton"
-              virtualName="" explicitFocusOrder="0" pos="16 88 60 32" buttonText="&gt;"
-              connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="stopButton" id="e2b6b0a364580007" memberName="stopButton"
-              virtualName="" explicitFocusOrder="0" pos="88 88 60 32" buttonText="[]"
-              connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <LABEL name="fileNameLabel" id="59cf03366b3b4410" memberName="fileNameLabel"
-         virtualName="" explicitFocusOrder="0" pos="8 8 104 24" textCol="ff808080"
-         edTextCol="ff000000" edBkgCol="0" labelText="File Name:" editableSingleClick="0"
-         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15" kerning="0" bold="0" italic="0" justification="34"/>
-  <LABEL name="fileNameValueLabel" id="3404a363575e087a" memberName="fileNameValueLabel"
-         virtualName="" explicitFocusOrder="0" pos="120 8 129M 24" textCol="ffffffff"
-         edTextCol="ff000000" edBkgCol="0" labelText="C:\wavs\monkeys.wav"
-         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15" kerning="0" bold="0" italic="0"
-         justification="33"/>
-  <LABEL name="instrumentIdLabel" id="b068a761a3281054" memberName="instrumentIdLabel"
-         virtualName="" explicitFocusOrder="0" pos="8 56 104 24" textCol="ff808080"
-         edTextCol="ff000000" edBkgCol="0" labelText="Instrument ID:"
-         editableSingleClick="0" editableDoubleClick="0" focusDiscardsChanges="0"
-         fontname="Default font" fontsize="15" kerning="0" bold="0" italic="0"
-         justification="34"/>
-  <LABEL name="instrumentIdValueLabel" id="3f0054f060a5bea6" memberName="instrumentIdValueLabel"
-         virtualName="" explicitFocusOrder="0" pos="120 56 569M 24" textCol="ffffffff"
-         edTextCol="ffffffff" edBkgCol="0" hiliteCol="ff000085" labelText="@monkeys"
-         editableSingleClick="1" editableDoubleClick="1" focusDiscardsChanges="0"
-         fontname="Default monospaced font" fontsize="15" kerning="0"
-         bold="0" italic="0" justification="33"/>
-  <LABEL name="lengthLabel" id="f649dd56a64d8bf" memberName="lengthLabel"
-         virtualName="" explicitFocusOrder="0" pos="8 32 104 24" textCol="ff808080"
-         edTextCol="ff000000" edBkgCol="0" labelText="Length:" editableSingleClick="0"
-         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15" kerning="0" bold="0" italic="0" justification="34"/>
-  <LABEL name="lengthValueLabel" id="edaf7f94cd3ba042" memberName="lengthValueLabel"
-         virtualName="" explicitFocusOrder="0" pos="120 32 777M 24" textCol="ffffffff"
-         edTextCol="ff000000" edBkgCol="0" labelText="0:35" editableSingleClick="0"
-         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15" kerning="0" bold="0" italic="0" justification="33"/>
-</JUCER_COMPONENT>
-
-END_JUCER_METADATA
-*/
-#endif
-
-
-//[EndFile] You can add extra defines here...
-//[/EndFile]

@@ -90,9 +90,9 @@ struct ProjectType_GUIApp  : public ProjectType
 inline Array<ProjectType*> ProjectType::getAllTypes()
 {
     static ProjectType_GUIApp guiApp;
-    static ProjectType* allTypes[] = { &guiApp, nullptr };
-
-    return  Array<ProjectType*> (allTypes);
+    Array<ProjectType*> a;
+    a.add (&guiApp);
+    return a;
 }
 
 #endif   // JUCER_PROJECTTYPE_H_INCLUDED

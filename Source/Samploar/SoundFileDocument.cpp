@@ -1,5 +1,7 @@
 #include "SoundFileDocument.h"
 #include "SamploarComponent.h"
+#include "../Skoarish/InstrumentManager.h"
+
 
 SoundFileDocument::SoundFileDocument(Project* p, const File& f)
     : project(p), file(f)
@@ -123,7 +125,7 @@ String SoundFileDocument::getType() const
 
 //=== customs ===========================================================================
 
-SkoarishInstrument* SoundFileDocument::getInstrument() {
+SkoarishSampleInstrument* SoundFileDocument::getInstrument() {
     return instrument;
 }
 

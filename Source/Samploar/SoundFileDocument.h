@@ -4,7 +4,7 @@
 #include "../Application/jucer_Application.h"
 #include "../Project/jucer_Project.h"
 #include "../Application/jucer_OpenDocumentManager.h"
-#include "../Skoarish/Instrument.h"
+#include "../Skoarish/Sample.h"
 
 //==============================================================================
 class SoundFileDocument : public OpenDocumentManager::Document
@@ -40,7 +40,7 @@ public:
     String getType() const override;
 
     // === customs ===========================================================================
-    SkoarishInstrument* getInstrument();
+    SkoarishSampleInstrument* getInstrument();
     String renameInstrument(String&);
     
 private:
@@ -51,7 +51,7 @@ private:
 
     String name;
 
-    SkoarishInstrument *instrument;
+    SkoarishSampleInstrument *instrument;
 
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SoundFileDocument)

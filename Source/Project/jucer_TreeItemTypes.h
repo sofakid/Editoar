@@ -29,7 +29,8 @@
 #include "../Wizards/jucer_NewFileWizard.h"
 #include "jucer_GroupInformationComponent.h"
 
-#include "../Skoarish/Instrument.h"
+#include "../Skoarish/InstrumentManager.h"
+#include "../Skoarish/Sample.h"
 
 
 struct FileTreeItemTypes

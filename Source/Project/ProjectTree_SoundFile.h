@@ -112,5 +112,5 @@ public:
     }
 
 private:
-    SkoarishInstrument *instrument;
+    SkoarishSampleInstrument *instrument;
 };

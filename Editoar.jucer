@@ -392,6 +392,14 @@
     <GROUP id="{E8AAD96C-9F82-4ED5-DE3C-7D6A690CE3C0}" name="Skoarish">
       <FILE id="b6Jlvu" name="Instrument.cpp" compile="1" resource="0" file="Source/Skoarish/Instrument.cpp"/>
       <FILE id="uIdfLo" name="Instrument.h" compile="0" resource="0" file="Source/Skoarish/Instrument.h"/>
+      <FILE id="vCS2Pu" name="InstrumentManager.cpp" compile="1" resource="0"
+            file="Source/Skoarish/InstrumentManager.cpp"/>
+      <FILE id="RX8trb" name="InstrumentManager.h" compile="0" resource="0"
+            file="Source/Skoarish/InstrumentManager.h"/>
+      <FILE id="TyMlo3" name="MidiInstrument.cpp" compile="1" resource="0"
+            file="Source/Skoarish/MidiInstrument.cpp"/>
+      <FILE id="dY9YxD" name="MidiInstrument.h" compile="0" resource="0"
+            file="Source/Skoarish/MidiInstrument.h"/>
       <FILE id="ZGflK2" name="Sample.cpp" compile="1" resource="0" file="Source/Skoarish/Sample.cpp"/>
       <FILE id="GgE7co" name="Sample.h" compile="0" resource="0" file="Source/Skoarish/Sample.h"/>
     </GROUP>

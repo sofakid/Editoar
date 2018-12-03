@@ -9,6 +9,8 @@
 #include "DebuggoarDeetsPanel.h"
 #include "DebuggoarSession.h"
 #include "../Vision/VisionCanvas.h"
+#include "../Playoar/PlayoarSession.h"
+
 
 class DebuggoarComponent : public Component
 {
@@ -38,10 +40,11 @@ public:
     void reloadSkoar ();
 
 private:
+    ScopedPointer<PlayoarSession> playoarSession;
     ScopedPointer<DebuggoarSession> session;
     ScopedPointer<DebuggoarToolbar> toolbar;
     ScopedPointer<Skoar> skoar;
-    ScopedPointer<SkoarLite> skoar_lite;
+    ScopedPointer<SkoarLite> skoarLite;
 
     SkoarCodeEditorComponent* editor; // documentEditor owns this
     ScopedPointer<Component> documentEditor; // the skoarcodeeditor is inside this 

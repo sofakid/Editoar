@@ -102,7 +102,6 @@ SkoarTreeComponent::SkoarTreeComponent(SkoarNoadPtr pRootNoad) :
     addAndMakeVisible(tree);
 
     setSize(300, 400);
-
 }
 
 SkoarTreeComponent::~SkoarTreeComponent()

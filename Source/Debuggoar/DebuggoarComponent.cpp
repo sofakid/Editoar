@@ -1,7 +1,6 @@
 #include "DebuggoarComponent.h"
 #include "../Logging/SkoarLogger.hpp"
 #include "SkoarpionsComponent.h"
-#include "../Playoar/PlayoarSession.h"
 
 //==============================================================================
 static DebuggoarComponent* instance (nullptr);
@@ -10,7 +9,7 @@ DebuggoarComponent* DebuggoarComponent::getDebuggoar () {
     return instance;
 }
 
-const SkoarCodeEditorComponent::ColourScheme & DebuggoarComponent::getColourScheme ()
+const SkoarCodeEditorComponent::ColourScheme& DebuggoarComponent::getColourScheme ()
 {
     auto deb = getDebuggoar ();
     return deb->editor->getColourScheme ();
@@ -71,8 +70,8 @@ void DebuggoarComponent::startSession () {
 
 void DebuggoarComponent::playWithoutDebugging ()
 {
-    auto ps = new PlayoarSession (L"all", skoar);
-    ps->start ();
+    playoarSession = new PlayoarSession (L"all", skoar);
+    playoarSession->start ();
 }
 
 void DebuggoarComponent::focusOnNoad (SkoarNoadPtr p) {

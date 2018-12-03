@@ -37,10 +37,13 @@ void SkoarProjectionComponent::resized ()
 void SkoarProjectionComponent::loadProjection (SkoarpionProjectionPtr p)
 {
     if (projectionComponent != nullptr)
-        removeChildComponent (projectionComponent);
+        removeChildComponent (projectionComponent.get());
     
     if (p != nullptr)
-        addAndMakeVisible (projectionComponent = new NoaditesListComponent (p));
+    {
+        projectionComponent.reset(new NoaditesListComponent (p));
+        addAndMakeVisible (projectionComponent.get());
+    }
     
     resized ();
 }

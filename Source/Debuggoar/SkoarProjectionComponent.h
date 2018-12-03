@@ -21,7 +21,7 @@ public:
     void selectNoadite (const SkoarNoadite&);
 
 private:
-    ScopedPointer<NoaditesListComponent> projectionComponent;
+    std::unique_ptr<NoaditesListComponent> projectionComponent;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SkoarProjectionComponent)
 };

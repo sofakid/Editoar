@@ -16,15 +16,16 @@ PlayoarSession::PlayoarSession (String voice, Skoar* const skoar)
 
     happening = [&, this](SkoarEventPtr p) {
 
-        //const MessageManagerLock mmLock;
-        //SkoarLog.i (L"IT'S HAPPENNING!!! t=", t);
-        //for (auto& x : p->table)
-        //{
-        //    auto& key = x.first;
-        //    auto val = x.second != nullptr ? x.second : make_skoarpuscle (nullptr);
-        //    SkoarLog.i (L"    ", key, L": ", val->valAsString());
-        //}
-        //auto& state (*stateRef);
+        /*const MessageManagerLock mmLock;
+        SkoarLog.i (L"------------------------ IT'S HAPPENNING!!! t=", t);
+        for (auto& x : p->table)
+        {
+            auto& key = x.first;
+            auto val = x.second != nullptr ? x.second : make_skoarpuscle (nullptr);
+            SkoarLog.i (L"    ", key, L": ", val->valAsString ());
+        }
+            //////auto& state (*stateRef);*/
+            
     };
 
     //SkoarString v (voice.toWideCharPointer ());

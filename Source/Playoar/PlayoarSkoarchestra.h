@@ -22,6 +22,8 @@ class Musicker : public ISkoarMinstrelMusicker
     int midiNoteNumber = 40;
     float velocity = 0.7f;
 
+    Array<int> midiNoteNumbers;
+
     MinstrelThread* const thread;
 
 public:

@@ -32,33 +32,62 @@ Musicker::Musicker (MinstrelThread* const thread) :
 
 void Musicker::config (SkoarEventPtr event)
 {
-    auto noteSkoarpuscle = event->at (L"note");
     auto octaveSkoarpuscle = event->at (L"octave");
+    auto noteSkoarpuscle = event->at (L"note");
+    auto choardSkoarpuscle = event->at (L"choard");
 
-    int note (0);
     int octave (0);
-
-    if (is_skoarpuscle<SkoarpuscleInt> (noteSkoarpuscle))
-        note = skoarpuscle_ptr<SkoarpuscleInt> (noteSkoarpuscle)->val;
+    int note (0);
 
     if (is_skoarpuscle<SkoarpuscleInt> (octaveSkoarpuscle))
         octave = skoarpuscle_ptr<SkoarpuscleInt> (octaveSkoarpuscle)->val;
 
-    midiNoteNumber = 12 * octave + note;
+    if (is_skoarpuscle<SkoarpuscleInt> (noteSkoarpuscle))
+    {
+        note = skoarpuscle_ptr<SkoarpuscleInt> (noteSkoarpuscle)->val;
+        midiNoteNumbers.clearQuick ();
+        midiNoteNumbers.add (12 * octave + note);
+    }
+    else if (is_skoarpuscle<SkoarpuscleList> (choardSkoarpuscle))
+    {
+        auto list = skoarpuscle_ptr<SkoarpuscleList> (choardSkoarpuscle)->val;
+        midiNoteNumbers.clearQuick ();
+        for (auto skoarpuscle : *list)
+        {
+            if (is_skoarpuscle<SkoarpuscleInt> (skoarpuscle))
+            {
+                note = skoarpuscle_ptr<SkoarpuscleInt> (skoarpuscle)->val;
+                midiNoteNumbers.add (12 * octave + note);
+            }
+            else if (is_skoarpuscle<SkoarpuscleNoat> (skoarpuscle))
+            {
+                note = skoarpuscle_ptr<SkoarpuscleNoat> (skoarpuscle)->val;
+                midiNoteNumbers.add (12 * octave + note);
+            }
+        }
+    }
 }
 
 void Musicker::noteOn ()
 {
-    MidiMessage msg (MidiMessage::noteOn (midiChannel, midiNoteNumber, velocity));
-    msg.setTimeStamp (getMidiTime ());
-    midiOutDevice->sendMessageNow (msg);
+    auto t = getMidiTime ();
+    for (const auto& note : midiNoteNumbers)
+    {
+        MidiMessage msg (MidiMessage::noteOn (midiChannel, note, velocity));
+        msg.setTimeStamp (t);
+        midiOutDevice->sendMessageNow (msg);
+    }
 }
 
 void Musicker::noteOff ()
 {
-    MidiMessage msg (MidiMessage::noteOff (midiChannel, midiNoteNumber, velocity));
-    msg.setTimeStamp (getMidiTime ());
-    midiOutDevice->sendMessageNow (msg);
+    auto t = getMidiTime ();
+    for (const auto& note : midiNoteNumbers)
+    {
+        MidiMessage msg (MidiMessage::noteOff (midiChannel, note, velocity));
+        msg.setTimeStamp (t);
+        midiOutDevice->sendMessageNow (msg);
+    }
 }
 
 void Musicker::startMidi ()

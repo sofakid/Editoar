@@ -113,6 +113,12 @@ void Musicker::sleep (int ms)
     thread->sleep (ms);
 }
 
+SkoarFloat Musicker::getTime ()
+{
+    return static_cast<SkoarFloat> (Time::getMillisecondCounterHiRes ());
+}
+
+
 PlayoarSkoarchestra::PlayoarSkoarchestra (Skoar* const skoar, const SpellOfHappening& happeningSpell) :
     Skoarchestra(skoar, happeningSpell)
 {

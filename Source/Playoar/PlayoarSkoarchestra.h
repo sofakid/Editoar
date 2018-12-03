@@ -39,7 +39,7 @@ public:
     double getMidiTime ();
 
     void sleep (int ms) override;
-
+    SkoarFloat getTime () override;
 };
 
 

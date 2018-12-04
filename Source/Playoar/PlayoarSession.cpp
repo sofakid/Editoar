@@ -39,7 +39,7 @@ PlayoarSession::PlayoarSession (String voice, Skoar* const skoar)
 PlayoarSession::~PlayoarSession () {
     m = nullptr;
     session = nullptr;
-    die ();
+    //die ();
 }
 
 void PlayoarSession::die () {

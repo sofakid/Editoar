@@ -11,6 +11,7 @@ SkoarishInstrumentManager* SkoarishInstrumentManager::getInstance () {
     {
         instance = new SkoarishInstrumentManager ();
         initialized = true;
+        SkoarishGeneralMidi::loadInstruments ();
     }
     return instance;
 }
@@ -25,6 +26,8 @@ SkoarishInstrumentManager::~SkoarishInstrumentManager () {
 
 
 void SkoarishInstrumentManager::addInstrument (SkoarishInstrument *instr) {
+    std::lock_guard<std::mutex> lock (mapsMutex);
+
     id_to_instrument_map[instr->getId ()] = instr;
     SkoarishSampleInstrument* p = dynamic_cast<SkoarishSampleInstrument*> (instr);
     if (p != nullptr)
@@ -32,23 +35,29 @@ void SkoarishInstrumentManager::addInstrument (SkoarishInstrument *instr) {
 }
 
 SkoarishInstrument* SkoarishInstrumentManager::getInstrument (String &id) {
+    std::lock_guard<std::mutex> lock (mapsMutex);
+    
     auto x = id_to_instrument_map[id];
-
     return x;
 }
 
 SkoarishSampleInstrument* SkoarishInstrumentManager::getOrCreateInstrumentByFile (File &file) {
-    auto id = file_to_id_map[file.getFullPathName ()];
-    if (id == String (L""))
     {
-        return new SkoarishSampleInstrument (file);
+        std::lock_guard<std::mutex> lock (mapsMutex);
+
+        auto id = file_to_id_map[file.getFullPathName ()];
+        if (id != String (L""))
+            return static_cast<SkoarishSampleInstrument*> (id_to_instrument_map[id]);
     }
-    return static_cast<SkoarishSampleInstrument*> (id_to_instrument_map[id]);
+    return new SkoarishSampleInstrument (file);
+    
 }
 
 // --- renaming -----------------------------------------------------------
 
 void SkoarishInstrumentManager::updateNewId (SkoarishSampleInstrument* instr) {
+    std::lock_guard<std::mutex> lock (mapsMutex);
+
     auto fileName = instr->getFileName ();
     auto oldId = file_to_id_map[fileName];
     auto newId = instr->getId ();
@@ -59,6 +68,8 @@ void SkoarishInstrumentManager::updateNewId (SkoarishSampleInstrument* instr) {
 }
 
 void SkoarishInstrumentManager::updateNewFileName (SkoarishSampleInstrument* instr, String oldFileName) {
+    std::lock_guard<std::mutex> lock (mapsMutex);
+
     auto fileName = instr->getFileName ();
 
     file_to_id_map[oldFileName] = String (L"");
@@ -68,6 +79,8 @@ void SkoarishInstrumentManager::updateNewFileName (SkoarishSampleInstrument* ins
 
 // --- removing -----------------------------------------------------------
 void SkoarishInstrumentManager::removeByFileName (String fileName) {
+    std::lock_guard<std::mutex> lock (mapsMutex);
+
     auto id = file_to_id_map[fileName];
 
     file_to_id_map[fileName] = String (L"");
@@ -75,6 +88,8 @@ void SkoarishInstrumentManager::removeByFileName (String fileName) {
 }
 
 void SkoarishInstrumentManager::removeById (String id) {
+    std::lock_guard<std::mutex> lock (mapsMutex);
+
     auto instr = id_to_instrument_map[id];
 
     if (instr != nullptr)

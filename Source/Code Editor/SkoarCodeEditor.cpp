@@ -40,6 +40,7 @@ SkoarCodeTokeniser* SkoarCodeEditorComponent::getTokeniser () {
 
 void SkoarCodeEditorComponent::resized ()
 {
+    setLineSpacing (1.3f);
     GenericCodeEditorComponent::resized ();
 
     auto r (getLocalBounds ());

@@ -14,9 +14,6 @@ public:
     void unsetRenameSpell ();
 
 private:
-    String id;
     String fileName;
-
     SpellOfInstruments onRenameSpell;
-
 };

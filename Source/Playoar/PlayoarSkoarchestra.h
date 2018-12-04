@@ -2,6 +2,8 @@
 #include "../jucer_Headers.h"
 #include "minstrel.hpp"
 #include <vector>
+#include "../Skoarish/InstrumentManager.h"
+#include "../Skoarish/MidiInstrument.h"
 
 class MinstrelThread : public Thread
 {
@@ -16,6 +18,11 @@ private:
 class Musicker : public ISkoarMinstrelMusicker
 {
     std::unique_ptr<MidiOutput> midiOutDevice;
+    SkoarishMidiInstrument* instrument = nullptr;
+    String instrumentId = L"";
+    const SkoarString defaultInstrumentId = L"midiAcousticGrandPiano";
+    bool isPercussion = false;
+
     int midiDeviceIndex = 0;
     int midiChannel = 1;
     int midiProgramNumber = 1;

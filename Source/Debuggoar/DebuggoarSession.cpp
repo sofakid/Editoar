@@ -4,7 +4,7 @@
 #include "DebuggoarComponent.h"
 
 // --- DebuggoarSession -----------------------------------------------
-DebuggoarSession* session = nullptr;
+static DebuggoarSession* session = nullptr;
 
 DebuggoarSession* DebuggoarSession::getInstance () {
     return session;

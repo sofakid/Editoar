@@ -3,7 +3,7 @@
 
 
 // --- PlayoarSession -----------------------------------------------
-PlayoarSession* session = nullptr;
+static PlayoarSession* session = nullptr;
 
 PlayoarSession* PlayoarSession::getInstance () {
     return session;

@@ -101,12 +101,6 @@ void EditoarApplication::initialise (const String& commandLine)
 
         //openDocumentManager.registerType (new EditoarAppClasses::LiveBuildCodeEditorDocument::Type(), 2);
 
-        if (! checkEULA())
-        {
-            quit();
-            return;
-        }
-
         initCommandManager();
         menuModel = new MainMenuModel();
 
@@ -561,42 +555,6 @@ PropertiesFile::Options EditoarApplication::getPropertyFileOptionsFor (const Str
 }
 
 //==============================================================================
-
-bool EditoarApplication::checkEULA()
-{
-    if (currentEULAHasBeenAcceptedPreviously())
-        return true;
-
-    ScopedPointer<AlertWindow> eulaDialogue (new EULADialogue());
-    bool hasBeenAccepted = (eulaDialogue->runModalLoop() == EULADialogue::accepted);
-    setCurrentEULAAccepted (hasBeenAccepted);
-    return hasBeenAccepted;
-}
-
-bool EditoarApplication::currentEULAHasBeenAcceptedPreviously() const
-{
-    return getGlobalProperties().getValue (getEULAChecksumProperty()).getIntValue() != 0;
-}
-
-String EditoarApplication::getEULAChecksumProperty() const
-{
-    return "eulaChecksum_" + MD5 (BinaryData::editoar_EULA_txt,
-                                  BinaryData::editoar_EULA_txtSize).toHexString();
-}
-
-void EditoarApplication::setCurrentEULAAccepted (bool hasBeenAccepted) const
-{
-    const String checksum (getEULAChecksumProperty());
-    auto& globals = getGlobalProperties();
-
-    if (hasBeenAccepted)
-        globals.setValue (checksum, 1);
-    else
-        globals.removeValue (checksum);
-
-    globals.saveIfNeeded();
-}
-
 void EditoarApplication::initCommandManager()
 {
     commandManager = new ApplicationCommandManager();

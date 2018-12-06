@@ -27,14 +27,10 @@ class StartPageComponent    : public Component
 public:
     StartPageComponent()
     {
+        wiz.reset(new WizardComp());
+        addAndMakeVisible (wiz.get());
+
         setSize (900, 650);
-
-        WizardComp* projectWizard = new WizardComp();
-
-        panel.addTab ("Create New Project", new TemplateTileBrowser (projectWizard), true);
-        panel.addTab ("New Project Options", projectWizard, true);
-
-        addAndMakeVisible (panel);
     }
 
     void paint (Graphics& g) override
@@ -44,11 +40,11 @@ public:
 
     void resized() override
     {
-        panel.setBounds (getLocalBounds());
+        wiz->setBounds (getLocalBounds());
     }
 
 private:
-    SlidingPanelComponent panel;
+    std::unique_ptr<WizardComp> wiz;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (StartPageComponent)
 };

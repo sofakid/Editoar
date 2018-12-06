@@ -32,7 +32,6 @@
 #include "../Utility/jucer_FloatingToolWindow.h"
 #include "../Utility/jucer_DialogLookAndFeel.h"
 
-#include "jucer_EulaDialogue.h"
 #include "jucer_CommandLine.h"
 
 #include "../Project/jucer_ProjectContentComponent.cpp"

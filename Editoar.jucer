@@ -106,6 +106,205 @@
     </VS2017>
   </EXPORTFORMATS>
   <MAINGROUP name="Skoar" id="NhrJq66R">
+    <GROUP id="vD0TyHx" name="Application">
+      <FILE id="oC4Az3" name="BottomPanelComponent.cpp" compile="1" resource="0"
+            file="Source/Application/BottomPanelComponent.cpp"/>
+      <FILE id="RQx6Fi" name="BottomPanelComponent.h" compile="0" resource="0"
+            file="Source/Application/BottomPanelComponent.h"/>
+      <FILE id="QDqaEw" name="jucer_AppearanceSettings.cpp" compile="1" resource="0"
+            file="Source/Application/jucer_AppearanceSettings.cpp"/>
+      <FILE id="mEX07l" name="jucer_AppearanceSettings.h" compile="0" resource="0"
+            file="Source/Application/jucer_AppearanceSettings.h"/>
+      <FILE id="n9nx5w" name="jucer_Application.cpp" compile="0" resource="0"
+            file="Source/Application/jucer_Application.cpp"/>
+      <FILE id="Bcs4ga" name="jucer_Application.h" compile="0" resource="0"
+            file="Source/Application/jucer_Application.h"/>
+      <FILE id="K8GI3t" name="jucer_CommandIDs.h" compile="0" resource="0"
+            file="Source/Application/jucer_CommandIDs.h"/>
+      <FILE id="lYDmsA" name="jucer_CommandLine.cpp" compile="1" resource="0"
+            file="Source/Application/jucer_CommandLine.cpp"/>
+      <FILE id="pWkI3M" name="jucer_CommandLine.h" compile="0" resource="0"
+            file="Source/Application/jucer_CommandLine.h"/>
+      <FILE id="DALClA" name="jucer_CommonHeaders.h" compile="0" resource="0"
+            file="Source/Application/jucer_CommonHeaders.h"/>
+      <FILE id="Y98bJk" name="jucer_DocumentEditorComponent.cpp" compile="1"
+            resource="0" file="Source/Application/jucer_DocumentEditorComponent.cpp"/>
+      <FILE id="prPBQg" name="jucer_DocumentEditorComponent.h" compile="0"
+            resource="0" file="Source/Application/jucer_DocumentEditorComponent.h"/>
+      <FILE id="eo4r70" name="jucer_FilePreviewComponent.h" compile="0" resource="0"
+            file="Source/Application/jucer_FilePreviewComponent.h"/>
+      <FILE id="Hq3STq" name="jucer_GlobalPreferences.cpp" compile="1" resource="0"
+            file="Source/Application/jucer_GlobalPreferences.cpp"/>
+      <FILE id="Ym81lY" name="jucer_GlobalPreferences.h" compile="0" resource="0"
+            file="Source/Application/jucer_GlobalPreferences.h"/>
+      <FILE id="YVE38f" name="jucer_Headers.h" compile="0" resource="0" file="Source/jucer_Headers.h"/>
+      <FILE id="eMFQFu" name="jucer_Main.cpp" compile="1" resource="0" file="Source/Application/jucer_Main.cpp"/>
+      <FILE id="WuEh1e" name="jucer_MainWindow.cpp" compile="1" resource="0"
+            file="Source/Application/jucer_MainWindow.cpp"/>
+      <FILE id="dj7ZoW" name="jucer_MainWindow.h" compile="0" resource="0"
+            file="Source/Application/jucer_MainWindow.h"/>
+      <FILE id="kwFprr" name="jucer_OpenDocumentManager.cpp" compile="1"
+            resource="0" file="Source/Application/jucer_OpenDocumentManager.cpp"/>
+      <FILE id="mrJkuR" name="jucer_OpenDocumentManager.h" compile="0" resource="0"
+            file="Source/Application/jucer_OpenDocumentManager.h"/>
+      <FILE id="BiD0vI" name="SidePanelComponent.cpp" compile="1" resource="0"
+            file="Source/Application/SidePanelComponent.cpp"/>
+      <FILE id="pOqJQ0" name="SidePanelComponent.h" compile="0" resource="0"
+            file="Source/Application/SidePanelComponent.h"/>
+    </GROUP>
+    <GROUP id="{D4241EC8-2982-DB90-D1BE-72E57B735268}" name="BinaryData">
+      <FILE id="COkhCq" name="fontawesome-webfont.ttf" compile="0" resource="1"
+            file="Source/BinaryData/fontawesome-webfont.ttf"/>
+      <FILE id="axHNWg" name="skoar_icon_256.png" compile="0" resource="1"
+            file="Source/BinaryData/skoar_icon_256.png"/>
+      <FILE id="gmcfme" name="skoar_logo.png" compile="0" resource="1" file="Source/BinaryData/skoar_logo.png"/>
+      <FILE id="ir1D8U" name="skoar_word.png" compile="0" resource="1" file="Source/BinaryData/skoar_word.png"/>
+      <GROUP id="{8064F10D-D9BC-1C24-B322-A339C00D0B25}" name="templates">
+        <FILE id="hccxJ3" name="NewSkoarFileTemplate.skoar" compile="0" resource="1"
+              file="Source/BinaryData/NewSkoarFileTemplate.skoar"/>
+      </GROUP>
+      <FILE id="a2EM1O" name="background_tile.png" compile="0" resource="1"
+            file="Source/BinaryData/background_tile.png"/>
+      <FILE id="xboS86" name="colourscheme_dark.xml" compile="0" resource="1"
+            file="Source/BinaryData/colourscheme_dark.xml"/>
+      <FILE id="eO1a1G" name="RecentFilesMenuTemplate.nib" compile="0" resource="1"
+            file="Source/BinaryData/RecentFilesMenuTemplate.nib"/>
+      <FILE id="gP9mUi" name="wizard_Highlight.svg" compile="0" resource="1"
+            file="Source/BinaryData/wizard_Highlight.svg"/>
+      <FILE id="j6OMeN" name="wizard_Openfile.svg" compile="0" resource="1"
+            file="Source/BinaryData/wizard_Openfile.svg"/>
+    </GROUP>
+    <GROUP id="Ow008xg" name="Code Editor">
+      <FILE id="HAEKTC" name="jucer_SourceCodeEditor.cpp" compile="1" resource="0"
+            file="Source/Code Editor/jucer_SourceCodeEditor.cpp"/>
+      <FILE id="mhpHqC" name="jucer_SourceCodeEditor.h" compile="0" resource="0"
+            file="Source/Code Editor/jucer_SourceCodeEditor.h"/>
+      <FILE id="eN6Jmo" name="SkoarCodeEditor.cpp" compile="1" resource="0"
+            file="Source/Code Editor/SkoarCodeEditor.cpp"/>
+      <FILE id="yLMYNR" name="SkoarCodeEditor.hpp" compile="0" resource="0"
+            file="Source/Code Editor/SkoarCodeEditor.hpp"/>
+      <FILE id="mgVl7m" name="SkoarCodeTokeniser.cpp" compile="1" resource="0"
+            file="Source/Code Editor/SkoarCodeTokeniser.cpp"/>
+      <FILE id="I8CB4E" name="SkoarCodeTokeniser.hpp" compile="0" resource="0"
+            file="Source/Code Editor/SkoarCodeTokeniser.hpp"/>
+    </GROUP>
+    <GROUP id="{3DA09ACA-AB9E-6AC4-1E50-FDD970C8CE14}" name="Debuggoar">
+      <FILE id="uldyZf" name="DebuggoarComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DebuggoarComponent.cpp"/>
+      <FILE id="OcsbtY" name="DebuggoarComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/DebuggoarComponent.h"/>
+      <FILE id="TFWl4T" name="DebuggoarDeetsPanel.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DebuggoarDeetsPanel.cpp"/>
+      <FILE id="hiucLr" name="DebuggoarDeetsPanel.h" compile="0" resource="0"
+            file="Source/Debuggoar/DebuggoarDeetsPanel.h"/>
+      <FILE id="n54kRV" name="DebuggoarPopupper.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DebuggoarPopupper.cpp"/>
+      <FILE id="LW6mca" name="DebuggoarPopupper.h" compile="0" resource="0"
+            file="Source/Debuggoar/DebuggoarPopupper.h"/>
+      <FILE id="ZQwRmK" name="DebuggoarSession.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DebuggoarSession.cpp"/>
+      <FILE id="iXXkzB" name="DebuggoarSession.h" compile="0" resource="0"
+            file="Source/Debuggoar/DebuggoarSession.h"/>
+      <FILE id="i6X5pQ" name="DebuggoarStepper.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DebuggoarStepper.cpp"/>
+      <FILE id="xQw0BF" name="DebuggoarStepper.h" compile="0" resource="0"
+            file="Source/Debuggoar/DebuggoarStepper.h"/>
+      <FILE id="ExOvkN" name="DebuggoarTable.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DebuggoarTable.cpp"/>
+      <FILE id="BrpSkC" name="DebuggoarTable.h" compile="0" resource="0"
+            file="Source/Debuggoar/DebuggoarTable.h"/>
+      <FILE id="aWqhMw" name="DebuggoarToolbar.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DebuggoarToolbar.cpp"/>
+      <FILE id="yyXuD1" name="DebuggoarToolbar.h" compile="0" resource="0"
+            file="Source/Debuggoar/DebuggoarToolbar.h"/>
+      <FILE id="tQMGG7" name="DeetsTableComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/DeetsTableComponent.cpp"/>
+      <FILE id="IsaD3x" name="DeetsTableComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/DeetsTableComponent.h"/>
+      <FILE id="WvYti6" name="EventDataModel.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/EventDataModel.cpp"/>
+      <FILE id="wRNrA0" name="EventDataModel.h" compile="0" resource="0"
+            file="Source/Debuggoar/EventDataModel.h"/>
+      <FILE id="LoyMsb" name="EventTableComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/EventTableComponent.cpp"/>
+      <FILE id="iVSfCc" name="EventTableComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/EventTableComponent.h"/>
+      <FILE id="MGBzxV" name="FairyDataModel.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/FairyDataModel.cpp"/>
+      <FILE id="tFxRlw" name="FairyDataModel.h" compile="0" resource="0"
+            file="Source/Debuggoar/FairyDataModel.h"/>
+      <FILE id="uNcEgn" name="FairyTableComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/FairyTableComponent.cpp"/>
+      <FILE id="X4TI5G" name="FairyTableComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/FairyTableComponent.h"/>
+      <FILE id="s4afaQ" name="KoarDataModel.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/KoarDataModel.cpp"/>
+      <FILE id="cTBhqn" name="KoarDataModel.h" compile="0" resource="0" file="Source/Debuggoar/KoarDataModel.h"/>
+      <FILE id="wNlf0g" name="KoarTableComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/KoarTableComponent.cpp"/>
+      <FILE id="IQc0iA" name="KoarTableComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/KoarTableComponent.h"/>
+      <FILE id="LZdsFQ" name="NoaditesListComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/NoaditesListComponent.cpp"/>
+      <FILE id="GyNQA1" name="NoaditesListComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/NoaditesListComponent.h"/>
+      <FILE id="Iwaro0" name="SkoarASTComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarASTComponent.cpp"/>
+      <FILE id="YjvTtK" name="SkoarASTComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarASTComponent.h"/>
+      <FILE id="Sjrq9P" name="SkoarNoadDataModel.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarNoadDataModel.cpp"/>
+      <FILE id="a3fMjY" name="SkoarNoadDataModel.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarNoadDataModel.h"/>
+      <FILE id="yOOBcG" name="SkoarNoadTableComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarNoadTableComponent.cpp"/>
+      <FILE id="rQxq82" name="SkoarNoadTableComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarNoadTableComponent.h"/>
+      <FILE id="ljGhxg" name="SkoarpionComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarpionComponent.cpp"/>
+      <FILE id="Qx6yOT" name="SkoarpionComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarpionComponent.h"/>
+      <FILE id="tFJ62o" name="SkoarpionsComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarpionsComponent.cpp"/>
+      <FILE id="Fp5qFl" name="SkoarpionsComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarpionsComponent.h"/>
+      <FILE id="KmS9Kb" name="SkoarProjectionComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarProjectionComponent.cpp"/>
+      <FILE id="uHLM8I" name="SkoarProjectionComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarProjectionComponent.h"/>
+      <FILE id="Z00ABd" name="SkoarpuscleDataModel.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarpuscleDataModel.cpp"/>
+      <FILE id="EYgVZM" name="SkoarpuscleDataModel.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarpuscleDataModel.h"/>
+      <FILE id="qwQ56A" name="SkoarpuscleTableComponent.cpp" compile="1"
+            resource="0" file="Source/Debuggoar/SkoarpuscleTableComponent.cpp"/>
+      <FILE id="eECtLN" name="SkoarpuscleTableComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarpuscleTableComponent.h"/>
+      <FILE id="WuDDqC" name="SkoarTreeComponent.cpp" compile="1" resource="0"
+            file="Source/Debuggoar/SkoarTreeComponent.cpp"/>
+      <FILE id="H53OTk" name="SkoarTreeComponent.h" compile="0" resource="0"
+            file="Source/Debuggoar/SkoarTreeComponent.h"/>
+    </GROUP>
+    <GROUP id="{026460D5-084B-58BD-E1C5-799C4C7D27E2}" name="Logging">
+      <FILE id="AXKUgt" name="SkoarLogger.cpp" compile="1" resource="0" file="Source/Logging/SkoarLogger.cpp"/>
+      <FILE id="fSQPHR" name="SkoarLogger.hpp" compile="0" resource="0" file="Source/Logging/SkoarLogger.hpp"/>
+      <FILE id="L4Gkl5" name="SkoarLoggerComponent.cpp" compile="1" resource="0"
+            file="Source/Logging/SkoarLoggerComponent.cpp"/>
+      <FILE id="ZLNsWr" name="SkoarLoggerComponent.h" compile="0" resource="0"
+            file="Source/Logging/SkoarLoggerComponent.h"/>
+      <FILE id="ZpCoKW" name="SkoarLoggerPane.cpp" compile="1" resource="0"
+            file="Source/Logging/SkoarLoggerPane.cpp"/>
+      <FILE id="DowUwI" name="SkoarLoggerPane.h" compile="0" resource="0"
+            file="Source/Logging/SkoarLoggerPane.h"/>
+      <FILE id="OkpzDl" name="SkoarLoggerToolBar.cpp" compile="1" resource="0"
+            file="Source/Logging/SkoarLoggerToolBar.cpp"/>
+      <FILE id="Kc97Pg" name="SkoarLoggerToolBar.h" compile="0" resource="0"
+            file="Source/Logging/SkoarLoggerToolBar.h"/>
+    </GROUP>
+    <GROUP id="{8A22BC7C-46D1-6B7B-3722-026377F056FA}" name="Odin">
+      <FILE id="UybFmi" name="Odin.cpp" compile="1" resource="0" file="Source/Odin/Odin.cpp"/>
+      <FILE id="qVrLjo" name="Odin.h" compile="0" resource="0" file="Source/Odin/Odin.h"/>
+    </GROUP>
     <GROUP id="{B98AC2E3-D961-4FED-DE1C-F0428AC77AE1}" name="Playoar">
       <FILE id="cq5Gyv" name="PlayoarEventStreams.cpp" compile="1" resource="0"
             file="Source/Playoar/PlayoarEventStreams.cpp"/>
@@ -128,37 +327,58 @@
       <FILE id="wICUUx" name="PlayoarUiThread.h" compile="0" resource="0"
             file="Source/Playoar/PlayoarUiThread.h"/>
     </GROUP>
-    <GROUP id="{F94732AD-BF5B-5C49-C88E-8C24947B4047}" name="Vision">
-      <FILE id="tZ2EzJ" name="DebuggoarVision.cpp" compile="1" resource="0"
-            file="Source/Vision/DebuggoarVision.cpp"/>
-      <FILE id="FwD0NG" name="DebuggoarVision.h" compile="0" resource="0"
-            file="Source/Vision/DebuggoarVision.h"/>
-      <FILE id="nMHxgP" name="FairyCursor.cpp" compile="1" resource="0" file="Source/Vision/FairyCursor.cpp"/>
-      <FILE id="q8zAJV" name="FairyCursor.h" compile="0" resource="0" file="Source/Vision/FairyCursor.h"/>
-      <FILE id="WwCxzJ" name="NormalVision.cpp" compile="1" resource="0"
-            file="Source/Vision/NormalVision.cpp"/>
-      <FILE id="hknDE3" name="NormalVision.h" compile="0" resource="0" file="Source/Vision/NormalVision.h"/>
-      <FILE id="uLFSZW" name="Vision.cpp" compile="1" resource="0" file="Source/Vision/Vision.cpp"/>
-      <FILE id="R3E0Rj" name="Vision.h" compile="0" resource="0" file="Source/Vision/Vision.h"/>
-      <FILE id="CTpTqr" name="VisionCanvas.cpp" compile="1" resource="0"
-            file="Source/Vision/VisionCanvas.cpp"/>
-      <FILE id="nCqydT" name="VisionCanvas.h" compile="0" resource="0" file="Source/Vision/VisionCanvas.h"/>
-      <FILE id="NreJ3J" name="VisionSegment.cpp" compile="1" resource="0"
-            file="Source/Vision/VisionSegment.cpp"/>
-      <FILE id="rmKrw1" name="VisionSegment.h" compile="0" resource="0" file="Source/Vision/VisionSegment.h"/>
+    <GROUP id="{11C065B6-1DB3-96F3-3C77-DA83932ACF56}" name="Project">
+      <FILE id="lf9oOX" name="jucer_ConfigTree_Base.h" compile="0" resource="0"
+            file="Source/Project/jucer_ConfigTree_Base.h"/>
+      <FILE id="aytTyi" name="jucer_DependencyPathPropertyComponent.cpp"
+            compile="1" resource="0" file="Source/Project/jucer_DependencyPathPropertyComponent.cpp"/>
+      <FILE id="EDV9Pa" name="jucer_DependencyPathPropertyComponent.h" compile="0"
+            resource="0" file="Source/Project/jucer_DependencyPathPropertyComponent.h"/>
+      <FILE id="CfdjmB" name="jucer_GroupInformationComponent.h" compile="0"
+            resource="0" file="Source/Project/jucer_GroupInformationComponent.h"/>
+      <FILE id="eecwL8" name="jucer_Project.cpp" compile="1" resource="0"
+            file="Source/Project/jucer_Project.cpp"/>
+      <FILE id="p7qo62" name="jucer_Project.h" compile="0" resource="0" file="Source/Project/jucer_Project.h"/>
+      <FILE id="rhvzYd" name="jucer_ProjectContentComponent.cpp" compile="0"
+            resource="0" file="Source/Project/jucer_ProjectContentComponent.cpp"/>
+      <FILE id="xDGBxS" name="jucer_ProjectContentComponent.h" compile="0"
+            resource="0" file="Source/Project/jucer_ProjectContentComponent.h"/>
+      <FILE id="JsTOtf" name="jucer_ProjectTree_Base.h" compile="0" resource="0"
+            file="Source/Project/jucer_ProjectTree_Base.h"/>
+      <FILE id="PnZpGT" name="jucer_ProjectTree_File.h" compile="0" resource="0"
+            file="Source/Project/jucer_ProjectTree_File.h"/>
+      <FILE id="cDYQTe" name="jucer_ProjectTree_Group.h" compile="0" resource="0"
+            file="Source/Project/jucer_ProjectTree_Group.h"/>
+      <FILE id="JfPIT2" name="jucer_ProjectType.h" compile="0" resource="0"
+            file="Source/Project/jucer_ProjectType.h"/>
+      <FILE id="aM4Awh" name="jucer_TreeItemTypes.h" compile="0" resource="0"
+            file="Source/Project/jucer_TreeItemTypes.h"/>
+      <FILE id="NkCPex" name="ProjectTree_SoundFile.h" compile="0" resource="0"
+            file="Source/Project/ProjectTree_SoundFile.h"/>
     </GROUP>
-    <GROUP id="{8A22BC7C-46D1-6B7B-3722-026377F056FA}" name="Odin">
-      <FILE id="UybFmi" name="Odin.cpp" compile="1" resource="0" file="Source/Odin/Odin.cpp"/>
-      <FILE id="qVrLjo" name="Odin.h" compile="0" resource="0" file="Source/Odin/Odin.h"/>
+    <GROUP id="{28174A5F-D7AD-7240-6104-135D5D2DDB3C}" name="Project Saving">
+      <FILE id="jpWU6e" name="jucer_ProjectSaver.cpp" compile="1" resource="0"
+            file="Source/Project Saving/jucer_ProjectSaver.cpp"/>
+      <FILE id="tRMUmL" name="jucer_ProjectSaver.h" compile="0" resource="0"
+            file="Source/Project Saving/jucer_ProjectSaver.h"/>
+      <FILE id="D2KMOk" name="jucer_ResourceFile.cpp" compile="1" resource="0"
+            file="Source/Project Saving/jucer_ResourceFile.cpp"/>
+      <FILE id="OTVc4t" name="jucer_ResourceFile.h" compile="0" resource="0"
+            file="Source/Project Saving/jucer_ResourceFile.h"/>
     </GROUP>
-    <GROUP id="{38A0CCF5-98E2-06CD-543A-5396A09634D4}" name="UnitTests">
-      <FILE id="oYhygX" name="test_memory.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/test_memory.cpp"/>
-      <FILE id="a0Ux16" name="test_sanity.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/test_sanity.cpp"/>
-      <FILE id="Zx0zgO" name="test_skoartests.cpp" compile="1" resource="0"
-            file="../SkoarCpp/SkoarCpp/test_skoartests.cpp"/>
-    </GROUP>
-    <GROUP id="{0B73570C-A0DF-019D-47C6-01C7FD8E3926}" name="UnitTestsWithJuce">
-      <FILE id="lTXZm1" name="test_skoars.cpp" compile="1" resource="0" file="Source/UnitTestsWithJuce/test_skoars.cpp"/>
+    <GROUP id="{ABA6593B-2CFE-2635-CE97-D2382C5CEC7B}" name="Samploar">
+      <FILE id="e5QtMc" name="SamploarComponent.cpp" compile="1" resource="0"
+            file="Source/Samploar/SamploarComponent.cpp"/>
+      <FILE id="pUs2Vp" name="SamploarComponent.h" compile="0" resource="0"
+            file="Source/Samploar/SamploarComponent.h"/>
+      <FILE id="vWXDeC" name="SamploarToolbarComponent.cpp" compile="1" resource="0"
+            file="Source/Samploar/SamploarToolbarComponent.cpp"/>
+      <FILE id="pTMaXl" name="SamploarToolbarComponent.h" compile="0" resource="0"
+            file="Source/Samploar/SamploarToolbarComponent.h"/>
+      <FILE id="XPAzNH" name="SoundFileDocument.cpp" compile="1" resource="0"
+            file="Source/Samploar/SoundFileDocument.cpp"/>
+      <FILE id="KsGwhX" name="SoundFileDocument.h" compile="0" resource="0"
+            file="Source/Samploar/SoundFileDocument.h"/>
     </GROUP>
     <GROUP id="{16FEBAFB-A232-5970-99CE-E3613C30A999}" name="SkoarCpp">
       <FILE id="HyU5aK" name="skoarpuscle_msg.cpp" compile="1" resource="0"
@@ -274,6 +494,20 @@
       <FILE id="LMez85" name="toker.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/toker.hpp"/>
       <FILE id="FLfd4N" name="toker_fwd.hpp" compile="0" resource="0" file="../SkoarCpp/SkoarCpp/toker_fwd.hpp"/>
     </GROUP>
+    <GROUP id="{E8AAD96C-9F82-4ED5-DE3C-7D6A690CE3C0}" name="Skoarish">
+      <FILE id="b6Jlvu" name="Instrument.cpp" compile="1" resource="0" file="Source/Skoarish/Instrument.cpp"/>
+      <FILE id="uIdfLo" name="Instrument.h" compile="0" resource="0" file="Source/Skoarish/Instrument.h"/>
+      <FILE id="vCS2Pu" name="InstrumentManager.cpp" compile="1" resource="0"
+            file="Source/Skoarish/InstrumentManager.cpp"/>
+      <FILE id="RX8trb" name="InstrumentManager.h" compile="0" resource="0"
+            file="Source/Skoarish/InstrumentManager.h"/>
+      <FILE id="TyMlo3" name="MidiInstrument.cpp" compile="1" resource="0"
+            file="Source/Skoarish/MidiInstrument.cpp"/>
+      <FILE id="dY9YxD" name="MidiInstrument.h" compile="0" resource="0"
+            file="Source/Skoarish/MidiInstrument.h"/>
+      <FILE id="ZGflK2" name="Sample.cpp" compile="1" resource="0" file="Source/Skoarish/Sample.cpp"/>
+      <FILE id="GgE7co" name="Sample.h" compile="0" resource="0" file="Source/Skoarish/Sample.h"/>
+    </GROUP>
     <GROUP id="{CE8D224C-A521-AE8C-71A9-A479E2DF5DF0}" name="Testoar">
       <FILE id="UzmwtV" name="TestoarResultsComponent.cpp" compile="1" resource="0"
             file="Source/Testoar/TestoarResultsComponent.cpp"/>
@@ -292,247 +526,14 @@
       <FILE id="eDGvJl" name="TestoarTreeItemTypes.h" compile="0" resource="0"
             file="Source/Testoar/TestoarTreeItemTypes.h"/>
     </GROUP>
-    <GROUP id="{3DA09ACA-AB9E-6AC4-1E50-FDD970C8CE14}" name="Debuggoar">
-      <FILE id="uldyZf" name="DebuggoarComponent.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/DebuggoarComponent.cpp"/>
-      <FILE id="OcsbtY" name="DebuggoarComponent.h" compile="0" resource="0"
-            file="Source/Debuggoar/DebuggoarComponent.h"/>
-      <FILE id="TFWl4T" name="DebuggoarDeetsPanel.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/DebuggoarDeetsPanel.cpp"/>
-      <FILE id="hiucLr" name="DebuggoarDeetsPanel.h" compile="0" resource="0"
-            file="Source/Debuggoar/DebuggoarDeetsPanel.h"/>
-      <FILE id="n54kRV" name="DebuggoarPopupper.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/DebuggoarPopupper.cpp"/>
-      <FILE id="LW6mca" name="DebuggoarPopupper.h" compile="0" resource="0"
-            file="Source/Debuggoar/DebuggoarPopupper.h"/>
-      <FILE id="ZQwRmK" name="DebuggoarSession.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/DebuggoarSession.cpp"/>
-      <FILE id="iXXkzB" name="DebuggoarSession.h" compile="0" resource="0"
-            file="Source/Debuggoar/DebuggoarSession.h"/>
-      <FILE id="i6X5pQ" name="DebuggoarStepper.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/DebuggoarStepper.cpp"/>
-      <FILE id="xQw0BF" name="DebuggoarStepper.h" compile="0" resource="0"
-            file="Source/Debuggoar/DebuggoarStepper.h"/>
-      <FILE id="ExOvkN" name="DebuggoarTable.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/DebuggoarTable.cpp"/>
-      <FILE id="BrpSkC" name="DebuggoarTable.h" compile="0" resource="0"
-            file="Source/Debuggoar/DebuggoarTable.h"/>
-      <FILE id="aWqhMw" name="DebuggoarToolbar.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/DebuggoarToolbar.cpp"/>
-      <FILE id="yyXuD1" name="DebuggoarToolbar.h" compile="0" resource="0"
-            file="Source/Debuggoar/DebuggoarToolbar.h"/>
-      <FILE id="tQMGG7" name="DeetsTableComponent.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/DeetsTableComponent.cpp"/>
-      <FILE id="IsaD3x" name="DeetsTableComponent.h" compile="0" resource="0"
-            file="Source/Debuggoar/DeetsTableComponent.h"/>
-      <FILE id="WvYti6" name="EventDataModel.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/EventDataModel.cpp"/>
-      <FILE id="wRNrA0" name="EventDataModel.h" compile="0" resource="0"
-            file="Source/Debuggoar/EventDataModel.h"/>
-      <FILE id="LoyMsb" name="EventTableComponent.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/EventTableComponent.cpp"/>
-      <FILE id="iVSfCc" name="EventTableComponent.h" compile="0" resource="0"
-            file="Source/Debuggoar/EventTableComponent.h"/>
-      <FILE id="MGBzxV" name="FairyDataModel.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/FairyDataModel.cpp"/>
-      <FILE id="tFxRlw" name="FairyDataModel.h" compile="0" resource="0"
-            file="Source/Debuggoar/FairyDataModel.h"/>
-      <FILE id="uNcEgn" name="FairyTableComponent.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/FairyTableComponent.cpp"/>
-      <FILE id="X4TI5G" name="FairyTableComponent.h" compile="0" resource="0"
-            file="Source/Debuggoar/FairyTableComponent.h"/>
-      <FILE id="s4afaQ" name="KoarDataModel.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/KoarDataModel.cpp"/>
-      <FILE id="cTBhqn" name="KoarDataModel.h" compile="0" resource="0" file="Source/Debuggoar/KoarDataModel.h"/>
-      <FILE id="wNlf0g" name="KoarTableComponent.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/KoarTableComponent.cpp"/>
-      <FILE id="IQc0iA" name="KoarTableComponent.h" compile="0" resource="0"
-            file="Source/Debuggoar/KoarTableComponent.h"/>
-      <FILE id="LZdsFQ" name="NoaditesListComponent.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/NoaditesListComponent.cpp"/>
-      <FILE id="GyNQA1" name="NoaditesListComponent.h" compile="0" resource="0"
-            file="Source/Debuggoar/NoaditesListComponent.h"/>
-      <FILE id="Iwaro0" name="SkoarASTComponent.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/SkoarASTComponent.cpp"/>
-      <FILE id="YjvTtK" name="SkoarASTComponent.h" compile="0" resource="0"
-            file="Source/Debuggoar/SkoarASTComponent.h"/>
-      <FILE id="Sjrq9P" name="SkoarNoadDataModel.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/SkoarNoadDataModel.cpp"/>
-      <FILE id="a3fMjY" name="SkoarNoadDataModel.h" compile="0" resource="0"
-            file="Source/Debuggoar/SkoarNoadDataModel.h"/>
-      <FILE id="yOOBcG" name="SkoarNoadTableComponent.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/SkoarNoadTableComponent.cpp"/>
-      <FILE id="rQxq82" name="SkoarNoadTableComponent.h" compile="0" resource="0"
-            file="Source/Debuggoar/SkoarNoadTableComponent.h"/>
-      <FILE id="ljGhxg" name="SkoarpionComponent.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/SkoarpionComponent.cpp"/>
-      <FILE id="Qx6yOT" name="SkoarpionComponent.h" compile="0" resource="0"
-            file="Source/Debuggoar/SkoarpionComponent.h"/>
-      <FILE id="tFJ62o" name="SkoarpionsComponent.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/SkoarpionsComponent.cpp"/>
-      <FILE id="Fp5qFl" name="SkoarpionsComponent.h" compile="0" resource="0"
-            file="Source/Debuggoar/SkoarpionsComponent.h"/>
-      <FILE id="KmS9Kb" name="SkoarProjectionComponent.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/SkoarProjectionComponent.cpp"/>
-      <FILE id="uHLM8I" name="SkoarProjectionComponent.h" compile="0" resource="0"
-            file="Source/Debuggoar/SkoarProjectionComponent.h"/>
-      <FILE id="Z00ABd" name="SkoarpuscleDataModel.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/SkoarpuscleDataModel.cpp"/>
-      <FILE id="EYgVZM" name="SkoarpuscleDataModel.h" compile="0" resource="0"
-            file="Source/Debuggoar/SkoarpuscleDataModel.h"/>
-      <FILE id="qwQ56A" name="SkoarpuscleTableComponent.cpp" compile="1"
-            resource="0" file="Source/Debuggoar/SkoarpuscleTableComponent.cpp"/>
-      <FILE id="eECtLN" name="SkoarpuscleTableComponent.h" compile="0" resource="0"
-            file="Source/Debuggoar/SkoarpuscleTableComponent.h"/>
-      <FILE id="WuDDqC" name="SkoarTreeComponent.cpp" compile="1" resource="0"
-            file="Source/Debuggoar/SkoarTreeComponent.cpp"/>
-      <FILE id="H53OTk" name="SkoarTreeComponent.h" compile="0" resource="0"
-            file="Source/Debuggoar/SkoarTreeComponent.h"/>
+    <GROUP id="{38A0CCF5-98E2-06CD-543A-5396A09634D4}" name="UnitTests">
+      <FILE id="oYhygX" name="test_memory.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/test_memory.cpp"/>
+      <FILE id="a0Ux16" name="test_sanity.cpp" compile="1" resource="0" file="../SkoarCpp/SkoarCpp/test_sanity.cpp"/>
+      <FILE id="Zx0zgO" name="test_skoartests.cpp" compile="1" resource="0"
+            file="../SkoarCpp/SkoarCpp/test_skoartests.cpp"/>
     </GROUP>
-    <GROUP id="{E8AAD96C-9F82-4ED5-DE3C-7D6A690CE3C0}" name="Skoarish">
-      <FILE id="b6Jlvu" name="Instrument.cpp" compile="1" resource="0" file="Source/Skoarish/Instrument.cpp"/>
-      <FILE id="uIdfLo" name="Instrument.h" compile="0" resource="0" file="Source/Skoarish/Instrument.h"/>
-      <FILE id="vCS2Pu" name="InstrumentManager.cpp" compile="1" resource="0"
-            file="Source/Skoarish/InstrumentManager.cpp"/>
-      <FILE id="RX8trb" name="InstrumentManager.h" compile="0" resource="0"
-            file="Source/Skoarish/InstrumentManager.h"/>
-      <FILE id="TyMlo3" name="MidiInstrument.cpp" compile="1" resource="0"
-            file="Source/Skoarish/MidiInstrument.cpp"/>
-      <FILE id="dY9YxD" name="MidiInstrument.h" compile="0" resource="0"
-            file="Source/Skoarish/MidiInstrument.h"/>
-      <FILE id="ZGflK2" name="Sample.cpp" compile="1" resource="0" file="Source/Skoarish/Sample.cpp"/>
-      <FILE id="GgE7co" name="Sample.h" compile="0" resource="0" file="Source/Skoarish/Sample.h"/>
-    </GROUP>
-    <GROUP id="{ABA6593B-2CFE-2635-CE97-D2382C5CEC7B}" name="Samploar">
-      <FILE id="e5QtMc" name="SamploarComponent.cpp" compile="1" resource="0"
-            file="Source/Samploar/SamploarComponent.cpp"/>
-      <FILE id="pUs2Vp" name="SamploarComponent.h" compile="0" resource="0"
-            file="Source/Samploar/SamploarComponent.h"/>
-      <FILE id="vWXDeC" name="SamploarToolbarComponent.cpp" compile="1" resource="0"
-            file="Source/Samploar/SamploarToolbarComponent.cpp"/>
-      <FILE id="pTMaXl" name="SamploarToolbarComponent.h" compile="0" resource="0"
-            file="Source/Samploar/SamploarToolbarComponent.h"/>
-      <FILE id="XPAzNH" name="SoundFileDocument.cpp" compile="1" resource="0"
-            file="Source/Samploar/SoundFileDocument.cpp"/>
-      <FILE id="KsGwhX" name="SoundFileDocument.h" compile="0" resource="0"
-            file="Source/Samploar/SoundFileDocument.h"/>
-    </GROUP>
-    <GROUP id="{026460D5-084B-58BD-E1C5-799C4C7D27E2}" name="Logging">
-      <FILE id="AXKUgt" name="SkoarLogger.cpp" compile="1" resource="0" file="Source/Logging/SkoarLogger.cpp"/>
-      <FILE id="fSQPHR" name="SkoarLogger.hpp" compile="0" resource="0" file="Source/Logging/SkoarLogger.hpp"/>
-      <FILE id="L4Gkl5" name="SkoarLoggerComponent.cpp" compile="1" resource="0"
-            file="Source/Logging/SkoarLoggerComponent.cpp"/>
-      <FILE id="ZLNsWr" name="SkoarLoggerComponent.h" compile="0" resource="0"
-            file="Source/Logging/SkoarLoggerComponent.h"/>
-      <FILE id="ZpCoKW" name="SkoarLoggerPane.cpp" compile="1" resource="0"
-            file="Source/Logging/SkoarLoggerPane.cpp"/>
-      <FILE id="DowUwI" name="SkoarLoggerPane.h" compile="0" resource="0"
-            file="Source/Logging/SkoarLoggerPane.h"/>
-      <FILE id="OkpzDl" name="SkoarLoggerToolBar.cpp" compile="1" resource="0"
-            file="Source/Logging/SkoarLoggerToolBar.cpp"/>
-      <FILE id="Kc97Pg" name="SkoarLoggerToolBar.h" compile="0" resource="0"
-            file="Source/Logging/SkoarLoggerToolBar.h"/>
-    </GROUP>
-    <GROUP id="vD0TyHx" name="Application">
-      <FILE id="oC4Az3" name="BottomPanelComponent.cpp" compile="1" resource="0"
-            file="Source/Application/BottomPanelComponent.cpp"/>
-      <FILE id="RQx6Fi" name="BottomPanelComponent.h" compile="0" resource="0"
-            file="Source/Application/BottomPanelComponent.h"/>
-      <FILE id="QDqaEw" name="jucer_AppearanceSettings.cpp" compile="1" resource="0"
-            file="Source/Application/jucer_AppearanceSettings.cpp"/>
-      <FILE id="mEX07l" name="jucer_AppearanceSettings.h" compile="0" resource="0"
-            file="Source/Application/jucer_AppearanceSettings.h"/>
-      <FILE id="n9nx5w" name="jucer_Application.cpp" compile="0" resource="0"
-            file="Source/Application/jucer_Application.cpp"/>
-      <FILE id="Bcs4ga" name="jucer_Application.h" compile="0" resource="0"
-            file="Source/Application/jucer_Application.h"/>
-      <FILE id="K8GI3t" name="jucer_CommandIDs.h" compile="0" resource="0"
-            file="Source/Application/jucer_CommandIDs.h"/>
-      <FILE id="lYDmsA" name="jucer_CommandLine.cpp" compile="1" resource="0"
-            file="Source/Application/jucer_CommandLine.cpp"/>
-      <FILE id="pWkI3M" name="jucer_CommandLine.h" compile="0" resource="0"
-            file="Source/Application/jucer_CommandLine.h"/>
-      <FILE id="DALClA" name="jucer_CommonHeaders.h" compile="0" resource="0"
-            file="Source/Application/jucer_CommonHeaders.h"/>
-      <FILE id="Y98bJk" name="jucer_DocumentEditorComponent.cpp" compile="1"
-            resource="0" file="Source/Application/jucer_DocumentEditorComponent.cpp"/>
-      <FILE id="prPBQg" name="jucer_DocumentEditorComponent.h" compile="0"
-            resource="0" file="Source/Application/jucer_DocumentEditorComponent.h"/>
-      <FILE id="Sm7ufE" name="jucer_EulaDialogue.h" compile="0" resource="0"
-            file="Source/Application/jucer_EulaDialogue.h"/>
-      <FILE id="eo4r70" name="jucer_FilePreviewComponent.h" compile="0" resource="0"
-            file="Source/Application/jucer_FilePreviewComponent.h"/>
-      <FILE id="Hq3STq" name="jucer_GlobalPreferences.cpp" compile="1" resource="0"
-            file="Source/Application/jucer_GlobalPreferences.cpp"/>
-      <FILE id="Ym81lY" name="jucer_GlobalPreferences.h" compile="0" resource="0"
-            file="Source/Application/jucer_GlobalPreferences.h"/>
-      <FILE id="YVE38f" name="jucer_Headers.h" compile="0" resource="0" file="Source/jucer_Headers.h"/>
-      <FILE id="eMFQFu" name="jucer_Main.cpp" compile="1" resource="0" file="Source/Application/jucer_Main.cpp"/>
-      <FILE id="WuEh1e" name="jucer_MainWindow.cpp" compile="1" resource="0"
-            file="Source/Application/jucer_MainWindow.cpp"/>
-      <FILE id="dj7ZoW" name="jucer_MainWindow.h" compile="0" resource="0"
-            file="Source/Application/jucer_MainWindow.h"/>
-      <FILE id="kwFprr" name="jucer_OpenDocumentManager.cpp" compile="1"
-            resource="0" file="Source/Application/jucer_OpenDocumentManager.cpp"/>
-      <FILE id="mrJkuR" name="jucer_OpenDocumentManager.h" compile="0" resource="0"
-            file="Source/Application/jucer_OpenDocumentManager.h"/>
-      <FILE id="BiD0vI" name="SidePanelComponent.cpp" compile="1" resource="0"
-            file="Source/Application/SidePanelComponent.cpp"/>
-      <FILE id="pOqJQ0" name="SidePanelComponent.h" compile="0" resource="0"
-            file="Source/Application/SidePanelComponent.h"/>
-    </GROUP>
-    <GROUP id="Ow008xg" name="Code Editor">
-      <FILE id="HAEKTC" name="jucer_SourceCodeEditor.cpp" compile="1" resource="0"
-            file="Source/Code Editor/jucer_SourceCodeEditor.cpp"/>
-      <FILE id="mhpHqC" name="jucer_SourceCodeEditor.h" compile="0" resource="0"
-            file="Source/Code Editor/jucer_SourceCodeEditor.h"/>
-      <FILE id="eN6Jmo" name="SkoarCodeEditor.cpp" compile="1" resource="0"
-            file="Source/Code Editor/SkoarCodeEditor.cpp"/>
-      <FILE id="yLMYNR" name="SkoarCodeEditor.hpp" compile="0" resource="0"
-            file="Source/Code Editor/SkoarCodeEditor.hpp"/>
-      <FILE id="mgVl7m" name="SkoarCodeTokeniser.cpp" compile="1" resource="0"
-            file="Source/Code Editor/SkoarCodeTokeniser.cpp"/>
-      <FILE id="I8CB4E" name="SkoarCodeTokeniser.hpp" compile="0" resource="0"
-            file="Source/Code Editor/SkoarCodeTokeniser.hpp"/>
-    </GROUP>
-    <GROUP id="{11C065B6-1DB3-96F3-3C77-DA83932ACF56}" name="Project">
-      <FILE id="lf9oOX" name="jucer_ConfigTree_Base.h" compile="0" resource="0"
-            file="Source/Project/jucer_ConfigTree_Base.h"/>
-      <FILE id="aytTyi" name="jucer_DependencyPathPropertyComponent.cpp"
-            compile="1" resource="0" file="Source/Project/jucer_DependencyPathPropertyComponent.cpp"/>
-      <FILE id="EDV9Pa" name="jucer_DependencyPathPropertyComponent.h" compile="0"
-            resource="0" file="Source/Project/jucer_DependencyPathPropertyComponent.h"/>
-      <FILE id="CfdjmB" name="jucer_GroupInformationComponent.h" compile="0"
-            resource="0" file="Source/Project/jucer_GroupInformationComponent.h"/>
-      <FILE id="eecwL8" name="jucer_Project.cpp" compile="1" resource="0"
-            file="Source/Project/jucer_Project.cpp"/>
-      <FILE id="p7qo62" name="jucer_Project.h" compile="0" resource="0" file="Source/Project/jucer_Project.h"/>
-      <FILE id="rhvzYd" name="jucer_ProjectContentComponent.cpp" compile="0"
-            resource="0" file="Source/Project/jucer_ProjectContentComponent.cpp"/>
-      <FILE id="xDGBxS" name="jucer_ProjectContentComponent.h" compile="0"
-            resource="0" file="Source/Project/jucer_ProjectContentComponent.h"/>
-      <FILE id="JsTOtf" name="jucer_ProjectTree_Base.h" compile="0" resource="0"
-            file="Source/Project/jucer_ProjectTree_Base.h"/>
-      <FILE id="PnZpGT" name="jucer_ProjectTree_File.h" compile="0" resource="0"
-            file="Source/Project/jucer_ProjectTree_File.h"/>
-      <FILE id="cDYQTe" name="jucer_ProjectTree_Group.h" compile="0" resource="0"
-            file="Source/Project/jucer_ProjectTree_Group.h"/>
-      <FILE id="JfPIT2" name="jucer_ProjectType.h" compile="0" resource="0"
-            file="Source/Project/jucer_ProjectType.h"/>
-      <FILE id="aM4Awh" name="jucer_TreeItemTypes.h" compile="0" resource="0"
-            file="Source/Project/jucer_TreeItemTypes.h"/>
-      <FILE id="NkCPex" name="ProjectTree_SoundFile.h" compile="0" resource="0"
-            file="Source/Project/ProjectTree_SoundFile.h"/>
-    </GROUP>
-    <GROUP id="{28174A5F-D7AD-7240-6104-135D5D2DDB3C}" name="Project Saving">
-      <FILE id="jpWU6e" name="jucer_ProjectSaver.cpp" compile="1" resource="0"
-            file="Source/Project Saving/jucer_ProjectSaver.cpp"/>
-      <FILE id="tRMUmL" name="jucer_ProjectSaver.h" compile="0" resource="0"
-            file="Source/Project Saving/jucer_ProjectSaver.h"/>
-      <FILE id="D2KMOk" name="jucer_ResourceFile.cpp" compile="1" resource="0"
-            file="Source/Project Saving/jucer_ResourceFile.cpp"/>
-      <FILE id="OTVc4t" name="jucer_ResourceFile.h" compile="0" resource="0"
-            file="Source/Project Saving/jucer_ResourceFile.h"/>
+    <GROUP id="{0B73570C-A0DF-019D-47C6-01C7FD8E3926}" name="UnitTestsWithJuce">
+      <FILE id="lTXZm1" name="test_skoars.cpp" compile="1" resource="0" file="Source/UnitTestsWithJuce/test_skoars.cpp"/>
     </GROUP>
     <GROUP id="{58EB50D9-0F01-AF9B-087B-93DB283A339D}" name="Utility">
       <FILE id="HVPdwp" name="concurrentqueue.h" compile="0" resource="0"
@@ -585,6 +586,25 @@
       <FILE id="OWw7bL" name="jucer_ValueSourceHelpers.h" compile="0" resource="0"
             file="Source/Utility/jucer_ValueSourceHelpers.h"/>
     </GROUP>
+    <GROUP id="{F94732AD-BF5B-5C49-C88E-8C24947B4047}" name="Vision">
+      <FILE id="tZ2EzJ" name="DebuggoarVision.cpp" compile="1" resource="0"
+            file="Source/Vision/DebuggoarVision.cpp"/>
+      <FILE id="FwD0NG" name="DebuggoarVision.h" compile="0" resource="0"
+            file="Source/Vision/DebuggoarVision.h"/>
+      <FILE id="nMHxgP" name="FairyCursor.cpp" compile="1" resource="0" file="Source/Vision/FairyCursor.cpp"/>
+      <FILE id="q8zAJV" name="FairyCursor.h" compile="0" resource="0" file="Source/Vision/FairyCursor.h"/>
+      <FILE id="WwCxzJ" name="NormalVision.cpp" compile="1" resource="0"
+            file="Source/Vision/NormalVision.cpp"/>
+      <FILE id="hknDE3" name="NormalVision.h" compile="0" resource="0" file="Source/Vision/NormalVision.h"/>
+      <FILE id="uLFSZW" name="Vision.cpp" compile="1" resource="0" file="Source/Vision/Vision.cpp"/>
+      <FILE id="R3E0Rj" name="Vision.h" compile="0" resource="0" file="Source/Vision/Vision.h"/>
+      <FILE id="CTpTqr" name="VisionCanvas.cpp" compile="1" resource="0"
+            file="Source/Vision/VisionCanvas.cpp"/>
+      <FILE id="nCqydT" name="VisionCanvas.h" compile="0" resource="0" file="Source/Vision/VisionCanvas.h"/>
+      <FILE id="NreJ3J" name="VisionSegment.cpp" compile="1" resource="0"
+            file="Source/Vision/VisionSegment.cpp"/>
+      <FILE id="rmKrw1" name="VisionSegment.h" compile="0" resource="0" file="Source/Vision/VisionSegment.h"/>
+    </GROUP>
     <GROUP id="{6DB3765E-3D83-86F1-D434-9B731E5E5887}" name="Wizards">
       <FILE id="or0AQg" name="jucer_NewFileWizard.cpp" compile="1" resource="0"
             file="Source/Wizards/jucer_NewFileWizard.cpp"/>
@@ -604,30 +624,6 @@
             file="Source/Wizards/jucer_StartPageComponent.h"/>
       <FILE id="vXZJSV" name="jucer_TemplateThumbnailsComponent.h" compile="0"
             resource="0" file="Source/Wizards/jucer_TemplateThumbnailsComponent.h"/>
-    </GROUP>
-    <GROUP id="{D4241EC8-2982-DB90-D1BE-72E57B735268}" name="BinaryData">
-      <FILE id="COkhCq" name="fontawesome-webfont.ttf" compile="0" resource="1"
-            file="Source/BinaryData/fontawesome-webfont.ttf"/>
-      <FILE id="axHNWg" name="skoar_icon_256.png" compile="0" resource="1"
-            file="Source/BinaryData/skoar_icon_256.png"/>
-      <FILE id="gmcfme" name="skoar_logo.png" compile="0" resource="1" file="Source/BinaryData/skoar_logo.png"/>
-      <FILE id="ir1D8U" name="skoar_word.png" compile="0" resource="1" file="Source/BinaryData/skoar_word.png"/>
-      <GROUP id="{8064F10D-D9BC-1C24-B322-A339C00D0B25}" name="templates">
-        <FILE id="hccxJ3" name="NewSkoarFileTemplate.skoar" compile="0" resource="1"
-              file="Source/BinaryData/NewSkoarFileTemplate.skoar"/>
-      </GROUP>
-      <FILE id="a2EM1O" name="background_tile.png" compile="0" resource="1"
-            file="Source/BinaryData/background_tile.png"/>
-      <FILE id="xboS86" name="colourscheme_dark.xml" compile="0" resource="1"
-            file="Source/BinaryData/colourscheme_dark.xml"/>
-      <FILE id="NxFmxY" name="editoar_EULA.txt" compile="0" resource="1"
-            file="Source/BinaryData/editoar_EULA.txt"/>
-      <FILE id="eO1a1G" name="RecentFilesMenuTemplate.nib" compile="0" resource="1"
-            file="Source/BinaryData/RecentFilesMenuTemplate.nib"/>
-      <FILE id="gP9mUi" name="wizard_Highlight.svg" compile="0" resource="1"
-            file="Source/BinaryData/wizard_Highlight.svg"/>
-      <FILE id="j6OMeN" name="wizard_Openfile.svg" compile="0" resource="1"
-            file="Source/BinaryData/wizard_Openfile.svg"/>
     </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_ASIO="0" JUCE_WASAPI="1" JUCE_DIRECTSOUND="1" JUCE_ALSA="1"

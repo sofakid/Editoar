@@ -6,6 +6,7 @@
 
 class ISkoarUiLogger {
 public:
+    virtual ~ISkoarUiLogger () = default;
     virtual void logMsg(String &s, Colour colour) = 0;
 };
 

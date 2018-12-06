@@ -107,11 +107,6 @@ public:
 private:
     void* server = nullptr;
 
-    bool checkEULA();
-    bool currentEULAHasBeenAcceptedPreviously() const;
-    String getEULAChecksumProperty() const;
-    void setCurrentEULAAccepted (bool hasBeenAccepted) const;
-
 	void timerCallback() override {};
     void handleAsyncUpdate() override;
     void initCommandManager();

@@ -18,7 +18,7 @@ KoarDataModel::KoarDataModel(SkoarKoarPtr p) :
             continue;
 
         skoarboard.add(
-            make_pair(
+            std::make_pair(
                 skoarboard_pref + String(x.first.c_str()) + suffix,
                 String(x.second->asString().c_str())
             )
@@ -30,7 +30,7 @@ KoarDataModel::KoarDataModel(SkoarKoarPtr p) :
             if (y.second == nullptr)
                 continue;
             state_stack.add(
-                make_pair(
+                std::make_pair(
                     state_stack_pref + String(y.first.c_str()) + suffix,
                     String(y.second->asString().c_str())
                 )
@@ -43,7 +43,7 @@ KoarDataModel::KoarDataModel(SkoarKoarPtr p) :
             if (y.second == nullptr)
                 continue;
             stack.add(
-                make_pair(
+                std::make_pair(
                     stack_pref + String(y.first.c_str()) + suffix,
                     String(y.second->asString().c_str())
                 )

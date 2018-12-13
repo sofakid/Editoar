@@ -45,6 +45,6 @@ private:
 
     ScopedPointer<FairyCursor> fairy;
     OwnedArray<VisionSegment> segments;
-    unique_ptr<SkoarLite> skoar;
+    std::unique_ptr<SkoarLite> skoar;
     CodeEditorComponent::ColourScheme cs;
 };

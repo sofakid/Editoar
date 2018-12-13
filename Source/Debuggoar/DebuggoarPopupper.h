@@ -21,8 +21,8 @@ private:
     //OwnedArray<SkoarNoadTableComponent> noadPops;
     //OwnedArray<SkoarpuscleTableComponent> skoarpusclePops;
 
-    unique_ptr<SkoarNoadTableComponent> noadPop;
-    unique_ptr<SkoarpuscleTableComponent> skoarpusclePop;
+    std::unique_ptr<SkoarNoadTableComponent> noadPop;
+    std::unique_ptr<SkoarpuscleTableComponent> skoarpusclePop;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DebuggoarPopupperComponent)
 };

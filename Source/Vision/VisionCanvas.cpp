@@ -61,16 +61,16 @@ void VisionCanvas::rebuildFailedParseSegments ()
     auto r = getLocalBounds ();
     segments.clearQuick (true);
     
-    wsmatch matches;
-    wregex re_line (L".*");
+    std::wsmatch matches;
+    std::wregex re_line (L".*");
     int offs = 0;
-    wsregex_iterator it (skoarce.begin (), skoarce.end (), re_line);
-    wsregex_iterator it_end;
+    std::wsregex_iterator it (skoarce.begin (), skoarce.end (), re_line);
+    std::wsregex_iterator it_end;
 
     while (it != it_end)
     {
         auto match = *it;
-        wstring line (match.str ());
+        std::wstring line (match.str ());
         auto len (line.length ());
         int n (len > INT32_MAX ? 0 : static_cast<int>(len));
         if (n > 0)
@@ -98,8 +98,8 @@ void VisionCanvas::makeSegment (int offs, int size, SkoarStyles::EStyle style) {
 
     auto s = doc.getTextBetween (start, end);
 
-    const wregex re_newline (L"[\\n]");
-    if (regex_search (s.toWideCharPointer (), re_newline))
+    const std::wregex re_newline (L"[\\n]");
+    if (std::regex_search (s.toWideCharPointer (), re_newline))
     {
         return;
     }
@@ -139,7 +139,7 @@ void VisionCanvas::resized () {
 void VisionCanvas::reload ()
 {
     SkoarString skoarce (doc.getAllContent ().toWideCharPointer ());
-    skoar = make_unique<SkoarLite> (skoarce, &SkoarLog);
+    skoar = std::make_unique<SkoarLite> (skoarce, &SkoarLog);
     redraw ();
 }
 

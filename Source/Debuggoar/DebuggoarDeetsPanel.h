@@ -29,11 +29,11 @@ public:
 
 private:
 
-    unique_ptr<SkoarNoadTableComponent> noadComponent;
-    unique_ptr<SkoarpuscleTableComponent> skoarpuscleComponent;
-    unique_ptr<KoarTableComponent> koarComponent;
-    unique_ptr<EventTableComponent> eventComponent;
-    unique_ptr<FairyTableComponent> fairyComponent;
+    std::unique_ptr<SkoarNoadTableComponent> noadComponent;
+    std::unique_ptr<SkoarpuscleTableComponent> skoarpuscleComponent;
+    std::unique_ptr<KoarTableComponent> koarComponent;
+    std::unique_ptr<EventTableComponent> eventComponent;
+    std::unique_ptr<FairyTableComponent> fairyComponent;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DebuggoarDeets)
 };

@@ -133,10 +133,10 @@ void Testoar::unregisterUi (TestoarResultsComponent* component) {
         ui = nullptr;
 }
 
-static std::regex eAnsiCodes ("\\[\\d+(;\\d+)?m", regex_constants::optimize);
+static std::regex eAnsiCodes ("\\[\\d+(;\\d+)?m", std::regex_constants::optimize);
 
-static std::regex eSectionEndingPassed ("TESTOAR SECTION PASSED tc<<([^>]*)>> section<<([^>]*)>>\n", regex_constants::optimize);
-static std::regex eSectionEndingFailed ("TESTOAR SECTION FAILED tc<<([^>]*)>> section<<([^>]*)>>\n", regex_constants::optimize);
+static std::regex eSectionEndingPassed ("TESTOAR SECTION PASSED tc<<([^>]*)>> section<<([^>]*)>>\n", std::regex_constants::optimize);
+static std::regex eSectionEndingFailed ("TESTOAR SECTION FAILED tc<<([^>]*)>> section<<([^>]*)>>\n", std::regex_constants::optimize);
 
 // --- output hooks ------------------------------------------------------------------
 void Testoar::out (std::string s) {

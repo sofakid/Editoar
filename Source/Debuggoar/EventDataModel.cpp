@@ -9,7 +9,7 @@ EventDataModel::EventDataModel(SkoarEventPtr p)
         if (x.second == nullptr)
             continue;
         entries.add(
-            make_pair(
+            std::make_pair(
                 String(x.first.c_str()) + suffix,
                 String(x.second->asString().c_str())
             )
